@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>PHP Sessions</title>
+    <style>a.menu_html_intro{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,CSS,XML,JavaScript,DOM,jQuery,ASP.NET,PHP,SQL,colors,tutorial,programming,development,training,learning,quiz,primer,lessons,reference,w3-examples,source code,demos,tips,color table,w3c,cascading style sheets,active server pages,Web building,Webmaster">
+    <meta name="Description" content="Free HTML CSS JavaScript DOM jQuery XML AJAX RSS ASP .NET PHP SQL tutorials, references, examples for web building.">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" type="text/css" href="http://www.w3schools.com/stdtheme.css">
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>PHP <span class="color_h1">Login Session Example<br>
+              </span></h1>
+            <div class="chapter">
+              <div class="prev"><br>
+              </div>
+            </div>
+            <hr>다음의 예는 사용자들의 login 을 허용하는 웹사이트 구축입니다.<br>
+            필요한 웹페이지들은 <br>
+            <ul>
+              <li>front.php </li>
+              <li>login.php : front.php 로부터 전달 받은 사용자 정보를 user.txt 의 사용자 목록과
+                비교하여 맞으면 page-1.php 로 틀리면 경고 페이지 또는 다시 front.php </li>
+              <li>logout.php :</li>
+              <li>page-1.php ( including top.php and bottom.php ) : 실제 웹사이트 ..</li>
+              <li>user.txt&nbsp; : 사용자 정보 목록 as username:password </li>
+              <ul>
+                <li>one:1111<br>
+                  two:2222<br>
+                  three:3333</li>
+              </ul>
+            </ul>
+            <hr>
+            <h2>A simple login session example</h2>
+            <p>아래의 코드(front.php)는 사용자로부터 username 과 password 를 입력받아&nbsp;
+              login.php 로 전달한다. </p>
+            <p> </p>
+            <div class="w3-code notranslate">
+              <div> &lt;!DOCTYPE html&gt;<br>
+                &lt;html&gt;<br>
+                &nbsp;&nbsp; &nbsp;&lt;head&gt;<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &lt;title&gt; Front Gate
+                &lt;/title&gt;<br>
+                &nbsp;&nbsp; &nbsp;&lt;/head&gt;<br>
+                &nbsp;&nbsp; &nbsp;&lt;body&gt;<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &lt;h1&gt; Front Gate
+                &lt;/h1&gt;<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &lt;form
+                action="login.php" method="POST"&gt;<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; Username : &lt;input
+                type="text" name="user"&gt; &lt;br&gt;<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; Password : &lt;input
+                type="password" name="pass"&gt;&lt;br&gt;<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &lt;input type="submit"
+                name="value" value="login"&gt;<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &lt;/form&gt;<br>
+                &nbsp;&nbsp; &nbsp;&lt;/body&gt;<br>
+                &lt;/html&gt;</div>
+            </div>
+            <br>
+            아래의 코드(login.php)는 front.php 로부터 username 과 password를 전달 받아, 사용자
+            목록(users.txt)과 비교하여&nbsp; 확인한 후, 사용자 세션에 login 상태를 저장하고, 본
+            페이지(page1.php)로 이동합니다 . <br>
+            <br>
+            <div class="w3-code notranslate">
+              <div> &lt;?php<br>
+                &nbsp;&nbsp; &nbsp;$user = check_param("user");<br>
+                &nbsp;&nbsp; &nbsp;$pass = check_param("pass");<br>
+                &nbsp;&nbsp; &nbsp;<br>
+                &nbsp;&nbsp; &nbsp;session_start();<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <br>
+                &nbsp;&nbsp; &nbsp;if (checkUser($user, $pass)) {<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                $_SESSION["login"] = $user;<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                $_SESSION["begin"] = date("F j, Y, g:i:s a");<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                header("Location: page-1.php");<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; } else {<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                header("Location: front.php");<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }<br>
+                &nbsp;&nbsp; &nbsp;<br>
+                function check_param($var) {<br>
+                &nbsp;&nbsp; &nbsp;if (!isset($_POST[$var]) || $_POST[$var] ==
+                "") {<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; die("Error : missing
+                required parameter '$var'");<br>
+                &nbsp;&nbsp; &nbsp;}<br>
+                &nbsp;&nbsp; &nbsp;return trim($_POST[$var]);<br>
+                }<br>
+                <br>
+                function checkUser($user, $pass) {<br>
+                &nbsp;&nbsp; &nbsp;$usersfile = "users.txt";<br>
+                &nbsp;&nbsp; &nbsp;$granted = false;<br>
+                &nbsp;&nbsp; &nbsp;$users =
+                explode("\n",file_get_contents($usersfile));<br>
+                &nbsp;&nbsp; &nbsp;foreach ($users as $each) {<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; $info =
+                explode(":",$each);<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; if ( $user ==
+                trim($info[0]) &amp;&amp; $pass == trim($info[1]) ) {<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                $granted = true;<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; break;<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }<br>
+                &nbsp;&nbsp; &nbsp;}<br>
+                return $granted;<br>
+                }&nbsp;&nbsp; &nbsp;<br>
+                ?&gt;<br>
+                <br>
+              </div>
+            </div>
+            <p>아래의 코드(page-1.php)는 login 한 사용자에게 제공하는 본 페이지로서, 세션에 저장된 사용자
+              이름(user)을 활용하며,&nbsp; 다른 웹페이지로의 링크와 logout 버튼을 제공한다. </p>
+            <p> </p>
+            <div class="w3-code notranslate">
+              <div> &lt;!DOCTYPE html&gt;<br>
+                &lt;?php<br>
+                &nbsp;&nbsp;&nbsp; require("top.php");<br>
+                ?&gt;<br>
+                &lt;html&gt;<br>
+                &nbsp;&nbsp; &nbsp;&lt;head&gt;<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &lt;meta charset="utf-8"
+                /&gt;<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &lt;title&gt;Login Sample
+                Code &lt;/title&gt;<br>
+                &nbsp;&nbsp; &nbsp;&lt;/head&gt;<br>
+                &nbsp;&nbsp; &nbsp;&lt;body&gt;<br>
+                &nbsp;&nbsp; &nbsp;<br>
+                &nbsp;&nbsp; &nbsp;&lt;h1&gt; &lt;?=$_SESSION["login"]?&gt;'s
+                Page after logged-in : page 1&lt;/h1&gt;<br>
+                <br>
+                &nbsp;&nbsp; &nbsp;&lt;ul&gt;<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &lt;li&gt; This is page 1
+                : one &lt;/li&gt;<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &lt;li&gt; This is page 1
+                : two &lt;/li&gt;<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &lt;li&gt; This is page 1
+                : three &lt;/li&gt;<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &lt;li&gt; This is page 1
+                : four &lt;/li&gt;<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &lt;li&gt; This is page 1
+                : five &lt;/li&gt;<br>
+                &nbsp;&nbsp; &nbsp;&lt;/ul&gt;<br>
+                &nbsp;&nbsp; &nbsp;<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &lt;a href="page-2.php"
+                &gt; go to Page 2 &lt;/a&gt; &lt;br&gt;<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &lt;hr&gt;<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &lt;?php<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                require("bottom.php");<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ?&gt;<br>
+                &nbsp;&nbsp; &nbsp;&lt;/body&gt;<br>
+                &lt;/html&gt;</div>
+            </div>
+            <p>아래의 코드(top.php)는&nbsp; 모든 본 페이지(page-1.php)에서 필요로 하는 상단부의 php 파일로
+              서, login 상태이면 브라우져에 표시하고, 아니면 다시 login.php 로 가도록 한다.&nbsp;&nbsp; </p>
+            <div class="w3-code notranslate">
+              <div> &lt;?php<br>
+                &nbsp;&nbsp; &nbsp;session_start();<br>
+                &nbsp;&nbsp; &nbsp;if (!isset($_SESSION["login"])) {<br>
+                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; header("Location:
+                front.php");<br>
+                &nbsp;&nbsp; &nbsp;}<br>
+                ?&gt;</div>
+            </div>
+            <p>아래의 코드(bottom.php)는&nbsp; 모든 본 페이지(page-1.php)에서 필요로 하는 하단부의 php
+              파일로서, logout 버튼을 제공한다. </p>
+            <div class="w3-code notranslate">
+              <div> &lt;?php<br>
+                &nbsp;&nbsp; &nbsp;echo "&lt;a href='logout.php'&gt;&lt;b&gt;Log
+                Out&lt;/b&gt;&lt;/a&gt;";<br>
+                ?&gt;</div>
+            </div>
+            <p>아래의 코드(logout.php)는&nbsp; logout 에 사용되며, 다시 login.php 파일을 브라우징한다.
+            </p>
+            <div class="w3-code notranslate">
+              <div> &lt;?php<br>
+                session_start();<br>
+                session_destroy();<br>
+                header("Location: front.php");<br>
+                ?&gt;</div>
+            </div>
+            <br>
+            <hr> </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </body>
+</html>

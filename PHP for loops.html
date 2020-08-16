@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>PHP for loops</title>
+    <style>a.menu_php_looping_for{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,CSS,XML,JavaScript,DOM,jQuery,ASP.NET,PHP,SQL,colors,tutorial,programming,development,training,learning,quiz,primer,lessons,reference,examples,source code,tryphps,tips,color table,w3c,cascading style sheets,active server pages,Web building,Webmaster">
+    <meta name="Description" content="Free HTML CSS JavaScript DOM jQuery XML AJAX RSS ASP .NET PHP SQL tutorials, references, examples for web building.">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-3855518-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script> <script>
+<!--
+function searchfield_focus(obj)
+{
+obj.style.color=""
+obj.style.fontStyle=""
+if (obj.value=="Search w3schools.com")
+	{obj.value=""}
+}
+var addr=document.location.href;
+function displayError()
+{
+document.getElementById("err_url").value=addr;
+document.getElementById("err_form").style.display="block";
+document.getElementById("err_desc").focus();
+hideSent();
+}
+function hideError()
+{
+document.getElementById("err_form").style.display="none";
+}
+function hideSent()
+{
+document.getElementById("err_sent").style.display="none";
+}
+function sendErr()
+{
+var xmlhttp;
+var err_url=document.getElementById("err_url").value;
+var err_email=document.getElementById("err_email").value;
+var err_desc=document.getElementById("err_desc").value;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.open("POST","/err_sup.asp",true);
+xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+xmlhttp.send("err_url=" + err_url + "&err_email=" + err_email + "&err_desc=" + escape(err_desc));
+document.getElementById("err_desc").value="";
+hideError();
+document.getElementById("err_sent").style.display="block";
+}
+//-->
+</script> <script type="text/javascript">
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+var gads = document.createElement('script');
+gads.async = true;
+gads.type = 'text/javascript';
+var useSSL = 'https:' == document.location.protocol;
+gads.src = (useSSL ? 'https:' : 'http:') + 
+'//www.googletagservices.com/tag/js/gpt.js';
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.insertBefore(gads, node);
+})();
+</script> <script type="text/javascript">
+googletag.cmd.push(function() {
+googletag.defineSlot('/16833175/BottomMediumRectangle', [300, 250], 'div-gpt-ad-1383210480969-0').addService(googletag.pubads());
+googletag.defineSlot('/16833175/LargePS', [[723, 280], [723, 400]], 'div-gpt-ad-1383210480969-1').addService(googletag.pubads());
+googletag.defineSlot('/16833175/MainLeaderboard', [728, 90], 'div-gpt-ad-1383210480969-2').addService(googletag.pubads());
+googletag.defineSlot('/16833175/SmallPS', [723, 170], 'div-gpt-ad-1383210480969-3').addService(googletag.pubads());
+googletag.defineSlot('/16833175/WideSkyScraper', [160, 600], 'div-gpt-ad-1383210480969-4').addService(googletag.pubads());
+googletag.pubads().setTargeting("content","php");
+googletag.pubads().enableSingleRequest();
+googletag.enableServices();
+});
+</script> <script>
+  (function() {
+    var cx = '012971019331610648934:m2tou3_miwy';
+    var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+  })();
+</script> <link rel="stylesheet" type="text/css" href="http://www.w3schools.com/stdtheme.css">
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>PHP <span class="color_h1">for</span> Loops</h1>
+            <div class="chapter">
+              <div class="prev"><a class="chapter" href="php_looping.asp">«
+                  Previous</a></div>
+              <div class="next"><a class="chapter" href="php_functions.asp">Next
+                  Chapter »</a></div>
+            </div>
+            <hr>
+            <p class="intro">PHP for loops execute a block of code a
+              specified number of times.</p>
+            <hr>
+            <h2>The PHP for Loop</h2>
+            <p>The for loop is used when you know in advance how many times the
+              script should run.</p>
+            <h3>Syntax</h3>
+            <div class="code notranslate">
+              <div> for (<i>init counter; test counter; increment counter</i>)<br>
+                &nbsp; {<br>
+                &nbsp;&nbsp;<i>code to be executed;</i><br>
+                &nbsp; } </div>
+            </div>
+            <p>Parameters:</p>
+            <ul>
+              <li><i>init counter</i>: Initialize the loop counter value</li>
+              <li><i>test counter</i>: Evaluated for each loop iteration. If it
+                evaluates to TRUE, the loop continues. If it evaluates to FALSE,
+                the loop ends.</li>
+              <li><i>increment counter</i>: Increases the loop counter value</li>
+            </ul>
+            <p>The example below displays the numbers from 0 to 10:</p>
+            <div class="example">
+              <h2 class="example">Example</h2>
+              <div class="example_code notranslate"> &lt;?php <br>
+                for ($x=0; $x&lt;=10; $x++)<br>
+                &nbsp; {<br>
+                &nbsp; echo "The number is: $x &lt;br&gt;";<br>
+                &nbsp; } <br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="showbtn" href="phptryit.asp?filename=tryphp_loop_for">Run
+                example »</a> </div>
+            <br>
+            <hr>
+            <h2>The PHP foreach Loop</h2>
+            <p>The foreach loop works only on arrays, and is used to loop
+              through each key/value pair in an array.</p>
+            <h3>Syntax</h3>
+            <div class="code notranslate">
+              <div> foreach ($<i>array </i>as<i> </i>$<i>value</i>)<br>
+                &nbsp; {<br>
+                &nbsp;&nbsp;<i>code to be executed;</i><br>
+                &nbsp; } </div>
+            </div>
+            <p>For every loop iteration, the value of the current array element
+              is assigned to $value and the array pointer is moved by one, until
+              it reaches the last array element.</p>
+            <p>The following example tryphpnstrates a loop that will output the
+              values of the given array ($colors):</p>
+            <div class="example">
+              <h2 class="example">Example</h2>
+              <div class="example_code notranslate"> &lt;?php <br>
+                $colors = array("red","green","blue","yellow"); <br>
+                foreach ($colors as $value)<br>
+                &nbsp; {<br>
+                &nbsp; echo "$value &lt;br&gt;";<br>
+                &nbsp; }<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="showbtn" href="phptryit.asp?filename=tryphp_loop_foreach">Run
+                example »</a> </div>
+            <p>You will learn more about arrays in a later chapter.</p>
+            <br>
+            <div class="chapter">
+              <div class="prev"><a class="chapter" href="php_looping.asp">«
+                  Previous</a></div>
+              <div class="next"><a class="chapter" href="php_functions.asp">Next
+                  Chapter »</a></div>
+            </div>
+            <hr> </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </body>
+</html>

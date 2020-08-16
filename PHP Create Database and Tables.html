@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>PHP Create Database and Tables</title>
+    <style>a.menu_php_mysql_create{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,CSS,XML,JavaScript,DOM,jQuery,ASP.NET,PHP,SQL,colors,tutorial,programming,development,training,learning,quiz,primer,lessons,reference,examples,source code,demos,tips,color table,w3c,cascading style sheets,active server pages,Web building,Webmaster">
+    <meta name="Description" content="Free HTML CSS JavaScript DOM jQuery XML AJAX RSS ASP .NET PHP SQL tutorials, references, examples for web building.">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-3855518-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script> <script>
+<!--
+function searchfield_focus(obj)
+{
+obj.style.color=""
+obj.style.fontStyle=""
+if (obj.value=="Search w3schools.com")
+	{obj.value=""}
+}
+var addr=document.location.href;
+function displayError()
+{
+document.getElementById("err_url").value=addr;
+document.getElementById("err_form").style.display="block";
+document.getElementById("err_desc").focus();
+hideSent();
+}
+function hideError()
+{
+document.getElementById("err_form").style.display="none";
+}
+function hideSent()
+{
+document.getElementById("err_sent").style.display="none";
+}
+function sendErr()
+{
+var xmlhttp;
+var err_url=document.getElementById("err_url").value;
+var err_email=document.getElementById("err_email").value;
+var err_desc=document.getElementById("err_desc").value;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.open("POST","/err_sup.asp",true);
+xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+xmlhttp.send("err_url=" + err_url + "&err_email=" + err_email + "&err_desc=" + escape(err_desc));
+document.getElementById("err_desc").value="";
+hideError();
+document.getElementById("err_sent").style.display="block";
+}
+//-->
+</script> <script type="text/javascript">
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+var gads = document.createElement('script');
+gads.async = true;
+gads.type = 'text/javascript';
+var useSSL = 'https:' == document.location.protocol;
+gads.src = (useSSL ? 'https:' : 'http:') + 
+'//www.googletagservices.com/tag/js/gpt.js';
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.insertBefore(gads, node);
+})();
+</script> <script type="text/javascript">
+googletag.cmd.push(function() {
+googletag.defineSlot('/16833175/BottomMediumRectangle', [300, 250], 'div-gpt-ad-1383210480969-0').addService(googletag.pubads());
+googletag.defineSlot('/16833175/LargePS', [[723, 280], [723, 400]], 'div-gpt-ad-1383210480969-1').addService(googletag.pubads());
+googletag.defineSlot('/16833175/MainLeaderboard', [728, 90], 'div-gpt-ad-1383210480969-2').addService(googletag.pubads());
+googletag.defineSlot('/16833175/SmallPS', [723, 170], 'div-gpt-ad-1383210480969-3').addService(googletag.pubads());
+googletag.defineSlot('/16833175/WideSkyScraper', [160, 600], 'div-gpt-ad-1383210480969-4').addService(googletag.pubads());
+googletag.pubads().setTargeting("content","php");
+googletag.pubads().enableSingleRequest();
+googletag.enableServices();
+});
+</script> <script>
+  (function() {
+    var cx = '012971019331610648934:m2tou3_miwy';
+    var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+  })();
+</script> <link rel="stylesheet" type="text/css" href="http://www.w3schools.com/stdtheme.css">
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>PHP <span class="color_h1">Database 와 Table 생성<br>
+              </span></h1>
+            <div class="chapter">
+              <div class="prev"><a class="chapter" href="PHP%20Connect%20to%20the%20MySQL%20Server.html">«
+                  Previous</a></div>
+              <div class="next"><a class="chapter" href="PHP%20MySQL%20Insert%20Into.html">Next
+                  Chapter »</a></div>
+            </div>
+            <hr>
+            <p class="intro">데이타베이스는 하나 이상의 테이블을 보유한다. </p>
+            <hr>
+            <h2>Create a Database</h2>
+            <p>CREATE DATABASE 문은 MySQL 에서 데이타베이스를 생성할 때 사용된다. </p>
+            <p>명령을 실행하기 위해서는 mysqli_query() 함수에 CREATE DATABASE 문을 추가해야
+              합니다.&nbsp; </p>
+            <p>다음의 예는 "my_db" 라는 이름의 데이타베이스를 생성한다. :</p>
+            <div class="code notranslate">
+              <div> &lt;?php<br>
+                $con=mysqli_connect("example.com","peter","abc123");<br>
+                // Check connection<br>
+                if (mysqli_connect_errno())<br>
+                &nbsp;&nbsp;{<br>
+                &nbsp; echo "Failed to connect to MySQL: " .
+                mysqli_connect_error();<br>
+                &nbsp;&nbsp;}<br>
+                <br>
+                // Create database<br>
+                $sql="CREATE DATABASE my_db";<br>
+                if (mysqli_query($con,$sql))<br>
+                &nbsp; {<br>
+                &nbsp; echo "Database my_db created successfully";<br>
+                &nbsp; }<br>
+                else<br>
+                &nbsp; {<br>
+                &nbsp; echo "Error creating database: " . mysqli_error($con);<br>
+                &nbsp; }<br>
+                ?&gt; </div>
+            </div>
+            <br>
+            <hr>
+            <h2>Create a Table</h2>
+            <p>CREATE TABLE 문은 MySQL에서 테이블을 생성하는데 사용된다. </p>
+            <p>명령을 실행하기 위해서는 mysqli_query() 함수에 CREATE TABLE 문을 추가해야 합니다.&nbsp;</p>
+            <p>다음의 예는 세개의 열("FirstName", "LastName" 과 "Age")로 구성된 "Persons" 이라는
+              테이블을 생성합니다.: </p>
+            <div class="code notranslate">
+              <div> &lt;?php<br>
+                $con=mysqli_connect("example.com","peter","abc123","my_db");<br>
+                // Check connection<br>
+                if (mysqli_connect_errno())<br>
+                &nbsp;&nbsp;{<br>
+                &nbsp; echo "Failed to connect to MySQL: " .
+                mysqli_connect_error();<br>
+                &nbsp;&nbsp;}<br>
+                <br>
+                // Create table<br>
+                $sql="CREATE TABLE Persons(FirstName CHAR(30),LastName
+                CHAR(30),Age INT)";<br>
+                <br>
+                // Execute query<br>
+                if (mysqli_query($con,$sql))<br>
+                &nbsp; {<br>
+                &nbsp; echo "Table persons created successfully";<br>
+                &nbsp; }<br>
+                else<br>
+                &nbsp; {<br>
+                &nbsp; echo "Error creating table: " . mysqli_error($con);<br>
+                &nbsp; }<br>
+                ?&gt; </div>
+            </div>
+            <p><b>Note:</b> CHAR 타입의 필드를 생성할 때, 필드의 최대 길이를 명시해야한다(e.g.
+              CHAR(50)).</p>
+            <p>데이타 타입은 열이 보유할 수 있는 데이타의 타입을 명시한다. For a complete reference of
+              all the data types available in MySQL 에서 사용할 수 있는 모든 데이터형식의 전체 참조는
+              이곳을 참고하시오 ==&gt; <a href="http://www.w3schools.com/sql/sql_datatypes.asp">Data
+                Types reference</a>.<br>
+            </p>
+            <hr>
+            <h2>Primary Keys and Auto Increment Fields</h2>
+            <p>데이타베이스의 각 테이블은 프라이머리 키 필드(primary key field)가 있어야 합니다.</p>
+            <p>프라이머리 키(primary key)는 테이블의 고유한 행을 식별하는데 사용됩니다. 각 기본 키 값은 테이블 내에서
+              고유해아합니다. 또한 데이타베이스 엔진이 레코드를 찾는데 값을 필요로 하기 때문에, 기본 키 필드는 null 일 수
+              없다.&nbsp;</p>
+            <p>다음의 예는 기본 키 필드로 PID 필드를 설정합니다. 기본 키 필드는 종종 ID 번호이며,
+              AUTO_INCREMENT 설정으로 사용됩니다.&nbsp; AUTO_INCREMENT 는 한 새로운 레코드가 추가 될
+              때 마다 자동으로 필드 값을 1 씩 증가 시킨다. 기본 키가 널(null)이 될 수 없음을 보장받기 위해서는 필드에
+              NOT NULL 설정을 추가해야 합니다. :</p>
+            <div class="code notranslate">
+              <div> $sql = "CREATE TABLE Persons&nbsp;<br>
+                (<br>
+                PID INT NOT NULL AUTO_INCREMENT, <br>
+                PRIMARY KEY(PID),<br>
+                FirstName CHAR(15),<br>
+                LastName CHAR(15),<br>
+                Age INT<br>
+                )";</div>
+            </div>
+            <br>
+            <br>
+            <div class="chapter">
+              <div class="prev"><a class="chapter" href="PHP%20Connect%20to%20the%20MySQL%20Server.html">«
+                  Previous</a></div>
+              <div class="next"><a class="chapter" href="PHP%20MySQL%20Insert%20Into.html">Next
+                  Chapter »</a></div>
+            </div>
+            <hr> </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </body>
+</html>

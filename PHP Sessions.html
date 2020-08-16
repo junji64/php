@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>PHP Sessions</title>
+    <style>a.menu_html_intro{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,CSS,XML,JavaScript,DOM,jQuery,ASP.NET,PHP,SQL,colors,tutorial,programming,development,training,learning,quiz,primer,lessons,reference,w3-examples,source code,demos,tips,color table,w3c,cascading style sheets,active server pages,Web building,Webmaster">
+    <meta name="Description" content="Free HTML CSS JavaScript DOM jQuery XML AJAX RSS ASP .NET PHP SQL tutorials, references, examples for web building.">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" type="text/css" href="http://www.w3schools.com/stdtheme.css">
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>PHP <span class="color_h1">Sessions</span></h1>
+            <div class="chapter">
+              <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="PHP%20Cookies.html">«
+                  Previous</a> <a class="w3-right w3-btn" href="PHP%20mail%28%29%20Function.html">Next
+                  Chapter »</a> </div>
+              <hr>
+              <p class="intro">PHP session 변수는 사용자 세션(session)에 대한 정보나 설정을 변경할 때
+                사용된다. Session 변수는 한 사용자에 대한 정보를 저장하고, 한 응용프로그램의 모든 페이지에서 사용할 수
+                있습니다. </p>
+              <hr>
+              <h2>PHP Session <strong>변수</strong></h2>
+              <p>한 응용프로그램과 작업을 할 때, 당신은 열고, 몇몇 변경을 한 다음에 닫을 것입니다. 이는 세션에서도
+                마찬가지입니다. 컴퓨터는 당신이 누구인지 알고 있습니다. 그리고 당신이 언제 프로그램을 시작하고, 언제 끝냈는 지를
+                압니다. 하지만 인터넷에서는 한가지 문제가 있습니다.: HTTP 주소는 상태를 유지하지 않으므로, 웹 서버는 당신이
+                누구인지 모르고, 당신이 무엇을 하는 지 모릅니다.&nbsp;</p>
+              <p>PHP 세션은 나중에 사용하기 위해서 서버에 사용자 정보(i.e. username, shopping items,
+                etc)를 사용자가 저장하여 이 문제를 해결 합니다. 그러나 세션정보는 일시적이며, 사용자가 웹사이트를 떠나면
+                삭제된다. 영구적 저장을 할 필요가 있다면, 데이타베이스에 데이터로 저장할 수 있습니다.&nbsp;</p>
+              <p>세션은 각 방문자에게 고유한 ID (UID)를 생성하고, 이&nbsp;UID 를 기준으로 변수를 저장하여
+                작동합니다. UID 는 cookie 에 저장하거나, URL에 전달됩니다. </p>
+              <p><img class="decoded" alt="http://courses.cs.washington.edu/courses/cse154/14sp/lectures/slides/images/session.gif"
+                  src="http://courses.cs.washington.edu/courses/cse154/14sp/lectures/slides/images/session.gif"><br>
+                <br>
+              </p>
+              <hr>
+              <h2>Starting a PHP Session</h2>
+              <p>PHP 세션에 사용자 정보를 저장하기 전에, 먼저 세션을 시작해야 합니다.</p>
+              <p><b>Note:</b> <strong>session_start() 함수</strong>는<strong>
+                  &lt;html&gt; 태그 앞에</strong> 와야 합니다.:</p>
+              <div class="w3-code w3-border  notranslate">
+                <div> &lt;?php session_start(); ?&gt;<br>
+                  <br>
+                  &lt;html&gt;<br>
+                  &lt;body&gt;<br>
+                  <br>
+                  &lt;/body&gt;<br>
+                  &lt;/html&gt; </div>
+              </div>
+              <p>위의 코드는 서버에 사용자 세션을 등록하여, 사용자 정보의 저장을 시작하게 해주고, 사용자 세션에 UID 를
+                할당합니다.&nbsp;</p>
+              <hr>
+              <h2>Storing a Session Variable</h2>
+              <p>세션 변수를 저장하고 검색하는 올바른 방법은 PHP $_SESSION 변수를 사용하는 것이다.:</p>
+              <div class="w3-code w3-border  notranslate">
+                <div> &lt;?php<br>
+                  session_start();<br>
+                  // store session data<br>
+                  $_SESSION['views']=1;<br>
+                  ?&gt;<br>
+                  <br>
+                  &lt;html&gt;<br>
+                  &lt;body&gt;<br>
+                  <br>
+                  &lt;?php<br>
+                  //retrieve session data<br>
+                  echo "Pageviews=". $_SESSION['views'];<br>
+                  ?&gt;<br>
+                  <br>
+                  &lt;/body&gt;<br>
+                  &lt;/html&gt; </div>
+              </div>
+              <p>Output:</p>
+              <div class="w3-code w3-border  notranslate">
+                <div> Pageviews=1 </div>
+              </div>
+              <p>아래의 예에서, 우리는 간단한 페이지-뷰(page-views) 카운터를 만듭니다. isset() 함수는
+                "views" 변수가 이미 설정되어 있는지 검사합니다. "views" 가 설정되어 있는 경우에는, 우리 카운터를
+                증가시킬 수 있습니다. "views" 가 존재하지 않는다면, "views" 변수를 생성하고, 1 로 설정합니다.:</p>
+              <div class="w3-code w3-border  notranslate">
+                <div> &lt;?php<br>
+                  session_start();<br>
+                  <br>
+                  if(isset($_SESSION['views']))<br>
+                  $_SESSION['views']=$_SESSION['views']+1;<br>
+                  else<br>
+                  $_SESSION['views']=1;<br>
+                  echo "Views=". $_SESSION['views'];<br>
+                  ?&gt; </div>
+              </div>
+              <br>
+              <hr>
+              <h2>Destroying a Session</h2>
+              <p>일부 세션 데이터를 삭제하고 싶다면, unset() 또는 session_destroy() 함수를 사용할 수
+                있습니다.</p>
+              <p>unset() 함수는 지정된 세션변수를 해제하는데 사용된다.:</p>
+              <div class="w3-code w3-border  notranslate">
+                <div> &lt;?php<br>
+                  session_start();<br>
+                  if(isset($_SESSION['views']))<br>
+                  &nbsp; unset($_SESSION['views']);<br>
+                  ?&gt; </div>
+              </div>
+              <p>또한 session_destroy() 함수를 호출하여 세션을 완전히 제거할 수 도 있습니다.:</p>
+              <div class="w3-code w3-border  notranslate">
+                <div> &lt;?php<br>
+                  session_destroy();<br>
+                  ?&gt; </div>
+              </div>
+              <p><b>Note:</b> session_destroy() 는 당신의 세션을 다시 설정하며, 모든 저장한 세션
+                데이타를 잃게 된다.&nbsp; </p>
+              <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="PHP%20Cookies.html">«
+                  Previous</a> <a class="w3-right w3-btn" href="PHP%20mail%28%29%20Function.html">Next
+                  Chapter »</a> </div>
+              <hr> </div>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+  </body>
+</html>

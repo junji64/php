@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>PHP Error Handling</title>
+    <style>a.menu_html_intro{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,CSS,XML,JavaScript,DOM,jQuery,ASP.NET,PHP,SQL,colors,tutorial,programming,development,training,learning,quiz,primer,lessons,reference,w3-examples,source code,tryphps,tips,color table,w3c,cascading style sheets,active server pages,Web building,Webmaster">
+    <meta name="Description" content="Free HTML CSS JavaScript DOM jQuery XML AJAX RSS ASP .NET PHP SQL tutorials, references, examples for web building.">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" type="text/css" href="http://www.w3schools.com/stdtheme.css">
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>PHP <span class="color_h1">Error Handling</span></h1>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="PHP%20mail%28%29%20Function.html">«
+                Previous</a> <a class="w3-right w3-btn" href="PHP%20Exception%20Handling.html">Next
+                Chapter »</a> </div>
+            <hr>
+            <p class="intro">PHP 에서 기본 오류처리는 아주 간단하다. 파일 명, 행 번호와 오류를 설명하는 에러
+              메시지가 브라우저로 전송된다.</p>
+            <hr>
+            <h2>PHP Error Handling</h2>
+            <p>스크립트와 웹 어플리케이션을 만들 때, 오류 처리는 중요한 부분이다. 만일 당신의 코드에서 오류검사 코드가
+              부족하다면, 당신의 코드는 매우 프로답지 않아 보이고, 보안 위험에 노출되게 된다.&nbsp;</p>
+            <p>이 튜토리얼은 PHP 에서 가장 흔한 오류검사 방법 중의 일부를 소개하며, 이들의 오류처리 방법들을 설명합니다.:</p>
+            <ul>
+              <li>간단한 "die()" 문장</li>
+              <li>사용자 지정 errors 와 error triggers</li>
+              <li>오류 보고</li>
+            </ul>
+            <hr>
+            <h2>Basic Error Handling: die() 함수 사용</h2>
+            <p>첫 번째 예는 텍스트 파일을 여는 간단한 스크립트를 보여준다.:</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> &lt;?php<br>
+                $file=fopen("welcome.txt","r");<br>
+                ?&gt; </div>
+            </div>
+            <p>파일이 존재 하지 않을 경우, 다음과 같은 에러가 발생할 수 있습니다.:</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> <b>Warning</b>: fopen(welcome.txt) [function.fopen]: failed
+                to open stream:<br>
+                No such file or directory in <b>C:\webfolder\test.php</b> on
+                line <b>2</b> </div>
+            </div>
+            <p>위와 같은 에러 메시지가 나타나는 것을 방지하기 위해서, 우리는 그것을 접근하기 전에 파일이 존재하는지 여부를
+              시험합니다. :</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> &lt;?php<br>
+                if(!file_exists("welcome.txt"))&nbsp;{<br>
+                &nbsp;&nbsp;die("File not found");<br>
+                } else {<br>
+                &nbsp;&nbsp;$file=fopen("welcome.txt","r");<br>
+                }<br>
+                ?&gt; </div>
+            </div>
+            <p>이제 파일이 존재하지 않을 경우, 다음과 같은 에러가 발생합니다. :</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> File not found </div>
+            </div>
+            <p>위의 코드가, 에러 후에 스크립트를 멈추기 위한 간단한 오류처리 메커니즘을 사용하기 때문에, 이전의 코드보다 더
+              효율적입니다.</p>
+            <p>그러나, 단순히 스크립트를 멈추는 것이 항상 옳은 방법은 아니다. 오류 처리를 위한 또 다른 PHP 함수를 살펴보자.
+            </p>
+            <hr>
+            <h2>Creating a Custom Error Handler</h2>
+            <p>사용자 지정 오류 처리기를 생성하는 것은 매우 간단하다. 이는 단순히 PHP 에서 오류가 발생했을 때 호출될 수 있는
+              특별한 함수를 생성하면 된다. </p>
+            <p>이 함수는 적어도 두 개의 매개변수(error level 과 error message)를 처리 할 수 있어야 하지만,
+              5개 까지의 매개변수(optionally: file, line-number, 와 the error context)를
+              수용할 수 있어야 한다. :</p>
+            <h2>Syntax</h2>
+            <div class="w3-code w3-border  notranslate">
+              <div> error_function(error_level,error_message,<br>
+                error_file,error_line,error_context) </div>
+            </div>
+            <br>
+            <table class="w3-table-all reference notranslate">
+              <tbody>
+                <tr>
+                  <th style="width:20%">Parameter</th>
+                  <th style="width:80%">Description</th>
+                </tr>
+                <tr>
+                  <td>error_level</td>
+                  <td>Required. Specifies the error report level for the
+                    user-defined error. Must be a value number. See table below
+                    for possible error report levels</td>
+                </tr>
+                <tr>
+                  <td>error_message</td>
+                  <td>Required. Specifies the error message for the user-defined
+                    error</td>
+                </tr>
+                <tr>
+                  <td>error_file</td>
+                  <td>Optional. Specifies the filename in which the error
+                    occurred</td>
+                </tr>
+                <tr>
+                  <td>error_line</td>
+                  <td>Optional. Specifies the line number in which the error
+                    occurred</td>
+                </tr>
+                <tr>
+                  <td>error_context</td>
+                  <td>Optional. Specifies an array containing every variable,
+                    and their values, in use when the error occurred</td>
+                </tr>
+              </tbody>
+            </table>
+            <h2>Error Report levels</h2>
+            <p>오류 보고 레벨은 사용자 정의&nbsp; 오류처리기( user-defined error handler) 가 가질 수
+              있는 에러의 서로 다른 유형들을 말한다.:</p>
+            <table class="w3-table-all reference notranslate">
+              <tbody>
+                <tr>
+                  <th style="width:5%">Value</th>
+                  <th style="width:30%">Constant</th>
+                  <th style="width:65%">Description</th>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>E_WARNING</td>
+                  <td>Non-fatal run-time errors. Execution of the script is not
+                    halted</td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>E_NOTICE</td>
+                  <td>Run-time notices. The script found something that might be
+                    an error, but could also happen when running a script
+                    normally</td>
+                </tr>
+                <tr>
+                  <td>256</td>
+                  <td>E_USER_ERROR</td>
+                  <td>Fatal user-generated error. This is like an E_ERROR set by
+                    the programmer using the PHP function trigger_error()</td>
+                </tr>
+                <tr>
+                  <td>512</td>
+                  <td>E_USER_WARNING</td>
+                  <td>Non-fatal user-generated warning. This is like an
+                    E_WARNING set by the programmer using the PHP function
+                    trigger_error()</td>
+                </tr>
+                <tr>
+                  <td>1024</td>
+                  <td>E_USER_NOTICE</td>
+                  <td>User-generated notice. This is like an E_NOTICE set by the
+                    programmer using the PHP function trigger_error()</td>
+                </tr>
+                <tr>
+                  <td>4096</td>
+                  <td>E_RECOVERABLE_ERROR</td>
+                  <td>Catchable fatal error. This is like an E_ERROR but can be
+                    caught by a user defined handle (see also
+                    set_error_handler())</td>
+                </tr>
+                <tr>
+                  <td>8191</td>
+                  <td>E_ALL</td>
+                  <td>All errors and warnings (E_STRICT became a part of E_ALL
+                    in PHP 5.4)</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>이제, 오류를 처리하는 함수를 만들자.:</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> function customError($errno, $errstr) {<br>
+                &nbsp;&nbsp;echo "&lt;b&gt;Error:&lt;/b&gt; [$errno]
+                $errstr&lt;br&gt;";<br>
+                &nbsp;&nbsp;echo "Ending Script";<br>
+                &nbsp;&nbsp;die();<br>
+                } </div>
+            </div>
+            <p>위의 코드는 단순한 오류 처리 함수 이다. 트리거 될 때, 에러 레벨과 에러 메시지를 얻는다. 그리고 에러 레벨과
+              에러 메시지를 출력한 후 스크립트를 종료한다.&nbsp;</p>
+            <p>이제 오류 처리 함수를 만들었으므로, 언제 트리거될지 결정해야한다. </p>
+            <hr>
+            <h2>Set Error Handler</h2>
+            <p>PHP 의 기본 오류 처리기는 내장된 오류 처리기이다. 우리는 스크립트의 지속기간 동안 위의 함수를 기본 오류처리기로
+              할 것이다.&nbsp; </p>
+            <p>단지 특정한 오류에만 적용되도록, 그리하여스크립트가 다른 에러를 다른 방법으로 처리할 수 있도록, 오류처리기를
+              변경하는 것이 가능하다. 그러나, 이 예에서는 모든 오류에 대해 우리의 사용자 지정 오류 처리기를 사용한다.:</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> set_error_handler("customError"); </div>
+            </div>
+            <p>우리의 사용자 지정 함수가 모든 오류를 처리하기 원하므로, set_error_handler() 는 단지 하나의
+              매개변수만 필요하고, 두 번째 매개변수는 에러베벨을 지정하기 위해 추가 될 수 있다.</p>
+            <h2>Example</h2>
+            <p>존재 하지 않는 변수를 출력하려는 시도로 에러처리기 시험:</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> &lt;?php<br>
+                //error handler function<br>
+                function customError($errno, $errstr) {<br>
+                &nbsp;&nbsp;echo "&lt;b&gt;Error:&lt;/b&gt; [$errno] $errstr";<br>
+                }<br>
+                <br>
+                //set error handler<br>
+                set_error_handler("customError");<br>
+                <br>
+                //trigger error<br>
+                echo($test);<br>
+                ?&gt; </div>
+            </div>
+            <p>위의 코드의 출력은 다음과 같아야 한다:</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> <b>Error:</b> [8] Undefined variable: test </div>
+            </div>
+            <br>
+            <hr>
+            <h2>Trigger an Error</h2>
+            <p>사용자가 데이타를 입력할 수 있는 스크립트에서는 잘못된 입력이 발생했을 때 에러를 트리거하는 것이 유용하다. PHP
+              에서는, 이것이&nbsp; trigger_error() 함수로 수행된다.</p>
+            <h2>Example</h2>
+            <p>이 예에서는 "test" 변수가 "1" 보다 크면 에러가 발생한다. :</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> &lt;?php<br>
+                $test=2;<br>
+                if ($test&gt;1) {<br>
+                &nbsp; trigger_error("Value must be 1 or below");<br>
+                }<br>
+                ?&gt; </div>
+            </div>
+            <p>위 코드의 출력은 다음과 같아야 한다.:</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> <b>Notice</b>: Value must be 1 or below<br>
+                in <b>C:\webfolder\test.php</b> on line <b>6</b> </div>
+            </div>
+            <p>오류는 스크립트에서 원하는 어디에서든지 트리거될 수 있다, 그리고 두 번째 매개변수를 추가하면, 어떤 오류 수준이
+              트리거 될 지도 지정할 수 있다.</p>
+            <p>가능한 에러 유형:</p>
+            <ul>
+              <li>E_USER_ERROR - 치명적 사용자-생성 런타임 에러. 복구 될 수 없는 에러. 스크립트의 실행이
+                중지됨.&nbsp; </li>
+              <li>E_USER_WARNING - 비-치명적 사용자-생성 런타임 경고, 스크립트의 실행이 중단되지 않음</li>
+              <li>E_USER_NOTICE - 기본. 사용자-생성 런타임 통지. 스크립트는 에러일 수도 있는 것을 발견하지만,
+                일반적으로 스크립트를 실행할 때도 발생할 수 있음.&nbsp; </li>
+            </ul>
+            <h2>Example</h2>
+            <p>이 예에서는 "test" 변수가 "1" 보다 크면 E_USER_WARNING 가 발생합니다.
+              E_USER_WARNING 가 발생하면, 우리는 사용자 지정 에러 처리기를 사용하고, 스크립트를 종료합니다.:</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> &lt;?php<br>
+                //error handler function<br>
+                function customError($errno, $errstr)&nbsp;{<br>
+                &nbsp;&nbsp;echo "&lt;b&gt;Error:&lt;/b&gt; [$errno]
+                $errstr&lt;br&gt;";<br>
+                &nbsp;&nbsp;echo "Ending Script";<br>
+                &nbsp;&nbsp;die();<br>
+                }<br>
+                <br>
+                //set error handler<br>
+                set_error_handler("customError",E_USER_WARNING);<br>
+                <br>
+                //trigger error<br>
+                $test=2;<br>
+                if ($test&gt;1)&nbsp;{<br>
+                &nbsp;&nbsp;trigger_error("Value must be 1 or
+                below",E_USER_WARNING);<br>
+                }<br>
+                ?&gt; </div>
+            </div>
+            <p>위 코드의 출력은 다음과 같아야 한다:</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> <b>Error:</b> [512] Value must be 1 or below<br>
+                Ending Script </div>
+            </div>
+            <p>이제 우리는 우리 자신의 오류 생성과 그것을 어떻게 트리거하는지를 배웠으니, 오류기록(error logging)을
+              보자.&nbsp;</p>
+            <hr>
+            <h2>Error Logging</h2>
+            <p>기본적으로, PHP는&nbsp; php.ini 파일에 설정된 error_log 구성(configuration)에
+              따라서 서버의 로깅시스템 또는 파일에 오류로그(error log)를 보낸다. error_log() 함수를 사용하여
+              지정된 파일 또는 원격 대상(destination)에 오류로그를 보낼 수 있다.</p>
+            <p>이-메일로 자신에게 오류메시지를 전송하는 것은 특정오류가 발생했는지를 연락받는 좋은 방법이다.&nbsp;</p>
+            <h2>Send an Error Message by E-Mail</h2>
+            <p>아래의 예에서특정 에러가 발생하면 오류메시지를 이메일로 보내고 스크립트를 종료한다.:</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> &lt;?php<br>
+                //error handler function<br>
+                function customError($errno, $errstr) {<br>
+                &nbsp;&nbsp;echo "&lt;b&gt;Error:&lt;/b&gt; [$errno]
+                $errstr&lt;br&gt;";<br>
+                &nbsp;&nbsp;echo "Webmaster has been notified";<br>
+                &nbsp;&nbsp;error_log("Error: [$errno] $errstr",1,<br>
+                &nbsp;&nbsp;"someone@example.com","From:
+                webmaster@example.com");<br>
+                }<br>
+                <br>
+                //set error handler<br>
+                set_error_handler("customError",E_USER_WARNING);<br>
+                <br>
+                //trigger error<br>
+                $test=2;<br>
+                if ($test&gt;1)&nbsp;{<br>
+                &nbsp;&nbsp;trigger_error("Value must be 1 or
+                below",E_USER_WARNING);<br>
+                }<br>
+                ?&gt; </div>
+            </div>
+            <p>위 코드의 출력은 다음과 같아야 한다:</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> <b>Error:</b> [512] Value must be 1 or below<br>
+                Webmaster has been notified </div>
+            </div>
+            <p>그리고, 위의 코드로 부터 받은 메일은 다음과 같다.:</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> Error: [512] Value must be 1 or below </div>
+            </div>
+            <p>이는 모든 에러와는 사용될 수 없고, 보통의 에러는 기본 PHP 로깅시스템을 사용하여 서버에 로그되어야
+              한다.&nbsp;</p>
+            <br>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="PHP%20mail%28%29%20Function.html">«
+                Previous</a> <a class="w3-right w3-btn" href="PHP%20Exception%20Handling.html">Next
+                Chapter »</a> </div>
+            <hr> </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </body>
+</html>

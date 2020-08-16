@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>PHP XML Parsers</title>
+    <style>a.menu_html_intro{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,CSS,XML,JavaScript,DOM,jQuery,ASP.NET,PHP,SQL,colors,tutorial,programming,development,training,learning,quiz,primer,lessons,reference,w3-examples,source code,demos,tips,color table,w3c,cascading style sheets,active server pages,Web building,Webmaster">
+    <meta name="Description" content="Free HTML CSS JavaScript DOM jQuery XML AJAX RSS ASP .NET PHP SQL tutorials, references, examples for web building.">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" type="text/css" href="http://www.w3schools.com/stdtheme.css">
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>PHP <span class="color_h1">XML Parsers</span></h1>
+            <div class="chapter">
+              <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="php_mysql_select_limit.asp">«
+                  Previous</a> <a class="w3-right w3-btn" href="PHP%20XML%20SimpleXML.html">Next
+                  Chapter »</a> </div>
+            </div>
+            <hr>
+            <h2>What is XML?</h2>
+            <ul>
+              <li>XML 은 확장가능한 마크업 언어(EXtensible Markup Language)를 의미한다.</li>
+              <li>XML 데이타를 표시하기 위한 것이 아니라, 설명하기 위해 설계되었다.&nbsp;</li>
+              <li>XML 언어는 웹사이트들 간에 자료를 공유하기 위해서 구조화 하는 한가지 방법이다.</li>
+              <li>RSS Feeds 와 Podcasts 와 같은 여러 웹 기술들이 XML 로 작성 되었다.</li>
+              <li>XML 은 쉽게 만들 수 있고, 당신이 당신 자신의 태그를 만들어야 한다는 것을 제외하고는, HTML과 매우
+                유사하다.</li>
+              <li>XML 에 대한 자세한 내용은&nbsp; <a href="http://www.w3schools.com/xml/default.asp">XML
+                  tutorial</a>.</li>
+            </ul>
+            <hr>
+            <h2>XML Does Not DO Anything</h2>
+            <p>아마 이해하기가 좀 어렵겠지만, XML 은 아무것도 하지 않습니다. <br>
+              다음 예는 XML로 저장된 Jani 로부터 Tove 에게 보내는 노트 입니다: </p>
+            <div class="example">
+              <div class="w3-code w3-border notranslate"> &lt;?xml version="1.0"
+                encoding="UTF-8"?&gt;<br>
+                &lt;note&gt;<br>
+                &nbsp; &lt;to&gt;Tove&lt;/to&gt;<br>
+                &nbsp; &lt;from&gt;Jani&lt;/from&gt;<br>
+                &nbsp; &lt;heading&gt;Reminder&lt;/heading&gt;<br>
+                &nbsp; &lt;body&gt;Don't forget me this weekend!&lt;/body&gt;<br>
+                &lt;/note&gt; </div>
+            </div>
+            <p>위의 노트는 제법 자체적으로 설명이 되어 있습니다. 보내는 사람과 받는 사람 정보, 그리고 제목과 메시지 본문을 갖고
+              있습니다. <br>
+              하지만, 여전히 이 문서는 아무것도 하지 않으며, 단지 태그로 둘러 싸인 정보일 뿐입니다.&nbsp; 누군가가 이를
+              보내거나, 받거나, 표시하는 소프트웨어를 작성해야 합니다.&nbsp;</p>
+            <hr>
+            <h2>What is an XML Parser?</h2>
+            <p>XML 문서를 읽고, 쓰고, 생성하고, 조작하려면 XML 파서(parser)가 필요합니다.</p>
+            <p>PHP 에는 두 가지 종류의 주요 XML parsers 가 있습니다:</p>
+            <ul>
+              <li>Tree-Based Parsers</li>
+              <li>Event-Based Parsers</li>
+            </ul>
+            <hr>
+            <h2><strong>트리-기반 파서</strong>(Tree-Based Parsers)</h2>
+            <p>트리-기반 파서는 문서 전체를 메모리에 넣고 XML 문서를 트리구조(Tree structure)로 변환한다. 이는
+              전체 문서를 분석하고, 트리 요소(Tree elements : DOM)에 대한 엑세스를 제공한다.&nbsp;</p>
+            <p>이런 유형의 파서(parser)는 작은 XML 문서에 적절하며, 큰 XML 문서에는 주요 성능 문제를 야기하므로
+              적절하지 않다.&nbsp;</p>
+            <p>트리-기반 파서(tree-based parsers)의 예:</p>
+            <ul>
+              <li>SimpleXML</li>
+              <li>DOM</li>
+            </ul>
+            <hr>
+            <h2><strong>이벤트-기반 파서</strong>(Event-Based Parsers)</h2>
+            <p>이벤트-기반 파서(parsers)는 문서 전체를 메모리에 담고 있지 않으며, 대신에&nbsp; 한 번에 한 노드씩
+              읽어 실시간으로 상호작용하도록 해준다. 다음 노드로 이동하게 되면, 이전 것은 페기된다.&nbsp;</p>
+            <p>이런 유형의 파서(parser)는 큰 XML 문서에 적합하며, 더 빠르고 더 적은 메모리를 사용한다.&nbsp; </p>
+            <p>이벤트-기반 파서(event-based parsers) 의 예:</p>
+            <ul>
+              <li>XMLReader</li>
+              <li>XML Expat Parser</li>
+            </ul>
+            <br>
+            <div class="chapter">
+              <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="php_mysql_select_limit.asp">«
+                  Previous</a> <a class="w3-right w3-btn" href="PHP%20XML%20SimpleXML.html">Next
+                  Chapter »</a> </div>
+            </div>
+            <hr> </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </body>
+</html>

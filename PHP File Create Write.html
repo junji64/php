@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>PHP File Create/Write</title>
+    <style>a.menu_html_intro{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,CSS,XML,JavaScript,DOM,jQuery,ASP.NET,PHP,SQL,colors,tutorial,programming,development,training,learning,quiz,primer,lessons,reference,w3-examples,source code,demos,tips,color table,w3c,cascading style sheets,active server pages,Web building,Webmaster">
+    <meta name="Description" content="Free HTML CSS JavaScript DOM jQuery XML AJAX RSS ASP .NET PHP SQL tutorials, references, examples for web building.">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" type="text/css" href="http://www.w3schools.com/stdtheme.css">
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>PHP <span class="color_h1">File Create/Write</span></h1>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="PHP%20File%20Open%20Read%20Close.html">«
+                Previous</a> <a class="w3-right w3-btn" href="PHP%20File%20Upload.html">Next
+                Chapter »</a> </div>
+            <hr>
+            <p class="intro">이 장에서는 서버에 파일을 생성하고 쓰는 방법을 설명한다.&nbsp;</p>
+            <hr>
+            <h2>PHP Create File - fopen()</h2>
+            <p>fopen() 함수가 파일을 생성하는데 사용됩니다. 약간은 혼란 스러울 수 있지만, PHP 에서는 파일을 열 때
+              사용하는 함수와 동일한 함수를 사용하여 파일을 생성합니다.</p>
+            <p>존재 하지 않는 파일에 fopen() 를 사용하면, 그 파일을 생성하여 쓰거나(writing (w))
+              추가(appending (a))가 가능하도록 해 줍니다.&nbsp;</p>
+            <p>아래의 예제는 "testfile.txt"라고 하는 새로운 파일을 생성합니다. 이 파일은 PHP 코드가 있는 곳과 같은
+              디렉토리에 생성됩니다.: </p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> $myfile = fopen("testfile.txt",
+                "w") </div>
+              <br>
+            </div>
+            <br>
+            <hr>
+            <h2>PHP File 권한(Permissions)</h2>
+            <p>이 코드를 실행하려 할 때 에러가 발생하면, 하드 드라이브에 정보를 기록하는 권한을 PHP&nbsp; 파일에 부여
+              했는지를 확입합니다.&nbsp;</p>
+            <hr>
+            <h2>PHP Write to File - fwrite()</h2>
+            <p>fwrite() 함수는 파일에 기록하는데 사용됩니다.</p>
+            <p>fwrite() 의 첫번째 파라메타는 쓸 <strong>파일 이름</strong>을, 두 번째 파라메타는 쓸 <strong>문
+                자열</strong> 입니다.&nbsp; </p>
+            <p>아래의 예제는 "newfile.txt" 라고 부르는 새로운 파일에 이름 몇 개를 씁니다.&nbsp; :</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                $myfile = fopen("newfile.txt", "w") or die("Unable to open
+                file!");<br>
+                $txt = "John Doe\n";<br>
+                fwrite($myfile, $txt);<br>
+                $txt = "Jane Doe\n";<br>
+                fwrite($myfile, $txt);<br>
+                fclose($myfile);<br>
+                ?&gt; </div>
+              <br>
+            </div>
+            <p>파일 "newfile.txt"에 두 번 쓴 것을 주목하시오. 파일에 쓸 때, 첫번째는 "John Doe" 를,
+              두번째는 "Jane Doe"를 갖는 문자열 $txt 를 보냅니다. 작성 완료 후,&nbsp; fclose() 함수를
+              사용해서 파일을 닫습니다.&nbsp; </p>
+            <p>&nbsp;"newfile.txt" 파일을 열어보면, 다음과 같을 것이다.:</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> John Doe<br>
+                Jane Doe</div>
+            </div>
+            <br>
+            <hr>
+            <h2>PHP Overwriting</h2>
+            <p>이제 "newfile.txt" 는 데이터를 포합하고 있으므로, 우리가 쓰기 위해서 기존의 파일을 열 때 어떤 일이
+              일어나는지 보일 수 있습니다. 모든 기존의 데이터가 삭제되며, 빈 파일로 시작하게 된다.&nbsp; </p>
+            <p>아래의 예제에서 우리는 기존의 파일 "newfile.txt"을 열고, 그 곳에 어떤 새로운 데이타를 씁니다. :</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                $myfile = fopen("newfile.txt", "w") or die("Unable to open
+                file!");<br>
+                $txt = "Mickey Mouse\n";<br>
+                fwrite($myfile, $txt);<br>
+                $txt = "Minnie Mouse\n";<br>
+                fwrite($myfile, $txt);<br>
+                fclose($myfile);<br>
+                ?&gt; </div>
+              <br>
+            </div>
+            <p>&nbsp;"newfile.txt" 파일을 이제 다시 열면, John 과 Jane 은 없어지고, 단지 우리가 쓴
+              새로운 데이터 만이 존재한다. :</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> Mickey Mouse<br>
+                Minnie Mouse</div>
+            </div>
+            <br>
+            <hr>
+            <h2>Complete PHP Filesystem Reference</h2>
+            <p>For a complete reference of filesystem functions, go to our
+              complete <a href="http://www.w3schools.com/PHP/php_ref_filesystem.asp">PHP
+                Filesystem Reference</a>.</p>
+            <table class="w3-table-all">
+              <tbody>
+                <tr>
+                  <td><strong>function name(s)<br>
+                    </strong></td>
+                  <td><strong>category</strong></td>
+                </tr>
+                <tr>
+                  <td><a href="http://kr1.php.net/manual/en/function.file.php">file</a>,
+                    <a href="http://kr1.php.net/file_get_contents">file_get_contents</a>,
+                    <br>
+                    <a href="http://kr1.php.net/file_put_contents">file_put_contents</a></td>
+                  <td>reading/writing entire files</td>
+                </tr>
+                <tr>
+                  <td><a href="http://kr1.php.net/basename">basename</a>, <a href="http://kr1.php.net/file_exists">file_exists</a>,
+                    <a href="http://kr1.php.net/filesize">filesize</a>, <br>
+                    <a href="http://kr1.php.net/fileperms">fileperms</a>, <a href="http://kr1.php.net/filemtime">filemtime</a>,
+                    <a href="http://kr1.php.net/is_dir">is_dir</a>, <br>
+                    <a href="http://kr1.php.net/is_readable">is_readable</a>, <a
+
+                      href="http://kr1.php.net/is_writable">is_writable</a>, <a
+
+                      href="http://kr1.php.net/disk_free_space">disk_free_space</a></td>
+                  <td>asking for information</td>
+                </tr>
+                <tr>
+                  <td><a href="http://kr1.php.net/copy">copy</a>, <a href="http://kr1.php.net/rename">rename</a>,
+                    <a href="http://kr1.php.net/unlink">unlink</a>, <a href="http://kr1.php.net/chmod">chmod</a>,
+                    <br>
+                    <a href="http://kr1.php.net/chgrp">chgrp</a>, <a href="http://kr1.php.net/chown">chown</a>,
+                    <a href="http://kr1.php.net/mkdir">mkdir</a>, <a href="http://kr1.php.net/rmdir">rmdir</a></td>
+                  <td>manipulating files and directories</td>
+                </tr>
+                <tr>
+                  <td><a href="http://kr1.php.net/glob">glob</a>, <a href="http://kr1.php.net/scandir">scandir</a></td>
+                  <td>reading directories</td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="PHP%20File%20Open%20Read%20Close.html">«
+                Previous</a> <a class="w3-right w3-btn" href="PHP%20File%20Upload.html">Next
+                Chapter »</a> </div>
+            <hr> </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </body>
+</html>

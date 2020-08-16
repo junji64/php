@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=EUC-KR" http-equiv="content-type">
+    <title>Regular expression</title>
+  </head>
+  <body>
+    <h1>Regular Expressions</h1>
+    How do you test whether a given string matches a particular complex format?<br>
+    <ul>
+      <li><strong>regular expression ("regex")</strong>: a description of a
+        pattern of text</li>
+      <ul>
+        <li>can test whether a string matches the expression's pattern</li>
+        <li>can use a regex to search/replace characters in a string<br>
+          <br>
+          <br>
+        </li>
+      </ul>
+      <li>regular expressions are extremely powerful but tough to read<br>
+        e.g. the following regular expression matches <strong>email addresses</strong>
+        :<br>
+        <strong>/^[a-zA-Z_\-]+@(([a-zA-Z_\-])+\.)+[a-zA-Z]{2,4}$/ <br>
+          <br>
+          <br>
+        </strong></li>
+      <li>regular expressions occur in many places:</li>
+      <ul>
+        <li>Java: Scanner, String's split method</li>
+        <li>supported by <strong>PHP</strong>, <strong>JavaScript</strong>,
+          and other languages</li>
+        <li>many text editors (TextPad) allow regexes in search/replace</li>
+        <li>The site <strong><a href="http://rubular.com/">Rubular</a></strong>
+          is useful for testing a regex.</li>
+      </ul>
+    </ul>
+    <br>
+    <h2>Basic regular expressions: /abc/</h2>
+    <ul>
+      <li>in PHP, regexes are strings that <strong>begin </strong>and <strong>end
+          with /<br>
+          <br>
+          <br>
+        </strong></li>
+      <li>the simplest regexes <strong>simply match a particular substring</strong><br>
+        <br>
+        <br>
+      </li>
+      <li>the above regular expression matches any string containing "abc":</li>
+      <ul>
+        <li>YES: "abc", "abcdef", "defabc", ".=.abc.=.", ...</li>
+        <li>NO: "fedcba", "ab c", "PHP", ...<br>
+        </li>
+      </ul>
+    </ul>
+    <h2>Wildcards: .</h2>
+    <ul>
+      <li>A dot . <strong>matches any character</strong> except a \n line break</li>
+      <ul>
+        <li>/.oo.y/ matches "Doocy", "goofy", "LooNy", ...<br>
+          <br>
+          <br>
+        </li>
+      </ul>
+      <li>A trailing<strong> i at the end of a regex (after the closing /) </strong>signifies
+        a <strong>case-insensitive</strong> match</li>
+      <ul>
+        <li><strong>/mart/i </strong>matches "Marty Stepp", "smart fellow",
+          "WALMART", ...</li>
+      </ul>
+    </ul>
+    <br>
+    <h2>Special characters: |, (), \</h2>
+    <ul>
+      <li><strong>|</strong> means <strong>OR</strong></li>
+      <ul>
+        <li>/abc<strong>|</strong>def<strong>|</strong>g/ matches "abc", "def",
+          or "g"</li>
+        <li>There's no AND symbol. Why not?<br>
+          <br>
+          <br>
+        </li>
+      </ul>
+      <li><strong>()</strong> are for <strong>grouping</strong></li>
+      <ul>
+        <li>/<strong>(</strong>Homer<strong>|</strong>Marge<strong>)</strong>
+          Simpson/ matches "Homer Simpson" or "Marge Simpson"<br>
+          <br>
+          <br>
+        </li>
+      </ul>
+      <li><strong>\</strong> starts an <strong>escape sequence</strong></li>
+      <ul>
+        <li>many characters must be escaped to match them literally: <strong>/
+            \ $ . [ ] ( ) ^ * + ?</strong></li>
+        <li><strong>/&lt;br \/&gt;/</strong> matches lines containing <strong>&lt;br
+            /&gt;</strong> tags</li>
+      </ul>
+    </ul>
+    <br>
+    <h2>Quantifiers: *, +, ?,{min,max}</h2>
+    <ul>
+      <li><strong>*</strong> means <strong>0</strong> <strong>or more </strong>occurrences</li>
+      <ul>
+        <li>/ab<strong>c*</strong>/ matches "ab", "ab<strong>c</strong>", "ab<strong>cc</strong>",
+          "ab<strong>ccc</strong>", ...</li>
+        <li>/a<strong>(bc)*</strong>/ matches "a", "a<strong>bc</strong>", "a<strong>bcbc</strong>",
+          "a<strong>bcbcbc</strong>", ...</li>
+        <li>/a<strong>.*</strong>a/ matches "aa", "a<strong>b</strong>a", "a<strong>8q</strong>a",
+          "a<strong>!?xyz__9</strong>a", ..<br>
+          <br>
+          <br>
+        </li>
+      </ul>
+      <li><strong>+</strong> means <strong>1 or more</strong> occurrences</li>
+      <ul>
+        <li>/Hi<strong>!+</strong> there/ matches "Hi<strong>!</strong> there",
+          "Hi<strong>!!!</strong> there", ...</li>
+        <li>/a<strong>(bc)+</strong>/ matches "a<strong>bc</strong>", "a<strong>bcbc</strong>",
+          "a<strong>bcbcbc</strong>", ...<br>
+          <br>
+          <br>
+        </li>
+      </ul>
+      <li><strong>?</strong> means <strong>0 or 1</strong> occurrences</li>
+      <ul>
+        <li>/a<strong>(bc)?</strong>/ matches "a" or "a<strong>bc</strong>"<br>
+          <br>
+          <br>
+        </li>
+      </ul>
+      <li><strong>{min,max}</strong> means <strong>between min and</strong> <strong>max
+          occurrences </strong>(inclusive)</li>
+      <ul>
+        <li>/a<strong>(bc){2,4}</strong>/ matches "a<strong>bcbc</strong>", "a<strong>bcbcbc</strong>",
+          or "a<strong>bcbcbcbc</strong>"<br>
+          <br>
+          <br>
+        </li>
+      </ul>
+      <li>min or max may be omitted to specify any number</li>
+      <ul>
+        <li>{2,} means 2 or more</li>
+        <li>{,6} means up to 6</li>
+        <li>{3} means exactly 3<br>
+        </li>
+      </ul>
+    </ul>
+    <h2>Practice exercise</h2>
+    <ul>
+      <li>When you search Google, it shows the number of pages of results as
+        "o"s in the word "Google". What regex matches strings like
+        "Google","Gooogle", "Goooogle", ...? (<a href="http://rubular.com/">try
+          it</a>) (<a href="regex-google.txt">data</a>)</li>
+    </ul>
+    <p style="color:#CCCCCC;"> Answer: /Goo+gle/ (or /Go{2,}gle/)<br>
+      <br>
+    </p>
+    <h2>Anchors: ^ and $</h2>
+    <ul>
+      <li><strong>^</strong> represents the <strong>beginning of the string or
+          line</strong>; <strong>$</strong> represents <strong>the end</strong></li>
+      <ul>
+        <li>/Jess/ matches all strings that contain Jess;&nbsp;</li>
+        <li>/<strong>^</strong>Jess/ matches all strings that <strong>start
+            with Jess</strong>;&nbsp;</li>
+        <li>/Jess<strong>$</strong>/ matches all strings that <strong>end with
+            Jess</strong>;&nbsp;</li>
+        <li>/<strong>^</strong>Jess<strong>$</strong>/ matches the <strong>exact
+            string "Jess" only</strong></li>
+        <li>/<strong>^</strong>Mart<strong>.*</strong>Stepp<strong>$</strong>/
+          matches "MartStepp", "Marty Stepp", "Martin D Stepp", ... <br>
+          but NOT "Marty Stepp stinks" or "I H8 Martin Stepp"<br>
+          <br>
+        </li>
+      </ul>
+      <li>(on the other slides, when we say, /PATTERN/ matches "text", we really
+        mean that it matches any string that contains that text)</li>
+    </ul>
+    <br>
+    <h2>Character sets: []</h2>
+    <ul>
+      <li><strong>[]</strong> group characters into a <strong>character set</strong>;
+        will <strong>match any single character</strong> from the set</li>
+      <ul>
+        <li>/<strong>[bcd]</strong>art/ matches strings containing "<strong>b</strong>art",
+          "<strong>c</strong>art", and "<strong>d</strong>art"</li>
+        <li>equivalent to /<strong>(b|c|d)</strong>art/ but shorter<br>
+          <br>
+        </li>
+      </ul>
+      <li>inside [], many of the modifier keys act as normal characters</li>
+      <ul>
+        <li>/what[!*?]*/ matches "what", "what!", "what?**!", "what??!", ...<br>
+          <br>
+        </li>
+      </ul>
+      <li>What regular expression matches DNA (strings of A, C, G, or T)?</li>
+      <ul>
+        <li>/[ACGT]+/<br>
+        </li>
+      </ul>
+    </ul>
+    <h2>Character ranges: [start-end]</h2>
+    <ul>
+      <li>inside a character set, <strong>specify a range of characters with -</strong></li>
+      <ul>
+        <li>/<strong>[a-z]</strong>/ matches <strong>any lowercase letter</strong></li>
+        <li>/<strong>[a-zA-Z0-9]</strong>/ matches <strong>any lower</strong>-
+          or <strong>uppercase letter </strong>or <strong>digit<br>
+            <br>
+            <br>
+          </strong></li>
+      </ul>
+      <li>an initial <strong>^ </strong>inside a character set <strong>negates
+          it</strong></li>
+      <ul>
+        <li>/[<strong>^</strong>abcd]/ matches <strong>any character other than
+            a, b, c, or d<br>
+            <br>
+            <br>
+          </strong></li>
+      </ul>
+      <li>inside a character set, <strong>- must be escaped to be matched</strong></li>
+      <ul>
+        <li>/[+<strong>\-</strong>]?[0-9]+/ matches an optional <strong>+ or -</strong>,
+          followed by at least one digit<br>
+        </li>
+      </ul>
+    </ul>
+    <p> </p>
+    <h2>Practice Exercises</h2>
+    <ul>
+      <li>What regular expression matches letter grades such as A, B+, or D- ? (<a
+          href="http://rubular.com/r/pI1rvXzxz9">try it</a>) (<a href="reges-lettergrades.txt">data</a>)</li>
+      <li>What regular expression would match UW Student ID numbers? (<a href="http://rubular.com/r/ORmAOalILn">try
+          it</a>) (<a href="regex-studentid.txt">data</a>)</li>
+      <li>What regular expression would match a sequence of only consonants,
+        assuming that the string consists only of lowercase letters? (<a href="http://rubular.com/r/cvL9smgzmH">try
+          it</a>) (<a href="regex-consonants.txt">data</a>)</li>
+    </ul>
+    <p><br>
+    </p>
+    <h2>Escape sequences</h2>
+    <ul>
+      <li><strong>special escape sequence</strong> character sets:</li>
+      <ul>
+        <li><strong>\d</strong> matches any digit (same as <strong>[0-9]</strong>);<strong>
+            \D</strong> any <strong>non-digit ([^0-9])</strong></li>
+        <li><strong>\w</strong> matches any word character (same as <strong>[a-zA-Z_0-9]</strong>);
+          <strong>\W</strong> any <strong>non-word char</strong></li>
+        <li><strong>\s</strong> matches any whitespace character (<strong> , \t,
+            \n,</strong> etc.); <strong>\S</strong> any <strong>non-whitespace<br>
+            <br>
+            <br>
+          </strong></li>
+      </ul>
+      <li>What regular expression matches names in a "Last, First M." format
+        with any number of spaces?</li>
+      <ul>
+        <li>/\w+,\s+\w+\s+\w\./</li>
+      </ul>
+    </ul>
+    <p><br>
+    </p>
+    <h3>Regular expressions in PHP</h3>
+    <table style="width: 100%" border="1">
+      <tbody>
+        <tr>
+          <td><strong>function</strong></td>
+          <td><strong>description</strong></td>
+        </tr>
+        <tr>
+          <td><a href="http://php.net/preg-match">preg_match</a>(regex,string)</td>
+          <td>returns TRUE if string matches regex</td>
+        </tr>
+        <tr>
+          <td><a href="http://php.net/preg-replace">preg_replace</a>(regex,replacement,
+            string)</td>
+          <td>returns a new string with all substrings that match regex replaced
+            by replacement</td>
+        </tr>
+        <tr>
+          <td><a href="http://php.net/preg-split">preg_split</a>(regex,string)</td>
+          <td>returns an array of strings from givenstring broken apart using
+            given regex as delimiter (like explode but more powerful)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    &nbsp;&nbsp;&nbsp; <br>
+    &nbsp;&nbsp;&nbsp; <br>
+    &nbsp;&nbsp;&nbsp; <br>
+    &nbsp;&nbsp;&nbsp; <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p> </p>
+  </body>
+</html>

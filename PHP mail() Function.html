@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>PHP 5 mail() Function</title>
+    <style>a.menu_html_intro{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,CSS,XML,JavaScript,DOM,jQuery,ASP.NET,PHP,SQL,colors,tutorial,programming,development,training,learning,quiz,primer,lessons,reference,w3-examples,source code,demos,tips,color table,w3c,cascading style sheets,active server pages,Web building,Webmaster">
+    <meta name="Description" content="Free HTML CSS JavaScript DOM jQuery XML AJAX RSS ASP .NET PHP SQL tutorials, references, examples for web building.">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" type="text/css" href="http://www.w3schools.com/stdtheme.css">
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>PHP 5 <span class="color_h1">mail() Function</span></h1>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="PHP%20Sessions.html">«
+                Previous</a> <a class="w3-right w3-btn" href="PHP%20Error%20Handling.html">Next
+                Chapter »</a> </div>
+            <hr>
+            <p class="intro">PHP 는 스크립트에서 직접 e-mails 보낼 수 있다.</p>
+            <hr>
+            <h2>The PHP mail() Function</h2>
+            <p>웹 폼으로부터 입력 데이타를 이메일 주소로 보내는 것이 일반적이다. (일반적으로는 웹 마스터의 email
+              address로).</p>
+            <p>PHP 는 mail() 함수로 이메일을 보낼 수 있는 편리한 방법을 제공합니다.&nbsp;</p>
+            <p><b>Syntax</b></p>
+            <div class="w3-code w3-border  notranslate">
+              <div> mail(<em>to,subject,message,headers,parameters</em>) </div>
+            </div>
+            <br>
+            <table class="w3-table-all reference notranslate">
+              <tbody>
+                <tr>
+                  <th style="width:20%">Parameter</th>
+                  <th style="width:80%">Description</th>
+                </tr>
+                <tr>
+                  <td><em>to</em></td>
+                  <td>Required. Specifies the recipient's email address(es)</td>
+                </tr>
+                <tr>
+                  <td><em>subject</em></td>
+                  <td>Required. Specifies the email's subject line. <b>Note:</b>
+                    This parameter cannot contain any newline characters</td>
+                </tr>
+                <tr>
+                  <td><em>message</em></td>
+                  <td>Required. Specifies the actual email body (the message to
+                    be sent). Each line should be separated with a LF (\n).
+                    Lines should not exceed 70 characters</td>
+                </tr>
+                <tr>
+                  <td><em>headers</em></td>
+                  <td>Optional. Specifies additional headers such as "From",
+                    "Cc", "Bcc", etc. The additional headers should be separated
+                    with a CRLF (\r\n)</td>
+                </tr>
+                <tr>
+                  <td><em>parameters</em></td>
+                  <td>Optional. Specifies any additional parameters</td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <div class="w3-panel w3-note">&nbsp; <strong><br>
+                Note:</strong> PHP mail() 함수를 사용하려면, PHP 는 설치되어 작동하는 email 시스템이
+              필요합니다. 사용될 프로그램은&nbsp; php.ini 파일 안에 구성 설정에 의해 정의 되어 있다. <a href="http://www.w3schools.com/php/php_ref_mail.asp">PHP
+                Mail reference</a>.<br>
+            </div>
+            <hr>
+            <h2>PHP Send Mail Example (NON-SECURE!)</h2>
+            <p>페이지에 다음과 같은 PHP 코드가 있다고 가정하자:</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> &lt;h2&gt;Feedback Form&lt;/h2&gt;<br>
+                &lt;?php<br>
+                // display form if user has not clicked submit<br>
+                if (!isset($_POST["submit"])) {<br>
+                &nbsp; ?&gt;<br>
+                &nbsp; &lt;form method="post" action="&lt;?php echo
+                $_SERVER["PHP_SELF"];?&gt;"&gt;<br>
+                &nbsp; From: &lt;input type="text" name="from"&gt;&lt;br&gt;<br>
+                &nbsp; Subject: &lt;input type="text"
+                name="subject"&gt;&lt;br&gt;<br>
+                &nbsp; Message: &lt;textarea rows="10" cols="40"
+                name="message"&gt;&lt;/textarea&gt;&lt;br&gt;<br>
+                &nbsp; &lt;input type="submit" name="submit" value="Submit
+                Feedback"&gt;<br>
+                &nbsp; &lt;/form&gt;<br>
+                &nbsp; &lt;?php <br>
+                } else {&nbsp; &nbsp; // the user has submitted the form<br>
+                &nbsp; // Check if the "from" input field is filled out<br>
+                &nbsp; if (isset($_POST["from"])) {<br>
+                &nbsp;&nbsp;&nbsp; $from = $_POST["from"]; // sender<br>
+                &nbsp;&nbsp;&nbsp; $subject = $_POST["subject"];<br>
+                &nbsp;&nbsp;&nbsp; $message = $_POST["message"];<br>
+                &nbsp;&nbsp;&nbsp; // message lines should not exceed 70
+                characters (PHP rule), so wrap it<br>
+                &nbsp;&nbsp;&nbsp; $message = wordwrap($message, 70);<br>
+                &nbsp;&nbsp;&nbsp; // send mail<br>
+                &nbsp;&nbsp;&nbsp;
+                mail("webmaster@example.com",$subject,$message,"From: $from\n");<br>
+                &nbsp;&nbsp;&nbsp; echo "Thank you for sending us feedback";<br>
+                &nbsp; }<br>
+                }<br>
+                ?&gt;<br>
+              </div>
+            </div>
+            <p>예제 설명:</p>
+            <ul>
+              <li>폼이 제출되지 않은 경우; HTML 피드백 양식을 표시</li>
+              <li>사용자가 제출버튼을 클릭하며, "from" input 필드가 기입되어 있는지 확인</li>
+              <li>폼으로부터 입력 데이터를 얻음 </li>
+              <li>PHP mail() 함수로 메일을 보내기</li>
+            </ul>
+            <div class="w3-panel w3-note">&nbsp; <strong><br>
+                Prevent email injection in PHP!!</strong>
+              <p>&nbsp;위의 코드에서, 스크립트 안에서 하드코드된(hardcoded) 수신자 이메일 주소는 선택/수정이
+                불가능하다. 당신은 이것이 이메일 주입 방지를 위해 충분하다 생각할 수 있지만, 이것은 잘못된 생각 입니다! </p>
+              <p>&nbsp;위의 코드는 안전하지 않고, 스패머들이 다른사람들을 스팸하는데 사용될 수 있다. 다음에 이메일
+                스크립트의 취약점을 설명하고, 좀더 안전하게 사용자 입력을 확인하는 방법을 설명합니다.&nbsp;</p>
+            </div>
+            <hr>
+            <h2>PHP Stopping E-mail Injections</h2>
+            <p>e-mail 주입을 방지하는 최선의 반법은 입력의 유효성 검사이다.&nbsp;</p>
+            <p>아래의 코드는 위의 것과 동일하지만, 이제는 폼 안에 "from" 필드를 검사하는 입력자료 유효성 검사를 추가하였다.
+              :</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> &lt;html&gt;<br>
+                &lt;body&gt;<br>
+                &lt;?php<br>
+                function spamcheck($field) {<br>
+                &nbsp;&nbsp;// Sanitize e-mail address<br>
+                &nbsp;&nbsp;$field=filter_var($field, FILTER_SANITIZE_EMAIL);<br>
+                &nbsp;&nbsp;// Validate e-mail address<br>
+                &nbsp;&nbsp;if(filter_var($field, FILTER_VALIDATE_EMAIL))&nbsp;{<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;return TRUE;<br>
+                &nbsp;&nbsp;} else {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;return FALSE;<br>
+                &nbsp;&nbsp;}<br>
+                }<br>
+                ?&gt;<br>
+                <br>
+                &lt;h2&gt;Feedback Form&lt;/h2&gt;<br>
+                &lt;?php<br>
+                // display form if user has not clicked submit<br>
+                if (!isset($_POST["submit"])) {<br>
+                &nbsp; ?&gt;<br>
+                &nbsp; &lt;form method="post" action="&lt;?php echo
+                $_SERVER["PHP_SELF"];?&gt;"&gt;<br>
+                &nbsp; From: &lt;input type="text" name="from"&gt;&lt;br&gt;<br>
+                &nbsp; Subject: &lt;input type="text"
+                name="subject"&gt;&lt;br&gt;<br>
+                &nbsp; Message: &lt;textarea rows="10" cols="40"
+                name="message"&gt;&lt;/textarea&gt;&lt;br&gt;<br>
+                &nbsp; &lt;input type="submit" name="submit" value="Submit
+                Feedback"&gt;<br>
+                &nbsp; &lt;/form&gt;<br>
+                &nbsp; &lt;?php <br>
+                } else&nbsp;{&nbsp; // the user has submitted the form<br>
+                &nbsp; // Check if the "from" input field is filled out<br>
+                &nbsp; if (isset($_POST["from"])) {<br>
+                &nbsp;&nbsp;&nbsp; // Check if "from" email address is valid<br>
+                &nbsp; &nbsp;&nbsp;$mailcheck = spamcheck($_POST["from"]);<br>
+                &nbsp;&nbsp;&nbsp; if ($mailcheck==FALSE) {<br>
+                &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;echo "Invalid input";<br>
+                &nbsp;&nbsp;&nbsp; }&nbsp;else {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $from = $_POST["from"]; // sender<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $subject = $_POST["subject"];<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $message = $_POST["message"];<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // message lines should not
+                exceed 70 characters (PHP rule), so wrap it<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $message = wordwrap($message,
+                70);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // send mail<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                mail("webmaster@example.com",$subject,$message,"From: $from\n");<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo "Thank you for sending us
+                feedback";<br>
+                &nbsp;&nbsp;&nbsp; }<br>
+                &nbsp; }<br>
+                }<br>
+                ?&gt;<br>
+                &lt;/body&gt;<br>
+                &lt;/html&gt;</div>
+            </div>
+            <p>위의 코드에서 우리는 PHP 필터를 사용하며 입력 유효성 검사를 수행한다. :</p>
+            <ul>
+              <li>FILTER_SANITIZE_EMAIL 필터는 문자열에서 모든 불법 이메일 문자를 제거한다.</li>
+              <li>FILTER_VALIDATE_EMAIL 필터는 이메일 주소로서의 값의 유효성 검사를 한다.&nbsp;</li>
+            </ul>
+            <p>You can read more about filters in our <a href="PHP%20Filter.html">PHP
+                Filter</a> chapter.</p>
+            <hr>
+            <h2>윈도우7 에서 smtp 메일서버 설정하는 법</h2>
+            <p>1.&nbsp;&nbsp;&nbsp; 제어판&gt; 프로그램 및 기능 &gt; 윈도우 기능 사용/ 사용안함 로 감<br>
+              <br>
+              2.&nbsp;&nbsp;&nbsp; 리스트가 뜨는데 인터넷 정보 서비스 &gt; 웹 관리 도구 &gt; IIS 6.0
+              을 켬<br>
+              <br>
+              A.&nbsp;&nbsp;&nbsp;&nbsp; 인터넷 정보 서비스 &gt; 웹 관리 도구 &gt; World Wide
+              Web 서비스 &gt; 응용 프로그램 개발 기능 &gt; ASP.Net 관련 다 킴<br>
+              <br>
+              3.&nbsp;&nbsp;&nbsp; 제어판 &gt; 관리 도구 &gt; IIS 관리자 실행, SMTP 전자 메일 실행<br>
+              <br>
+              4.&nbsp;&nbsp;&nbsp; SMTP 서버에 전자메일 배달에 localhost 라고 입력<br>
+              <br>
+              A.&nbsp;&nbsp;&nbsp;&nbsp; Localhost 사용에도 체크<br>
+              <br>
+              5.&nbsp;&nbsp;&nbsp; 포트 설정 &gt; 기본 25<br>
+              <br>
+              6.&nbsp;&nbsp;&nbsp; 인증 설정은 Windows에 체크</p>
+            <hr>
+            <h2>PHP Mail Reference</h2>
+            <p>For more information about the PHP mail() function, visit our <a
+                href="http://www.w3schools.com/php/php_ref_mail.asp">PHP Mail
+                Reference</a>.</p>
+            <br>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="PHP%20Sessions.html">«
+                Previous</a> <a class="w3-right w3-btn" href="PHP%20Error%20Handling.html">Next
+                Chapter »</a> </div>
+            <hr> </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </body>
+</html>

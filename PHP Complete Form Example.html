@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>PHP Complete Form Example</title>
+    <style>a.menu_php_form_complete{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,CSS,XML,JavaScript,DOM,jQuery,ASP.NET,PHP,SQL,colors,tutorial,programming,development,training,learning,quiz,primer,lessons,reference,examples,source code,tryphps,tips,color table,w3c,cascading style sheets,active server pages,Web building,Webmaster">
+    <meta name="Description" content="Free HTML CSS JavaScript DOM jQuery XML AJAX RSS ASP .NET PHP SQL tutorials, references, examples for web building.">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-3855518-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script> <script>
+<!--
+function searchfield_focus(obj)
+{
+obj.style.color=""
+obj.style.fontStyle=""
+if (obj.value=="Search w3schools.com")
+	{obj.value=""}
+}
+var addr=document.location.href;
+function displayError()
+{
+document.getElementById("err_url").value=addr;
+document.getElementById("err_form").style.display="block";
+document.getElementById("err_desc").focus();
+hideSent();
+}
+function hideError()
+{
+document.getElementById("err_form").style.display="none";
+}
+function hideSent()
+{
+document.getElementById("err_sent").style.display="none";
+}
+function sendErr()
+{
+var xmlhttp;
+var err_url=document.getElementById("err_url").value;
+var err_email=document.getElementById("err_email").value;
+var err_desc=document.getElementById("err_desc").value;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.open("POST","/err_sup.asp",true);
+xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+xmlhttp.send("err_url=" + err_url + "&err_email=" + err_email + "&err_desc=" + escape(err_desc));
+document.getElementById("err_desc").value="";
+hideError();
+document.getElementById("err_sent").style.display="block";
+}
+//-->
+</script> <script type="text/javascript">
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+var gads = document.createElement('script');
+gads.async = true;
+gads.type = 'text/javascript';
+var useSSL = 'https:' == document.location.protocol;
+gads.src = (useSSL ? 'https:' : 'http:') + 
+'//www.googletagservices.com/tag/js/gpt.js';
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.insertBefore(gads, node);
+})();
+</script> <script type="text/javascript">
+googletag.cmd.push(function() {
+googletag.defineSlot('/16833175/BottomMediumRectangle', [300, 250], 'div-gpt-ad-1383210480969-0').addService(googletag.pubads());
+googletag.defineSlot('/16833175/LargePS', [[723, 280], [723, 400]], 'div-gpt-ad-1383210480969-1').addService(googletag.pubads());
+googletag.defineSlot('/16833175/MainLeaderboard', [728, 90], 'div-gpt-ad-1383210480969-2').addService(googletag.pubads());
+googletag.defineSlot('/16833175/SmallPS', [723, 170], 'div-gpt-ad-1383210480969-3').addService(googletag.pubads());
+googletag.defineSlot('/16833175/WideSkyScraper', [160, 600], 'div-gpt-ad-1383210480969-4').addService(googletag.pubads());
+googletag.pubads().setTargeting("content","php");
+googletag.pubads().enableSingleRequest();
+googletag.enableServices();
+});
+</script> <script>
+  (function() {
+    var cx = '012971019331610648934:m2tou3_miwy';
+    var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+  })();
+</script> <link rel="stylesheet" type="text/css" href="http://www.w3schools.com/stdtheme.css">
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>PHP <span class="color_h1">Complete Form Example</span></h1>
+            <div class="chapter">
+              <div class="prev"><a class="chapter" href="PHP%20Forms%20Validate%20E-mail%20and%20URL.html">«
+                  Previous</a></div>
+              <div class="next"><a class="chapter" href="PHP%205%20Date%20and%20Time.html">Next
+                  Chapter »</a></div>
+            </div>
+            <hr>
+            <p class="intro">This chapter show how to keep the values in the
+              input fields when the user hits the submit button.</p>
+            <hr>
+            <h2>PHP - Keep The Values in The Form</h2>
+            <p>사용자가 제출 버튼을 누른 후 입력필드의 값들을 보기 위해, 우리는 입력 필드(name, email, 과
+              website)들의 속성 값에 작은 PHP 스크립트를 추가한다. 주석 textarea 필드 안에,
+              &lt;textarea&gt; 과 &lt;/textarea&gt; 태그 사이에 스크립트를 넣고, 작은 스크립트는
+              $name, $email, $website, 과 $comment&nbsp; 변수의 값들을 출력한다.</p>
+            <p>그리고, 어떤 라디오 버튼이 체크되었는지도 보여질 필요가 있다. 이를 위해서, 우리는 checked 속성을 조작해야
+              한다(라디오 버튼의 속성 값이 아니라) :</p>
+            <div class="code notranslate">
+              <div> Name: &lt;input type="text" name="name" value="&lt;?php echo
+                $name;?&gt;"&gt;<br>
+                <br>
+                E-mail: &lt;input type="text" name="email" value="&lt;?php echo
+                $email;?&gt;"&gt;<br>
+                <br>
+                Website: &lt;input type="text" name="website" value="&lt;?php
+                echo $website;?&gt;"&gt;<br>
+                <br>
+                Comment: &lt;textarea name="comment" rows="5"
+                cols="40"&gt;&lt;?php echo $comment;?&gt;&lt;/textarea&gt;<br>
+                <br>
+                Gender:<br>
+                &lt;input type="radio" name="gender"<br>
+                &lt;?php if (isset($gender) &amp;&amp; $gender=="female") echo
+                "checked";?&gt;<br>
+                value="female"&gt;Female<br>
+                &lt;input type="radio" name="gender"<br>
+                &lt;?php if (isset($gender) &amp;&amp; $gender=="male") echo
+                "checked";?&gt;<br>
+                value="male"&gt;Male</div>
+            </div>
+            <br>
+            <hr>
+            <h2>PHP - Complete Form Example</h2>
+            <p>여기에 PHP Form 유효성 검사 예제를 위한 전체 코드가 있다. :</p>
+            <div class="example">
+              <h2 class="example">Example</h2>
+              <div class="example_code notranslate"> <iframe src="http://www.w3schools.com/php/tryphp_form_validation_complete.php"
+
+                  seamless="" height="600" width="690"></iframe> </div>
+              <br>
+              <a class="showbtn" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_form_validation_complete"
+
+                target="_blank">Run example »</a> </div>
+            <br>
+            <br>
+            <div class="chapter">
+              <div class="prev"><a class="chapter" href="PHP%20Forms%20Validate%20E-mail%20and%20URL.html">«
+                  Previous</a></div>
+              <div class="next"><a class="chapter" href="PHP%205%20Date%20and%20Time.html">Next
+                  Chapter »</a></div>
+            </div>
+            <hr> </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </body>
+</html>

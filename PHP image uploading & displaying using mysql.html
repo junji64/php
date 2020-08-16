@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>PHP Sessions</title>
+    <style>a.menu_php_sessions{font-weight:bold;}</style>
+    <style>
+#smallnavContainer {display:none;}
+</style> <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,CSS,XML,JavaScript,DOM,jQuery,ASP.NET,PHP,SQL,colors,tutorial,programming,development,training,learning,quiz,primer,lessons,reference,examples,source code,demos,tips,color table,w3c,cascading style sheets,active server pages,Web building,Webmaster">
+    <meta name="Description" content="Free HTML CSS JavaScript DOM jQuery XML AJAX RSS ASP .NET PHP SQL tutorials, references, examples for web building.">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-3855518-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script> <script type="text/javascript">
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+var gads = document.createElement('script');
+gads.async = true;
+gads.type = 'text/javascript';
+var useSSL = 'https:' == document.location.protocol;
+gads.src = (useSSL ? 'https:' : 'http:') + 
+'//www.googletagservices.com/tag/js/gpt.js';
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.insertBefore(gads, node);
+})();
+</script> <script type="text/javascript">
+googletag.cmd.push(function() {
+googletag.defineSlot('/16833175/BottomMediumRectangle', [300, 250], 'div-gpt-ad-1403595829794-0').addService(googletag.pubads());
+googletag.defineSlot('/16833175/LargePS', [[723, 280], [723, 400], [728, 280], [728, 400], [728, 450]], 'div-gpt-ad-1403595829794-1').addService(googletag.pubads());
+googletag.defineSlot('/16833175/MainLeaderboard', [728, 90], 'div-gpt-ad-1403595829794-2').addService(googletag.pubads());
+googletag.defineSlot('/16833175/SmallPS', [[723, 170], [728, 170]], 'div-gpt-ad-1403595829794-4').addService(googletag.pubads());
+var adScreenWidth = screen.width;
+if (adScreenWidth <= 768) {   
+  googletag.defineSlot('/16833175/MobileBottomBanner', [728, 90], 'div-gpt-ad-1403595829794-3').addService(googletag.pubads());
+} else { 
+  googletag.defineSlot('/16833175/WideSkyScraper', [160, 600], 'div-gpt-ad-1403595829794-5').addService(googletag.pubads());
+}
+googletag.pubads().setTargeting("content","php");
+googletag.pubads().enableSingleRequest();
+googletag.enableServices();
+});
+</script> <link rel="stylesheet" type="text/css" href="http://www.w3schools.com/stdtheme.css">
+  </head>
+  <body>
+    <div id="smallnavContainer">
+      <div id="smallnav">
+        <div id="menuDIV">
+          <hr>
+          <hr>
+          <hr></div>
+        <div id="closeSearchBTN" onclick="hideSearch()">X</div>
+        <a href="/default.asp"> </a></div>
+    </div>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>PHP <span class="color_h1">image uploaing &amp; displaying
+                using MySQL<br>
+              </span></h1>
+            <div class="chapter">
+              <div class="prev"><br>
+              </div>
+            </div>
+            <hr>다음의 예는 image 파일을 DB 에 업로딤하고 DB에 있는 것을 표시하는 방벙을 보여준다.<br>
+            <ul>
+              <li><a href="examples/image.php">image.php</a> : local 컴퓨터에 있는
+                image 파일을 서버에 업로드 하기 위한 form 요소와 완료되었을 때 get.php 를 이용하여 해당 image
+                를 가져와 보여줌. (More complete source code) : <a href="./examples/image.txt"> image.php <a> / <a href="./examples/delete_img.txt"> delete_img.php <a></li>
+              <li>get.php&nbsp; : 전달 받은 image&nbsp; 파일 이름에 해당하는 이미지를 DB에서 추출해
+                전달하는 역활을 함</li>
+              <li>MySQL : database "my_db" 와 table "images"<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                e.g.) CREATE TABLE images(<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                id INT NOT NULL AUTO_INCREMENT,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                PRIMARY KEY(id),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                name varchar(100), data MEDIUMBLOB);</li>
+            </ul>
+            <hr>
+            <h2>image.php : image uploading code</h2>
+            <p>아래의 코드(image.php)는 사용자로부터 image 파일을 입력받아 my_db.images 에
+              저정하고&nbsp; get.php 로 해당 image를 추출해서 보여준다. </p>
+            <p> </p>
+            <div class="code notranslate">
+              <div> &lt;!DOCTYPE html&gt;<br>
+                &lt;html&gt;<br>
+                &lt;head&gt;<br>
+                &lt;title&gt; Image Uploading Example &lt;/title&gt;<br>
+                &lt;/head&gt;<br>
+                &lt;body&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;form action="image.php" method="POST"
+                enctype="multipart/form-data"&gt;<br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; File : <br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;input type="file"
+                name="image"&gt; <br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;input type="submit"
+                value="Upload"&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;/form&gt;<br>
+                &nbsp;&nbsp;&nbsp; <br>
+                &nbsp;&nbsp;&nbsp; &lt;?php<br>
+                &nbsp;&nbsp;&nbsp; <br>
+                &nbsp;&nbsp;&nbsp; $con =
+                mysqli_connect("localhost","root","123123","my_db") or
+                die(mysqli_connect_error());<br>
+                &nbsp;&nbsp;&nbsp; <br>
+                &nbsp;&nbsp;&nbsp; $file = $_FILES['image']['tmp_name'];<br>
+                &nbsp;&nbsp;&nbsp; <br>
+                &nbsp;&nbsp;&nbsp; if(!isset($file)) {<br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; echo "Please select an
+                image.";<br>
+                &nbsp;&nbsp;&nbsp; }<br>
+                &nbsp;&nbsp;&nbsp; else {<br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $image_data =
+                addslashes(file_get_contents($_FILES['image']['tmp_name']));<br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $image_name =
+                addslashes($_FILES['image']['name']);<br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $image_size =
+                getimagesize($_FILES['image']['tmp_name']);<br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if($image_size == FALSE) {<br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; echo
+                "That's not an image.";<br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; else {<br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $sql =
+                "INSERT INTO images VALUES(NULL,'$image_name','$image_data')" ;<br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; <br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (
+                !mysqli_query($con,$sql) ) {<br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; echo "Problem in uploading image !." .
+                mysqli_error($con);<br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; else {<br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; echo "&lt;p&gt; Your Image : $image_name
+                &lt;/p&gt;";<br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; // using separate php file <br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; echo "&lt;img width='200' height='200'
+                src='get.php?name=$image_name'&gt;";<br>
+                <br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; // using direct display <br>
+                &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp; // $image = mysqli_query($con, "SELECT * FROM
+                images WHERE name='$image_name'");<br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; // $image = mysqli_fetch_array($image);<br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; //echo "&lt;img
+                src='data:image/jpeg;base64," . base64_encode($image['data']) .
+                "' width='250' height='200' /&gt;";<br>
+                <br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp; <br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp; <br>
+                &nbsp;&nbsp;&nbsp; }<br>
+                &nbsp;&nbsp;&nbsp; <br>
+                &nbsp;&nbsp;&nbsp; ?&gt;<br>
+                &lt;/body&gt;<br>
+                &lt;/html&gt;<br>
+              </div>
+            </div>
+            <br>
+            <h2>get.php</h2>
+
+            아래의 코드(get.php)는 image.php 로부터 image 파일 name 을 전달 받아 DB로부터 해당 이름을 갖는
+            image 를 추출해서 반환한다.<br>
+            <br>
+            <div class="code notranslate">
+              <div> &lt;?php<br>
+                $con = mysqli_connect("localhost","root","123123","my_db") or
+                die(mysqli_connect_error());<br>
+                $name = $_REQUEST['name'];<br>
+                $image = mysqli_query($con, "SELECT * FROM images WHERE
+                name='$name'");<br>
+                $image = mysqli_fetch_assoc($image);<br>
+                $image = $image['data'];<br>
+                // header("Content-type: image/jpeg"); <br>
+                echo $image; <br>
+                ?&gt;<br>
+                <br>
+              </div>
+            </div>
+            <br>
+            <hr> </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>PHP Forms - Validate E-mail and URL</title>
+    <style>a.menu_html_intro{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,CSS,XML,JavaScript,DOM,jQuery,ASP.NET,PHP,SQL,colors,tutorial,programming,development,training,learning,quiz,primer,lessons,reference,w3-examples,source code,tryphps,tips,color table,w3c,cascading style sheets,active server pages,Web building,Webmaster">
+    <meta name="Description" content="Free HTML CSS JavaScript DOM jQuery XML AJAX RSS ASP .NET PHP SQL tutorials, references, examples for web building.">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" type="text/css" href="http://www.w3schools.com/stdtheme.css">
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>PHP <span class="color_h1">Forms - Validate E-mail and URL</span></h1>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="PHP%20Forms%20Required%20Fields.html">«
+                Previous</a> <a class="w3-right w3-btn" href="PHP%205%20Date%20and%20Time.html">Next
+                Chapter »</a> </div>
+            <hr>
+            <p class="intro">이 장은 이름, 이메일, 그리고 URL의 유효성 검사하는 방법을 보여준다.</p>
+            <hr>
+            <h2>PHP - Validate Name</h2>
+            <p>아래의 코드는 이름 필드가 문자와 공백만을 포함하는지를 확인하는 간단한 방법을 보여줍니다. 이름 필드가 유효하지
+              않으면 에러 메시지가 저장됩니다. :</p>
+            <div class="w3-code w3-border notranslate">
+              <div> $name = test_input($_POST["name"]);<br>
+                if (!preg_match("/^[a-zA-Z ]*$/",$name))<br>
+                &nbsp; {<br>
+                &nbsp; $nameErr = "Only letters and white space allowed"; <br>
+                &nbsp; }</div>
+            </div>
+            <br>
+            <div class="w3-panel w3-note"> <strong><br>
+                &nbsp;<a href="http://kr1.php.net/manual/en/function.preg-match.php">preg_match()</a>
+                함수는 문자열에서 패턴을 검색하여 존재하면&nbsp; </strong><strong><strong>true</strong>를,
+                그렇지 않으면 </strong><strong><strong>false </strong>를 반환한다.&nbsp;
+                <br>
+                <br>
+                &nbsp;이때 페턴은 <a target="_top" href="Regular%20expression.html">regular
+                  expression</a> (regex) 으로 주어지며, 사이트 <a href="http://rubular.com/">Rubular</a></strong>
+              에서 시험 할 수 있습니다.<br>
+              <br>
+            </div>
+            <br>
+            <hr>
+            <h2>PHP - Validate E-mail</h2>
+            <p>아래의 코드는 e-mail&nbsp; 주소구문이 유효한지를 확인하는 간단한 방법을 보여준다. e-mail 주소구문이
+              유효하지 않으면, 에러 메시지를 저장한다. :</p>
+            <div class="w3-code w3-border notranslate">
+              <div> $email = test_input($_POST["email"]);<br>
+                if (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$email))<br>
+                &nbsp; {<br>
+                &nbsp; $emailErr = "Invalid email format"; <br>
+                &nbsp; }</div>
+            </div>
+            <br>
+            <hr>
+            <h2>PHP - Validate URL</h2>
+            <p>아래의 코드는 URL 주소구문이 유효한지를 확인하는 간단한 방법을 보여준다 (이 정규표현식(regular
+              expression)은 URL 에 dashes 를 허용한다.). URL 주소 구문이 유효하지 않으면, 에러 메시지를
+              저장한다. :</p>
+            <div class="w3-code w3-border notranslate">
+              <div> $website = test_input($_POST["website"]);<br>
+                if
+(!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&amp;@#\/%?=~_|!:,.;]*[-a-z0-9+&amp;@#\/%=~_|]/i",$website))<br>
+                &nbsp; {<br>
+                &nbsp;&nbsp;$websiteErr = "Invalid URL"; <br>
+                &nbsp;&nbsp;}</div>
+            </div>
+            <br>
+            <hr>
+            <h2>PHP - Validate Name, E-mail, and URL</h2>
+            <p>이제 스크립트는 다음과 같다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                // define variables and set to empty values<br>
+                $nameErr = $emailErr = $genderErr = $websiteErr = "";<br>
+                $name = $email = $gender = $comment = $website = "";<br>
+                <br>
+                if ($_SERVER["REQUEST_METHOD"] == "POST")<br>
+                {<br>
+                &nbsp; if (empty($_POST["name"]))<br>
+                &nbsp;&nbsp;&nbsp; {$nameErr = "Name is required";}<br>
+                &nbsp; else<br>
+                &nbsp;&nbsp;&nbsp; {<br>
+                &nbsp;&nbsp;&nbsp; $name = test_input($_POST["name"]);<br>
+                &nbsp;&nbsp;&nbsp; // check if name only contains letters and
+                whitespace<br>
+                &nbsp;&nbsp;&nbsp; if (!preg_match("/^[a-zA-Z ]*$/",$name))<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $nameErr = "Only letters and
+                white space allowed"; <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+                &nbsp;&nbsp;&nbsp; }<br>
+                <br>
+                &nbsp; if (empty($_POST["email"]))<br>
+                &nbsp;&nbsp;&nbsp; {$emailErr = "Email is required";}<br>
+                &nbsp; else<br>
+                &nbsp;&nbsp;&nbsp; {<br>
+                &nbsp;&nbsp;&nbsp; $email = test_input($_POST["email"]);<br>
+                &nbsp;&nbsp;&nbsp; // check if e-mail address syntax is valid<br>
+                &nbsp;&nbsp;&nbsp; if
+                (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$email))<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $emailErr = "Invalid email
+                format"; <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+                &nbsp;&nbsp;&nbsp; }<br>
+                <br>
+                &nbsp; if (empty($_POST["website"]))<br>
+                &nbsp;&nbsp;&nbsp; {$website = "";}<br>
+                &nbsp; else<br>
+                &nbsp;&nbsp;&nbsp; {<br>
+                &nbsp;&nbsp;&nbsp; $website = test_input($_POST["website"]);<br>
+                &nbsp;&nbsp;&nbsp; // check if URL address syntax is valid (this
+                regular expression also allows dashes in the URL)<br>
+                &nbsp;&nbsp;&nbsp; if
+(!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&amp;@#\/%?=~_|!:,.;]*[-a-z0-9+&amp;@#\/%=~_|]/i",$website))<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $websiteErr = "Invalid URL"; <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+                &nbsp;&nbsp;&nbsp; }<br>
+                <br>
+                &nbsp; if (empty($_POST["comment"]))<br>
+                &nbsp;&nbsp;&nbsp; {$comment = "";}<br>
+                &nbsp; else<br>
+                &nbsp;&nbsp;&nbsp; {$comment = test_input($_POST["comment"]);}<br>
+                <br>
+                &nbsp; if (empty($_POST["gender"]))<br>
+                &nbsp;&nbsp;&nbsp; {$genderErr = "Gender is required";}<br>
+                &nbsp; else<br>
+                &nbsp;&nbsp;&nbsp; {$gender = test_input($_POST["gender"]);}<br>
+                }<br>
+                ?&gt;</div>
+              <br>
+              <a class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=demo_form_validation_special"
+
+                target="_blank">Run example »</a> </div>
+            <p>다음 단계는 사용자가 폼을 제출하 때 모든 입력 필드가 비워지는 것을 방지하는 방법을 보여주는 것이다.</p>
+            <hr>
+            <h2>PHP - Keep The Values in The Form</h2>
+            <p>사용자가 제출 버튼을 누른 후 입력필드의 값들을 보기 위해, 우리는 입력 필드(name, email, 과
+              website)들의 속성 값에 작은 PHP 스크립트를 추가한다. 주석 textarea 필드 안에,
+              &lt;textarea&gt; 과 &lt;/textarea&gt; 태그 사이에 스크립트를 넣고, 작은 스크립트는
+              $name, $email, $website, 과 $comment&nbsp; 변수의 값들을 출력한다.</p>
+            <p>그리고, 어떤 라디오 버튼이 체크되었는지도 보여질 필요가 있다. 이를 위해서, 우리는 checked 속성을 조작해야
+              한다(라디오 버튼의 속성 값이 아니라) :</p>
+            <div class="w3-code w3-border notranslate">
+              <div> Name: &lt;input type="text" name="name" value="&lt;?php echo
+                $name;?&gt;"&gt;<br>
+                <br>
+                E-mail: &lt;input type="text" name="email" value="&lt;?php echo
+                $email;?&gt;"&gt;<br>
+                <br>
+                Website: &lt;input type="text" name="website" value="&lt;?php
+                echo $website;?&gt;"&gt;<br>
+                <br>
+                Comment: &lt;textarea name="comment" rows="5"
+                cols="40"&gt;&lt;?php echo $comment;?&gt;&lt;/textarea&gt;<br>
+                <br>
+                Gender:<br>
+                &lt;input type="radio" name="gender"<br>
+                &lt;?php if (isset($gender) &amp;&amp; $gender=="female") echo
+                "checked";?&gt;<br>
+                value="female"&gt;Female<br>
+                &lt;input type="radio" name="gender"<br>
+                &lt;?php if (isset($gender) &amp;&amp; $gender=="male") echo
+                "checked";?&gt;<br>
+                value="male"&gt;Male</div>
+            </div>
+            <br>
+            <hr>
+            <h2>PHP - Complete Form Example</h2>
+            <p>여기에 PHP Form 유효성 검사 예제를 위한 전체 코드가 있다. :</p>
+            <div class="w3-example">
+              <h2>Example</h2>
+              <div class="w3-code notranslate"> 
+                <iframe src="https://tryphp.w3schools.com/demo/demo_form_validation_complete.php" style="width:100%;height:600px;border:none"></iframe> 
+              </div>
+              <br>
+              <a class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=demo_form_validation_complete"
+                target="_blank">Run example »</a> </div>
+            <br>
+            <br>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="PHP%20Forms%20Required%20Fields.html">«
+                Previous</a> <a class="w3-right w3-btn" href="PHP%205%20Date%20and%20Time.html">Next
+                Chapter »</a> </div>
+            <hr> </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

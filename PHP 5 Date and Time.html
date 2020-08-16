@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>PHP Forms - Validate E-mail and URL</title>
+    <style>a.menu_html_intro{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,CSS,XML,JavaScript,DOM,jQuery,ASP.NET,PHP,SQL,colors,tutorial,programming,development,training,learning,quiz,primer,lessons,reference,w3-examples,source code,tryphps,tips,color table,w3c,cascading style sheets,active server pages,Web building,Webmaster">
+    <meta name="Description" content="Free HTML CSS JavaScript DOM jQuery XML AJAX RSS ASP .NET PHP SQL tutorials, references, examples for web building.">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" type="text/css" href="http://www.w3schools.com/stdtheme.css">
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>PHP 5 <span class="color_h1">Date and Time</span></h1>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="PHP%205%20Echo%20and%20Print%20Statements.html">«
+                Previous</a> <a class="w3-right w3-btn" href="PHP%20include%20and%20require.html">Next
+                Chapter »</a> </div>
+            <hr>
+            <p class="intro">PHP date() 함수는 날짜 또는 시간을 포멧하는데 사용됩니다. .</p>
+            <hr>
+            <h2>PHP Date() Function</h2>
+            <p>PHP date() 함수는 날짜와 시간을 더 잘 읽을 수 있게 timestamp 를 포멧합니다. </p>
+            <h3>Syntax</h3>
+            <div class="code notranslate">
+              <div> date(<i>format</i>,<i>timestamp</i>) </div>
+            </div>
+            <br>
+            <table class="w3-table-all  notranslate">
+              <tbody>
+                <tr>
+                  <th style="width:20%">Parameter</th>
+                  <th style="width:80%">Description</th>
+                </tr>
+                <tr>
+                  <td>format</td>
+                  <td>Required. Specifies the format of the timestamp</td>
+                </tr>
+                <tr>
+                  <td>timestamp</td>
+                  <td>Optional. Specifies a timestamp. Default is the current
+                    date and time</td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <div class="w3-panel w3-note">
+              <p>&nbsp;timestamp 는 특정 이벤트가 발생한 <strong>날짜/시간</strong>을 나타내는 <strong>문
+                  자 시퀀스</strong>이다. </p>
+            </div>
+            <br>
+            <hr>
+            <h2>간단한 Date 얻기</h2>
+            <p>date() 함수의 필수인 포멧(<i>format)</i> 파라메타는 날짜(또는 시간)를 어떤 형식으로 나타내는지
+              명시한다.&nbsp;</p>
+            <p>일반적으로 날짜에 사용되는 일부 문자는 다음과 같습니다.:</p>
+            <ul>
+              <li>d - Represents the <strong>day of the month </strong>(01 to
+                31) </li>
+              <li>m - Represents a <strong>month </strong>(01 to 12)</li>
+              <li>Y - Represents a <strong>year </strong>(in four digits)</li>
+              <li>l - Represents the <strong>day of the week</strong></li>
+            </ul>
+            <p>"<strong>/</strong>", "<strong>.</strong>", 또는 "<span style="font-weight: bold;">-</span>"
+              과 같은 다른 문자들도 추가적인 서식으로 <strong>문자 사이에 삽입</strong>될 수 있습니다. </p>
+            <p>아래의 예는 세가지 다른 방법으로 오늘 날짜를 포맷한다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                echo "Today is " . date("Y/m/d") . "&lt;br&gt;";<br>
+                echo "Today is " . date("Y.m.d") . "&lt;br&gt;";<br>
+                echo "Today is " . date("Y-m-d") . "&lt;br&gt;";<br>
+                echo "Today is " . date("l");<br>
+                ?&gt;</div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_date1">Run
+                example »</a> </div>
+            <br>
+            <hr>
+            <h2>PHP Tip - 자동 저작권 연도(Automatic Copyright Year)</h2>
+            <p>웹사이트에 저작권 년도를 자동으로 업데이트하는데 date() 함수를 사용합니다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &amp;copy; 2010-&lt;?php echo
+                date("Y")?&gt;</div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_date_copyright">Run
+                example »</a> </div>
+            <br>
+            <hr>
+            <h2><strong>간단한 시간 얻기</strong></h2>
+            <p>시간에 일반적으로 사용되는 일부 문자들은 다음과 같다:</p>
+            <ul>
+              <li><strong>h</strong> - 0 으로 시작하는 <strong>12-hour format 시간</strong>
+                (01 to 12) </li>
+              <li><strong>i </strong>- 0 으로 시작하는 <strong>Minutes&nbsp; </strong>(00
+                to 59)</li>
+              <li><strong>s</strong> - 0 으로 시작하는 <strong>Seconds </strong>(00
+                to 59)</li>
+              <li><strong>a</strong> - 소문자 <strong>오전</strong>(Ante meridiem)과
+                <strong>오후</strong>(Post meridiem) (<strong>am </strong>or <strong>pm</strong>)</li>
+            </ul>
+            <p>아래의 예는 지정된 형식으로 현재 시간을 출력한다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                echo "The time is " . date("h:i:sa");<br>
+                ?&gt;</div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_date2">Run
+                example »</a> </div>
+            <br>
+            <div class="w3-panel w3-note">
+              <p>&nbsp;<strong>PHP date() </strong>함수는 <strong>서버의 현재 날짜/시간</strong>을
+                반환합니다.</p>
+            </div>
+            <br>
+            <hr>
+            <h2><strong>시간대</strong>(Time Zone) <strong>얻기</strong></h2>
+            <p>코드로부터 반환 받은 시간이 정확한 시간이 아닐 경우, 서버가 다른 나라 또는 다른 시간대로 설정되어 있기 때문일 수
+              있습니다.</p>
+            <p>따라서, 특정 위치에 따른 올바른 시간이 필요한 경우에는, 사용할 시간대를 설정할 수 있습니다.</p>
+            <p>아래의 예는 "America/New_York" 시간대로, 그리고 특정 형식으로 현재 시간을 출력한다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                <strong>date_default_timezone_set</strong>("America/New_York");<br>
+                echo "The time is " . date("h:i:sa");<br>
+                ?&gt;</div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_date3">Run
+                example »</a> </div>
+            <br>
+            <hr>
+            <h2>PHP mktime()로 Date 생성</h2>
+            <p>date() 함수의 선택적인(optional) <i>timestamp</i> 파라메타는 timestamp를
+              지정한다.&nbsp; timestamp를 지정하지 않으면, 현재 날짜와 시간이 사용된다 (위의 예와 같이).</p>
+            <p>mktime() 함수는 날짜의 Unix timestamp 를 반환한다.&nbsp; Unix timestamp 는
+              Unix Epoch (January 1 1970 00:00:00 GMT) 와 지정한 시간 사이의 초(seconds)의
+              수를 포함한다.&nbsp;</p>
+            <h3>Syntax</h3>
+            <div class="code notranslate">
+              <div> mktime(<em>hour,minute,second,month,day,year</em>) </div>
+            </div>
+            <p>아래의 예제에서는 mktime() 함수에서 여러 매개변수로 날짜와 시간을 생성한다. :</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                $d=mktime(11, 14, 54, 8, 12, 2014);<br>
+                echo "Created date is " . date("Y-m-d h:i:sa", $d);<br>
+                ?&gt;</div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_date4">Run
+                example »</a> </div>
+            <br>
+            <hr>
+            <h2>PHP strtotime()으로 String 으로부터 날짜 생성</h2>
+            <p>PHP strtotime() 함수는 사람이 인식할 수 있는 문자열을 Unix time으로 변환하는데 사용된다.</p>
+            <h3>Syntax</h3>
+            <div class="code notranslate">
+              <div> strtotime(<em>time,now</em>)</div>
+            </div>
+            <p>아래의 예는&nbsp; <strong>strtotime()</strong> 함수로 날짜외 시간을 생성한다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                $d=strtotime("10:30pm April 15 2014");<br>
+                echo "Created date is " . date("Y-m-d h:i:sa", $d);<br>
+                ?&gt;</div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_date5">Run
+                example »</a> </div>
+            <p>PHP 는 문자열을 날짜로 변환하는데 있어서 매우 영리하다, 그래서 당신은 다양한 값을 넣을 수 있다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                $d=strtotime("tomorrow");<br>
+                echo date("Y-m-d h:i:sa", $d) . "&lt;br&gt;";<br>
+                <br>
+                $d=strtotime("next Saturday");<br>
+                echo date("Y-m-d h:i:sa", $d) . "&lt;br&gt;";<br>
+                <br>
+                $d=strtotime("+3 Months");<br>
+                echo date("Y-m-d h:i:sa", $d) . "&lt;br&gt;";<br>
+                ?&gt;</div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_date6">Run
+                example »</a> </div>
+            <p>그러나, strtotime() 은 완벽하지는 않으므로, 넣을 문자열을 확인하는 것을 기억하시오.</p>
+            <hr>
+            <h2>More Date Examples</h2>
+            <p>아래의 예는 6개의 다음 토요일의 날짜를 출력합니다. :</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                $startdate = strtotime("Saturday");<br>
+                $enddate = strtotime("+6 weeks",$startdate);<br>
+                <br>
+                while ($startdate &lt; $enddate) {<br>
+                &nbsp; echo date("M d", $startdate),"&lt;br&gt;";<br>
+                &nbsp; $startdate = strtotime("+1 week", $startdate);<br>
+                }<br>
+                ?&gt;</div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_date7">Run
+                example »</a> </div>
+            <p>아래의 예는 7월 4일까지의 일 수를 출력합니다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                $d1=strtotime("July 04");<br>
+                $d2=ceil(($d1-time())/60/60/24);<br>
+                echo "There are " . $d2 ." days until 4th of July.";<br>
+                ?&gt;</div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_date8">Run
+                example »</a> </div>
+            <br>
+            <hr>
+            <h2>Complete PHP Date Reference</h2>
+            <p>For a complete reference of all date functions, go to our
+              complete <a href="http://www.w3schools.com/php/php_ref_date.asp">PHP
+                Date Reference</a>.</p>
+            <p>The reference contains a brief description, and examples of use,
+              for each function!</p>
+            <br>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="PHP%205%20Echo%20and%20Print%20Statements.html">«
+                Previous</a> <a class="w3-right w3-btn" href="PHP%20include%20and%20require.html">Next
+                Chapter »</a> </div>
+            <hr> </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>PHP Example - AJAX RSS Reader</title>
+    <style>a.menu_html_intro{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,CSS,XML,JavaScript,DOM,jQuery,ASP.NET,PHP,SQL,colors,tutorial,programming,development,training,learning,quiz,primer,lessons,reference,w3-examples,source code,demos,tips,color table,w3c,cascading style sheets,active server pages,Web building,Webmaster">
+    <meta name="Description" content="Free HTML CSS JavaScript DOM jQuery XML AJAX RSS ASP .NET PHP SQL tutorials, references, examples for web building.">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" type="text/css" href="http://www.w3schools.com/stdtheme.css">
+    <script>
+function getVote(int)
+{
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+	document.getElementById("poll").innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("GET","poll_vote.php?vote="+int,true);
+xmlhttp.send();
+}
+</script> <style>a.menu_php_ajax_poll{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,CSS,XML,JavaScript,DOM,jQuery,ASP.NET,PHP,SQL,colors,tutorial,programming,development,training,learning,quiz,primer,lessons,reference,examples,source code,demos,tips,color table,w3c,cascading style sheets,active server pages,Web building,Webmaster">
+    <meta name="Description" content="Free HTML CSS JavaScript DOM jQuery XML AJAX RSS ASP .NET PHP SQL tutorials, references, examples for web building.">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-3855518-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script> <script>
+<!--
+function searchfield_focus(obj)
+{
+obj.style.color=""
+obj.style.fontStyle=""
+if (obj.value=="Search w3schools.com")
+	{obj.value=""}
+}
+var addr=document.location.href;
+function displayError()
+{
+document.getElementById("err_url").value=addr;
+document.getElementById("err_form").style.display="block";
+document.getElementById("err_desc").focus();
+hideSent();
+}
+function hideError()
+{
+document.getElementById("err_form").style.display="none";
+}
+function hideSent()
+{
+document.getElementById("err_sent").style.display="none";
+}
+function sendErr()
+{
+var xmlhttp;
+var err_url=document.getElementById("err_url").value;
+var err_email=document.getElementById("err_email").value;
+var err_desc=document.getElementById("err_desc").value;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.open("POST","/err_sup.asp",true);
+xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+xmlhttp.send("err_url=" + err_url + "&err_email=" + err_email + "&err_desc=" + escape(err_desc));
+document.getElementById("err_desc").value="";
+hideError();
+document.getElementById("err_sent").style.display="block";
+}
+//-->
+</script>
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>PHP Example - <span class="color_h1">AJAX Poll</span></h1>
+            <div class="chapter">
+              <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="PHP%20Example%20AJAX%20RSS%20Reader.html">«
+                  Previous</a> <a class="w3-right w3-btn" href="php_examples.asp">Next
+                  Chapter »</a> </div>
+            </div>
+            <hr>
+            <h2>AJAX Poll</h2>
+            <p>다음의 예는 결과가 재로딩없이 보여지는 설문조사(poll)를 보여줍니다.&nbsp;</p>
+            <div id="poll">
+              <h3>Do you like PHP and AJAX so far?</h3>
+              <form> Yes: <input name="vote" value="0" onclick="getVote(this.value)"
+
+                  type="radio"> <br>
+                No: <input name="vote" value="1" onclick="getVote(this.value)"
+
+                  type="radio"> </form>
+            </div>
+            <hr>
+            <h2>Example Explained - The HTML Page</h2>
+            <p>사용자가 위에서 하나의 옵션을 선택하면, "getVote()"라고 불리는 함수가 실행됩니다. 함수는 "onclick"
+              이벤트에 의해서 트리거됩니다.:</p>
+            <div class="w3-code notranslate">
+              <div> &lt;html&gt;<br>
+                &lt;head&gt;<br>
+                &lt;script&gt;<br>
+                function getVote(int)<br>
+                {<br>
+                if (window.XMLHttpRequest)<br>
+                &nbsp; {// code for IE7+, Firefox, Chrome, Opera, Safari<br>
+                &nbsp; xmlhttp=new XMLHttpRequest();<br>
+                &nbsp; }<br>
+                else<br>
+                &nbsp; {// code for IE6, IE5<br>
+                &nbsp; xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");<br>
+                &nbsp; }<br>
+                xmlhttp.onreadystatechange=function()<br>
+                &nbsp; {<br>
+                &nbsp; if (xmlhttp.readyState==4 &amp;&amp; xmlhttp.status==200)<br>
+                &nbsp;&nbsp;&nbsp; {<br>
+                &nbsp;
+&nbsp;&nbsp;document.getElementById("poll").innerHTML=xmlhttp.responseText;<br>
+                &nbsp;&nbsp;&nbsp; }<br>
+                &nbsp; }<br>
+                xmlhttp.open("GET","poll_vote.php?vote="+int,true);<br>
+                xmlhttp.send();<br>
+                }<br>
+                &lt;/script&gt;<br>
+                &lt;/head&gt;<br>
+                &lt;body&gt;<br>
+                <br>
+                &lt;div id="poll"&gt;<br>
+                &lt;h3&gt;Do you like PHP and AJAX so far?&lt;/h3&gt;<br>
+                &lt;form&gt;<br>
+                Yes:<br>
+                &lt;input type="radio" name="vote" value="0"
+                onclick="getVote(this.value)"&gt;<br>
+                &lt;br&gt;No:<br>
+                &lt;input type="radio" name="vote" value="1"
+                onclick="getVote(this.value)"&gt;<br>
+                &lt;/form&gt;<br>
+                &lt;/div&gt;<br>
+                <br>
+                &lt;/body&gt;<br>
+                &lt;/html&gt; </div>
+            </div>
+            <p>getVote() 함수는 다음의 작업을 수행합니다:</p>
+            <ul>
+              <li>Create an XMLHttpRequest 객체를 생성</li>
+              <li>서버 응답이 준비 되었을 때 실행될 함수를 생성</li>
+              <li>서버의 파일에 요청을 보내기</li>
+              <li>파라메타(q)가 (yes 또는 no option 값과 함께) URL에 추가 된 것을 주목하시오</li>
+            </ul>
+            <hr>
+            <h2>The PHP File</h2>
+            <p>위의 JavaScript 에 의해서 호출된 서버의 페이지는 ""poll_vote.php" 라는 PHP 파일입니다.:
+            </p>
+            <div class="w3-code notranslate">
+              <div> &lt;?php<br>
+                $vote = $_REQUEST['vote'];<br>
+                <br>
+                //get content of textfile<br>
+                $filename = "poll_result.txt";<br>
+                $content = file($filename);<br>
+                <br>
+                //put content in array<br>
+                $array = explode("||", $content[0]);<br>
+                $yes = $array[0];<br>
+                $no = $array[1];<br>
+                <br>
+                if ($vote == 0)<br>
+                &nbsp;&nbsp;{<br>
+                &nbsp;&nbsp;$yes = $yes + 1;<br>
+                &nbsp;&nbsp;}<br>
+                if ($vote == 1)<br>
+                &nbsp;&nbsp;{<br>
+                &nbsp;&nbsp;$no = $no + 1;<br>
+                &nbsp;&nbsp;}<br>
+                <br>
+                //insert votes to txt file<br>
+                $insertvote = $yes."||".$no;<br>
+                $fp = fopen($filename,"w");<br>
+                fputs($fp,$insertvote);<br>
+                fclose($fp);<br>
+                ?&gt;<br>
+                <br>
+                &lt;h2&gt;Result:&lt;/h2&gt;<br>
+                &lt;table&gt;<br>
+                &lt;tr&gt;<br>
+                &lt;td&gt;Yes:&lt;/td&gt;<br>
+                &lt;td&gt;<br>
+                &lt;img src="poll.gif"<br>
+                width='&lt;?php echo(100*round($yes/($no+$yes),2)); ?&gt;'<br>
+                height='20'&gt;<br>
+                &lt;?php echo(100*round($yes/($no+$yes),2)); ?&gt;%<br>
+                &lt;/td&gt;<br>
+                &lt;/tr&gt;<br>
+                &lt;tr&gt;<br>
+                &lt;td&gt;No:&lt;/td&gt;<br>
+                &lt;td&gt;<br>
+                &lt;img src="poll.gif"<br>
+                width='&lt;?php echo(100*round($no/($no+$yes),2)); ?&gt;'<br>
+                height='20'&gt;<br>
+                &lt;?php echo(100*round($no/($no+$yes),2)); ?&gt;%<br>
+                &lt;/td&gt;<br>
+                &lt;/tr&gt;<br>
+                &lt;/table&gt; </div>
+            </div>
+            <p>JavaScript 로부터 값이 보내지며, 다음과 같은 일이 발생한다.:</p>
+            <ol>
+              <li>"poll_result.txt" 파일의 내용을 가져온다. </li>
+              <li>변수들에 파일의 내용을 넣고, 선택된 변수에 1을 더한다. </li>
+              <li>"poll_result.txt" 파일에 결과를 쓴다.</li>
+              <li>설문조사 결과의 그래픽 표현을 출력한다. </li>
+            </ol>
+            <hr>
+            <h2>The Text File</h2>
+            <p>텍스트 파일(poll_result.txt)이 설문조사의 데이타를 저장하는 곳이다. </p>
+            <p>다음과 같이 저장된다:</p>
+            <div class="w3-code notranslate">
+              <div> 0||0 </div>
+            </div>
+            <p>첫번 째 숫자는 "Yes" 투표를, 두번 째 숫자는 "No" 투표를 나타낸다. </p>
+            <p><b>Note:</b> 웹서버가 텍스트 파일을 편집할 수 있도록 해아함을 기억하십시요. 모든 접근이 아닌, 단지
+              윕서버(PHP)에게만 허용합니다.</p>
+            <br>
+            <div class="chapter">
+              <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="PHP%20Example%20AJAX%20RSS%20Reader.html">«
+                  Previous</a> <a class="w3-right w3-btn" href="php_examples.asp">Next
+                  Chapter »</a> </div>
+            </div>
+            <hr> </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

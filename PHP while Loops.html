@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>PHP 5 while / for Loops</title>
+    <style>a.menu_html_intro{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,CSS,XML,JavaScript,DOM,jQuery,ASP.NET,PHP,SQL,colors,tutorial,programming,development,training,learning,quiz,primer,lessons,reference,w3-examples,source code,tryphps,tips,color table,w3c,cascading style sheets,active server pages,Web building,Webmaster">
+    <meta name="Description" content="Free HTML CSS JavaScript DOM jQuery XML AJAX RSS ASP .NET PHP SQL tutorials, references, examples for web building.">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" type="text/css" href="http://www.w3schools.com/stdtheme.css">
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>PHP 5 <span class="color_h1">while / for</span> Loops</h1>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="php_switch.asp">«
+                Previous</a> <a class="w3-right w3-btn" href="PHP%20Functions.html">Next
+                Chapter »</a> </div>
+            <hr>
+            <p class="intro">PHP <strong>while </strong>루프(loops)는 <strong>지정
+                된 조건이&nbsp;true 인 동안</strong> 코드 블록을 실행한다.&nbsp; </p>
+            <p class="intro">PHP <strong>for </strong>루프(loops)는 <strong>지정된
+                횟수</strong>만큼 코드 블록을 실행한다.</p>
+            <hr>
+            <h2>PHP Loops</h2>
+            <p>코드를 작성할 때 종종 동일한 코드 블록을 연속해서 다시 실행하기를 원하는 경우가 있다. 스크립트에 거의 동일한
+              코드를 여러번 추가 하는 대신에, 이러한 작업을 수행하기 위해서 루프를 사용할 수 있다.&nbsp;</p>
+            <p>PHP 에는 다음과 같은 루프문장들이 지원된다.:</p>
+            <ul>
+              <li><b>while </b>- 지정된 조건이 true 인 동안 코드블록을 반복 </li>
+              <li><b>do...while</b> - 코드블록을 한번 실행한 후에, 지정된 조건이 true 인 동안 루프를 반복</li>
+              <li><b>for </b>- 지정된 횟수 만큼 코드블록을 반복 </li>
+              <li><b>foreach </b>-배열의 각 요소에 대하여 코드블록을 반복 </li>
+            </ul>
+            <hr>
+            <h2>The PHP while Loop</h2>
+            <p>while 루프는 지정된 조건이 true 인 동안 코드블록을 실행합니다.</p>
+            <h3>Syntax</h3>
+            <div class="w3-code w3-border  notranslate">
+              <div> while (<i>condition is true</i>)<br>
+                &nbsp; {<br>
+                <i>&nbsp; code to be executed</i>;<br>
+                &nbsp; } </div>
+            </div>
+            <p>아래 예제에서 첫 번째는 변수 $x 를 1 로 ($x=1;) 놓고. $x 가 5 보다 작거나 같은 동안 루프를
+              실행한다. $x 는 루프가 실행될 때 마다 1씩 증가($x++;) 한다. :</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php <br>
+                $x=1; <br>
+                while($x&lt;=5)<br>
+                &nbsp; {<br>
+                &nbsp; echo "The number is: $x &lt;br&gt;";<br>
+                &nbsp; $x++;<br>
+                &nbsp; } <br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_loop_while">Run
+                example »</a> </div>
+            <br>
+            <hr>
+            <h2>The PHP do...while Loop</h2>
+            <p>do...while 루프는 항상 코드블록을 한번 실행하고 나서 조건을 확인합니다. 그리고 지정된 조건이 true 인
+              동안 루프를 반복합니다.&nbsp;</p>
+            <h3>Syntax</h3>
+            <div class="w3-code w3-border  notranslate">
+              <div> do<br>
+                &nbsp; {<br>
+                <i>&nbsp; code to be executed;<br>
+                  &nbsp; </i>}<br>
+                while (<i>condition is true</i>); </div>
+            </div>
+            <p>아래 예제에서 첫 번째는 변수 $x 를 1 로 ($x=1;) 놓습니다. 그리고 몇가지 출력을 하고 변수 $x 를 1
+              증가 시킵니다. 그 다음 조건을 확인합니다 ($x 가 5 보다 작거나 같은 지를), 그리고 루프는 $x 가 5 보다
+              작거나 같은 동안 루프를 실행을 계속 합니다. :</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php <br>
+                $x=1; <br>
+                do<br>
+                &nbsp; {<br>
+                &nbsp; echo "The number is: $x &lt;br&gt;";<br>
+                &nbsp; $x++;<br>
+                &nbsp; }<br>
+                while ($x&lt;=5)<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_loop_do_while">Run
+                example »</a> </div>
+            <p>do while 루프에서는 루프 내의 문장이 실행되 후에 조건을 시험하는 것을 주목하시오.&nbsp; 이는 조건이
+              처음부터 실패하더라도 do while 루프에서는적어도 한번은 그 문장이 실행되는 것을 의미 합니다.&nbsp; </p>
+            <p>아래의 예제는 The example below sets the $x 변수를 6 으로 설정합니다. 그리고 루프가
+              실행되고 <strong>그 다음에 조건이 확입됩니다</strong>. : </p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php <br>
+                $x=6; <br>
+                do<br>
+                &nbsp; {<br>
+                &nbsp; echo "The number is: $x &lt;br&gt;";<br>
+                &nbsp; $x++;<br>
+                &nbsp; }<br>
+                while ($x&lt;=5)<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_loop_do_while2">Run
+                example »</a> </div>
+            <br>
+            <hr>
+            <h2>The PHP for Loop</h2>
+            <p>for 루프는 스크립트가 실행되야 할 횟수를 미리 알고 있는 경우에 사용됩니다. </p>
+            <h3>Syntax</h3>
+            <div class="w3-code w3-border  notranslate">
+              <div> for (<i>init counter; test counter; increment counter</i>)<br>
+                &nbsp; {<br>
+                &nbsp;&nbsp;<i>code to be executed;</i><br>
+                &nbsp; } </div>
+            </div>
+            <p>Parameters:</p>
+            <ul>
+              <li><i>init counter</i>: 루프 카운터 값을 초기화</li>
+              <li><i>test counter</i>: 각 루프 반복을 평가. 이것이 TRUE 로 평가되면 루프가 계속됩니다.
+                이것이 FALSE 로 평가되면 루프가 끝납니다.</li>
+              <li><i>increment counter</i>: 루프 카운터 값을 증가</li>
+            </ul>
+            <p>아래의 예는 0 부터 10 까지의 숫자를 표시합니다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php <br>
+                for ($x=0; $x&lt;=10; $x++)<br>
+                &nbsp; {<br>
+                &nbsp; echo "The number is: $x &lt;br&gt;";<br>
+                &nbsp; } <br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_loop_for">Run
+                example »</a> </div>
+            <br>
+            <hr>
+            <h2>The PHP foreach Loop</h2>
+            <p>foreach 루프는 배열에서만 작동되며, 배열의 각 키/값 쌍(key/value pair)에 대하여 반복하는데
+              사용된다.&nbsp;</p>
+            <h3>Syntax</h3>
+            <div class="w3-code w3-border  notranslate">
+              <div> foreach ($<i>array </i>as<i> </i>$<i>value</i>)<br>
+                &nbsp; {<br>
+                &nbsp;&nbsp;<i>code to be executed;</i><br>
+                &nbsp; } </div>
+            </div>
+            <p>각 루프 반복에 대하여 현재 배열 요소의 값은 $value 에 할당되고, 배열 포인터는 마지막 배영 요소에 이를 때
+              까지 하나씩 이동한다.</p>
+            <p>다음의 예는 주어진 배열($colors)의 값을 출력하는 루프를 보여준다. :</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php <br>
+                $colors = array("red","green","blue","yellow"); <br>
+                foreach ($colors as $value)<br>
+                &nbsp; {<br>
+                &nbsp; echo "$value &lt;br&gt;";<br>
+                &nbsp; }<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_loop_foreach">Run
+                example »</a> </div>
+            <br>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="php_switch.asp">«
+                Previous</a> <a class="w3-right w3-btn" href="PHP%20Functions.html">Next
+                Chapter »</a> </div>
+            <hr></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

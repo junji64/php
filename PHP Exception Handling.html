@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>PHP 예외 처리(Exception Handling)</title>
+    <style>a.menu_html_intro{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,CSS,XML,JavaScript,DOM,jQuery,ASP.NET,PHP,SQL,colors,tutorial,programming,development,training,learning,quiz,primer,lessons,reference,w3-examples,source code,demos,tips,color table,w3c,cascading style sheets,active server pages,Web building,Webmaster">
+    <meta name="Description" content="Free HTML CSS JavaScript DOM jQuery XML AJAX RSS ASP .NET PHP SQL tutorials, references, examples for web building.">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" type="text/css" href="http://www.w3schools.com/stdtheme.css">
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>PHP <span class="color_h1">예외 처리(Exception Handling)</span></h1>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="PHP%20Error%20Handling.html">«
+                Previous</a> <a class="w3-right w3-btn" href="PHP%20Filter.html">Next
+                Chapter »</a> </div>
+            <hr>
+            <p class="intro">예외(Exceptions)는 지정된 오류가 발생하는 경우 <strong>스크립트의 통상적인
+                흐름을 변경</strong>할 때 사용된다.</p>
+            <hr>
+            <h2>What is an Exception</h2>
+            <p>PHP 5 에는 에러를 다루는 새로운 <strong>객체지향적 방법</strong>이 지원된다.</p>
+            <p>예외처리는 <strong>지정된(예외적인) 에러 조건</strong>이 발생하면 코드 실행의 통상적인 흐름을
+              변경하는데 사용된다. 이 조건을 <strong>예외(exception)</strong>라고 부른다. <br>
+              <br>
+              예외가 발생(trigger) 될 때 일반적으로 다음이 발생한다.:</p>
+            <ul>
+              <li>현재 코드 상태가 저장된다. </li>
+              <li>코드 실행은 미리 정의된(사용자 지정의) 예외 처리 함수로 전환된다.&nbsp;</li>
+              <li>상황에 따라서, 핸들러가 "저장된 코드 상태에서 다시 시작하기도 하고" / "스크립트 실행을 종료하거나" /
+                "코드의 다른 위치에서 스크립트를 계속하기도" 한다.&nbsp;</li>
+            </ul>
+            <p>다양한 오류처리 방법들은 다음과 같다.:</p>
+            <ul>
+              <li>예외(Exceptions)의 기본 사용</li>
+              <li>사용자 정의 예외 핸들러 만들기</li>
+              <li>다중 예외(exceptions)</li>
+              <li>예외를 다시 던지기(Re-throwing)</li>
+              <li>최상위 예외 핸들러 설정</li>
+            </ul>
+            <p><b>Note:</b> 예외(Exceptions)는 오류상태에선만 사용되어야 하고, 코드의 특정 장소로 이동하는데
+              사용되어서는 안된다.&nbsp;</p>
+            <hr>
+            <h2>Basic Use of Exceptions</h2>
+            <p>예외가 발생되면(thrown), 다음에 따라오는 코드는 실행되지 않고, PHP 는 "catch" 블록을 찾기 위해
+              노력한다.&nbsp;</p>
+            <p>예외가 잡히지 않으면(is not caught), 치명적인 오류가 "Uncaught Exception" 메시지와 함께
+              나타난다. </p>
+            <p>잡히지 않는 예외를 발생시키도록 해보자:</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> &lt;?php<br>
+                //create function with an exception<br>
+                function checkNum($number) {<br>
+                &nbsp;&nbsp;if($number&gt;1)&nbsp;{<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;throw new Exception("Value must be 1 or
+                below");<br>
+                &nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;return true;<br>
+                }<br>
+                <br>
+                //trigger exception<br>
+                checkNum(2);<br>
+                ?&gt; </div>
+            </div>
+            <p>위의 코드는 다음과 같은 에러가 발생한다: ( @ .../apache2/logs/error.log )</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> <b>Fatal error</b>: Uncaught exception 'Exception'<br>
+                with message 'Value must be 1 or below' in
+                C:\webfolder\test.php:6<br>
+                Stack trace: #0 C:\webfolder\test.php(12):<br>
+                checkNum(28) #1 {main} thrown in <b>C:\webfolder\test.php</b>
+                on line <b>6</b> </div>
+            </div>
+            <h2>Try, throw and catch</h2>
+            <p>위의 예제에서 에러를 피하기 위해서는, 예외를 처리하기에 적합한 코드를 작성해야합니다.&nbsp;</p>
+            <p>적절한 예외 코드는 다음을 포햠해야 한다:</p>
+            <ol>
+              <li>Try - 예외를 사용하는 함수는 "try" 블록 안에 놓여야 한다. 예외가 트리거되지 않으면 코드는 정상정으로
+                계속된다. 그러나 예외가 트리거되면, 예외가 "던져진다(thrown)"</li>
+              <li>Throw - 이것은 예외를 트리거하는 방법이다. 각 "throw" 는 적어도 하나의 "catch"를 가져야
+                한다.</li>
+              <li>Catch - "catch" 블록은 예외를 회수(검색)하여, 예외 정보를 포함하는 객체를 생성한다. </li>
+            </ol>
+            <p>유효한 코드로 예외를 트리거하는 시도를 해보자 :</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> &lt;?php<br>
+                //create function with an exception<br>
+                function checkNum($number)&nbsp;{<br>
+                &nbsp;&nbsp;if($number&gt;1)&nbsp;{<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;throw new Exception("Value must be 1 or
+                below");<br>
+                &nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;return true;<br>
+                }<br>
+                <br>
+                //trigger exception in a "try" block<br>
+                try&nbsp;{<br>
+                &nbsp;&nbsp;checkNum(2);<br>
+                &nbsp;&nbsp;//If the exception is thrown, this text will not be
+                shown<br>
+                &nbsp;&nbsp;echo 'If you see this, the number is 1 or below';<br>
+                }<br>
+                <br>
+                //catch exception<br>
+                catch(Exception $e)&nbsp;{<br>
+                &nbsp;&nbsp;echo 'Message: ' .$e-&gt;getMessage();<br>
+                }<br>
+                ?&gt; </div>
+            </div>
+            <p>위의 코드는 다음과 같은 에러를 갖는다.:</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> Message: Value must be 1 or below </div>
+            </div>
+            <h2>Example explained:</h2>
+            <p>위의 코드는 예외를 던지고(exception) 그것을 잡는다(catches):</p>
+            <ol>
+              <li>checkNum() 함수가 생성된다. 숫자가 1보다 큰 지를 검사한다. 그렇다면, 예외(exception)를
+                던진다.</li>
+              <li>checkNum() 함수는 "try" 블록 안에서 호출된다.</li>
+              <li>checkNum() 함수 안에서 예외(exception) 가 던져진다.</li>
+              <li>"catch" 블록은 예외(exception)를 검색하고 에외 정보를 포함하는 객체($e)를 생성한다 </li>
+              <li>예외로부터의 에러 메시지가 예외 객체로부터 $e-&gt;getMessage() 를 호출하여
+                echo된다.&nbsp;</li>
+            </ol>
+            <p>그러나, "모든 던짐(throw)은 캐치(catch)를 가져야 함" 규칙을 해결할 방법은 통과하는 에러를 처리하기
+              위한 최상위 수준의 예외 처리기(top level exception handler)를 설정하는 것이다.&nbsp;</p>
+            <hr>
+            <h2><strong>사용자 정의 예외 클래스</strong>(Custom Exception Class) <span style="font-weight: bold;">만
+                들기</span></h2>
+            <p>사용자 정의 예외 처리기를 만드는 것은 매우 간단하다. 우리는 단순히 PHP 에서 예외가 발생했을 때 호출될 수 있는
+              함수를 가진 특별한 클래스를 만들면 된다. 클래스는 예외 클래스의 확장(extension)이어야만 한다.&nbsp;</p>
+            <p>사용자 정의 예외 클래스는 PHP 의 예외클래스(exception class)로부터 속성(properties)을
+              상속받으며, 그것에 사용자 정의 함수를 추가할 수 있다.&nbsp;</p>
+            <p>예외 클래스를 만들어 보자 :</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> &lt;?php<br>
+                class customException extends Exception&nbsp;{<br>
+                &nbsp;&nbsp;public function errorMessage() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;//error message<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;$errorMsg = 'Error on line
+                '.$this-&gt;getLine().' in '.$this-&gt;getFile()<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;.':
+                &lt;b&gt;'.$this-&gt;getMessage().'&lt;/b&gt; is not a valid
+                E-Mail address';<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;return $errorMsg;<br>
+                &nbsp;&nbsp;}<br>
+                }<br>
+                <br>
+                $email = "someone@example...com";<br>
+                <br>
+                try&nbsp;{<br>
+                &nbsp;&nbsp;//check if<br>
+                &nbsp;&nbsp;if(filter_var($email, FILTER_VALIDATE_EMAIL) ===
+                FALSE) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;//throw exception if email is not valid<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;throw new customException($email);<br>
+                &nbsp;&nbsp;}<br>
+                }<br>
+                <br>
+                catch (customException $e)&nbsp;{<br>
+                &nbsp;&nbsp;//display custom message<br>
+                &nbsp;&nbsp;echo $e-&gt;errorMessage();<br>
+                }<br>
+                ?&gt; </div>
+            </div>
+            <p>새로운 클래스는 추가로 errorMessage() 함수를 가진 기존의 예외 클래스의 복사본이다.&nbsp; 이는
+              기존의 클래스의 복사본이므로, 기존의 클래스로부터 속성과 메소드를 상속 받게 되고,&nbsp; getLine() ,
+              getFile() 과 getMessage() 같은 예외 클래스의 메소드들을 사용할 수 있게 된다.</p>
+            <h2>Example explained:</h2>
+            <p>위의 코드는 예외를 던고(throws), 이를 사용자 정의 예외 클래스로 받는다(catches) :</p>
+            <ol>
+              <li>customException() class 는 기존의 exception class의 확장(extension)으로
+                생성된다. 이로써 기존의 exception class 로부터 모든 메소드와 속성을 상속받는다.&nbsp;</li>
+              <li>errorMessage() 함수가 만들어 집니다. 이 함수는 이-메일 주소가 유효하지 않으면 에러 메시지를
+                반환합니다.</li>
+              <li>$email 변수는 유효하지 않은 이메일 주소인 문자열로 설정됩니다.</li>
+              <li>"try" 블록이 실행되고, 이메일 주소가 유효하지 않으므로 예외가 던져집니다.&nbsp;</li>
+              <li>"catch" 블록이 예외를 잡아내어(catches) 에러 메시지를 표시한다.</li>
+            </ol>
+            <hr>
+            <h2>Multiple Exceptions</h2>
+            <p>한 스크립트가 여러 조건을 확인하기 위해서 여러 예외를 사용하는 것이 가능하다.&nbsp;</p>
+            <p>여러&nbsp; if..else 블록,&nbsp; switch, 또는 중첩된 다중 예외를 사용할 수 있다. 이러한
+              예외들은 서로 다른 예외 클래스를 사용할 수 있으며, 서로 다른 에러 메시지를 반환 할 수 있다. :</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> &lt;?php<br>
+                class customException extends Exception {<br>
+                &nbsp; public function errorMessage() {<br>
+                &nbsp;&nbsp;&nbsp; //error message<br>
+                &nbsp;&nbsp;&nbsp; $errorMsg = 'Error on line
+                '.$this-&gt;getLine().' in '.$this-&gt;getFile()<br>
+                &nbsp;&nbsp;&nbsp; .':
+                &lt;b&gt;'.$this-&gt;getMessage().'&lt;/b&gt; is not a valid
+                E-Mail address';<br>
+                &nbsp;&nbsp;&nbsp; return $errorMsg;<br>
+                &nbsp; }<br>
+                }<br>
+                <br>
+                $email = "someone@example.com";<br>
+                <br>
+                try&nbsp;{<br>
+                &nbsp;&nbsp;//check if<br>
+                &nbsp;&nbsp;if(filter_var($email, FILTER_VALIDATE_EMAIL) ===
+                FALSE)&nbsp;{<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;//throw exception if email is not valid<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;throw new customException($email);<br>
+                &nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;//check for "example" in mail address<br>
+                &nbsp;&nbsp;if(strpos($email, "example") !== FALSE)&nbsp;{<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;throw new Exception("$email is an
+                example e-mail");<br>
+                &nbsp;&nbsp;}<br>
+                }<br>
+                <br>
+                catch (customException $e)&nbsp;{<br>
+                &nbsp;&nbsp;echo $e-&gt;errorMessage();<br>
+                }<br>
+                <br>
+                catch(Exception $e)&nbsp;{<br>
+                &nbsp;&nbsp;echo $e-&gt;getMessage();<br>
+                }<br>
+                ?&gt; </div>
+            </div>
+            <h2>Example explained:</h2>
+            <p>위의 코드는 두가지 조건을 시험하고 조건 중 하나가 충족되지 않으면 예외가 발생합니다.:</p>
+            <ol>
+              <li>customException() class 가 기존의 예외 클래스의 확장으로 생성됩니다. 이로써 기존의
+                exception class 로부터 모든 메소드와 속성을 상속받는다.</li>
+              <li>errorMessage() 함수가 만들어 집니다. 이 함수는 이-메일 주소가 유효하지 않으면 에러 메시지를
+                반환합니다.</li>
+              <li>$email 변수는 유효한 이메일 주소인 문자열로 설정되지만, 문자열 "example"을 포함합니다.</li>
+              <li>"try"블록이 실행되고, 첫 번재 조건에서 예외가 발생하지 않습니다.&nbsp;</li>
+              <li>두 번째 조건은 이메일에 문자열 "example"이 포함되어 있으므로 예외를 트리거합니다. </li>
+              <li>"catch"블록이 예외를 잡아내어(catches) 정확한 에러 메시지를 표시한다.</li>
+            </ol>
+            <p>던져진(thrown) 예외는 class customException의 것이고 customException catch
+              가 없다면, 단지 기본 예외 처리만 있으며, 예외는 거기에서 처리될 것이다.</p>
+            <hr>
+            <h2>Re-throwing Exceptions</h2>
+            <p>예외가 발생 했을 때, 때때로 표준 방식이 아닌 다르게 그것을 처리하고 싶을 수 있다. 예외를 "catch" 블록
+              안에서 두 번 던질(throw) 수 있다.&nbsp;&nbsp;</p>
+            <p>스크립트는 사용자에게 시스템 오류를 숨겨야 한다. 시스템 에러는 코드 작성자에게는 중요할 수 있으나, 사용자에게는
+              필요가 없다. 사용자에게 일을 더 쉽게 해주기 위해서 당신은 사용자 친화적인 메시지와 함께 예외를
+              다시-던질(re-throw) 수 있습니다. :</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> &lt;?php<br>
+                class customException extends Exception&nbsp;{<br>
+                &nbsp;&nbsp;public function errorMessage() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;//error message<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;$errorMsg = $this-&gt;getMessage().' is
+                not a valid E-Mail address.';<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;return $errorMsg;<br>
+                &nbsp;&nbsp;}<br>
+                }<br>
+                <br>
+                $email = "someone@example.com";<br>
+                <br>
+                try&nbsp;{<br>
+                &nbsp;&nbsp;try {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;//check for "example" in mail address<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;if(strpos($email, "example") !==
+                FALSE)&nbsp;{<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//throw exception if email
+                is not valid<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw new Exception($email);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;catch(Exception $e)&nbsp;{<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;//re-throw exception<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;throw new customException($email);<br>
+                &nbsp;&nbsp;}<br>
+                }<br>
+                <br>
+                catch (customException $e)&nbsp;{<br>
+                &nbsp;&nbsp;//display custom message<br>
+                &nbsp;&nbsp;echo $e-&gt;errorMessage();<br>
+                }<br>
+                ?&gt; </div>
+            </div>
+            <h2>Example explained:</h2>
+            <p>위의 코드는 이메일 주소가 문자열 "example"을 포함하는지 시험하고, 그런 경우에는 예외를
+              다시-던진다(re-thrown).:</p>
+            <ol>
+              <li>customException() class 가 기존의 예외 클래스의 확장으로 생성됩니다. 이로써 기존의
+                exception class 로부터 모든 메소드와 속성을 상속받는다.</li>
+              <li>errorMessage() 함수가 만들어 집니다. 이 함수는 이-메일 주소가 유효하지 않으면 에러 메시지를
+                반환합니다.</li>
+              <li>$email&nbsp; 변수는 유효한 이메일 주소인 문자열로 설정되지만, 문자열 "example"을 포함합니다.</li>
+              <li>"try" 블록은 예외를 다시-던질수(re-throw) 있게 하도록 또 다른 "try" 블록을 포함합니다. </li>
+              <li>e-mail 이 문자열 "example" 을 포함하므로 예외가 트리거 됩니다. </li>
+              <li>"catch" 블록이 예외를 잡아 "customException"을 다시 던집니다. </li>
+              <li>"customException" 이 잡혀지며 에러메시지가 표시됩니다.</li>
+            </ol>
+            <p>예외가 현재 "try" 블록에서 catch 되지 않으면, "상위레벨"("higher levels")의 블록을 검색하게
+              됩니다. .</p>
+            <hr>
+            <h2>Set a Top Level Exception Handler</h2>
+            <p>set_exception_handler() 함수는 모든 캐치되지 않은 예외를 처리하기위한 사용자-정의 함수를
+              설정합니다.&nbsp;</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> &lt;?php<br>
+                function myException($exception) {<br>
+                &nbsp; echo "&lt;b&gt;Exception:&lt;/b&gt; " .
+                $exception-&gt;getMessage();<br>
+                }<br>
+                <br>
+                set_exception_handler('myException');<br>
+                <br>
+                throw new Exception('Uncaught Exception occurred');<br>
+                ?&gt; </div>
+            </div>
+            <p>위의 코드의 출력은 다음과 같아야 합니다. :</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> <b>Exception:</b> Uncaught Exception occurred </div>
+            </div>
+            <p>위의 코드에는 "catch" 클록이 없습니다. 대신에, 최고 레밸의 예외처리가 트리거됩니다. 이 함수는 캐치되지 않은
+              예외를 캐치하는데 사용되야 합니다.<br>
+            </p>
+            <hr>
+            <h2>Rules for exceptions</h2>
+            <ul>
+              <li>코드는 잠재적 예외를 캐치하는 것을 돕기 위해서 블록에 둘러싸여 있을 수 있다.</li>
+              <li>각 try 블록 또는 "throw" 는 적어도 하나의 대응하는 캐치블록이 있어야 한다.&nbsp;</li>
+              <li>다중 캐치 블록은 예외의 여러 다른 클래스를 캐치하는데 사용될 수 있다.</li>
+              <li>예외는 try&nbsp; 블록 안의 캐치 블록에서 던져질 (또는 다시-던져질) 수 있다. </li>
+            </ul>
+            <p>간단한 규칙: 당신이 무언가는 던지면(throw), 그것을 잡아야(catch)만 합니다. </p>
+            <br>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="PHP%20Error%20Handling.html">«
+                Previous</a> <a class="w3-right w3-btn" href="PHP%20Filter.html">Next
+                Chapter »</a> </div>
+            <hr> </div>
+        </div>
+      </div>
+      <br>
+    </div>
+    
+  </body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>PHP SimpleXML - Get Node/Attribute Values</title>
+    <style>a.menu_php_xml_simplexml_get{font-weight:bold;}</style>
+    <style>
+#smallnavContainer {display:none;}
+</style> <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,CSS,XML,JavaScript,DOM,jQuery,ASP.NET,PHP,SQL,colors,tutorial,programming,development,training,learning,quiz,primer,lessons,reference,examples,source code,tryphps,tips,color table,w3c,cascading style sheets,active server pages,Web building,Webmaster">
+    <meta name="Description" content="Free HTML CSS JavaScript DOM jQuery XML AJAX Angular ASP .NET PHP SQL tutorials, references, web building examples">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3855518-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+</script> <script type="text/javascript">
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+var gads = document.createElement('script');
+gads.async = true;
+gads.type = 'text/javascript';
+var useSSL = 'https:' == document.location.protocol;
+gads.src = (useSSL ? 'https:' : 'http:') + 
+'//www.googletagservices.com/tag/js/gpt.js';
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.insertBefore(gads, node);
+})();
+</script> <script type="text/javascript">
+googletag.cmd.push(function() {
+googletag.defineSlot('/16833175/BottomMediumRectangle', [300, 250], 'div-gpt-ad-1403595829794-0').addService(googletag.pubads());
+googletag.defineSlot('/16833175/LargePS', [[723, 280], [723, 400], [728, 280], [728, 400], [728, 450]], 'div-gpt-ad-1403595829794-1').addService(googletag.pubads());
+googletag.defineSlot('/16833175/MainLeaderboard', [728, 90], 'div-gpt-ad-1403595829794-2').addService(googletag.pubads());
+googletag.defineSlot('/16833175/SmallPS', [[723, 170], [728, 170]], 'div-gpt-ad-1403595829794-4').addService(googletag.pubads());
+var adScreenWidth = screen.width;
+if (adScreenWidth <= 768) {   
+  googletag.defineSlot('/16833175/MobileBottomBanner', [728, 90], 'div-gpt-ad-1403595829794-3').addService(googletag.pubads());
+} else { 
+  googletag.defineSlot('/16833175/WideSkyScraper', [160, 600], 'div-gpt-ad-1403595829794-5').addService(googletag.pubads());
+}
+googletag.pubads().setTargeting("content","php");
+googletag.pubads().enableSingleRequest();
+googletag.enableServices();
+});
+</script> <link rel="stylesheet" type="text/css" href="http://www.w3schools.com/stdtheme.css">
+  </head>
+  <body>
+    <div id="smallnavContainer">
+      <div id="smallnav">
+        <div id="menuDIV">
+          <hr>
+          <hr>
+          <hr></div>
+        <div id="closeSearchBTN" onclick="hideSearch()">X</div>
+        <a href="/default.asp"> </a></div>
+    </div>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>PHP <span class="color_h1">SimpleXML - Get Node/Attribute
+                Values</span></h1>
+            <div class="chapter">
+              <div class="prev"><a class="chapter" href="php_xml_simplexml_read.asp">«
+                  Previous</a></div>
+              <div class="next"><a class="chapter" href="php_xml_parser_expat.asp">Next
+                  Chapter »</a></div>
+            </div>
+            <hr>
+            <p class="intro">SimpleXML 은 XML 데이타를 쉽게 조작하고, 얻게 해주는&nbsp;PHP
+              확장(extensions) 이다.</p>
+            <hr>
+            <h2>PHP SimpleXML - Get Node Values</h2>
+            <p>"<a href="http://www.w3schools.com/php/note.xml" target="_blank">note.xml</a>"&nbsp;
+              파일에서 노드값(node values) 가져오기:</p>
+            <div class="example">
+              <h2 class="example">Example</h2>
+              <div class="example_code notranslate"> &lt;?php<br>
+                $xml=simplexml_load_file("note.xml") or die("Error: Cannot
+                create object");<br>
+                echo $xml-&gt;to . "&lt;br&gt;";<br>
+                echo $xml-&gt;from . "&lt;br&gt;";<br>
+                echo $xml-&gt;heading . "&lt;br&gt;";<br>
+                echo $xml-&gt;body;<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="showbtn" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_simplexml_get_one">Run
+                example »</a> </div>
+            <br>
+            위의 코드의 출력은 다음과 같을 것이다 :<br>
+            <br>
+            <div class="code notranslate">
+              <div> Tove<br>
+                Jani<br>
+                Reminder<br>
+                Don't forget me this weekend! </div>
+            </div>
+            <br>
+            <hr>
+            <h2>PHP SimpleXML - Get Node Values - Loop</h2>
+            <p>다음과 같은 "<a href="http://www.w3schools.com/php/books.xml" target="_blank">books.xml</a>"
+              라 부르는 XML 파일을 가지고 있다고 가정하자 :&nbsp;</p>
+            <div class="code notranslate">
+              <div> &lt;?xml version="1.0" encoding="utf-8"?&gt;<br>
+                &lt;bookstore&gt;<br>
+                &nbsp; &lt;book category="COOKING"&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;title lang="en"&gt;Everyday
+                Italian&lt;/title&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;author&gt;Giada De
+                Laurentiis&lt;/author&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;year&gt;2005&lt;/year&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;price&gt;30.00&lt;/price&gt;<br>
+                &nbsp; &lt;/book&gt;<br>
+                &nbsp; &lt;book category="CHILDREN"&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;title lang="en"&gt;Harry
+                Potter&lt;/title&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;author&gt;J K. Rowling&lt;/author&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;year&gt;2005&lt;/year&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;price&gt;29.99&lt;/price&gt;<br>
+                &nbsp; &lt;/book&gt;<br>
+                &nbsp; &lt;book category="WEB"&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;title lang="en-us"&gt;XQuery Kick
+                Start&lt;/title&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;author&gt;James McGovern&lt;/author&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;year&gt;2003&lt;/year&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;price&gt;49.99&lt;/price&gt;<br>
+                &nbsp; &lt;/book&gt;<br>
+                &nbsp; &lt;book category="WEB"&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;title lang="en-us"&gt;Learning
+                XML&lt;/title&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;author&gt;Erik T. Ray&lt;/author&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;year&gt;2003&lt;/year&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;price&gt;39.95&lt;/price&gt;<br>
+                &nbsp; &lt;/book&gt;<br>
+                &lt;/bookstore&gt; </div>
+            </div>
+            <p>"books.xml" 파일로부터 노드 값(node values)들을 가져오기:</p>
+            <div class="example">
+              <h2 class="example">Example</h2>
+              <div class="example_code notranslate"> &lt;?php<br>
+                $xml=simplexml_load_file("books.xml") or die("Error: Cannot
+                create object");<br>
+                foreach($xml-&gt;children() as $books) { <br>
+                &nbsp;&nbsp;&nbsp; echo $books-&gt;title . ", "; <br>
+                &nbsp;&nbsp;&nbsp; echo $books-&gt;author . ", "; <br>
+                &nbsp;&nbsp;&nbsp; echo $books-&gt;year . ", ";<br>
+                &nbsp;&nbsp;&nbsp; echo $books-&gt;price . "&lt;br&gt;"; <br>
+                } <br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="showbtn" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_simplexml_get_many">Run
+                example »</a> </div>
+            <p>위의 코드의 출력은 다음과 같을 것이다 :</p>
+            <div class="code notranslate">
+              <div> Everyday Italian, Giada De Laurentiis, 2005, 30.00<br>
+                Harry Potter, J K. Rowling, 2005, 29.99<br>
+                XQuery Kick Start, James McGovern, 2003, 49.99<br>
+                Learning XML, Erik T. Ray, 2003, 39.95 </div>
+            </div>
+            <br>
+            <hr>
+            <h2>PHP SimpleXML - Get Attribute Values - Loop</h2>
+            <p>"books.xml" 파일의 &lt;title&gt; 요소의 속성(attribute) 값 가져오기:</p>
+            <div class="example">
+              <h2 class="example">Example</h2>
+              <div class="example_code notranslate"> &lt;?php<br>
+                $xml=simplexml_load_file("books.xml") or die("Error: Cannot
+                create object");<br>
+                foreach($xml-&gt;children() as $books) { <br>
+                &nbsp;&nbsp;&nbsp; echo $books-&gt;title['lang'];<br>
+                &nbsp;&nbsp;&nbsp; echo "&lt;br&gt;"; <br>
+                } <br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="showbtn" href="phptryit.asp?filename=tryphp_simplexml_get_attr">Run
+                example »</a> </div>
+            <p>위의 코드의 출력은 다음과 같을 것이다 :</p>
+            <div class="code notranslate">
+              <div> en<br>
+                en<br>
+                en-us<br>
+                en-us</div>
+            </div>
+            <br>
+            <hr>
+            <h2>More PHP SimpleXML</h2>
+            <p>For more information about the PHP SimpleXML functions, visit our
+              <a href="http://www.w3schools.com/php/php_ref_simplexml.asp">PHP
+                SimpleXML Reference.</a></p>
+            <br>
+            <div class="chapter">
+              <div class="prev"><a class="chapter" href="php_xml_simplexml_read.asp">«
+                  Previous</a></div>
+              <div class="next"><a class="chapter" href="php_xml_parser_expat.asp">Next
+                  Chapter »</a></div>
+            </div>
+            <hr> </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </body>
+</html>

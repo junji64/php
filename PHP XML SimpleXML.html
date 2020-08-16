@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>PHP SimpleXML Parser</title>
+    <style>a.menu_html_intro{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,CSS,XML,JavaScript,DOM,jQuery,ASP.NET,PHP,SQL,colors,tutorial,programming,development,training,learning,quiz,primer,lessons,reference,w3-examples,source code,tryphps,tips,color table,w3c,cascading style sheets,active server pages,Web building,Webmaster">
+    <meta name="Description" content="Free HTML CSS JavaScript DOM jQuery XML AJAX RSS ASP .NET PHP SQL tutorials, references, examples for web building.">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" type="text/css" href="http://www.w3schools.com/stdtheme.css">
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>PHP <span class="color_h1">SimpleXML Parser<br>
+              </span></h1>
+            <div class="chapter">
+              <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="PHP%20XML%20Parsers.html">«
+                  Previous</a> <a class="w3-right w3-btn" href="PHP%20XML%20Expat%20Parser.html">Next
+                  Chapter »</a> </div>
+            </div>
+            <hr>
+            <p class="intro">SimpleXML 은 XML 데이타를 쉽게 조작하고, 얻게 해주는&nbsp;PHP
+              익스텐션(extensions) 이다.</p>
+            <hr>
+            <h2>SimpleXML Parser</h2>
+            <p>SimpleXML 은 트리-기반 파서이다.</p>
+            <p>SimpleXML 을 사용하면,&nbsp; XML 문서 구조 또는 레이아웃을 알고 있는 경우 요소의 속성과 텍스트
+              콘텐츠를 얻는 쉬운 방법을 제공한다. </p>
+            <p>SimpleXML 은&nbsp; XML 문서를 배열과 객체의 컬렉션 과 같이 반복될 수 있는 데이타 구조로 변환한다.
+            </p>
+            <p>DOM 또는 Expat 파서와 비교해서, SimpleXML 은 요소로부터 텍스트 데이타를 읽는데 단지 몇 줄의 코드만
+              필요로 한다. </p>
+            <p>그러나 고급 XML을 다룰 때는 Expat parser 또는 XML DOM을 사용하는 것이 더 낫다.</p>
+            <hr>
+            <h2>Installation</h2>
+            <p>PHP 5 부터는 SimpleXML 함수가 PHP 코어의 일부입니다.&nbsp; 이 함수들을 사용하는데 어떤 설치도
+              필요치 않습니다. </p>
+            <hr>
+            <h2>PHP SimpleXML - Read From String<br>
+            </h2>
+            <p>PHP 의 simplexml_load_string() 함수는 문자열(string)로부터 XML 데이타를 읽는데
+              사용된다.</p>
+            아래의 예는 문자열에서 XML 데이터를 읽을 수 있는 simplexml_load_string () 함수를 사용하는 방법을
+            보여줍니다 :<br>
+            <br>
+            <div class="w3-example">
+              <h2 class="example">Example </h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                $myXMLData =<br>
+                "&lt;?xml version='1.0' encoding='UTF-8'?&gt;<br>
+                &lt;note&gt;<br>
+                &lt;to&gt;Tove&lt;/to&gt;<br>
+                &lt;from&gt;Jani&lt;/from&gt;<br>
+                &lt;heading&gt;Reminder&lt;/heading&gt;<br>
+                &lt;body&gt;Don't forget me this weekend!&lt;/body&gt;<br>
+                &lt;/note&gt;";<br>
+                <br>
+                $xml=simplexml_load_string($myXMLData) or die("Error: Cannot
+                create object");<br>
+                echo "&lt;pre&gt;";<br>
+                print_r($xml);<br>
+                echo "&lt;/pre&gt;";<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_simplexml_read_string">Run
+                example »</a> </div>
+            <p>위의 코드의 출력은 다음과 같을 것입니다.:</p>
+            <div class="w3-code notranslate">
+              <div> SimpleXMLElement Object ( [to] =&gt; Tove [from] =&gt; Jani
+                [heading] =&gt; Reminder [body] =&gt; Don't forget me this
+                weekend! ) </div>
+            </div>
+            <br>
+            <strong>Error Handling Tip:</strong> XML 문서를 로딩할 때 모든&nbsp; 에러들을 취득할
+            수 있는 libxml 기능을 활용하여 모든 에러들을 검색할 수 있다. 다음의 예는 깨진 문자열을 로드하려 하는 경우이다 :<br>
+            <br>
+            <div class="w3-example">
+              <h2 class="example">Example </h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                libxml_use_internal_errors(true);<br>
+                $myXMLData =<br>
+                "&lt;?xml version='1.0' encoding='UTF-8'?&gt; <br>
+                &lt;document&gt; <br>
+                &lt;user&gt;John Doe&lt;/wronguser&gt; <br>
+                &lt;email&gt;john@example.com&lt;/wrongemail&gt; <br>
+                &lt;/document&gt;"; <br>
+                <br>
+                $xml = simplexml_load_string($myXMLData);<br>
+                if ($xml === false) {<br>
+                &nbsp;&nbsp;&nbsp; echo "Failed loading XML: ";<br>
+                &nbsp;&nbsp;&nbsp; foreach(libxml_get_errors() as $error) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo "&lt;br&gt;",
+                $error-&gt;message;<br>
+                &nbsp;&nbsp;&nbsp; }<br>
+                } else {<br>
+                &nbsp;&nbsp;&nbsp; echo "&lt;pre&gt;";<br>
+                &nbsp;&nbsp;&nbsp; print_r($xml);<br>
+                &nbsp;&nbsp;&nbsp; echo "&lt;/pre&gt;";<br>
+                }<br>
+                ?&gt;</div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_simplexml_read_string_error">Run
+                example »</a> </div>
+            <p>위의 코드의 출력은 다음과 같을 것입니다.:</p>
+            <div class="w3-code notranslate">
+              <div> Failed loading XML: <br>
+                Opening and ending tag mismatch: user line 3 and wronguser<br>
+                Opening and ending tag mismatch: email line 4 and wrongemail</div>
+            </div>
+            <br>
+            <strong></strong>
+            <hr>
+            <h2>PHP SimpleXML - Read From File</h2>
+            <p>PHP 의 simplexml_load_file () 함수는 파일에서 XML 데이타를 읽는 데 사용된다.</p>
+            <p>다음과 같은 XML 파일 "<a href="note.xml" target="_blank">note.xml</a>" 이
+              있다고 가정합니다 :</p>
+            <div class="w3-code notranslate">
+              <div> &lt;?xml version="1.0" encoding="UTF-8"?&gt;<br>
+                &lt;note&gt;<br>
+                &lt;to&gt;Tove&lt;/to&gt;<br>
+                &lt;from&gt;Jani&lt;/from&gt;<br>
+                &lt;heading&gt;Reminder&lt;/heading&gt;<br>
+                &lt;body&gt;Don't forget me this weekend!&lt;/body&gt;<br>
+                &lt;/note&gt; </div>
+            </div>
+            <p>이제 우리는 위의 XML 파일로부터 다른 정보들을 출력하고 싶습니다. :</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <p>Output keys and elements of the $xml variable (which is a
+                SimpleXMLElement object):</p>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                $xml=simplexml_load_file("note.xml");<br>
+                print_r($xml);<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_simplexml_read_file">Run
+                example »</a> </div>
+            <p>위의 코드의 출력은 다음과 같을 것입니다.:</p>
+            <div class="w3-code notranslate">
+              <div> SimpleXMLElement Object ( [to] =&gt; Tove [from] =&gt; Jani
+                [heading] =&gt; Reminder [body] =&gt; Don't forget me this
+                weekend! ) </div>
+            </div>
+            <br>
+            <hr>
+            <h2>PHP SimpleXML - Get Node Values</h2>
+            <p>"<a href="http://www.w3schools.com/php/note.xml" target="_blank">note.xml</a>"&nbsp;
+              파일에서 노드값(node values) 가져오기:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                $xml=simplexml_load_file("note.xml") or die("Error: Cannot
+                create object");<br>
+                echo $xml-&gt;to . "&lt;br&gt;";<br>
+                echo $xml-&gt;from . "&lt;br&gt;";<br>
+                echo $xml-&gt;heading . "&lt;br&gt;";<br>
+                echo $xml-&gt;body;<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_simplexml_get_one">Run
+                example »</a> </div>
+            <br>
+            위의 코드의 출력은 다음과 같을 것이다 :<br>
+            <br>
+            <div class="w3-code notranslate">
+              <div> Tove<br>
+                Jani<br>
+                Reminder<br>
+                Don't forget me this weekend! </div>
+            </div>
+            <br>
+            <hr>
+            <h2>PHP SimpleXML - Get Node Values - Loop</h2>
+            <p>다음과 같은 "<a href="http://www.w3schools.com/php/books.xml" target="_blank">books.xml</a>"
+              라 부르는 XML 파일을 가지고 있다고 가정하자 :&nbsp;</p>
+            <div class="w3-code notranslate">
+              <div> &lt;?xml version="1.0" encoding="utf-8"?&gt;<br>
+                &lt;bookstore&gt;<br>
+                &nbsp; &lt;book category="COOKING"&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;title lang="en"&gt;Everyday
+                Italian&lt;/title&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;author&gt;Giada De
+                Laurentiis&lt;/author&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;year&gt;2005&lt;/year&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;price&gt;30.00&lt;/price&gt;<br>
+                &nbsp; &lt;/book&gt;<br>
+                &nbsp; &lt;book category="CHILDREN"&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;title lang="en"&gt;Harry
+                Potter&lt;/title&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;author&gt;J K. Rowling&lt;/author&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;year&gt;2005&lt;/year&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;price&gt;29.99&lt;/price&gt;<br>
+                &nbsp; &lt;/book&gt;<br>
+                &nbsp; &lt;book category="WEB"&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;title lang="en-us"&gt;XQuery Kick
+                Start&lt;/title&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;author&gt;James McGovern&lt;/author&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;year&gt;2003&lt;/year&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;price&gt;49.99&lt;/price&gt;<br>
+                &nbsp; &lt;/book&gt;<br>
+                &nbsp; &lt;book category="WEB"&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;title lang="en-us"&gt;Learning
+                XML&lt;/title&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;author&gt;Erik T. Ray&lt;/author&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;year&gt;2003&lt;/year&gt;<br>
+                &nbsp;&nbsp;&nbsp; &lt;price&gt;39.95&lt;/price&gt;<br>
+                &nbsp; &lt;/book&gt;<br>
+                &lt;/bookstore&gt; </div>
+            </div>
+            <p>"books.xml" 파일로부터 노드 값(node values)들을 가져오기:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                $xml=simplexml_load_file("books.xml") or die("Error: Cannot
+                create object");<br>
+                foreach($xml-&gt;children() as $books) { <br>
+                &nbsp;&nbsp;&nbsp; echo $books-&gt;title . ", "; <br>
+                &nbsp;&nbsp;&nbsp; echo $books-&gt;author . ", "; <br>
+                &nbsp;&nbsp;&nbsp; echo $books-&gt;year . ", ";<br>
+                &nbsp;&nbsp;&nbsp; echo $books-&gt;price . "&lt;br&gt;"; <br>
+                } <br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_simplexml_get_many">Run
+                example »</a> </div>
+            <p>위의 코드의 출력은 다음과 같을 것이다 :</p>
+            <div class="w3-code notranslate">
+              <div> Everyday Italian, Giada De Laurentiis, 2005, 30.00<br>
+                Harry Potter, J K. Rowling, 2005, 29.99<br>
+                XQuery Kick Start, James McGovern, 2003, 49.99<br>
+                Learning XML, Erik T. Ray, 2003, 39.95 </div>
+            </div>
+            <br>
+            <hr>
+            <h2>PHP SimpleXML - Get Attribute Values - Loop</h2>
+            <p>"books.xml" 파일의 &lt;title&gt; 요소의 속성(attribute) 값 가져오기:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                $xml=simplexml_load_file("books.xml") or die("Error: Cannot
+                create object");<br>
+                foreach($xml-&gt;children() as $books) { <br>
+                &nbsp;&nbsp;&nbsp; echo $books-&gt;title['lang'];<br>
+                &nbsp;&nbsp;&nbsp; echo "&lt;br&gt;"; <br>
+                } <br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="file:///C:/Users/Administrator/Dropbox/WP/PHP/phptryit.asp?filename=tryphp_simplexml_get_attr">Run
+                example »</a> </div>
+            <p>위의 코드의 출력은 다음과 같을 것이다 :</p>
+            <div class="w3-code notranslate">
+              <div> en<br>
+                en<br>
+                en-us<br>
+                en-us</div>
+            </div>
+            <br>
+            <hr>
+            <h2>More PHP SimpleXML</h2>
+            <p>PHP SimpleXML 함수에 대하여 더 자세한 내용을 원하신다면 ==&gt;&nbsp; <a href="http://www.w3schools.com/php/php_ref_simplexml.asp">PHP
+                SimpleXML Reference</a> 를 방문하시오. </p>
+            <br>
+            <div class="chapter">
+              <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="PHP%20XML%20Parsers.html">«
+                  Previous</a> <a class="w3-right w3-btn" href="PHP%20XML%20Expat%20Parser.html">Next
+                  Chapter »</a> </div>
+            </div>
+            <hr> </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </body>
+</html>
