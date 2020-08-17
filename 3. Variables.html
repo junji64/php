@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>PHP 5 Variables</title>
+    <style>a.menu_html_intro{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,CSS,XML,JavaScript,DOM,jQuery,ASP.NET,PHP,SQL,colors,tutorial,programming,development,training,learning,quiz,primer,lessons,reference,examples,source code,tryphps,tips,color table,w3c,cascading style sheets,active server pages,Web building,Webmaster">
+    <meta name="Description" content="Free HTML CSS JavaScript DOM jQuery XML AJAX RSS ASP .NET PHP SQL tutorials, references, examples for web building.">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="http://www.w3schools.com/stdtheme.css">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>PHP 5 <span class="color_h1">Variables</span></h1>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="PHP%205%20Syntax.html">«
+                Previous</a> <a class="w3-right w3-btn" href="PHP%205%20Echo%20and%20Print%20Statements.html">Next
+                Chapter »</a> </div>
+            <hr>
+            <p class="intro">변수(variables)는 정보를 저장하기 위한 "그릇(container)" 이다 :</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                $x=5;<br>
+                $y=6;<br>
+                $z=$x+$y;<br>
+                echo $z;<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_var4">Run
+                example »</a> </div>
+            <hr>
+            <h2><strong>대수</strong>(Algebra)와 마찬가지</h2>
+            <p>x=5<br>
+              y=6<br>
+              z=x+y</p>
+            <p>대수에서 우리는 값을(5 같은) 저장하기 위해 문자를(x 같은) 사용합니다.</p>
+            <p>위의 식&nbsp; z=x+y 에서,&nbsp; z 의 값이 11로 계산될 수 있다.</p>
+            <p>PHP 에서 이 문자들은 <b>변수(variables)</b>라 부른다. </p>
+            <table class="lamp">
+              <tbody>
+                <tr>
+                  <th style="width:34px"><img src="http://www.w3schools.com/images/lamp.jpg"
+
+                      alt="Note" style="height:32px;width:32px"></th>
+                  <td>&nbsp;변수를 데이터를 저장하기 위한 그릇으로 생각하시오.</td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <hr>
+            <h2>PHP Variables</h2>
+            <p>대수(algebra)와 마찬가지로, PHP 변수는 값(x=5) 또는 식(z=x+y)를 담을 수 있습니다.</p>
+            <p>변수는 짧은 이름(x 와 y 처럼​​) 이나 더 자세한 설명 이름(age, carname, total_volume)일
+              수 있습니다.</p>
+            <p>PHP 변수 규칙:</p>
+            <ul>
+              <li>변수는 변수명 앞에 <strong>$ 기호로 시작</strong>한다.</li>
+              <li>변수 이름은 <strong>문자 또는 밑줄 문자로 시작</strong>해야 니다</li>
+              <li>변수 이름은 <strong>숫자로 시작할 수 없습</strong>니다</li>
+              <li>변수 이름은 영문자, 숫자와 밑줄( A-z, 0-9, 과 _ )을 사용한다.</li>
+              <li>변수 이름은 <strong>대소 문자를 구분</strong>한다 ($y and $Y 두 개의 서로 다른
+                변수입니다)</li>
+            </ul>
+            <table class="lamp">
+              <tbody>
+                <tr>
+                  <th style="width:34px"><img src="http://www.w3schools.com/images/lamp.jpg"
+
+                      alt="Note" style="height:32px;width:32px"></th>
+                  <td>&nbsp;PHP 변수는 대소문자 구별(case-sensitive) 하는 것을 기억히시오..</td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <hr>
+            <h2>PHP 변수 생성(선언)</h2>
+            <p>PHP 는 변수선언에 대한 명령어가 없습니다.</p>
+            <p>변수는 값을 처음으로 할당하는 순간에 생성됩니다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                $txt="Hello world!";<br>
+                $x=5;<br>
+                $y=10.5;<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_var2">Run
+                example »</a> </div>
+            <p>위의 문장을 실행하면, 변수 <b>txt</b>는&nbsp; <b>Hello world!</b> 라는 값을 갖게
+              되고, 변수<b> </b> <strong>x </strong>는 값<strong> 5</strong>를<strong>
+                , </strong><b><strong>변수</strong>&nbsp;</b><strong><strong>y</strong>
+              </strong>는 값<strong> 10.5</strong>를 갖게 된다.<strong>&nbsp;</strong></p>
+            <p><b>Note:</b> 변수에 텍스트 값을 할당할 경우, 값 주위에 따옴표(quotes)를 넣습니다.</p>
+            <hr>
+            <h2>PHP 는 느슨한 형식의 언어다</h2>
+            <p>위의 예에서, 우리는 변수가 어떤 데이터 형식인지를 PHP 에게 말할 필요가 없음을 알 수 있습니다.&nbsp;</p>
+            <p>PHP 는 자동적으로 그 값에 따라서 정확한 데이터 형식으로 변수를 변환합니다. </p>
+            <p>C, C++, 와 Java, 같은 다른 언어에서는, 프로그래머가 사용하기 전에 변수의 이름과 타입을 선언해야 합니다.</p>
+            <hr>
+            <h2>PHP 변수 범위(Scope)</h2>
+            <p>PHP 에서, 변수는 스크립트의 어느 곳에서도 선언될 수 있다.</p>
+            <p>변수의 범위(scopes)는 변수가 사용 될/참조 될 수 있는 스크립트의 일정 부분을 말한다.&nbsp;&nbsp;</p>
+            <p>PHP 는 세가지 다른 변수 범위를 갖는다.:</p>
+            <ul>
+              <li>local</li>
+              <li>global</li>
+              <li>static</li>
+            </ul>
+            <hr>
+            <h2>Local and Global Scope</h2>
+            <p>함수 <strong>외부</strong>에 선언된 변수는<strong> 전역범위(GLOBAL SCOPE)</strong>를
+              가지며, 함수 외부에서만 접근할 수 있다.</p>
+            <p>함수 <strong>내부</strong>에 선언된 변수는 <strong>로컬범위(LOCAL SCOPE)</strong>를
+              가지며, 함수 내부에서만 접근 할 수 있다.</p>
+            <p>다음의 예에서 로컬범위와 전역범위의 변수를 시험합니다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                $x=5; // global scope<br>
+                <br>
+                function myTest()<br>
+                {<br>
+                $y=10; // local scope<br>
+                echo "&lt;p&gt;Test variables inside the function:&lt;p&gt;";<br>
+                echo "Variable x is: $x";<br>
+                echo "&lt;br&gt;";<br>
+                echo "Variable y is: $y";<br>
+                } <br>
+                <br>
+                myTest();<br>
+                <br>
+                echo "&lt;p&gt;Test variables outside the function:&lt;p&gt;";<br>
+                echo "Variable x is: $x";<br>
+                echo "&lt;br&gt;";<br>
+                echo "Variable y is: $y";<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_var_local">Run
+                example »</a> </div>
+            <p>위의 예에서, 두 변수 $x 와 $y, 그리고 함수 myTest() 가 있습니다. $x 는 함수 외부에 선언 되어
+              있으므로 전역변수(global variable)이며, $y 는 함수 내부에 선언되어 있으므로 지역변수(local
+              variable) 이다. </p>
+            <p>myTest() 함수 내부에서 두 변수를 출력하면, 지역적으로 선언된 $y 값은 출력하지만, 함수외부에서 생성된 $x
+              의 값은 출력할 수 없습니다.&nbsp;</p>
+            <p>다음, myTest() 함수 외부에서 두 변수를 출력하면, $x 의 값은 출력하지만, myTest() 함수 내부에서
+              생성되어 지역변수인 $y 의 값은 출력 될 수 없다.&nbsp;</p>
+            <table class="lamp">
+              <tbody>
+                <tr>
+                  <th style="width:34px"><img src="http://www.w3schools.com/images/lamp.jpg"
+
+                      alt="Note" style="height:32px;width:32px"></th>
+                  <td>&nbsp;지역 변수는 그것이 선언된 함수에서만 인식되기 때문에 서로 다른 함수에 같은 이름의 지역변수를
+                    가질 수 있다.&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <hr>
+            <h2>PHP global Keyword</h2>
+            <p><strong>global </strong>키워드는 함수 내부에서 전역변수(global variable)를 접근하는
+              데 사용된다.&nbsp;</p>
+            <p>이렇게 하려면, (함수 안에서) 변수 앞에 <strong>global </strong>키워드를 사용한다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                $x=5;<br>
+                $y=10;<br>
+                <br>
+                function myTest()<br>
+                {<br>
+                global $x,$y;<br>
+                $y=$x+$y;<br>
+                }<br>
+                <br>
+                myTest();<br>
+                echo $y; // outputs 15<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_var_global">Run
+                example »</a> </div>
+            <p>PHP 는 <strong>$GLOBALS[<i>index</i>] </strong>라는 배열에 모든
+              전역변수(global variables)들을 저장한다.&nbsp;<em>index</em> 는 변수 이름을 말하며, 이
+              배열은 함수 내부에서도 접근이 가능하며, 전역변수(global variables)를 업데이트 하는데도 사용될 수
+              있다.&nbsp;</p>
+            <p>위의 예는 다음과 같이 다시 쓸 수 있다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                $x=5;<br>
+                $y=10;<br>
+                <br>
+                function myTest()<br>
+                {<br>
+                $GLOBALS['y']=$GLOBALS['x']+$GLOBALS['y'];<br>
+                } <br>
+                <br>
+                myTest();<br>
+                echo $y; // outputs 15<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_var_global_keyword">Run
+                example »</a> </div>
+            <br>
+            <hr>
+            <h2>PHP static Keyword</h2>
+            <p>일반적으로 함수의 실행이 완료되면 그 모든 변수는 삭제됩니다. 하지만, 때때로 지역변수가 지위지지 않기를 원할
+              경우(더 다른 작업을 위해 필요한 경우)도 있습니다.</p>
+            <p>이를 위해서는,&nbsp; 변수를 처음 선언할 때&nbsp; <b>static</b>&nbsp; 키워드를
+              사용합니다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                <br>
+                function myTest()<br>
+                {<br>
+                static $x=0;<br>
+                echo $x;<br>
+                $x++;<br>
+                }<br>
+                <br>
+                myTest();<br>
+                myTest();<br>
+                myTest();<br>
+                <br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_var_static">Run
+                example »</a> </div>
+            <p>그러면, 함수가 호출 될 때마다, 함수가 이전에 호출 되었을 때 변수가 가지고 있어던 정보를 여전히 가질
+              것입니다.&nbsp;&nbsp;</p>
+            <p><b>Note:</b> 변수는 여전히 함수에 대하여 로컬범위 입니다.&nbsp;</p>
+            <br>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="PHP%205%20Syntax.html">«
+                Previous</a> <a class="w3-right w3-btn" href="PHP%205%20Echo%20and%20Print%20Statements.html">Next
+                Chapter »</a> </div>
+            <hr> </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </body>
+</html>

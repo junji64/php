@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>2. Syntax</title>
+    <style>a.menu_html_intro{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,PHP,SQL,tutorial,programming,development,Web building,Webmaster">
+    <link rel="stylesheet" href="w3.css">
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>2. <span class="color_h1">Syntax</span></h1>
+            <div class="w3-clear nextprev"> 
+              <a class="w3-left w3-btn" href="1.%20Introduction.html">« Previous</a> 
+              <a class="w3-right w3-btn" href="3.%20Variables.html">Next »</a> 
+            </div>
+            <hr>
+            <p class="intro">PHP 스크립트는 서버에서 실행되고, 일반 HTML 결과를 브라우저로 다시 전송된다. </p>
+            <hr>
+            <h2>Basic PHP Syntax</h2>
+            <p>PHP 스크립트는 문서의 어디든지 삽입 될 수 있습니다.</p>
+            <p>PHP 스크립트는<b> &lt;?php</b> 로 시작하고,&nbsp; <b>?&gt;</b> 로 종료한다.:</p>
+            <div class="w3-code w3-border notranslate">
+              <div> &lt;?php<br>
+                // PHP code goes here<br>
+                ?&gt; </div>
+            </div>
+            <p>PHP 파일의 기본 파일 확장자는 ".php" 입니다.</p>
+            <p>PHP 파일은 일반적으로 HTML 태그 및 일부 PHP 스크립트 코드가 포함되어 있습니다.</p>
+            <p>다음은 간단한 PHP 파일의 예이다. 이는 내장 된 PHP 함수 "echo"를 사용하는 PHP 스크립트를 사용하여 웹
+              페이지에 텍스트 "Hello World!” 를 출력 한다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;!DOCTYPE html&gt;<br>
+                &lt;html&gt;<br>
+                &lt;body&gt;<br>
+                <br>
+                &lt;h1&gt;My first PHP page&lt;/h1&gt;<br>
+                <br>
+                <span class="marked">&lt;?php<br>
+                  echo "Hello World!";<br>
+                  ?&gt;</span><br>
+                <br>
+                &lt;/body&gt;<br>
+                &lt;/html&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_syntax">Run
+                example »</a> </div>
+            <p><strong>Note:</strong>&nbsp; PHP 문을 세미콜론(;)으로 종료합니다. PHP 코드 블록을
+              종료 태그는 자동으로 세미콜론을 의미한다 (그래서 PHP 블록의 마지막 줄에 종료하는 세미콜론을 추가할 필요는
+              없습니다).</p>
+
+            <hr>
+            <h2>PHP Case Sensitivity</h2>
+            <p>PHP 에서는 모든 사용자 정의 <strong>functions</strong>, <strong>classes </strong>및
+              <strong>keywords </strong>(e.g. if, else, while, echo, etc.) 에서 <strong>대
+                소 문자를 구분하지 않습니다</strong>.</p>
+            <p>아래의 예에서, 세 가지 echo 문은 합법적(같은 것) 입니다 :</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;!DOCTYPE html&gt;<br>
+                &lt;html&gt;<br>
+                &lt;body&gt;<br>
+                <br>
+                <span class="marked">&lt;?php<br>
+                  ECHO "Hello World!&lt;br&gt;";<br>
+                  echo "Hello World!&lt;br&gt;";<br>
+                  EcHo "Hello World!&lt;br&gt;";<br>
+                  ?&gt;</span><br>
+                <br>
+                &lt;/body&gt;<br>
+                &lt;/html&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_syntax_case1">Run
+                example »</a> </div>
+            <p>그러나, PHP 에서 <strong>모든 변수(variables)는 대소 문자를 구분</strong>합니다.<br>
+              <br>
+              아래의 예에서, 첫 번째 문장만 $color 변수의 값을 표시합니다. ($color, $COLOR, 과&nbsp;
+              $coLOR 이 세 가지 서로 다른 변수로 처리되기 때문이다) :</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;!DOCTYPE html&gt;<br>
+                &lt;html&gt;<br>
+                &lt;body&gt;<br>
+                <br>
+                <span class="marked">&lt;?php<br>
+                  $color="red";<br>
+                  echo "My car is " . $color . "&lt;br&gt;";<br>
+                  echo "My house is " . $COLOR . "&lt;br&gt;";<br>
+                  echo "My boat is " . $coLOR . "&lt;br&gt;";<br>
+                  ?&gt;</span><br>
+                <br>
+                &lt;/body&gt;<br>
+                &lt;/html&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_syntax_case2">Run
+                example »</a> </div>
+                        <hr>
+            <h2><strong>주석</strong>(Comments) in PHP</h2>
+            <p>PHP 코드의 주석은 프로그램의 일부로 읽히거나/실행되지 않는 줄입니다. 그것의 유일한 목적은 코드를 편집하는
+              누군가에 의해 읽히는 것이다!<br>
+            </p>
+            <p>PHP는 주석으로 세 가지 방법을 지원합니다 :</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;!DOCTYPE html&gt;<br>
+                &lt;html&gt;<br>
+                &lt;body&gt;<br>
+                <br>
+                <span class="marked">&lt;?php<br>
+                  // This is a single line comment<br>
+                  <br>
+                  # This is also a single line comment<br>
+                  <br>
+                  /*<br>
+                  This is a multiple lines comment block<br>
+                  that spans over more than<br>
+                  one line<br>
+                  */<br>
+                  ?&gt;</span><br>
+                <br>
+                &lt;/body&gt;<br>
+                &lt;/html&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_comments">Run
+                example »</a> 
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_comments2">Run
+                example »</a></div>
+            <br>
+            <br>
+            <div class="w3-clear nextprev"> 
+              <a class="w3-left w3-btn" href="1.%20Introduction.html">« Previous</a> 
+              <a class="w3-right w3-btn" href="3.%20Variables.html">Next »</a> 
+            </div>
+            <hr> </div>
+        </div>
+      </div>
+      <br>
+    </div>
+    <br>
+    <hr style="height:5px;">
+  </body>
+</html>
