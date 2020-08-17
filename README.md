@@ -72,4 +72,4 @@
 
 [SQL-9 : Update](./SQL-9.%20Update.html)
 
-[SQL-10 : Delete](./SQL-10.%20Delete.html)
+[SQL-10 : Delete From](./SQL-10.%20Delete%20From.html)
