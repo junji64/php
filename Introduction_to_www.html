@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)http://jun.hansung.ac.kr/SWP/intro.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Introduction</title>
+  </head>
+  <body>
+    <h1 style="color: rgb(0, 0, 0); font-family: &quot;Malgun Gothic&quot;; font-style: normal; font-variant: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; -webkit-text-stroke-width: 0px;">Introduction</h1>
+    <div id="slide1" class="slide titleslide" style="color: rgb(0, 0, 0); font-family: &quot;Malgun Gothic&quot;; font-size: medium; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; -webkit-text-stroke-width: 0px; visibility: visible;">
+      <h2>인터넷(Internet) vs WWW</h2>
+      <img style="width: 690px; height: 405px;" src="./Introduction_to_www_files/internet-vs-www-techwelkin.jpg"><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp; [ From http://techwelkin.com/difference-internet-vs-www ]<br>
+      <br>
+      <ul>
+        <li><strong>Internet</strong></li>
+        <ul>
+          <li>표준화 된 <strong>통신 프로토콜</strong>을 사용하여 상호 연결된 네트워크로 구성된 다양한 정보 및 통신
+            기능을 제공하는 글로벌 컴퓨터 네트워크.</li>
+          <li><strong>IP (Internet Protocol)</strong> 를 사용하는 컴퓨터 네트워크의 연결</li>
+          <li>~Hareware</li>
+          <li>시작 - ARPANET (1969)</li>
+        </ul>
+        <li><strong>WWW</strong></li>
+        <ul>
+          <li>간단하게 Web 이라고도 하며, Internet 을 통해서 정보에 접근하는 한 방법이다.</li>
+          <li><strong>HTTP (Hyer Text Transfer Protocol)</strong> 을 사용하는 인터넷 상의
+            서비스 </li>
+          <li>Software</li>
+          <li>시작 - NSFnet (1993)</li>
+        </ul>
+        <li>통신 프로토콜(protocols)의 계층 : <strong>IP</strong> → <strong>TCP</strong>/UDP
+          → <strong>HTTP</strong>/FTP/POP/SMTP/SSH...<br>
+          <br>
+          <img style="width: 545px; height: 400px;" alt="" src="./Introduction_to_www_files/tpc-ip-and-osi-model-cellbiol.com_.png"><br>
+          <span style="color: rgb(0, 0, 0); font-family: &quot;Malgun Gothic&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"><span>&nbsp;</span>[from
+            http://www.cellbiol.com/bioinformatics_web_development/chapter-1-internet-networks-and-tcp-ip/the-tcpip-family-of-internet-protocols/
+            ]</span></li>
+      </ul>
+      <h3><br>
+      </h3>
+      <h3>인터넷 프로코콜 (Internet Protocol :<span class="Apple-converted-space">&nbsp;</span><a href="http://en.wikipedia.org/wiki/Internet_Protocol">IP</a>)</h3>
+      <ul>
+        <li>두 컴퓨터 사이에서 데이타를 보내는데 사용되는 간단한 프로토콜</li>
+        <li>각 장치는 4 개의 8-bit 숫자(0-255)로 작성된 32-bit IP 주소를 가진다.<br>
+          <img src="./Introduction_to_www_files/fig1_ip_address.png" alt="IP address" style="width: 507px; margin-top: 20px;"></li>
+        <li>인터넷 IP address 찾기:<span class="Apple-converted-space">&nbsp;</span><a href="http://www.whatismyip.com/">whatismyip.com</a></li>
+        <li>로컬 IP address 찾기:
+          <ul>
+            <li>터미날에 다음을 입력 : <strong><code>ipconfig </code></strong>(Windows)
+              또는 <strong><code>ifconfig <span class="Apple-converted-space"></span></code></strong>(Mac/Linux)</li>
+          </ul>
+        </li>
+      </ul>
+      <h3>전송 제어 프로토콜 (Transmission Control Protocol :<span class="Apple-converted-space">&nbsp;</span><a href="http://en.wikipedia.org/wiki/Tcp_protocol">TCP</a>)</h3>
+      <ul>
+        <li>IP 위에 메시지 전달을 보장하는 다중화(멀티플랙싱:multiplexing)를 추가</li>
+        <li><strong>multiplexing</strong>: 여러 프로그램이 동일한 IP 주소를 사용하게 해줌
+          <ul>
+            <li><strong>port</strong>: 각 프로그램 또는 서비스에 주어진 번호</li>
+            <li>port 80: web browser (port 443 for secure browsing)</li>
+            <li>port 25: email</li>
+            <li>port 22: ssh</li>
+            <li><a href="http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers">more
+                common ports</a></li>
+          </ul>
+        </li>
+        <li>일부 프로그램들(games, streaming media programs)은 TCP 대신에 더 간단한<span class="Apple-converted-space">&nbsp;</span><a href="http://en.wikipedia.org/wiki/User_Datagram_Protocol">UDP</a><span class="Apple-converted-space">&nbsp;</span>프로토콜을 사용</li>
+      </ul>
+      <h3>Hypertext Transport Protocol (<a href="http://en.wikipedia.org/wiki/Http_protocol">HTTP</a>)</h3>
+      <ul>
+        <li>브라우져로부터 보내진, 웹서버가 이해하는 명령 집합</li>
+        <li>일부 HTTP 명령 (당신의 브라우져가 이들을 내부적으로 보냅니다.):
+          <ul>
+            <li><code><span class="Apple-converted-space"></span><em>GET
+                  /images/logo.png HTTP/1.1&nbsp; <strong></strong></em></code><code><strong>&lt;==</strong><strong>
+                </strong><strong>서버로부터 </strong></code><strong><code>/images/logo.png
+                  파일을 요청</code></strong></li>
+            <li><code><em>POST<span class="Apple-converted-space">&nbsp;</span>filename</em></code><span class="Apple-converted-space">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </span><code><em><strong></strong></em></code><code><strong>&lt;==</strong><strong>
+                </strong></code>서버에 전달</li>
+            <li><code><em>PUT&nbsp;<span class="Apple-converted-space">&nbsp;</span>filename</em></code><span class="Apple-converted-space"> &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="Apple-converted-space"><code><strong>&lt;==</strong><strong></strong></code>
+                서버에 업로드</span></li>
+          </ul>
+        </li>
+        <li>웹서버 반응:
+          <pre class="examplecode shell">HTTP/1.1 200 OK
+Date: Mon, 23 May 2005 22:38:34 GMT
+Content-Type: text/html; charset=UTF-8
+Content-Encoding: UTF-8
+Content-Length: 138
+Last-Modified: Wed, 08 Jan 2003 23:11:55 GMT
+Server: Apache/1.3.3.7 (Unix) (Red-Hat/Linux)
+ETag: "3f80f-1b6-3e1cb03b"
+Accept-Ranges: bytes
+Connection: close
+
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;An Example Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  Hello World, this is a very simple HTML document.
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+        </li>
+        <li>HTTP error codes : 뭔가 잘못되면, 웹서버가 브라우져에 특별한 오류코드"error code"번호를 반환하며,
+          그 뒤에 HTML 문서가 따라오기도 한다. <br>
+          일반적인 오류코드 :
+          <table class="standard" border="1">
+            <tbody>
+              <tr class=" evenrow">
+                <th class="spaced">Number</th>
+                <th>Meaning</th>
+              </tr>
+              <tr>
+                <td>200</td>
+                <td>OK</td>
+              </tr>
+              <tr class=" evenrow">
+                <td><a href="http://clsc.net/research/google-302-page-hijack.htm">301-303</a></td>
+                <td>page has moved (permanently or temporarily)</td>
+              </tr>
+              <tr>
+                <td><a href="http://www.cs.washington.edu/education/courses/cse190d/07sp/lectures/">403</a></td>
+                <td>you are forbidden to access this page</td>
+              </tr>
+              <tr class=" evenrow">
+                <td><a href="http://www.homestarrunner.com/404.html">404</a></td>
+                <td>page not found</td>
+              </tr>
+              <tr>
+                <td>500</td>
+                <td>internal server error</td>
+              </tr>
+              <tr class=" evenrow">
+                <td colspan="2" class="completelist"><a href="http://en.wikipedia.org/wiki/Http_error_codes">complete
+                    list</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </li>
+      </ul>
+      <h2><br>
+      </h2>
+      <h2>World Wide Web (WWW)</h2>
+      <ul>
+        <li><strong>웹 서버(web server)</strong>: 웹 페이지 요청을 수신하는 소프트웨어
+          <ul>
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li>Microsoft Internet Information Server (IIS) (<a href="http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/iiiisin2.mspx?mfr=true">part
+                of Windows</a>)</li>
+          </ul>
+        </li>
+        <li><strong>웹 브라우져(web browser</strong>): 웹서버에서 문서를 가져다가 표시함&nbsp;(<a href="http://en.wikipedia.org/wiki/Usage_share_of_web_browsers">웹
+            브라우져 사용 점유</a>)<span class="Apple-converted-space">&nbsp;</span><br>
+          <ul>
+            <li><a href="http://www.google.com/chrome/">Google Chrome</a></li>
+            <li><a href="http://www.getfirefox.com/">Mozilla Firefox</a></li>
+            <li>Microsoft<span class="Apple-converted-space">&nbsp;</span><a href="http://www.microsoft.com/windows/products/winfamily/ie/">Internet
+                Explorer</a><span class="Apple-converted-space">&nbsp;</span>(IE)</li>
+            <li>Apple<span class="Apple-converted-space">&nbsp;</span><a href="http://www.apple.com/safari/">Safari</a></li>
+            <li><a href="http://www.opera.com/">Opera</a></li>
+          </ul>
+        </li>
+      </ul>
+      <h3>도메인 이름 시스템(Domain Name System :<span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(0, 0, 238);"><span style="text-decoration: underline;"></span></span><a href="http://en.wikipedia.org/wiki/Dns">DNS</a>)</h3>
+      <ul>
+        <li>숫자의 연속인 IP주소를 일일이 외울 수 없기 때문에 쉽게 기억할 수 있는 도메인 주소 체계가 만들어졌습니다. <br>
+          DNS(Domain Name System)은 도메인이름의 수직적인 체계를 말합니다.&nbsp; <br>
+          Example: www.hansung.ac.kr&nbsp;<span class="Apple-converted-space"></span>→<strong><span class="Apple-converted-space">&nbsp;</span></strong><span style="font-family: monospace;"><strong>220.66.102.11
+              (<a href="http://ipaddress.com/ip_lookup/">IP lookup</a>)</strong><br>
+          </span><br>
+          <img src="./Introduction_to_www_files/imgDomainSys02.gif">
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            [ 이미지 출처 http://www.krnic.or.kr/ </p>
+        </li>
+      </ul>
+      &nbsp;&nbsp;&nbsp;&nbsp; <img style="width: 618px; height: 408px;" alt="" src="./Introduction_to_www_files/How_DNS_Works.jpg"><br>
+      <ul>
+        <li><strong>localhost </strong>(<strong>127.0.0.1</strong>) : 브라우져가
+          작동되는 컴퓨터 자체에 설치되어 가동 중인 웹서버 IP 주소</li>
+      </ul>
+      <h3>Uniform Resource Locator (<a href="http://en.wikipedia.org/wiki/Url">URL</a>)</h3>
+      <ul>
+        <li>웹사이트에서 문서의 위치를 식별</li>
+        <li>기본적인 URL:
+          <pre><strong><a href="http://jun.hansung.ac.kr/SWP/intro.html">http://jun.hansung.ac.kr/SWP/intro.html</a>
+~~~~   ~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~
+protocol    host                path</strong>
+</pre></li>
+        <li>브라우져에 이러한 URL 을 입력하는 것은:
+          <ul>
+            <li>DNS server에게&nbsp;&nbsp; jun.hansung.ac.kr&nbsp; 의&nbsp;<span style="font-family: monospace;"><span class="Apple-converted-space"></span></span>IP 주소를 묻는
+              것이고&nbsp;<code></code></li>
+            <li>그 IP 주소의 port 80 에 연결하고</li>
+            <li>웹 서버에게&nbsp;&nbsp; GET /SWP/intro.html 을 요청하고 </li>
+            <li>그 결과 페이지를 스크린에 표시합니다.</li>
+          </ul>
+        </li>
+      </ul>
+      <h2>Web languages / technologies</h2>
+      <ul>
+        <li>Hypertext Markup Language (<a href="http://en.wikipedia.org/wiki/Html">HTML</a>):
+          웹 페이지 작성에 사용</li>
+        <li>Cascading Style Sheets (<a href="http://en.wikipedia.org/wiki/Cascading_Style_Sheets">CSS</a>):
+          웹 페이지의 스타일 정보</li>
+        <li><a href="http://en.wikipedia.org/wiki/JavaScript">JavaScript</a><span class="Apple-converted-space">&nbsp;</span>: 웹 페이지를 대화형으로 프로그래밍 가능하게
+          하는 언어</li>
+        <li>PHP Hypertext Processor (<a href="http://www.php.net/">PHP</a>): 웹
+          서버에서 페이지를 동적으로 생성</li>
+        <li>Asynchronous JavaScript and XML (<a href="http://en.wikipedia.org/wiki/Ajax_%28programming%29">Ajax</a>):
+          웹 응용을 위한 데이타 액세스</li>
+        <li>eXtensible Markup Language (<a href="http://en.wikipedia.org/wiki/Xml">XML</a>):
+          데이타 정리를 위한 메타 언어</li>
+        <li>Structured Query Language (<a href="http://en.wikipedia.org/wiki/Sql">SQL</a>):
+          데이타베이스와 상호 작용에 이용</li>
+      </ul>
+    </div>
+  
+
+</body></html>
