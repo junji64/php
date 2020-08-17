@@ -14,4 +14,8 @@
 
 [Ch. 6 : String Functions](./6.%20String%20Functions.html)
 
-[Ch. 7 : Constants](./7.%20Constantss.html)
+[Ch. 7 : Constants](./7.%20Constants.html)
+
+[Ch. 8 : Operators](./8.%20Operators.html)
+
+[Ch. 9 : If...else...elseif Statements](./9.%20If...else...elseif%20Statements.html)
