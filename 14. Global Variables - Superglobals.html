@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>14. 전역변수 (Global Variables)</title>
+    <style>a.menu_html_intro{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,PHP,SQL,tutorial,programming,development,Web building,Webmaster">
+    <link rel="stylesheet" href="w3.css">
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>14. <span class="color_h1"><strong>전역변수</strong>(Global
+                Variables)</span> - Superglobals</h1>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="13.%20Sorting%20Arrays.html">«
+                Previous</a> <a class="w3-right w3-btn" href="15.%20Form%20Handling.html">Next  »</a> </div>
+            <hr>
+            <p class="intro">Superglobals 은 PHP 4.1.0에 소개되었고, 모든 범위에서 항상 사용할 수
+              있는 내장된 변수들이다. </p>
+            <hr>
+            <h2>PHP Global Variables - Superglobals</h2>
+            <p>PHP 안에 미리 정의 되어 있는 몇몇 변수들이 "superglobals"이며, 이들은 범위에 상관 없이 항상 접근이
+              가능하다 - 어떤 함수, 클래스, 그리고 파일로 부터도 어떤 특별한 수행을 할 필요 없이 접근이 가능하다.&nbsp;</p>
+            <p>PHP의&nbsp; 수퍼전역변수(superglobal variables)는 다음과 같다:</p>
+            <ul>
+              <li>$GLOBALS</li>
+              <li>$_SERVER</li>
+              <li>$_REQUEST</li>
+              <li>$_POST</li>
+              <li>$_GET</li>
+              <li>$_FILES</li>
+              <li>$_ENV</li>
+              <li>$_COOKIE</li>
+              <li>$_SESSION</li>
+            </ul>
+            <hr>
+            <h2>PHP $GLOBALS</h2>
+            <p>$GLOBALS 는 PHP 스크립트 내의(또는 함수나 메서드 안에서) 어디서나 전역변수를 접근할 때 사용하는 PHP
+              수퍼전역변수(super global variable)이다.&nbsp;&nbsp; </p>
+            <p>PHP 는 모든 전역변수들을 $GLOBALS[<i>index</i>] 라는 배열에 저장합니다. 여기에서&nbsp; <em>index</em>
+              는 변수의 이름을 말합니다.&nbsp;</p>
+            <p>아레의 예는 수퍼전역변수 $GLOBALS 를 사용하는 방법을 보여줍니다. :</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php <br>
+                $x = 75; <br>
+                $y = 25;<br>
+                &nbsp;<br>
+                function addition() <br>
+                { <br>
+                $GLOBALS['z'] = $GLOBALS['x'] + $GLOBALS['y']; <br>
+                }<br>
+                &nbsp;<br>
+                addition(); <br>
+                echo $z; <br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_global_global">Run
+                example »</a> </div>
+            <p>위의 예애서 ,z 는 $GLOBALS 배열 내에 있는 변수이므로, 함수 외부에서도 접근이 가능하다! </p>
+            <hr>
+            <h2>PHP $_SERVER</h2>
+            <p>$_SERVER 는 헤더, 경로, 그리고 스크립트 위치에 대한 정보를 담고 있는 PHP 수퍼전역변수이다. </p>
+            <p>아래의 예는 $_SERVER 내의 일부 요소들을 사용하는 방법을 보여준다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php <br>
+                echo $_SERVER['PHP_SELF'];<br>
+                echo "&lt;br&gt;";<br>
+                echo $_SERVER['SERVER_NAME'];<br>
+                echo "&lt;br&gt;";<br>
+                echo $_SERVER['HTTP_HOST'];<br>
+                echo "&lt;br&gt;";<br>
+                echo $_SERVER['HTTP_REFERER'];<br>
+                echo "&lt;br&gt;";<br>
+                echo $_SERVER['HTTP_USER_AGENT'];<br>
+                echo "&lt;br&gt;";<br>
+                echo $_SERVER['SCRIPT_NAME'];<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_global_server">Run
+                example »</a> </div>
+            <p>다음의 표는 $_SERVER 안에 올 수 있는 가장 중요한 요소들 목록입니다.:</p>
+            <table class="w3-table-all  notranslate">
+              <tbody>
+                <tr>
+                  <th style="width:35%">Element/Code</th>
+                  <th style="width:65%">Description</th>
+                </tr>
+                <tr>
+                  <td>$_SERVER['PHP_SELF']</td>
+                  <td>Returns the filename of the currently executing script</td>
+                </tr>
+                <tr>
+                  <td>$_SERVER['GATEWAY_INTERFACE']</td>
+                  <td>Returns the version of the Common Gateway Interface (CGI)
+                    the server is using</td>
+                </tr>
+                <tr>
+                  <td>$_SERVER['SERVER_ADDR']</td>
+                  <td>Returns the IP address of the host server</td>
+                </tr>
+                <tr>
+                  <td>$_SERVER['SERVER_NAME']</td>
+                  <td>Returns the name of the host server (such as
+                    www.w3schools.com)</td>
+                </tr>
+                <tr>
+                  <td>$_SERVER['SERVER_SOFTWARE']</td>
+                  <td>Returns the server identification string (such as
+                    Apache/2.2.24)</td>
+                </tr>
+                <tr>
+                  <td>$_SERVER['SERVER_PROTOCOL']</td>
+                  <td>Returns the name and revision of the information protocol
+                    (such as HTTP/1.1)</td>
+                </tr>
+                <tr>
+                  <td>$_SERVER['REQUEST_METHOD']</td>
+                  <td>Returns the request method used to access the page (such
+                    as POST)</td>
+                </tr>
+                <tr>
+                  <td>$_SERVER['REQUEST_TIME']</td>
+                  <td>Returns the timestamp of the start of the request (such as
+                    1377687496)</td>
+                </tr>
+                <tr>
+                  <td>$_SERVER['QUERY_STRING']</td>
+                  <td>Returns the query string if the page is accessed via a
+                    query string</td>
+                </tr>
+                <tr>
+                  <td>$_SERVER['HTTP_ACCEPT']</td>
+                  <td>Returns the Accept header from the current request </td>
+                </tr>
+                <tr>
+                  <td>$_SERVER['HTTP_ACCEPT_CHARSET']</td>
+                  <td>Returns the Accept_Charset header from the current request
+                    (such as utf-8,ISO-8859-1)</td>
+                </tr>
+                <tr>
+                  <td>$_SERVER['HTTP_HOST']</td>
+                  <td>Returns the Host header from the current request </td>
+                </tr>
+                <tr>
+                  <td>$_SERVER['HTTP_REFERER']</td>
+                  <td>Returns the complete URL of the current page (not reliable
+                    because not all user-agents support it)</td>
+                </tr>
+                <tr>
+                  <td>$_SERVER['HTTPS']</td>
+                  <td>Is the script queried through a secure HTTP protocol</td>
+                </tr>
+                <tr>
+                  <td>$_SERVER['REMOTE_ADDR']</td>
+                  <td>Returns the IP address from where the user is viewing the
+                    current page</td>
+                </tr>
+                <tr>
+                  <td>$_SERVER['REMOTE_HOST']</td>
+                  <td>Returns the Host name from where the user is viewing the
+                    current page</td>
+                </tr>
+                <tr>
+                  <td>$_SERVER['REMOTE_PORT']</td>
+                  <td>Returns the port being used on the user's machine to
+                    communicate with the web server</td>
+                </tr>
+                <tr>
+                  <td>$_SERVER['SCRIPT_FILENAME']</td>
+                  <td>Returns the absolute pathname of the currently executing
+                    script</td>
+                </tr>
+                <tr>
+                  <td>$_SERVER['SERVER_ADMIN']</td>
+                  <td>Returns the value given to the SERVER_ADMIN directive in
+                    the web server configuration file (if your script runs on a
+                    virtual host, it will be the value defined for that virtual
+                    host) (such as someone@w3schools.com)</td>
+                </tr>
+                <tr>
+                  <td>$_SERVER['SERVER_PORT']</td>
+                  <td>Returns the port on the server machine being used by the
+                    web server for communication (such as 80)</td>
+                </tr>
+                <tr>
+                  <td>$_SERVER['SERVER_SIGNATURE']</td>
+                  <td>Returns the server version and virtual host name which are
+                    added to server-generated pages</td>
+                </tr>
+                <tr>
+                  <td>$_SERVER['PATH_TRANSLATED']</td>
+                  <td>Returns the file system based path to the current script</td>
+                </tr>
+                <tr>
+                  <td>$_SERVER['SCRIPT_NAME']</td>
+                  <td>Returns the path of the current script</td>
+                </tr>
+                <tr>
+                  <td>$_SERVER['SCRIPT_URI']</td>
+                  <td>Returns the URI of the current page</td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <hr>
+            <h2>PHP $_REQUEST</h2>
+            <p>PHP $_REQUEST 는 HTML form 을 제출한 다음 데이타를 수집하는데 사용됩니다.</p>
+            <p>아래의 예는 input 필드와 submit 버튼을 갖는 form 을 보여줍니다. 사용자가 "Submit"을 클릭하여
+              데이타를 제출하면, 폼 데이타는 &lt;form&gt; 태그의 action 속성에 지정된 파일로 보내집니다. 이 예에서
+              form 데이타를 처리하기 위해서 이 <strong>파일 자신</strong>을 지정합니다. form 데이타를 처리에
+              다른 PHP 파일을 사용하려면, 그것을 선택한 파일 이름으로 대체합니다. 그리고, input 필드 값을 수집하는데
+              수퍼전역변수&nbsp;$_REQUEST 를 사용할수 있습니다. :</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;html&gt;<br>
+                &lt;body&gt;<br>
+                <br>
+                &lt;form method="post" action="&lt;?php echo
+                $_SERVER['PHP_SELF'];?&gt;"&gt;<br>
+                Name: &lt;input type="text" name="fname"&gt;<br>
+                &lt;input type="submit"&gt;<br>
+                &lt;/form&gt;<br>
+                <br>
+                &lt;?php <br>
+                $name = $_REQUEST['fname']; <br>
+                echo $name; <br>
+                ?&gt;<br>
+                <br>
+                &lt;/body&gt;<br>
+                &lt;/html&gt;</div>
+              <br>
+              <a class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_global_request"
+
+                target="_blank">Run example »</a> </div>
+            <br>
+            <hr>
+            <h2>PHP $_POST</h2>
+            <p>PHP $_POST 는 HTML form 이&nbsp;method="post" 로 제출 되었을 때 form 데이타를
+              수집하는데 널리 사용되며, $_POST는 또한 변수를 전달할 때도 널리 사용됩니다.&nbsp;</p>
+            <p>아래의 예는 input 필드와 submit 버튼을 갖는 form 을 보여줍니다. 사용자가 "Submit"을 클릭하여
+              데이타를 제출하면, 폼 데이타는 &lt;form&gt; 태그의 action 속성에 지정된 파일로 보내집니다. 이 예에서
+              form 데이타를 처리하기 위해서 이 <strong>파일 자신</strong>을 지정합니다. form 데이타를 처리에
+              다른 PHP 파일을 사용하려면, 그 파일 이름으로 대체합니다. 그리고, input 필드 값을 수집하는데
+              수퍼전역변수&nbsp;$_POST 를 사용할수 있습니다. :</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;html&gt;<br>
+                &lt;body&gt;<br>
+                <br>
+                &lt;form method="post" action="&lt;?php echo
+                $_SERVER['PHP_SELF'];?&gt;"&gt;<br>
+                Name: &lt;input type="text" name="fname"&gt;<br>
+                &lt;input type="submit"&gt;<br>
+                &lt;/form&gt;<br>
+                <br>
+                &lt;?php <br>
+                $name = $_POST['fname']; <br>
+                echo $name; <br>
+                ?&gt;<br>
+                <br>
+                &lt;/body&gt;<br>
+                &lt;/html&gt;</div>
+              <br>
+              <a class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_global_post"
+
+                target="_blank">Run example »</a> </div>
+            <br>
+            <hr>
+            <h2>PHP $_GET</h2>
+            <p>PHP $_GET 는 HTML form 이&nbsp;method="get" 로 제출 되었을 때 form 데이타를
+              수집하는데 널리 사용됩니다.</p>
+            <p>$_GET 는 또한 URL 에 전달되는 데이타를 수집할 수 있읍니다. </p>
+            <p>매개변수를 사용하여 hyperlink 가 포합된&nbsp;HTML&nbsp; 페이지가 있다고 가정합니다.:</p>
+            <div class="code notranslate">
+              <div> &lt;html&gt;<br>
+                &lt;body&gt;<br>
+                <br>
+                &lt;a
+                href="test_get.php?subject=PHP&amp;web=W3schools.com"&gt;Test
+                $GET&lt;/a&gt;<br>
+                <br>
+                &lt;/body&gt;<br>
+                &lt;/html&gt; </div>
+            </div>
+            <p>사용자가 링크 "Test $GET"를 클릭하면, 매개변수&nbsp; "subject" 와 "web"가&nbsp;
+              "test_get.php" 로 보내지고, "test_get.php" 에서는 그들의 값을 $_GET 를 통해서 접근할 수
+              있습니다. &nbsp; &nbsp;</p>
+            <p>다음의 예는 "test_get.php" 코드를 보여줍니다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;html&gt;<br>
+                &lt;body&gt;<br>
+                <br>
+                &lt;?php <br>
+                echo "Study " . $_GET['subject'] . " at " . $_GET['web'];<br>
+                ?&gt;<br>
+                <br>
+                &lt;/body&gt;<br>
+                &lt;/html&gt;</div>
+              <br>
+              <a class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_global_get"
+
+                target="_blank">Run example »</a> </div>
+            <p><strong>Tip:</strong> You will learn more about $_POST and $_GET
+              in the PHP Forms chapter.</p>
+            <br>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="13.%20Sorting%20Arrays.html">«
+                Previous</a> <a class="w3-right w3-btn" href="15.%20Form%20Handling.html">Next  »</a> </div>
+            <hr> </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </body>
+</html>

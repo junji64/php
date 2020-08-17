@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>20. Include / Require Files</title>
+    <style>a.menu_html_intro{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,PHP,SQL,tutorial,programming,development,Web building,Webmaster">
+    <link rel="stylesheet" href="w3.css">
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>20. <span class="color_h1">Include / Require Files</span></h1>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="19.%205%20Date%20and%20Time.html">«
+                Previous</a> <a class="w3-right w3-btn" href="21.%20File.html">Next  »</a> </div>
+            <hr>
+            <p class="intro">include (또는 require) 문(statement)은 지정된 파일에 있는 모든
+              텍스트/코드/마크업들을 가져다가 include 문을 사용한 파일에 복사합니다. </p>
+            <p class="intro">파일을 include 하는 것은 웹사이트의 여러 페이지에 같은 PHP, HTML,
+              또는&nbsp;텍스트를 포함시키는데 매우 유용합니다.</p>
+            <hr>
+            <h2>PHP include 와 require Statements</h2>
+            <p>include 또는 require 문을 사용하여, 하나의 PHP 파일의 내용을 또 다른 PHP 파일에 삽입할수 있다
+              (서버가 그것을 실행하기 전에).</p>
+            <p><b>include 와 require 문은 실패할 경우를 제외하고는 똑 같다.:</b></p>
+            <ul>
+              <li>require 는 치명적 에러(E_COMPILE_ERROR)를 생성하고 스크립트를 중지한다.</li>
+              <li>include 는 경고(E_WARNING)를 생성하고 스크립트는 계속된다. </li>
+            </ul>
+            <p>따라서, include 파일이 없는 경우에도 계속 실행이 되고 사용자에게 출력을 보여주고 싶으며 include 문을
+              사용합니다. 그렇지 않으면, FrameWork, CMS, 또는 복잡한 PHP 응용 코딩의 경우 실행의 흐름에
+              키(key) 파일을 포함시키기 위해서 항상 require 문을 사용한다. 이는 단지 하나의 키 파일이 실수로 누락된
+              경우에, 당신의 응용 프로그램의 보안과 무결성을 위태롭게 하지 않는데 도움을 준다.&nbsp;</p>
+            <p>파일을 Including 하는 것은 작업을 많이 절약하게 해 줍니다. 이는 당신의 모든 웹페이지를 위한 표준 머리글,
+              바닥글, 또는 메뉴 파일을 만들수 있다는 것을 의미합니다. 그리고, 머리글이 업데이트 될 필요가 있을 때는, 단지
+              머리글 include 파일만을 업데이트하면 됩니다.&nbsp;</p>
+            <h3>Syntax</h3>
+            <div class="w3-code w3-border  notranslate">
+              <div> include '<i>filename</i>';<br>
+                <br>
+                or<br>
+                <br>
+                require '<i>filename</i>';</div>
+            </div>
+            <br>
+            <hr>
+            <h2>PHP include Examples</h2>
+            <h3>Example 1</h3>
+            <p>"footer.php" 라고 부르는 표준 바닥 글 파일이 있으며, 다음과 같다고 가정하자:</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> &lt;?php<br>
+                echo "&lt;p&gt;Copyright &amp;copy; 1999-" . date("Y") . "
+                W3Schools.com&lt;/p&gt;";<br>
+                ?&gt;</div>
+            </div>
+            <p>페이지에 그 바닥 글 파일을 포함하려면, include 문을 사용한다:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;html&gt;<br>
+                &lt;body&gt;<br>
+                <br>
+                &lt;h1&gt;Welcome to my home page!&lt;/h1&gt;<br>
+                &lt;p&gt;Some text.&lt;/p&gt;<br>
+                &lt;p&gt;Some more text.&lt;/p&gt;<br>
+                &lt;?php include 'footer.php';?&gt;<br>
+                <br>
+                &lt;/body&gt;<br>
+                &lt;/html&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=demo_include1">Run
+                example »</a> </div>
+            <br>
+            <hr>
+            <h3>Example 2</h3>
+            <p>"menu.php" 라고 부르는 표준 메뉴 파일이 있다고 가정하자 :</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> &lt;?php<br>
+                echo '&lt;a href="/default.asp"&gt;Home&lt;/a&gt; -<br>
+                &lt;a href="/html/default.asp"&gt;HTML Tutorial&lt;/a&gt; -<br>
+                &lt;a href="/css/default.asp"&gt;CSS Tutorial&lt;/a&gt; -<br>
+                &lt;a href="/js/default.asp"&gt;JavaScript Tutorial&lt;/a&gt; -<br>
+                &lt;a href="default.asp"&gt;PHP Tutorial&lt;/a&gt;';<br>
+                ?&gt;</div>
+            </div>
+            <p>웹사이트의 모든 페이지는 메뉴 파일을 사용해야 합니다. 여기에 그것이 어떻게 가능한 지를 보여줍니다 (메뉴가 나중에
+              CSS로 쉽게 스타일될 수 있도록 &lt;div&gt; 요소를 사용합니다).:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;html&gt;<br>
+                &lt;body&gt;<br>
+                <br>
+                &lt;div class="menu"&gt;<br>
+                &lt;?php include 'menu.php';?&gt;<br>
+                &lt;/div&gt;<br>
+                <br>
+                &lt;h1&gt;Welcome to my home page!&lt;/h1&gt;<br>
+                &lt;p&gt;Some text.&lt;/p&gt;<br>
+                &lt;p&gt;Some more text.&lt;/p&gt;<br>
+                <br>
+                &lt;/body&gt;<br>
+                &lt;/html&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=demo_include2">Run
+                example »</a> </div>
+            <br>
+            <hr>
+            <h3>Example 3</h3>
+            <p>몇 개의 변수가 정의된 "vars.php" 라는 파일이 있다고 가정하자 :</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> &lt;?php<br>
+                $color='red';<br>
+                $car='BMW';<br>
+                ?&gt;</div>
+            </div>
+            <p>그러면, "vars.php" 파일을 포함함으로써 함수 호출에 그 변수들이 사용될 수 있다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;html&gt;<br>
+                &lt;body&gt;<br>
+                <br>
+                &lt;h1&gt;Welcome to my home page!&lt;/h1&gt;<br>
+                &lt;?php include 'vars.php';<br>
+                echo "I have a $color $car.";<br>
+                ?&gt;<br>
+                <br>
+                &lt;/body&gt;<br>
+                &lt;/html&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=demo_include3">Run
+                example »</a> </div>
+            <br>
+            <hr>
+            <h2>PHP include vs. require</h2>
+            <p>require 문 또한&nbsp; PHP 코드 안에 파일을 포함시키는데 사용된다.</p>
+            <p>그러나, include 와 require 사이에는 큰 차이가 하나 있다;&nbsp;&nbsp; <strong>include</strong>
+              문으로 파일 하나를 포함시키고, PHP가 그것을 찾을 수 없을 때, 스크립트는 계속 실행된다. :</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;html&gt;<br>
+                &lt;body&gt;<br>
+                <br>
+                &lt;h1&gt;Welcome to my home page!&lt;/h1&gt;<br>
+                &lt;?php include 'noFileExists.php';<br>
+                echo "I have a $color $car.";<br>
+                ?&gt;<br>
+                <br>
+                &lt;/body&gt;<br>
+                &lt;/html&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=demo_include4">Run
+                example »</a> </div>
+            <p><strong>require</strong> 문을 사용하여 같은 예제를 수행 할 때, require 문이 치명적
+              에러를 반환하여, 스크립트 실행이 멈추기 때문에 echo 문이 실행 되지 않을 것이다. :</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;html&gt;<br>
+                &lt;body&gt;<br>
+                <br>
+                &lt;h1&gt;Welcome to my home page!&lt;/h1&gt;<br>
+                &lt;?php require 'noFileExists.php';<br>
+                echo "I have a $color $car.";<br>
+                ?&gt;<br>
+                <br>
+                &lt;/body&gt;<br>
+                &lt;/html&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=demo_include5">Run
+                example »</a> </div>
+            <br>
+            <div class="w3-panel w3-note">
+              <p>&nbsp;응용프로그램에 파일이 필요할 경우에는&nbsp;<strong>require</strong> 를
+                사용하시오. <br>
+                <br>
+                &nbsp; 파일이 필수는 아니며, 응용프로그램이 파일을 찾을 수 없더라도 계속 실행되야 한다면 <strong>include</strong>
+                를 사용하시오.</p>
+            </div>
+            <br>
+            <br>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="19.%205%20Date%20and%20Time.html">«
+                Previous</a> <a class="w3-right w3-btn" href="21.%20File.html">Next  »</a> </div>
+            <hr> </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </body>
+</html>

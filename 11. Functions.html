@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>11. Functions</title>
+    <style>a.menu_html_intro{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,PHP,SQL,tutorial,programming,development,Web building,Webmaster">
+    <link rel="stylesheet" href="w3.css">
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>11. <span class="color_h1">Functions</span></h1>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="10.%20while%20Loops.html">«
+                Previous</a> <a class="w3-right w3-btn" href="12.%20Arrays.html">Next »</a> </div>
+            <hr>
+            <p class="intro">PHP 의 진정한 파워는 그 함수들에서 나오며, 1000 개 이상의 내장된 함수를
+              가진다.&nbsp;</p>
+            <hr>
+            <h2>PHP User Defined Functions</h2>
+            <p>내장된 PHP 함수 이외에 우리 자신의 함수를 만들 수 있다.</p>
+            <p>함수(function)는 프로그램에서 반복적으로 사용할 수 있는 문장의 블록을 말한다. </p>
+            <p>함수는 페이지가 로드되자 마자 실행되지는 않고, 그 함수의 호출에 의해서 실행됩니다.</p>
+            <hr>
+            <h2>PHP 에서 사용자 정의 함수 만들기</h2>
+            <p>사용자 정의 함수 선언은 단어 "function" 로 시작한다. :</p>
+            <h3>Syntax</h3>
+            <div class="w3-code w3-border  notranslate">
+              <div> function <i>functionName</i>()<br>
+                {<br>
+                <i>code to be executed</i>;<br>
+                } </div>
+            </div>
+            <p><strong>Note:</strong> 함수의 이름은 문자나 밑줄(숫자는 안 됨)로 시작 할 수 있다.</p>
+            <p><strong>Tip:</strong> 함수의 이름으로 함수가 하는 내용을 반영하는 이름을 지정 !!&nbsp;</p>
+            <table class="lamp">
+              <tbody>
+                <tr>
+                  <th style="width:34px"><img src="http://www.w3schools.com/images/lamp.jpg"
+
+                      alt="Note" style="height:32px;width:32px"></th>
+                  <td>&nbsp;함수의 이름은 대소문자 구분하지 않음(case-insensitive)을 기억하세요.&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>아래의 예에서 "writeMsg()"라는 이름의 함수를 생성합니다. 여는 중괄호 ( { ) 는 함수 코드의 시작을
+              닫는 중괄호 ( } ) 는 함수의 끝을 나타냅니다. 함수는 "Hello world!"를 출력합니다. 함수를 호출하기
+              위해서는, 단지 그 이름을 쓰면 됩니다. :</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                function writeMsg()<br>
+                {<br>
+                echo "Hello world!";<br>
+                }<br>
+                <br>
+                writeMsg(); // call the function<br>
+                ?&gt;</div>
+              <br>
+              <a target="_blank" class="showbtn" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_function1">
+                Run example »</a> </div>
+            <br>
+            <hr>
+            <h2>PHP <strong>함수 인수</strong>(Arguments)</h2>
+            <p>인수를 통해서 함수에 정보가 전달 될 수 있다. 인수(argument)는 단지 변수(variable)와
+              같다.&nbsp;</p>
+            <p>인수는 함수 이름 다음에 괄호 안에 명시된다. 원하는 만큼 많은 인수를(단지 쉼표로 분리하여) 추가 할 수
+              있다.&nbsp;</p>
+            <p>다음 예제는 하나의 인수 ($fname)를 갖는 함수이다. familyName() 함수가 호출 될 때, 이름을
+              전달하며 그 이름(e.g. Jani)이 함수 안에서 사용된다 (이 예제는 같은 성(last name)이지만 여러 다른
+              이름(first names)을 출력한다:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                function familyName($fname)<br>
+                {<br>
+                echo "$fname Refsnes.&lt;br&gt;";<br>
+                }<br>
+                <br>
+                familyName("Jani");<br>
+                familyName("Hege");<br>
+                familyName("Stale");<br>
+                familyName("Kai Jim");<br>
+                familyName("Borge");<br>
+                ?&gt;</div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_function2">
+                Run example »</a> </div>
+            <p>다음 예제는 두 개의 인수($fname 과 $year)를 갖는 함수를 갖는다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                function familyName($fname,$year)<br>
+                {<br>
+                echo "$fname Refsnes. Born in $year &lt;br&gt;";<br>
+                }<br>
+                <br>
+                familyName("Hege","1975");<br>
+                familyName("Stale","1978");<br>
+                familyName("Kai Jim","1983");<br>
+                ?&gt;</div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_function3">
+                Run example »</a> </div>
+            <br>
+            <hr>
+            <h2>PHP 기본 인수 값(Default Argument Value)</h2>
+            <p>다음 예제는 기본 매개변수를 사용하는 방법을 보여줍니다. 함수 setHeight() 를 인수 없이 호출하면 인수로
+              기본 값을 사용합니다. :</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                function setHeight($minheight=50)<br>
+                {<br>
+                echo "The height is : $minheight &lt;br&gt;";<br>
+                }<br>
+                <br>
+                setHeight(350);<br>
+                setHeight(); // will use the default value of 50<br>
+                setHeight(135);<br>
+                setHeight(80);<br>
+                ?&gt;</div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_function4">
+                Run example »</a> </div>
+            <br>
+            <hr>
+            <h2>PHP Functions - Returning values</h2>
+            <p>함수가 값을 반환하도록 하려면,&nbsp; return&nbsp; 문장을 사용합니다. :&nbsp;</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                function sum($x,$y)<br>
+                {<br>
+                $z=$x+$y;<br>
+                return $z;<br>
+                }<br>
+                <br>
+                echo "5 + 10 = " . sum(5,10) . "&lt;br&gt;";<br>
+                echo "7 + 13 = " . sum(7,13) . "&lt;br&gt;";<br>
+                echo "2 + 4 = " . sum(2,4);<br>
+                ?&gt;</div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_function5">
+                Run example »</a> </div>
+            <br>
+            <br>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="10.%20while%20Loops.html">«
+                Previous</a> <a class="w3-right w3-btn" href="12.%20Arrays.html">Next »</a> </div>
+            <hr> </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </body>
+</html>

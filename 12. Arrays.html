@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>12. 배열(Arrays)</title>
+    <style>a.menu_html_intro{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,PHP,SQL,tutorial,programming,development,Web building,Webmaster">
+    <link rel="stylesheet" href="w3.css">
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>12. <span class="color_h1">배열(Arrays)</span></h1>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="11.%20Functions.html">«
+                Previous</a> <a class="w3-right w3-btn" href="13.%20Sorting%20Arrays.html">Next  »</a> </div>
+            <hr>
+            <p class="intro">배열은 하나의 변수에 여러 값을 저장합니다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                $cars=array("Volvo","BMW","Toyota");<br>
+                echo "I like " . $cars[0] . ", " . $cars[1] . " and " . $cars[2]
+                . ".";<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_array_num">Run
+                example »</a> </div>
+            <hr>
+            <h2>What is an Array?</h2>
+            <p>배열(array)은 한번에 하나 이상의 값들을 담을 수 있는 특별한 변수입니다. </p>
+            <p>만약 항목들의 목록(예를 들어 자동차 이름 목록)을 가지고 있다면, 하나의 변수에 차 하나를 저장하는 것은 다음과
+              같이 할 수 있습니다. :</p>
+            <div class="code notranslate">
+              <div> $cars1="Volvo";<br>
+                $cars2="BMW";<br>
+                $cars3="Toyota"; </div>
+            </div>
+            <p>그러나, 당신이 자동차들을 하나씩 살펴보면서 특정한 차 하나를 찾고자 한다면? 그리고 차가 3개가 아니라 300개
+              라면?</p>
+            <p>해답은 배열을 만드는 것입니다. </p>
+            <p>배열은 하나의 이름에 여러 값들을 저장할 수 있고, 인덱스 번호를&nbsp; 참조하여 값에 접근 할 수 있습니다. </p>
+            <hr>
+            <h2>PHP에서 배열 만들기</h2>
+            <p>PHP 에서는 array() 함수를 사용하여 배열을 만든다.:</p>
+            <div class="code notranslate">
+              <div> array();</div>
+            </div>
+            <p>PHP 에는 배열의 세 가지 유형이 있다:</p>
+            <ul>
+              <li><b>Indexed arrays</b> - 숫자 인덱스를 갖는 배열</li>
+              <li><b>Associative arrays</b> - 이름 키(named keys)를 갖는 배열 </li>
+              <li><b>Multidimensional arrays</b> - 하나 이상의 배열을 포함하는 배열</li>
+            </ul>
+            <hr>
+            <h2>PHP Indexed Arrays</h2>
+            <p>인덱스 배열을 만드는 두 가지 방법이 있습니다. :</p>
+            <p>인덱스(index)는 자동적으로 할당될 수 있습니다. (인덱스는 항상 0부터 시작) :</p>
+            <div class="code notranslate">
+              <div> $cars=array("Volvo","BMW","Toyota");</div>
+            </div>
+            <p>또는 인덱스를 수동으로 할당 할 수 도 있습니다.:</p>
+            <div class="code notranslate">
+              <div> $cars[0]="Volvo";<br>
+                $cars[1]="BMW";<br>
+                $cars[2]="Toyota"; </div>
+            </div>
+            <p>다음의 예는, $cars 라는 이름의 인덱스 배열을 생성하고, 세 개의 요소를 할당한 다음, 배열의 값들에 포함된
+              텍스트를 출력합니다. :</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                $cars=array("Volvo","BMW","Toyota");<br>
+                echo "I like " . $cars[0] . ", " . $cars[1] . " and " . $cars[2]
+                . ".";<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_array_num">Run
+                example »</a> </div>
+            <br>
+            <hr>
+            <h2><strong>배열의 길이 얻기</strong> - count() <strong>함수</strong></h2>
+            <p>count() 함수는 배열의 길이(요소의 개수)를 반환하는데 사용됩니다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                $cars=array("Volvo","BMW","Toyota");<br>
+                echo count($cars);<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_array_length">Run
+                example »</a> </div>
+            <br>
+            <hr>
+            <h2>인덱스 Array 에서의 루프 반복</h2>
+            <p>인덱스 배열의 모든 값들을 출력하는데, 다음과 같이 for 루프를 사용할 수 있다.: </p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                $cars=array("Volvo","BMW","Toyota");<br>
+                $arrlength=count($cars);<br>
+                <br>
+                for($x=0;$x&lt;$arrlength;$x++)<br>
+                &nbsp; {<br>
+                &nbsp; echo $cars[$x];<br>
+                &nbsp; echo "&lt;br&gt;";<br>
+                &nbsp; }<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_array_num_loop">Run
+                example »</a> </div>
+            <br>
+            <hr>
+            <h2>PHP 연계 배열(Associative Arrays)</h2>
+            <p>연계 배열(Associative arrays)은 값을 할당하는데 이름 키(named keys)를 사용하는 배열이다.</p>
+            <p>연계 배열을 생성하는 두 가지 방법이 있습니다.:&nbsp;</p>
+            <div class="code notranslate">
+              <div> $age=array("Peter"=&gt;"35","Ben"=&gt;"37","Joe"=&gt;"43");</div>
+            </div>
+            <p>or:</p>
+            <div class="code notranslate">
+              <div> $age['Peter']="35";<br>
+                $age['Ben']="37";<br>
+                $age['Joe']="43"; </div>
+            </div>
+            <p>그러면, 이름 키는 다음처럼 스크립트에서 사용될 수 있다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                $age=array("Peter"=&gt;"35","Ben"=&gt;"37","Joe"=&gt;"43");<br>
+                echo "Peter is " . $age['Peter'] . " years old.";<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_array_assoc">Run
+                example »</a> </div>
+            <br>
+            <hr>
+            <h2>연계 배열(Associative Array)을 통한 루프 반복</h2>
+            <p>연계 배열의 모든 값들을 반복하여 출력하려면,&nbsp; 다음과 같이 foreach 루프를 사용할 수 있다. :</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                $age=array("Peter"=&gt;"35","Ben"=&gt;"37","Joe"=&gt;"43");<br>
+                <br>
+                foreach($age as $x=&gt;$x_value)<br>
+                &nbsp; {<br>
+                &nbsp; echo "Key=" . $x . ", Value=" . $x_value;<br>
+                &nbsp; echo "&lt;br&gt;";<br>
+                &nbsp; }<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_array_assoc_loop">Run
+                example »</a> </div>
+            <br>
+            <hr>
+            <h2>PHP - Multidimensional Arrays</h2>
+            때때로 하나 이상의 키(key)로 값을 저장하고 싶을 수 있습니다.
+            <p class="intro">이는 다차원 배열(multidimensional arrays)에 저장될 수 있다.</p>
+            <hr>
+            <p>다차원 배열은 하나 이상의 배열을 포함하는 배열이다.&nbsp;</p>
+            <p>PHP 는 둘, 셋, 넷, 다섯, 그리고 그 이상의 다차원 배열을 이해한다. 그러나 세 가지 단계 보다 더 깊은
+              배열은 대부분의 사람에게 관리가 어렵다.&nbsp;&nbsp;</p>
+            <div class="w3-panel w3-note">
+              <strong>&nbsp; 배열의 차원은 요소를 선택하는데 필요한 인덱스의 수를 나타냅니다.&nbsp;</strong>
+              <ul>
+                <li>2 차원 배열의 경우, 요소를 선택하기 위해서는 두 개의 인덱스가 필요</li>
+                <li>3 차원 배열의 경우, 요소를 선택하기 위해서는 세 개의 인덱스가 필요</li>
+              </ul>
+            </div>
+            <br>
+            <hr>
+            <h2>PHP - 2<strong>-차원</strong> Arrays</h2>
+            <p>2 차원 배열은 <strong>"배열들의 배열</strong>"이다. (3 차원 배열은 "<strong>배열들의
+                배열들의 배열</strong>").</p>
+            <p>먼저, 다음 표를 살펴보자:</p>
+            <table class="w3-table-all notranslate">
+              <tbody>
+                <tr>
+                  <th>Name</th>
+                  <th>Stock</th>
+                  <th>Sold</th>
+                </tr>
+                <tr>
+                  <td>Volvo</td>
+                  <td>22</td>
+                  <td>18</td>
+                </tr>
+                <tr>
+                  <td>BMW</td>
+                  <td>15</td>
+                  <td>13</td>
+                </tr>
+                <tr>
+                  <td>Saab</td>
+                  <td>5</td>
+                  <td>2</td>
+                </tr>
+                <tr>
+                  <td>Land Rover</td>
+                  <td>17</td>
+                  <td>15</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>위의 표는 다음과 같이 2 차원 배열에 저장할 수 있다.:</p>
+            <div class="code notranslate">
+              <div> $cars = array<br>
+                &nbsp; (<br>
+                &nbsp; array("Volvo",22,18),<br>
+                &nbsp; array("BMW",15,13),<br>
+                &nbsp; array("Saab",5,2),<br>
+                &nbsp; array("Land Rover",17,15)<br>
+                &nbsp; );</div>
+            </div>
+            <p>이제 2 차원 $cars 배열은 4개의 배열을 포함하며, 두 개의 인덱스(행과 열)을 갖는다. </p>
+            <p>$cars 배열의 요소에 접근하려면, 두 개의 인덱스(행과 열)를 지정해야만 한다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                echo $cars[0][0].": In stock: ".$cars[0][1].", sold:
+                ".$cars[0][2].".&lt;br&gt;";<br>
+                echo $cars[1][0].": In stock: ".$cars[1][1].", sold:
+                ".$cars[1][2].".&lt;br&gt;";<br>
+                echo $cars[2][0].": In stock: ".$cars[2][1].", sold:
+                ".$cars[2][2].".&lt;br&gt;";<br>
+                echo $cars[3][0].": In stock: ".$cars[3][1].", sold:
+                ".$cars[3][2].".&lt;br&gt;";<br>
+                ?&gt;</div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_array_multi">Run
+                example »</a> </div>
+            <p>우리는 또한 $cars 배열의 요소를 얻기 위해 For 루프 안에 또 다른 For 루프를 넣을 수 있다. (우리는
+              여전히 두 개의 인덱스를 가리키도록 해야 한다.):</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                for ($row = 0; $row &lt; 4; $row++)<br>
+                &nbsp; {<br>
+                &nbsp; echo "&lt;p&gt;&lt;b&gt;Row number
+                $row&lt;/b&gt;&lt;/p&gt;";<br>
+                &nbsp; echo "&lt;ul&gt;";<br>
+                &nbsp; for ($col = 0; $col &lt; 3; $col++)<br>
+                &nbsp;&nbsp;&nbsp; {<br>
+                &nbsp;&nbsp;&nbsp; echo
+                "&lt;li&gt;".$cars[$row][$col]."&lt;/li&gt;";<br>
+                &nbsp;&nbsp;&nbsp; }<br>
+                &nbsp; echo "&lt;/ul&gt;";<br>
+                &nbsp; }<br>
+                ?&gt;</div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_array_multi2">Run
+                example »</a> </div>
+            <br>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="11.%20Functions.html">«
+                Previous</a> <a class="w3-right w3-btn" href="13.%20Sorting%20Arrays.html">Next  »</a> </div>
+            <hr> </div>
+        </div>
+      </div>
+      <br>
+    </div>
+    
+  </body>
+</html>
