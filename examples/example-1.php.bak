@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=EUC-KR" http-equiv="content-type">
+    <title>example-1</title>
+  </head>
+  <body> <br>
+    <h1>My first PHP page</h1>
+    <?php     echo "Hello World!";
+    ECHO "Hello World!";    Echo "Hello World";?>
+    <p><br>
+    </p>
+  </body>
+</html>
