@@ -2,7 +2,6 @@
 
 ## Introduction and Setting 
 
-[Ch. 1 : Introduction & installation](./PHP%20Introduction%20&%20Installation.htm)
-
-[Ch. 10 : Data Types](./PHP%20Sessions.html)
+[Ch. 1 : Introduction & installation](./1.%20Introduction.html)
+[Ch. 2 : Syntex](./2.%20Syntex.html)
 
