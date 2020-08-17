@@ -1,7 +1,5 @@
 # php
 
-## Introduction and Setting 
-
 [Ch. 1 : Introduction & installation](./1.%20Introduction.html)
 
 [Ch. 2 : Syntax](./2.%20Syntax.html)
@@ -53,3 +51,25 @@
 [Ch. 25 : Sessions](./25.%20Sessions.html)
 
 [Ch. 26 : Filters](./26.%20Filter.html)
+
+# MySQL
+
+[SQL-1 : Text-based SQL](./SQL-1.%20SQL.html)
+
+[SQL-2 : Using phpMyAdmin](https://www.siteground.com/tutorials/phpmyadmin/)
+
+[SQL-3 : MySQL Introduction](./SQL-3.PHP%20Introduction.html)
+
+[SQL-4 : MySQL 서버에 연결 / Database 와 Table 생성](./SQL-4.%20Connect%20to%20the%20MySQL%20Server.html)
+
+[SQL-5 : Insert Into](./SQL-5.%20Insert%20Into.html)
+
+[SQL-6 : Select](./SQL-6.%20Select.html)
+
+[SQL-7 : Where](./SQL-7.%20Where.html)
+
+[SQL-8 : Order By Keyword](./SQL-8.%20Order%20By%20Keyword.html)
+
+[SQL-9 : Update](./SQL-9.%20Update.html)
+
+[SQL-10 : Delete](./SQL-10.%20Delete.html)
