@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>SQL-8. Order By Keyword</title>
+    <style>a.menu_html_intro{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,PHP,SQL,tutorial,programming,development,Web building,Webmaster">
+    <link rel="stylesheet" href="w3.css">
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>SQL-8. <span class="color_h1">Order By Keyword</span></h1>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="SQL-7.%20Where.html">«
+                Previous</a> <a class="w3-right w3-btn" href="SQL-9.%20Update.html">Next  »</a> </div>
+            <hr>
+            <p class="intro">ORDER BY keyword 는 record set 에서 데이타를 정렬하는데 사용된다.</p>
+            <hr>
+            <h2>The ORDER BY Keyword</h2>
+            <p>ORDER BY keyword 는 record set 에서 데이타를 정렬하는데 사용된다.</p>
+            <p>ORDER BY keyword 는 기본적으로 레코드를 오름차순으로 정렬한다. </p>
+            <p>만약 레코드를 내림차순으로 정렬하고 싶다면, DESC keyword 를 사용할 수 있다.</p>
+            <h3>Syntax</h3>
+            <div class="w3-code w3-border   notranslate">
+              <div> SELECT column_name(s)<br>
+                FROM table_name<br>
+                ORDER BY column_name(s) ASC|DESC </div>
+            </div>
+            <p>SQL 에 대한 자세한 내용은 ==&gt; <a href="http://www.w3schools.com/sql/default.asp">SQL
+                tutorial</a>.</p>
+            <h3>Example</h3>
+            <p>다음의 예는 "Persons" 테이블에 저장된 모든 데이타를 선택하고 ,&nbsp; "Age" 열의 결과로
+              정렬한다.:</p>
+            <div class="w3-code w3-border   notranslate">
+              <div> &lt;?php<br>
+                $con=mysqli_connect("example.com","peter","abc123","my_db");<br>
+                // Check connection<br>
+                if (mysqli_connect_errno())<br>
+                &nbsp;&nbsp;{<br>
+                &nbsp; echo "Failed to connect to MySQL: " .
+                mysqli_connect_error();<br>
+                &nbsp;&nbsp;}<br>
+                <br>
+                $result = mysqli_query($con,"SELECT * FROM Persons ORDER BY
+                age");<br>
+                <br>
+                while($row = mysqli_fetch_array($result))<br>
+                &nbsp;&nbsp;{<br>
+                &nbsp;&nbsp;echo $row['FirstName'];<br>
+                &nbsp;&nbsp;echo " " . $row['LastName'];<br>
+                &nbsp;&nbsp;echo " " . $row['Age'];<br>
+                &nbsp;&nbsp;echo "&lt;br&gt;";<br>
+                &nbsp;&nbsp;}<br>
+                <br>
+                mysqli_close($con);<br>
+                ?&gt; </div>
+            </div>
+            <p>위의 코드의 출력을 다음과 같을 것이다:</p>
+            <div class="w3-code w3-border   notranslate">
+              <div> Glenn Quagmire 33<br>
+                Peter Griffin 35 </div>
+            </div>
+            <br>
+            <hr>
+            <h2>Order by Two Columns</h2>
+            <p>하나 이상의 열로 순서짖는 것도 가능하다. 하나 이상의 열로 순서를 지을 때는 두번째 열은 첫번째 열의 결과가 같을
+              경우에만 사용된다. :</p>
+            <div class="w3-code w3-border   notranslate">
+              <div> SELECT column_name(s)<br>
+                FROM table_name<br>
+                ORDER BY column1, column2 </div>
+            </div>
+            <br>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="SQL-7.%20Where.html">«
+                Previous</a> <a class="w3-right w3-btn" href="SQL-9.%20Update.html">Next  »</a> </div>
+            <hr></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

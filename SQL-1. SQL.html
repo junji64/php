@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>SQL introduction</title>
+  </head>
+  <body>
+    <h1>Database</h1>
+    <p>A database stores data in an organized way so that it can be searched and
+      retrieved later.</p>
+    <p> It should contain one or more tables. A table is much like a
+      spreadsheet, in that it's made up of rows and columns.</p>
+    <ul>
+      <li><strong>Database / Schema</strong></li>
+      <li><strong>Table<br>
+        </strong></li>
+      <li><strong>Row / Record</strong></li>
+      <li><strong>Column / Field</strong></li>
+    </ul>
+    <p><img src="https://cdn.tutsplus.com/net/authors/lalith-polepeddi/relational-databases-for-dummies-fig1.png"></p>
+    <p><br>
+    </p>
+    <h2>Database Management Systems (DBMS)</h2>
+    <p>A <dfn>Database Management System</dfn> (DBMS), is a software program
+      that enables the creation and management of databases.</p>
+    <p>Some of the more popular relational database management systems include:</p>
+    <ul>
+      <li>Microsoft Access</li>
+      <li>Filemaker</li>
+      <li>Microsoft SQL Server</li>
+      <li><strong>MySQL</strong></li>
+      <li>Oracle</li>
+    </ul>
+    <p><br>
+    </p>
+    <h2>Structured Query Language (SQL)</h2>
+    SQL is the language used to query all databases. It's simple to learn and
+    appears to do very little but is the heart of a successful database
+    application. Understanding SQL and using it efficiently is highly imperative
+    in designing an efficient database application. <br>
+    <br>
+    <br>
+    <h2>Practice (command lines vs GUI)</h2>
+    <strong>WINDOW ==&gt; START ==&gt; type "cmd" ==&gt; command window opens</strong><br>
+    <hr>
+        <b>Note: Adding path in MS-DOS</b><br>
+    <ul>
+        <li> SET PATH=%PATH%;C:\Bitnami\wampstack-?.?.?-0\mysql\bin </li>
+        or
+        <li> 제어판 => 시스템 및 보안 => 시스템 => 고급 시스템 설정 => 고급:환경변수 => (Dbl-Click) Path => 새로만들기 => C:\Bitname\wampstack-?.?.?-0\mysql\bin</li>
+        or 
+        <li> [Window+R] => sysdm.cpl ,3  => 환경변수 => (Dbl-Click) Path => 새로만들기 => C:\Bitname\wampstack-?.?.?-0\mysql\bin</li>
+    </ul>
+    <hr>
+    <br>
+    dos-prompt&gt; <strong>mysql -u root -p</strong><br>
+    Enter password :<strong>******</strong><br>
+    <br>
+    Welcome to the MySQL monitor.&nbsp; Commands end with ; or \g.<br>
+    Your MySQL connection id is 2<br>
+    Server version: 5.5.39 MySQL Community Server (GPL)<br>
+    <br>
+    Copyright (c) 2000, 2014, Oracle and/or its affiliates. All rights reserved.<br>
+    <br>
+    Oracle is a registered trademark of Oracle Corporation and/or its<br>
+    affiliates. Other names may be trademarks of their respective<br>
+    owners.<br>
+    <br>
+    Type 'help;' or '\h' for help. Type '\c' to clear the current input
+    statement.<br>
+    <br>
+    mysql&gt;<strong>exit</strong><br>
+    dos-prompt&gt; <strong>mysql -u root -p</strong><br>
+    Enter password :<strong>******</strong><br>
+    ...<br>
+    mysql&gt;<strong>SHOW DATABASES;</strong><span style="font-weight: bold;"><br>
+    </span>+---------------------+<br>
+    | Database&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+    &nbsp; &nbsp; |<br>
+    +---------------------+<br>
+    | information_schema&nbsp;&nbsp; |<br>
+    | mysql&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
+    &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; |<br>
+    | performance_schema |<br>
+    | test&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |<br>
+    +---------------------+<br>
+    4 rows in set (0.02 sec)<br>
+    <br>
+    mysql&gt;<strong>SHOW TABLES FROM information_schema;</strong><br>
+    +--------------------------------------------+<br>
+    | Tables_in_information_schema&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; |<br>
+    +--------------------------------------------+<br>
+    |
+    CHARACTER_SETS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp; &nbsp; |<br>
+    |
+    COLLATIONS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+    &nbsp;&nbsp; |<br>
+    | COLLATION_CHARACTER_SET_APPLICABILITY&nbsp; |<br>
+    |
+    COLUMNS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp;&nbsp; |<br>
+    ... <br>
+    |
+    INNODB_CMP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp; |<br>
+    |
+    INNODB_LOCKS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp;&nbsp; |<br>
+    |
+    INNODB_CMPMEM_RESET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; |<br>
+    |
+    INNODB_CMP_RESET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |<br>
+    |
+    INNODB_BUFFER_PAGE_LRU&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; |<br>
+    +-------------------------------------------+<br>
+    40 rows in set (0.00 sec)<br>
+    <br>
+    mysql&gt;<strong>USE information_schema;</strong><br>
+    mysql&gt;<strong>SHOW TABLES;</strong><br>
+    ...<br>
+    mysql&gt;<strong>SHOW COLUMNS FROM schemata;</strong><br>
++---------------------------------+--------------+------+-----+---------+-------+<br>
+    |
+    Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+    Type&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |
+    Null&nbsp;&nbsp; | Key | Default &nbsp;&nbsp; | Extra&nbsp; |<br>
++---------------------------------+--------------+------+-----+---------+-------+<br>
+    |
+    CATALOG_NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    | varchar(512) &nbsp;&nbsp; | NO&nbsp;&nbsp;&nbsp; |&nbsp; &nbsp; &nbsp;
+    &nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+    |&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; |<br>
+    |
+    SCHEMA_NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; | varchar(64)&nbsp;
+    &nbsp;&nbsp; | NO&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
+    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+    |&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; |<br>
+    | DEFAULT_CHARACTER_SET_NAME | varchar(32)&nbsp;&nbsp;&nbsp;&nbsp; |
+    NO&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+    |&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; |<br>
+    | DEFAULT_COLLATION_NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+    varchar(32)&nbsp;&nbsp;&nbsp;&nbsp; | NO&nbsp; &nbsp;&nbsp;
+    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+    |&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; |<br>
+    |
+    SQL_PATH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    | varchar(512)&nbsp; &nbsp; | YES&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; &nbsp;
+    &nbsp; | NULL &nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
+    &nbsp; |<br>
++---------------------------------+--------------+------+-----+---------+-------+<br>
+    5 rows in set (0.00 sec)<br>
+    <br>
+    mysql&gt;<strong>USE msql;</strong><br>
+    mysql&gt;<strong>SHOW COLUMNS FROM schemata;</strong><br>
+    ERROR 1146 (42S02): Table 'mysql.schemata' doesn't exist<br>
+    mysql&gt;<strong>SHOW COLUMNS FROM information_schema.schemata;</strong><br>
++---------------------------------+--------------+------+-----+---------+-------+<br>
+    |
+    Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp; | <strong>Type&nbsp;&nbsp;</strong>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+    &nbsp; &nbsp;&nbsp; | Null&nbsp;&nbsp; | Key&nbsp; | Default &nbsp; |
+    Extra&nbsp; |<br>
++---------------------------------+--------------+------+-----+---------+-------+<br>
+    | CATALOG_NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+    &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; | <strong>varchar(512)
+      </strong>| NO&nbsp;&nbsp;&nbsp; |&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; | &nbsp;
+    &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; |<br>
+    |
+    SCHEMA_NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | <strong>varchar(64)</strong>&nbsp;&nbsp;
+    | NO&nbsp; &nbsp; |&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
+    | DEFAULT_CHARACTER_SET_NAME | <strong>varchar(32)&nbsp;</strong>&nbsp; |
+    NO&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; |<br>
+    | DEFAULT_COLLATION_NAME&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; | <strong>varchar(32)&nbsp;</strong>&nbsp;
+    | NO&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; |<br>
+    |
+    SQL_PATH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; | <strong>varchar(512)</strong>&nbsp; |
+    YES&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; NULL
+    &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
++---------------------------------+--------------+------+-----+---------+-------+<br>
+    5 rows in set (0.01 sec)<br>
+    mysql&gt;<strong>help show</strong><br>
+    ...<br>
+    mysql&gt;<strong>SHOW COLUMNS FROM mysql.help_topic;</strong><br>
+    +------------------+----------------------+------+-----+---------+-------+<br>
+    | Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp; &nbsp; &nbsp;&nbsp; | <strong> Type&nbsp;</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+    Null&nbsp;&nbsp; | Key | Default&nbsp;&nbsp;&nbsp; | Extra |<br>
+    +------------------+----------------------+------+-----+---------+-------+<br>
+    | help_topic_id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<strong>
+      int(10) unsigned&nbsp;</strong>&nbsp; &nbsp; &nbsp; |
+    NO&nbsp;&nbsp;&nbsp;&nbsp; | PRI&nbsp; | NULL &nbsp; &nbsp;
+    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; |<br>
+    |
+    name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    | <strong>char(64)</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; | NO &nbsp; &nbsp; | UNI | NULL&nbsp;
+    &nbsp; &nbsp; |&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |<br>
+    | help_category_id&nbsp;&nbsp; |<strong> smallint(5) unsigned </strong>|
+    NO&nbsp; &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |
+    NULL&nbsp;&nbsp;&nbsp; &nbsp; |&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |<br>
+    | description&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; | <strong>text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; | NO&nbsp; &nbsp;&nbsp;
+    |&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; | NULL&nbsp;&nbsp;&nbsp; &nbsp;
+    |&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |<br>
+    |
+    example&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    |<strong> text&nbsp;&nbsp;&nbsp;&nbsp;</strong>&nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+    NO&nbsp;&nbsp; &nbsp; |&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; | NULL&nbsp;&nbsp;
+    &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; |<br>
+    |
+    url&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    | <strong>text&nbsp;</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+    NO&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; | NULL&nbsp;&nbsp;
+    &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; |<br>
+    +------------------+----------------------+------+-----+---------+-------+<br>
+    6 rows in set (0.01 sec)<br>
+    <br>
+==============================================================================================<br>
+    <br>
+    <strong>Data Types</strong><br>
+    <ul>
+      <li>Strings - <strong>CHAR, VARCHAR, TEXT</strong></li>
+      <li>Date/time - <strong>DATE, TIME, YEAR, TIMESTAMP, DATETIME</strong></li>
+      <li>Numbers - <strong>DECIMAL </strong>(e.g. DECIMAL(5,2): -999.99 ~
+        999.99 ), <strong>INT&nbsp;</strong></li>
+      <li>Lists - <strong>ENUM, SET</strong></li>
+      <li><a href="https://dev.mysql.com/doc/refman/5.7/en/storage-requirements.html">https://dev.mysql.com/doc/refman/5.7/en/storage-requirements.html</a></li>
+    </ul>
+    <p><strong>NULL </strong>is a special marker used in SQL to indicate that <strong>a
+        data value does not exist</strong> in the database. Using <strong>NULL
+      </strong>values <br>
+    </p>
+    <ul>
+      <li>Probably <strong>not </strong>for <strong>required </strong>fields</li>
+      <li><strong>OK </strong>for<strong> optional </strong>fields</li>
+    </ul>
+    <ul>
+    </ul>
+    <p><strong>Basic SQL</strong></p>
+    <ul>
+      <li>SQL is not procedural</li>
+      <li>SQL is <strong>Declarative language</strong> : what we want, not how</li>
+      <li><strong>SELECT ... FROM ... WHERE</strong></li>
+      <ul>
+        <li>SELECT table_name</li>
+        <li>FROM information_schema.tables</li>
+        <li>WHERE table_schema='mysql'</li>
+      </ul>
+    </ul>
+    <a id="create_db" name="create_db"></a>==============================================================================================<br>
+    <br>
+    mysql&gt; <strong>CREATE DATABASE my_database;</strong><br>
+    Query OK, 1 row affected (0.00 sec)<br>
+    mysql&gt; <strong>CREATE DATABASE my_database;</strong><br>
+    ERROR 1007 (HY000): Can't create database 'my_database'; database exists<br>
+    mysql&gt; <strong>DROP DATABASE my_database;</strong><br>
+    Query OK, 0 rows affected (0.01 sec)<br>
+    mysql&gt; <strong>SHOW CREATE TABLE mysql.help_category;</strong><br>
+    ...<br>
+    <br>
+    mysql&gt; <strong>CREATE DATABASE addresses;</strong><br>
+    mysql&gt; <strong>USE addresses;</strong><br>
+    mysql&gt; <strong>CREATE TABLE people (<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; first_name varchar(50) NOT NULL
+      default '',<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; last_name varchar(50) NOT NULL
+      default '',<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; mobile varchar(20) NOT NULL
+      default '',<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; birthday date DEFAULT NULL,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; PRIMARY KEY (first_name,
+      last_name));</strong><br>
+    mysql&gt;<strong>SHOW TABLES;</strong><br>
+    +---------------------+<br>
+    | Tables_in_addresses&nbsp; |<br>
+    +---------------------+<br>
+    | people&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; |<br>
+    +---------------------+<br>
+    1 row in set (0.00 sec)<br>
+    mysql&gt;<strong> DROP TABLE people;</strong><br>
+    Query OK, 0 rows affected (0.00 sec)<br>
+    mysql&gt; <strong>SHOW TABLES;</strong><br>
+    Empty set (0.00 sec)<br>
+    mysql&gt; <strong>CREATE TABLE people (<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; first_name varchar(50) NOT NULL
+      default '',<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; last_name varchar(50) NOT NULL
+      default '',<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; mobile varchar(20) NOT NULL
+      default '',<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; birthday date DEFAULT NULL,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; PRIMARY KEY (first_name,
+      last_name));<br>
+    </strong>mysql&gt;<strong>SHOW CREATE TABLE people\G<br>
+    </strong>*************************** 1. row ***************************<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Table: people<br>
+    Create Table: CREATE TABLE `people` (<br>
+    &nbsp; `first_name` varchar(50) NOT NULL DEFAULT '',<br>
+    &nbsp; `last_name` varchar(50) NOT NULL DEFAULT '',<br>
+    &nbsp; `mobile` varchar(20) NOT NULL DEFAULT '',<br>
+    &nbsp; `birthday` date DEFAULT NULL,<br>
+    &nbsp; PRIMARY KEY (`first_name`,`last_name`)<br>
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8<br>
+    1 row in set (0.00 sec)<strong><br>
+    </strong><a id="insert_delete" name="insert delete"></a>mysql&gt;<strong>DESC
+      people;<br>
+    </strong>+------------+-------------+------+-----+---------+-------+<br>
+    | Field&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; | Type &nbsp;
+    &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Null&nbsp; | Key&nbsp; |
+    Default&nbsp;&nbsp;&nbsp; | Extra&nbsp; |<br>
+    +------------+-------------+------+-----+---------+-------+<br>
+    | first_name &nbsp; | varchar(50) &nbsp; | NO&nbsp;&nbsp;&nbsp;&nbsp; |
+    PRI&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |
+    &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; |<br>
+    | last_name&nbsp;&nbsp; | varchar(50)&nbsp;&nbsp; | NO&nbsp; &nbsp;&nbsp; |
+    PRI&nbsp;
+    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    |&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; |<br>
+    | mobile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+    varchar(20)&nbsp;&nbsp; | NO&nbsp; &nbsp; |&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
+    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; |<br>
+    | birthday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+    date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    | YES&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+    NULL&nbsp;&nbsp; &nbsp;
+    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
+    +------------+-------------+------+-----+---------+-------+<br>
+    4 rows in set (0.01 sec)<strong><br>
+    </strong>mysql&gt;<strong>INSERT INTO people (birthday, first_name,
+      last_name, mobile) VALUES('1996-05-12', 'Andrew', 'Thompson', '345-6789');<br>
+    </strong>mysql&gt;<strong>SELECT * FROM people;<br>
+      <br>
+    </strong>mysql&gt;<strong>INSERT INTO people SET last_name='Ji',
+      first_name='Jun', mobile='123-4567', birthday='1964-12-01';<br>
+    </strong>Query OK, 1 row affected (0.01 sec)<strong><br>
+    </strong>mysql&gt;<strong>SELECT * FROM people;<br>
+    </strong>+------------+-----------+----------+------------+<br>
+    | first_name&nbsp;&nbsp; | last_name&nbsp; |&nbsp; mobile &nbsp; &nbsp; |
+    birthday&nbsp; &nbsp; &nbsp; |<br>
+    +------------+-----------+----------+------------+<br>
+    | Andrew&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Thompson |
+    345-6789&nbsp; | 1996-05-12 |<br>
+    | Jun&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; |
+    Ji&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |
+    123-4567&nbsp;&nbsp; | 1964-12-01 |<br>
+    +------------+-----------+----------+------------+<br>
+    2 rows in set (0.00 sec)<strong><br>
+    </strong>mysql&gt;<strong>INSERT INTO people (first_name, last_name, mobile)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;</strong> -&gt; <strong>VALUES ('John', 'Smith',
+      '321-9876');<br>
+    </strong>Query OK, 1 row affected (0.00 sec)<strong><br>
+    </strong>mysql&gt;<strong> INSERT INTO people (first_name, last_name,
+      mobile)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp; </strong>-&gt;<strong> VALUES<br>
+      &nbsp;&nbsp;&nbsp;&nbsp; </strong>-&gt;<strong> ('Bill', 'Gates',
+      '987-6543'), ('Steve', 'Thompson', '101-0987');<br>
+    </strong>Query OK, 2 rows affected (0.00 sec)<br>
+    Records: 2&nbsp; Duplicates: 0&nbsp; Warnings: 0<strong><br>
+    </strong>mysql&gt;<strong>SELECT First_NAme fROM people;</strong><br>
+    +------------+<br>
+    | first_Name &nbsp; |<br>
+    +------------+<br>
+    | Andrew&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; |<br>
+    | Bill&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; |<br>
+    | John&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |<br>
+    | Jun&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; |<br>
+    | Steve&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; |<br>
+    +------------+<br>
+    5 rows in set (0.00 sec)<br>
+    mysql&gt;<strong>Select * from people;</strong><br>
+    mysql&gt;<strong>SELECT first_name FROM people WHERE last_name='Thompson'</strong>;<br>
+    +------------+<br>
+    | first_name &nbsp; |<br>
+    +------------+<br>
+    | Andrew&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; |<br>
+    | Steve&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; |<br>
+    +------------+<br>
+    2 rows in set (0.00 sec)<br>
+    mysql&gt;<strong>UPDATE people SET birthday='1975-01-25' WHERE
+      first_name='Andrew';</strong><br>
+    <br>
+    mysql&gt;<strong>UPDATE people SET mobile='123-9999';</strong><br>
+    <br>
+    mysql&gt;<strong>SELECT mobile FROM people;</strong><br>
+    <br>
+    mysql&gt;<strong>DELETE FROM people WHERE&nbsp; last_name='Ji';<br>
+    </strong><br>
+    mysql&gt;<strong>SELECT * FROM people;</strong><br>
+    <br>
+    mysql&gt;<strong>DELETE FROM people WHERE true;</strong><br>
+    <br>
+    mysql&gt;<strong>TRUNCATE TABLE people;</strong><br>
+    <br>
+    mysql&gt;<strong>SHOW CREATE TABLE people\G</strong><br>
+    <br>
+    mysql&gt;<strong>DESC people;</strong><br>
+    <br>
+    mysql&gt;<strong>DROP TABLE people;</strong><br>
+    <br>
+    mysql&gt;<strong>DROP DATABASE addresses;</strong><br>
+    <br>
+    <a id="account_manage" name="account_manage"></a>==========================================================================================<br>
+    <br>
+    mysql&gt;<strong>CREATE DATABASE accounts;</strong><br>
+    <br>
+    mysql&gt;<strong>USE accounts;</strong><br>
+    <br>
+    mysql&gt;<strong>CREATE TABLE member (<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt;user_num int auto_increment
+      primary key,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt;user_fname varchar(20) NOT NULL
+      default '',<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt;user_lname varchar(20) </strong><strong><strong>NOT
+        NULL default ''</strong>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt;user_age int default 0 );</strong><br>
+    <br>
+    mysql&gt;<strong>SHOW TABLES;</strong><br>
+    mysql&gt;<strong>DESC member;</strong><br>
+    mysql&gt;<strong>INSERT INTO member( user_fname, user_lname, user_age)
+      VALUES('Jun','Ji', 50);</strong><br>
+    mysql&gt;<strong>INSERT INTO member( user_fname, </strong><strong><strong>user_lname,
+        </strong>user_age)</strong><br>
+    &nbsp; &nbsp; &nbsp; <strong>-&gt;VALUES<br>
+      &nbsp;&nbsp;&nbsp;&nbsp; -&gt;('Kil Dong','Hong', 32),
+      ('Bill','Gates',63), ('Melinda','Gates',60), ('Steve','Jobs',59);<br>
+    </strong><br>
+    mysql&gt;<strong>SELECT * FROM member;</strong><br>
+    <br>
+    mysql&gt;<strong>SELECT * FROM member WHERE user_lname='Gates';</strong><br>
+    <br>
+    mysql&gt;<strong>SELECT COUNT(*) FROM member;<br>
+    </strong><br>
+    mysql&gt;<strong>SELECT MAX(user_age) FROM member;</strong><br>
+    <br>
+    mysql&gt;<strong>SELECT MIN(user_age) FROM member;<br>
+    </strong><br>
+    mysql&gt;<strong>SELECT SUM(user_age) FROM member;</strong><br>
+    <br>
+    mysql&gt;<strong>SELECT * FROM member WHERE user_lname='Hong' or
+      user_age=50;</strong><br>
+    <br>
+    mysql&gt;<strong>SELECT * FROM member ORDER BY user_age ASC;</strong><br>
+    <br>
+    mysql&gt;<strong>DELETE FROM member WHERE user_num=1;</strong><br>
+    <br>
+    mysql&gt;<strong>SELECT * FROM member;</strong><br>
+    <br>
+    mysql&gt;<strong>UPDATE member SET user_age=51 WHERE user_num=2;</strong><br>
+    <strong><br>
+    </strong><br>
+    ===============================================&nbsp; 일반 계정 생성 =====<br>
+    <br>
+    mysql&gt;<strong>CREATE database myuserDB;</strong><br>
+    mysql&gt;<strong>USE mysql;</strong><br>
+    mysql&gt;<strong>SELECT host, user, authentication_string FROM user;</strong><br>
+    <br>
+    mysql&gt;<del><strong>INSERT user(host, user, password)
+      VALUES('localhost','myuser',password('123456'));</strong></del><br>
+      [<b>Note</b> that from MySQL 5.7.6, the user table uses the authentication_string column only to store the password. In addition, it removed the password column.]
+
+      <br>
+    mysql&gt;<strong>CREATE USER 'myuser'@'localhost' IDENFIED BY '123456';</strong><br>
+    mysql&gt;<strong>FLUSH privileges;</strong><br>
+    mysql&gt;<strong>GRANT all on myuserDB.* to myuser@localhost identified by
+      '123456';    </strong><br>
+    mysql&gt;<strong>SHOW GRANTS FOR myuser@localhost;</strong><br>
+    mysql&gt;<strong>exit</strong><br>
+    <br>
+    ===============================================&nbsp; MySQL 계정 관리 =====<br>
+    <br>
+    MS-DOS PROMPT&gt;<strong>mysql -u myuser -p<br>
+    </strong>Enter password: ****<strong><br>
+      <br>
+    </strong> mysql&gt;<strong>SELECT user();</strong><br>
+    mysql&gt;<strong>USE myuserDB;</strong><br>
+    ...<br>
+    mysql&gt;<strong>exit</strong><br>
+    <br>
+    <br>
+    MS-DOS PROMPT&gt;<strong>mysql -u root -p</strong><br>
+    Enter password: ****<strong><br>
+      <br>
+    </strong> mysql&gt;<strong>USE mysql;<br>
+    </strong>mysql&gt;<strong>SHOW tables;<br>
+    </strong>mysql&gt;<strong>SELECT * FROM user;<br>
+    </strong>mysql&gt;<strong>SELECT host, user, password FROM user;</strong> <br>
+    mysql&gt;<strong><del>UPDATE user SET password=password('654321') WHERE
+      user='myuser';</del></strong><br>
+      [<b>Note</b> that from MySQL 5.7.6, the user table uses the authentication_string column only to store the password. In addition, it removed the password column. Instead, use this =>
+      mysql&gt;<ins>UPDATE user SET authentication_string = password('654321') WHERE
+      user='myuser' AND host = 'localhost';</ins>] <br>
+    <br>    
+    or better to use the followings : <br>
+  </strong>mysql&gt;<strong>SET PASSWORD FOR 'myuser'@'localhost' = '654321'; <br>
+    or<br>
+    </strong>mysql&gt;<strong>ALTER USER 'myuser'@'localhost' IDENTIFIED BY '654321'; <br>
+
+    <br>
+    </strong><br>
+    mysql&gt;<strong>FLUSH privileges;<br>
+    </strong>mysql&gt;<strong>exit<br>
+    </strong><br>
+    MS-DOS PROMPT&gt;<strong><strong>mysql -u myuser -p654321<br>
+      </strong></strong>mysql&gt;<strong><strong>use myuserdb;<br>
+      </strong></strong>mysql&gt;<strong><strong>create table test (uid
+        varchar(20));<br>
+      </strong></strong>...<br>
+    mysql&gt;<strong><strong>exit<br>
+        <br>
+      </strong></strong>&nbsp;<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p><br>
+    </p>
+  </body>
+</html>

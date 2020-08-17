@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>SQL-5. Insert Into</title>
+    <style>a.menu_html_intro{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,PHP,SQL,tutorial,programming,development,Web building,Webmaster">
+    <link rel="stylesheet" href="w3.css">
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>SQL-5. <span class="color_h1">Insert Into</span></h1>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="SQL-4.%20Create%20Database%20and%20Tables.html">«
+                Previous</a> <a class="w3-right w3-btn" href="SQL-6.%20Select.html">Next  »</a> </div>
+            <hr>
+            <p class="intro">INSERT INTO 문은 테이블에 새로운 레코드를 삽입하는데 사용된다.&nbsp;</p>
+            <hr>
+            <h2>Insert Data Into a Database Table</h2>
+            <p>INSERT INTO 문은 데이타베이스 테이블에 새로운 레코드를 추가하는데 사용된다.</p>
+            <h3>Syntax</h3>
+            <p>INSERT INTO 문은 두 가지 형태로 작성이 가능하다. </p>
+            <p>첫 번째 형식은 삽입할 데이타가 위치하는 열의 이름은 명시하지 않고, 그 값 만을 지정하는 것입니다.:</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> INSERT INTO table_name<i><br>
+                </i>VALUES (value1, value2, value3,...) </div>
+            </div>
+            <p>두 번째 형식은 삽입할 열 이름과 값 모두를 지정하는 것이다. :</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> INSERT INTO table_name (column1, column2, column3,...)<br>
+                VALUES (value1, value2, value3,...) </div>
+            </div>
+            <p>SQL 에 대한 자세한 내용은 ==&gt; <a href="http://www.w3schools.com/sql/default.asp">SQL
+                tutorial</a>.</p>
+            <p>PHP 가 위의 문장을 실행하게 하려면 mysqli_query() 함수를 사용합니다. 이 함수는 MySQL 연결로
+              쿼리나 명령을 전송하는데 사용합니다. </p>
+            <h3>Example</h3>
+            <p>앞 장에서 우리는 세 개의 열,&nbsp; "FirstName", "LastName" 과 "Age"을 갖는
+              "Persons"이라는 이름의 테이블을 생성했다. 같은 테이블을 이번 예에서 사용합니다. 다음의 예는
+              "Persons"&nbsp; 테이블에 새로운 레코드 두 개를 추가 한다.:</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> &lt;?php<br>
+                $con=mysqli_connect("example.com","peter","abc123","my_db");<br>
+                // Check connection<br>
+                if (mysqli_connect_errno())<br>
+                &nbsp;&nbsp;{<br>
+                &nbsp; echo "Failed to connect to MySQL: " .
+                mysqli_connect_error();<br>
+                &nbsp;&nbsp;}<br>
+                <br>
+                mysqli_query($con,"INSERT INTO Persons (FirstName, LastName,
+                Age)<br>
+                VALUES ('Peter', 'Griffin',35)");<br>
+                <br>
+                mysqli_query($con,"INSERT INTO Persons (FirstName, LastName,
+                Age) <br>
+                VALUES ('Glenn', 'Quagmire',33)");<br>
+                <br>
+                mysqli_close($con);<br>
+                ?&gt; </div>
+            </div>
+            <br>
+            <hr>
+            <h2>Insert Data From a Form Into a Database</h2>
+            <p>이제 우리는 "Persons"&nbsp; 테이블에 새로운 레코드를 추가하는데 사용할 수 있는&nbsp; HTML
+              form 을 작성한다.&nbsp;&nbsp;</p>
+            <p>HTML form 은 다음과 같다:</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> &lt;html&gt;<br>
+                &lt;body&gt;<br>
+                <br>
+                &lt;form action="insert.php" method="post"&gt;<br>
+                Firstname: &lt;input type="text" name="firstname"&gt;<br>
+                Lastname: &lt;input type="text" name="lastname"&gt;<br>
+                Age: &lt;input type="number" name="age"&gt;<br>
+                &lt;input type="submit"&gt;<br>
+                &lt;/form&gt;<br>
+                <br>
+                &lt;/body&gt;<br>
+                &lt;/html&gt; </div>
+            </div>
+            <p> 위의 예에서 사용자가 HTML form 의 submit 버튼을 클릭하면 폼 데이타는 "insert.php" 로
+              보내진 다.</p>
+            <p>"insert.php" 파일은 데이타베이스에 연결하고, PHP $_POST 변수로 폼으로부터 값을
+              추출하다.&nbsp;</p>
+            <p>그리고, mysqli_query() 함수는INSERT INTO 문을 실행하고, "Persons" 테이블에 새로운
+              레코드가 추가된다. </p>
+            <p>여기에 "insert.php" 페이지가 있다.:</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> &lt;?php<br>
+                $con=mysqli_connect("example.com","peter","abc123","my_db");<br>
+                // Check connection<br>
+                if (mysqli_connect_errno())<br>
+                &nbsp;&nbsp;{<br>
+                &nbsp; echo "Failed to connect to MySQL: " .
+                mysqli_connect_error();<br>
+                &nbsp;&nbsp;}<br>
+                <br>
+                $sql="INSERT INTO Persons (FirstName, LastName, Age)<br>
+                VALUES<br>
+                ('$_POST[firstname]','$_POST[lastname]',$_POST[age])";<br>
+                <br>
+                if (!mysqli_query($con,$sql))<br>
+                &nbsp;&nbsp;{<br>
+                &nbsp;&nbsp;die('Error: ' . mysqli_error($con));<br>
+                &nbsp;&nbsp;}<br>
+                echo "1 record added";<br>
+                <br>
+                mysqli_close($con);<br>
+                ?&gt; </div>
+            </div>
+            <br>
+            <br>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="SQL-4.%20Create%20Database%20and%20Tables.html">«
+                Previous</a> <a class="w3-right w3-btn" href="SQL-6.%20Select.html">Next  »</a> </div>
+            <hr> </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </body>
+</html>

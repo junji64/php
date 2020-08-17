@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>SQL-10. Delete</title>
+    <style>a.menu_html_intro{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,PHP,SQL,tutorial,programming,development,Web building,Webmaster">
+    <link rel="stylesheet" href="w3.css">
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>SQL-10. <span class="color_h1">Delete</span></h1>
+            <div class="chapter">
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="SQL-9.%20Update.html">«
+                Previous</a> <a class="w3-right w3-btn" href="SQL-1.%20Introduction.html">Next  »</a> </div>
+            </div>
+          </div>
+          <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="PHP%20MySQL%20Update.html">«
+              Previous</a> </div>
+          <hr>
+          <p class="intro">DELETE 문은 테이블에서 레코드를 삭제하는 데 사용됩니다.</p>
+          <hr>
+          <h2>Delete Data In a Database</h2>
+          <p>DELETE FROM 문은 데이타베이스 테이블로부터 레코드들을 삭제하는데 사용됩니다.</p>
+          <h3>Syntax</h3>
+          <div class="w3-code w3-border notranslate">
+            <div> DELETE FROM table_name<br>
+              WHERE some_column = some_value </div>
+          </div>
+          <p><b>Note:</b> DELETE 구문에서 WHERE 절을 주목하시오. WHERE 절은 어느 레코드가 삭제되어야 할
+            지를 명시합니다. WHERE 절을 생략하면, 모든 레코드들이 삭제됩니다!</p>
+          <hr>
+          <h3>Delete All Data</h3>
+          <p>테이블은 삭제하지 않으면서, 테이블의 모든 레코드를 삭제할 수 있습니다.&nbsp; 이는 테이블의 구조, 속성과 인덱스는
+            손대지 않고 그대로 두는 것을 의미합니다.:</p>
+          <div class="w3-code w3-border notranslate">
+            <div> DELETE FROM <em>table_name</em>;<br>
+              <br>
+              or<br>
+              <br>
+              DELETE * FROM <em>table_name</em>;</div>
+          </div>
+          <p><b>Note:</b> 레코드를 삭제할 때 주의하십시요, 이 문장을 취소할 수는 없습니다. !<br>
+          </p>
+          <hr>
+          <h3>Example</h3>
+          <p>다음의 "Persons" 테이블을 보시오:</p>
+          <table class="reference notranslate">
+            <tbody>
+              <tr>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Age</th>
+              </tr>
+              <tr>
+                <td>Peter</td>
+                <td>Griffin</td>
+                <td>35</td>
+              </tr>
+              <tr>
+                <td>Glenn</td>
+                <td>Quagmire</td>
+                <td>33</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>다음의 예에서는 "Persons" 테이블에서 LastName='Griffin' 인 모든 레코드를 삭제합니다. :</p>
+          <div class="w3-code w3-border notranslate">
+            <div> &lt;?php<br>
+              $con=mysqli_connect("example.com","peter","abc123","my_db");<br>
+              // Check connection<br>
+              if (mysqli_connect_errno())<br>
+              &nbsp;&nbsp;{<br>
+              &nbsp; echo "Failed to connect to MySQL: " .
+              mysqli_connect_error();<br>
+              &nbsp;&nbsp;}<br>
+              <br>
+              mysqli_query($con,"DELETE FROM Persons WHERE LastName='Griffin'");<br>
+              <br>
+              mysqli_close($con);<br>
+              ?&gt; </div>
+          </div>
+          <p>삭제 후, 테이블은 다음과 같이 표시될 것이다.:</p>
+          <table class="reference notranslate">
+            <tbody>
+              <tr>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Age</th>
+              </tr>
+              <tr>
+                <td>Glenn</td>
+                <td>Quagmire</td>
+                <td>33</td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="SQL-9.%20Update.html">«
+                Previous</a> <a class="w3-right w3-btn" href="SQL-1.%20Introduction.html">Next  »</a> </div>
+        </div>
+        <hr> </div>
+    </div>
+    <br>
+  </body>
+</html>

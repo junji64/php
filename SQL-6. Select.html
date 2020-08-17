@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>SQL-6. Insert Into</title>
+    <style>a.menu_html_intro{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,PHP,SQL,tutorial,programming,development,Web building,Webmaster">
+    <link rel="stylesheet" href="w3.css">
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>SQL-6. <span class="color_h1">Select</span></h1>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="SQL-5.%20Insert%20Into.html">«
+                Previous</a> <a class="w3-right w3-btn" href="SQL-7%20Where.html">Next  »</a> </div>
+            <hr>
+            <p class="intro">SELECT 문은 데이타베이스로부터 데이타를 선택하는데 사용됩니다.</p>
+            <hr>
+            <h2>Select Data From a Database Table</h2>
+            <p>SELECT 문은 데이타베이스로부터 데이타를 선택하는데 사용됩니다.</p>
+            <h3>Syntax</h3>
+            <div class="w3-code w3-border  notranslate">
+              <div> SELECT column_name(s)<br>
+                FROM table_name </div>
+            </div>
+            <p>또는</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> SELECT * FROM table_name </div>
+            </div>
+            <br>
+            PHP 가 위의 문을 실행하게 하려면 mysqli_query() 함수를 사용하여야 한다. 이 함수는&nbsp;MySQL
+            연결에 쿼리나 명령을 보낼 때 사용된다.&nbsp;
+            <h3>Example</h3>
+            <p>다음의 예는 "Persons" table에 저장된 모든 데이타를 선택한다. (The * character
+              selects all the data in the table):</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> &lt;?php<br>
+                $con=mysqli_connect("example.com","peter","abc123","my_db");<br>
+                // Check connection<br>
+                if (mysqli_connect_errno())<br>
+                &nbsp;&nbsp;{<br>
+                &nbsp; echo "Failed to connect to MySQL: " .
+                mysqli_connect_error();<br>
+                &nbsp;&nbsp;}<br>
+                <br>
+                $result = mysqli_query($con,"SELECT * FROM Persons");<br>
+                <br>
+                while($row = mysqli_fetch_array($result))<br>
+                &nbsp;&nbsp;{<br>
+                &nbsp;&nbsp;echo $row['FirstName'] . " " . $row['LastName'];<br>
+                &nbsp;&nbsp;echo "&lt;br&gt;";<br>
+                &nbsp;&nbsp;}<br>
+                <br>
+                mysqli_close($con);<br>
+                ?&gt; </div>
+            </div>
+            <p>위의 예는 mysqli_query() 함수에 의해서 $result 변수로 반환된 데이타를 저장한다.</p>
+            <p>다음에는, recordset 으로부터 첫번째 행을 배열로 반환하는데 mysqli_fetch_array() 함수를
+              사용한다. mysqli_fetch_array() 를 호출 할 때마다 recordset 에서 다음 행을 반환한다.
+              while 루프는 recordset 에서의 모든 레코드를 반복한다. 각 행의 값을 프린트하기 위해서, 우리는 PHP
+              $row 배열 변수 ($row['FirstName'] and $row['LastName'])를 사용한다.&nbsp;</p>
+            <p>위의 코드의 출력을 다음과 같을 것이다.:</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> Peter Griffin<br>
+                Glenn Quagmire </div>
+            </div>
+            <br>
+            <hr>
+            <h2>Display the Result in an HTML Table</h2>
+            <p>다음 예는 위의 예에서와 같은 데이타를 선택하지만, 데이타를 HTML table 형식으로 표시한다.:</p>
+            <div class="w3-code w3-border  notranslate">
+              <div> &lt;?php<br>
+                $con=mysqli_connect("example.com","peter","abc123","my_db");<br>
+                // Check connection<br>
+                if (mysqli_connect_errno())<br>
+                &nbsp;&nbsp;{<br>
+                &nbsp; echo "Failed to connect to MySQL: " .
+                mysqli_connect_error();<br>
+                &nbsp;&nbsp;}<br>
+                <br>
+                $result = mysqli_query($con,"SELECT * FROM Persons");<br>
+                <br>
+                echo <b>"</b>&lt;table border='1'&gt;<b><br>
+                  &lt;</b>tr&gt;<br>
+                &lt;th&gt;Firstname&lt;/th&gt;<br>
+                &lt;th&gt;Lastname&lt;/th&gt;<br>
+                &lt;/tr&gt;";<br>
+                <br>
+                while($row = mysqli_fetch_array($result))<br>
+                &nbsp;&nbsp;{<br>
+                &nbsp;&nbsp;echo "&lt;tr&gt;";<br>
+                &nbsp;&nbsp;echo "&lt;td&gt;" . $row['FirstName'] .
+                "&lt;/td&gt;";<br>
+                &nbsp;&nbsp;echo "&lt;td&gt;" . $row['LastName'] .
+                "&lt;/td&gt;";<br>
+                &nbsp;&nbsp;echo "&lt;/tr&gt;";<br>
+                &nbsp;&nbsp;}<br>
+                echo "&lt;/table&gt;";<br>
+                <br>
+                mysqli_close($con);<br>
+                ?&gt; </div>
+            </div>
+            <p>위의 코드의 출력을 다음과 같을 것이다:</p>
+            <table border="1">
+              <tbody>
+                <tr>
+                  <th>Firstname</th>
+                  <th>Lastname</th>
+                </tr>
+                <tr>
+                  <td>Glenn</td>
+                  <td>Quagmire</td>
+                </tr>
+                <tr>
+                  <td>Peter</td>
+                  <td>Griffin</td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="SQL-5.%20Insert%20Into.html">«
+                Previous</a> <a class="w3-right w3-btn" href="SQL-7%20Where.html">Next  »</a> </div>
+            <hr> </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </body>
+</html>
