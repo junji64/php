@@ -52,6 +52,19 @@
 
 [Ch. 26 : Filters](./26.%20Filter.html)
 
+## php Exercises
+
+[Ex-1 : Practice ](./Ex-1.%20PHP%20practice.html)
+
+[Ex-2 : PHP Order form process ](./Ex-2.%20order%20form%20process.html)
+
+[Ex-3 : Practice ](./Ex-3.%20PHP%20practice.html)
+
+[Ex-4 : PHP Login with new user add ](./Ex-4.%20PHP%20Login%20add%20new%20user.html)
+
+[Ex-5 : PHP Login Session Example ](./Ex-5.%20PHP%20Login%20Session.html)
+
+
 # MySQL
 
 [SQL-1 : Text-based SQL](./SQL-1.%20SQL.html)
@@ -73,3 +86,9 @@
 [SQL-9 : Update](./SQL-9.%20Update.html)
 
 [SQL-10 : Delete From](./SQL-10.%20Delete%20From.html)
+
+## php with MySQL Exercises
+
+[Ex-6 : PHP Registration, login and logout with MySQL ](./Ex-6.%20PHP%20registration%20with%20MySQL.html)
+
+[Ex-7 : PHP image uploaing & displaying using MySQL ](./Ex-7.%20image%20uploading%20&%20displaying%20using%20mysql.html)
