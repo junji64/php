@@ -58,7 +58,7 @@
 
 [SQL-2 : Using phpMyAdmin](https://www.siteground.com/tutorials/phpmyadmin/)
 
-[SQL-3 : MySQL Introduction](./SQL-3.PHP%20Introduction.html)
+[SQL-3 : MySQL Introduction](./SQL-3.%20Introduction.html)
 
 [SQL-4 : MySQL 서버에 연결 / Database 와 Table 생성](./SQL-4.%20Connect%20to%20the%20MySQL%20Server.html)
 
