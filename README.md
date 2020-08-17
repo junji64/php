@@ -8,7 +8,7 @@
 
 [Ch. 3 : Variables](./3.%20Variables.html)
 
-[Ch. 4 : Echo & Pring](./4.%20Echo and Print.html)
+[Ch. 4 : Echo & Pring](./4.%20Echo%20and%20Print.html)
 
 [Ch. 5 : Data Types](./5.%20Date%20Types.html)
 
