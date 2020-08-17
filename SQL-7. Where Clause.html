@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>SQL-7. Where</title>
+    <style>a.menu_html_intro{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,PHP,SQL,tutorial,programming,development,Web building,Webmaster">
+    <link rel="stylesheet" href="w3.css">
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>SQL-7. <span class="color_h1">Where</span></h1>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="SQL-6.%20Select.html">«
+                Previous</a> <a class="w3-right w3-btn" href="SQL-8.%20Order%20By%20Keyword.html">Next  »</a> </div>
+            <hr>
+            <p class="intro">WHERE 절은 레코드를 필터링하는데 사용된다.</p>
+            <hr>
+            <h2>WHERE clause</h2>
+            <p>WHERE 절은 지정된 기준을 충족하는 레코드 만을 추출하는데 사용된다. </p>
+            <h3>Syntax</h3>
+            <div class="w3-code w3-border   notranslate">
+              <div> SELECT column_name(s)<br>
+                FROM table_name<br>
+                WHERE column_name operator value </div>
+            </div>
+            <p>위의 문을 PHP 가 실행하게 하기 위해서는 mysqli_query() 함수를 사용해야만 한다. 이
+              함수는&nbsp;MySQL 연결에 쿼리나 명령을 보낼 때 사용된다.</p>
+            <hr>
+            <h3>Operators in The WHERE Clause</h3>
+            <p>다음의 연산자들을&nbsp; WHERE&nbsp; 문에서 사용할 수 있다.:</p>
+            <table class="w3-table-all notranslate">
+              <tbody>
+                <tr>
+                  <th style="width:20%">Operator</th>
+                  <th>Description</th>
+                </tr>
+                <tr>
+                  <td>=</td>
+                  <td>Equal</td>
+                </tr>
+                <tr>
+                  <td>&lt;&gt;</td>
+                  <td>Not equal. <b>Note:</b> In some versions of SQL this
+                    operator may be written as !=</td>
+                </tr>
+                <tr>
+                  <td>&gt;</td>
+                  <td>Greater than</td>
+                </tr>
+                <tr>
+                  <td>&lt;</td>
+                  <td>Less than</td>
+                </tr>
+                <tr>
+                  <td>&gt;=</td>
+                  <td>Greater than or equal</td>
+                </tr>
+                <tr>
+                  <td>&lt;=</td>
+                  <td>Less than or equal</td>
+                </tr>
+                <tr>
+                  <td><a href="http://www.w3schools.com/sql/sql_between.asp">BETWEEN</a></td>
+                  <td>Between an inclusive range</td>
+                </tr>
+                <tr>
+                  <td><a href="http://www.w3schools.com/sql/sql_like.asp">LIKE</a></td>
+                  <td>Search for a pattern</td>
+                </tr>
+                <tr>
+                  <td><a href="http://www.w3schools.com/sql/sql_in.asp">IN</a></td>
+                  <td>To specify multiple possible values for a column</td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <hr>
+            <h3>Example</h3>
+            <p>다음의 예는 "Persons" 테이블에서 "FirstName='Peter'" 인 모든 행을 선택한다.:</p>
+            <div class="w3-code w3-border   notranslate">
+              <div> &lt;?php<br>
+                $con=mysqli_connect("example.com","peter","abc123","my_db");<br>
+                // Check connection<br>
+                if (mysqli_connect_errno())<br>
+                &nbsp;&nbsp;{<br>
+                &nbsp; echo "Failed to connect to MySQL: " .
+                mysqli_connect_error();<br>
+                &nbsp;&nbsp;}<br>
+                <br>
+                $result = mysqli_query($con,"SELECT * FROM Persons<br>
+                WHERE FirstName='Peter'");<br>
+                <br>
+                while($row = mysqli_fetch_array($result))<br>
+                &nbsp;&nbsp;{<br>
+                &nbsp;&nbsp;echo $row['FirstName'] . " " . $row['LastName'];<br>
+                &nbsp;&nbsp;echo "&lt;br&gt;";<br>
+                &nbsp;&nbsp;}<br>
+                ?&gt; </div>
+            </div>
+            <p>위의 코드의 출력을 다음과 같을 것이다:</p>
+            <div class="code notranslate">
+              <div> Peter Griffin </div>
+            </div>
+            <br>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="SQL-6.%20Select.html">«
+                Previous</a> <a class="w3-right w3-btn" href="SQL-8.%20Order%20By%20Keyword.html">Next  »</a> </div>
+            <hr> </div>
+        </div>
+      </div>
+      <br>
+    </div>
+    <br>
+  </body>
+</html>
