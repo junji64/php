@@ -4,7 +4,7 @@
 
 [Ch. 1 : Introduction & installation](./1.%20Introduction.html)
 
-[Ch. 2 : Syntex](./2.%20Syntex.html)
+[Ch. 2 : Syntax](./2.%20Syntax.html)
 
 [Ch. 3 : Variables](./3.%20Variables.html)
 
