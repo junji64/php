@@ -12,7 +12,7 @@
 
 [Ch. 4 : Echo & Pring](./4.%20Echo%20and%20Print.html)
 
-[Ch. 5 : Data Types](./5.%20Date%20Types.html)
+[Ch. 5 : Data Types](./5.%20Data%20Types.html)
 
 [Ch. 6 : String Functions](./6.%20String%20Functions.html)
 
