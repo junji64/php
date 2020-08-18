@@ -20,7 +20,7 @@
 
 [Ch. 8 : Operators](./8.%20Operators.html)
 
-[Ch. 9 : If...else...elseif Statements](./9.%20If...else...elseif%20Statements.html)
+[Ch. 9 : If...else...elseif Statements](./9.%20if...else...elseif%20Statements.html)
 
 [Ch. 10 : While Loops](./10.%20while%20Loops.html)
 
