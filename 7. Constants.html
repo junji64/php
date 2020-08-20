@@ -22,12 +22,104 @@
             <p class="intro"> 상수(Constants)는 한번 정의되면 그들을 "변경"하거나 "정의되지
               않은"(undefined) 것으로 할 수 없는 것을 제외하고는 변수(variables)와 같다.</p>
             <hr>
+
+            <h2>PHP Pi() 함수</h2>
+            <p>  <b>pi()</b>함수는 PI 값을 반환합니다. </p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                echo(pi()); // returns 3.1415926535898<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_math_pi">Run
+                example »</a> </div>
+            <hr>
+            
+            <h2>PHP min() 과 max() 함수</h2>
+            <p>  <b>min()및 max()</b> 함수는 인수 목록에서 가장 낮은 또는 높은 값을 찾을 수 있습니다 : </p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                echo(min(0, 150, 30, 20, -8, -200));  // returns -200<br>
+                echo(max(0, 150, 30, 20, -8, -200));  // returns 150<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_math_min_max">Run
+                example »</a> </div>
+            <hr>
+                        
+            <h2>PHP abs() 함수</h2>
+            <p>  <b>abs()</b> 함수는 숫자의 절대 (양수) 값을 반환합니다. </p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                echo(abs(-6.7));  // returns 6.7<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_math_abs">Run
+                example »</a> </div>
+            <hr>
+                                    
+            <h2>PHP sqrt() 함수</h2>
+            <p>  <b>sqrt()</b> 함수는  숫자의 제곱근을 반환합니다. </p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                echo(sqrt(64));  // returns 8<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_math_sqrt">Run
+                example »</a> </div>
+            <hr>
+                                                
+            <h2>PHP round() 함수</h2>
+            <p>  <b>round()</b> 함수는 부동 소수점 숫자를 가장 가까운 정수로 반올림합니다. </p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                echo(round(0.60));  // returns 1<br>
+                echo(round(0.49));  // returns 0<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_math_round">Run
+                example »</a> </div>
+            <hr>
+                                                            
+            <h2>PHP rand() 함수</h2>
+            <p>  <b>rand()</b> 함수는 난수를 생성합니다. </p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                echo(rand());<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_math_rand">Run
+                example »</a> </div>
+            <p> 난수를 더 잘 제어하려면 선택적인 min 및 max 매개 변수를 추가하여 반환할 가장 낮은 정수와 가장 높은 정수를 지정할 수 있습니다. 
+              예를 들어 10에서 100(포함) 사이의 임의의 정수를 원하면 다음을 사용하십시오 <b>rand(10, 100)</b>.
+            </p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                echo(rand(10, 100));<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_math_rand2">Run
+                example »</a> </div>
+            <hr>
+            
+            <h2> Complere Marh 함수 reference</h2>
+            <p> 모든 Math 함수에 대한 전체 참조는 <a href="https://www.w3schools.com/php/php_ref_math.asp">Complete PHP Math Reference</a>를 참조하십시오 .
+                PHP Math 참조에는 각 함수에 대한 설명과 사용 예가 포함되어 있습니다.</p>
+            <hr>
+            
             <h2>PHP Constants</h2>
             <p>상수는 단순한 값을 위한 식별자(이름)입니다. 그 값은 스크립트 안에서 변경 될 수 없다. </p>
             <p>유효한 상수 이름은 문자나 밑줄(underscore)로 시작합니다 (상수 이름 앞에는 $ 기호가 없습니다.).</p>
             <p><strong>Note:</strong> 변수와는 달리 상수는 스크립트 전체에서 자동으로 전역범위를
               갖는다.&nbsp;</p>
             <hr>
+            
             <h2>Set a PHP Constant</h2>
             <p>상수를 설정하려면, 세 가지 매개 변수를 취하는 define() 함수를 사용한다. : 첫 번째 매개 변수는 상수의
               이름을 정의, 두 번째 매개 변수는 상수의 값을 정의, 세번째 매개 변수는 상수 이름을 대소문자 구별 안할
@@ -43,6 +135,7 @@
               <br>
               <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_constant1">Run
                 example »</a> </div>
+            
             <p>아래의 예제는 "Welcome to W3Schools.com!" 의 값을 대소문자 구분하지 않는 상수(<strong>case-</strong><strong><strong>insensitive
                   </strong>constant</strong>)를 생성한다.:&nbsp;</p>
             <div class="w3-example">
