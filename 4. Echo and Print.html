@@ -84,19 +84,18 @@
                 example »</a> </div>
             <p><strong>Display Variables</strong></p>
             <p>다음의 예에서는 print 명령으로 문자열과 변수를 표시하는 방법을 보여줍니다. <br>
-              이중 따옴표 " " 안의 string들은 해석된다. 즉, 그 안의 변수들은 그들의 값으로 string에 포함된다. <br>
-              애매함을 피하기 위해서, 중괄호 {} 로 변수를 감쌀 수 있다. :</p>
+              이중 따옴표 " " 안의 string들은 해석된다. 즉, 그 안의 변수들은 그들의 값으로 string에 포함된다. :</p>
             <div class="w3-example">
               <h2 class="example">Example</h2>
               <div class="w3-code notranslate"> &lt;?php<br>
-                $txt1="Learn PHP";<br>
-                $txt2="W3Schools.com";<br>
-                $cars=array("Volvo","BMW","Toyota");<br>
+                $txt1 = "Learn PHP";<br>
+                $txt2 = "W3Schools.com";<br>
+                $x = 5;<br>
+                $y = 4;<br>
                 <br>
-                print $txt1;<br>
-                print "&lt;br&gt;";<br>
-                print "Study PHP at $txt2";<br>
-                print "My car is a {$cars[0]}";<br>
+                print "<h2>" . $txt1 . "</h2>";<br>
+                print "Study PHP at " . $txt2 . "<br>";<br>
+                print $x + $y;<br>
                 ?&gt; </div>
               <br>
               <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_print2">Run
