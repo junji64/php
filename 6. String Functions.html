@@ -24,7 +24,8 @@
             <h2>PHP String Functions</h2>
             <p>문자열을 조작하는데 일반적으로 사용되는 몇몇 함수를 살펴본다.</p>
             <hr>
-            <h2>PHP strlen() function</h2>
+            
+            <h2> strlen() function</h2>
             <p><strong>strlen()</strong> 함수는 문자열의 길이를 반환한다.</p>
             <p>다음의 예는 문자열&nbsp; "Hello world!"의 길이를 반환한다.:</p>
             <div class="w3-example">
@@ -35,12 +36,40 @@
               <br>
               <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_string_length">Run
                 example »</a> </div>
-            <p>위의 코드는 다음을 출력할 것이다.: 12</p>
             <p><strong>Tip:</strong> strlen() 는 문자열이 언제 끝나는 지를 아는 것이 중요할 때 루프나
-              다른 함수에서 종종 사용된다. (i.e. 루프에서, 문자열의 마지막 문자 다음에 루프를 중지하기를 원할 수 있다).</p>
+              다른 함수에서 종종 사용된다. (i.e. 루프에서, 문자열의 마지막 문자 다음에 루프를 중지하기를 원할 수 있다).</p>            
             <hr>
+            
+            <h2> str_word_count() function</h2>
+            <p><strong>str_word_count()</strong> 함수는 문자열의 단어 수를 계산합니다.</p>
+            <p>다음의 예는 문자열&nbsp; "Hello world!"의 길이를 반환한다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                echo str_word_count("Hello world!"); // outputs 2 <br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_string_word_count">Run
+                example »</a> </div>
+            <hr>
+                        
+            <h2> strrev() function</h2>
+            <p><strong>strrev()</strong> 함수는 문자열을 뒤집습니다.</p>
+            <p>다음의 예는 문자열&nbsp; "Hello world!"의 길이를 반환한다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                echo strrev("Hello world!"); // outputs !dlrow olleH <br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_string_reverse">Run
+                example »</a> </div>
+            <p><strong>Tip:</strong> strlen() 는 문자열이 언제 끝나는 지를 아는 것이 중요할 때 루프나
+              다른 함수에서 종종 사용된다. (i.e. 루프에서, 문자열의 마지막 문자 다음에 루프를 중지하기를 원할 수 있다).</p>            
+            <hr>
+            
             <h2>PHP strpos() function</h2>
-            <p>strpos() 함수는 문자열에서 지정된 문자나 텍스트를 검색하는 데 사용된다. </p>
+            <p><strong>strpos()</strong>  함수는 문자열에서 지정된 문자나 텍스트를 검색하는 데 사용된다. </p>
             <p>매치가 발견되면, 첫번째 매치의 문자 위치를 반환한다. 매치가 발견되지 않으면,&nbsp; FALSE 를 반환한다.
             </p>
             <p>아래의 예제는 "Hello world!" 문자열에서 텍스트 "world" 를 검색한다.:</p>
@@ -53,9 +82,21 @@
               <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_string_pos">Run
                 example »</a> </div>
             <p>위의 코드의 출력은 다음과 같다: 6.</p>
-            <p><strong>Tip:</strong> 위의 예에서 문자열 "world" 의 위치는 6 입니다. 그 것이 (7이
-              아닌) 6인 이유는 문자열의 첫 번째 문자의 위치는 (1이 아닌) 0 이기 때문입니다.&nbsp;
+            <p><strong>Tip:</strong> 위의 예에서 문자열 "world" 의 위치는 6 입니다. 그것이 (7이 아닌) 6인 이유는 문자열의 첫 번째 문자의 위치는 (1이 아닌) 0 이기 때문입니다.&nbsp;
               &nbsp;&nbsp;</p>
+            <hr>
+                        
+            <h2>str_replace() function</h2>
+            <p><strong>str_replace()</strong> 함수는 문자열에서 일부 문자를 다른 문자로 대체합니다. </p>
+            <p>아래의 예제는 텍스트 "world"를 "Dolly"로 바꿉니다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+                echo str_replace("world", "Dolly", "Hello world!"); // outputs Hello Dolly!<br>
+                ?&gt; </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_string_replace">Run
+                example »</a> </div>
             <hr>
             <h2>Complete PHP String Reference</h2>
             <p>모든 문자열 함수들의 전체 참조는 <a href="http://www.w3schools.com/php/php_ref_string.asp">PHP
