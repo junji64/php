@@ -110,18 +110,17 @@
             <div class="w3-example">
               <h2 class="example">Example</h2>
               <div class="w3-code notranslate"> &lt;?php<br>
-                class Car<br>
-                {<br>
-                &nbsp; var $color;<br>
-                &nbsp; function Car($color="green") <br>
-                &nbsp; {<br>
-                &nbsp;&nbsp;&nbsp; $this-&gt;color = $color;<br>
-                &nbsp; }<br>
-                &nbsp; function what_color() <br>
-                &nbsp; {<br>
-                &nbsp;&nbsp;&nbsp; return $this-&gt;color;<br>
-                &nbsp; }<br>
+                class Car {<br>
+                  function Car() {<br>
+                    $this->model = "VW";<br>
+                  }<br>
                 }<br>
+                <br>
+                // create an object<br>
+                $herbie = new Car();<br>
+                <br>
+                // show object properties<br>
+                echo $herbie->model;<br>
                 ?&gt; </div>
               <br>
               <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_datatypes_object">Run
