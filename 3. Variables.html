@@ -124,17 +124,17 @@
             <p>변수의 범위(scopes)는 변수가 사용 될/참조 될 수 있는 스크립트의 일정 부분을 말한다.&nbsp;&nbsp;</p>
             <p>PHP 는 세가지 다른 변수 범위를 갖는다.:</p>
             <ul>
-              <li>local</li>
-              <li>global</li>
-              <li>static</li>
+              <li> 지역 (local)</li>
+              <li> 전역 (global)</li>
+              <li> 정적인 (static)</li>
             </ul>
             <hr>
             <h2>Local and Global Scope</h2>
             <p>함수 <strong>외부</strong>에 선언된 변수는<strong> 전역범위(GLOBAL SCOPE)</strong>를
               가지며, 함수 외부에서만 접근할 수 있다.</p>
-            <p>함수 <strong>내부</strong>에 선언된 변수는 <strong>로컬범위(LOCAL SCOPE)</strong>를
+            <p>함수 <strong>내부</strong>에 선언된 변수는 <strong>지역범위(LOCAL SCOPE)</strong>를
               가지며, 함수 내부에서만 접근 할 수 있다.</p>
-            <p>다음의 예에서 로컬범위와 전역범위의 변수를 시험합니다.:</p>
+            <p>다음의 예에서 지엳범위와 전역범위의 변수를 시험합니다.:</p>
             <div class="w3-example">
               <h2 class="example">Example</h2>
               <div class="w3-code notranslate"> &lt;?php<br>
@@ -199,7 +199,8 @@
                 ?&gt; </div>
               <br>
               <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_var_global">Run
-                example »</a> </div>
+                example »</a> & <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_var_local">Run
+                example »</a></div>
             <p>PHP 는 <strong>$GLOBALS[<i>index</i>] </strong>라는 배열에 모든
               전역변수(global variables)들을 저장한다.&nbsp;<em>index</em> 는 변수 이름을 말하며, 이
               배열은 함수 내부에서도 접근이 가능하며, 전역변수(global variables)를 업데이트 하는데도 사용될 수
