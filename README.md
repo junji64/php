@@ -22,7 +22,7 @@
 
 [Ch. 9 : If...else...elseif Statements](./9.%20if...else...elseif%20Statements.html)
 
-[Ch. 10 : While Loops](./10.%20while%20Loops.html)
+[Ch. 10 : Loops](./10.%20while%20Loops.html)
 
 [Ch. 11 : Functions](./11.%20Functions.html)
 
