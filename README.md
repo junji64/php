@@ -16,7 +16,7 @@
 
 [Ch. 6 : String Functions](./6.%20String%20Functions.html)
 
-[Ch. 7 : Constants](./7.%20Constants.html)
+[Ch. 7 : Math & Constants](./7.%20Constants.html)
 
 [Ch. 8 : Operators](./8.%20Operators.html)
 
