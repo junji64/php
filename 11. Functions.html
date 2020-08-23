@@ -147,6 +147,70 @@
               <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_function5">
                 Run example »</a> </div>
             <br>
+            
+            <hr>
+            <h2>PHP Functions - 유형 선언 (date type declaration)</h2>
+            <p> PHP 7에서는 유형 선언이 추가되었습니다. 이것은 함수를 선언 할 때 예상되는 데이터 유형을 지정하는 옵션을 제공하며, 
+              strict 선언을 추가 하면 데이터 유형이 일치하지 않으면 "치명적인 오류"가 발생합니다.;</p>
+            <p> 지정하려면 다음처럼 strict을 설정해야합니다 declare(strict_types=1);. 이것은 PHP 파일의 맨 첫 줄에 있어야합니다.
+              다음 예제에서는 함수에 숫자와 문자열을 모두 보내려고 하지만 여기에 strict 선언을 추가했습니다 .</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+              declare(strict_types=1); // strict requirement<br>
+
+              function addNumbers(int $a, int $b) {<br>
+                return $a + $b;<br>
+              }<br>
+              echo addNumbers(5, "5 days");<br>
+              // since strict is enabled and "5 days" is not an integer, an error will be thrown<br>
+              ?><br>
+                ?&gt;</div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_func_strict">
+                Run example »</a> </div>
+            <br>
+            
+            <hr>
+            <h2>PHP Functions - 반환 유형 선언 (return type declaration)</h2>
+            <p> PHP 7은 return 명령문에 대한 유형 선언도 지원 합니다. 
+              함수 인수에 대한 유형 선언과 마찬가지로 엄격한 요구 사항을 활성화하면 유형 불일치에 "치명적인 오류"가 발생합니다.</p>
+            <p> 함수 반환에 대한 유형을 선언하려면 함수를 선언 할 때 여는 중괄호 { 바로 앞에 콜론 : 과 유형을 추가 합니다.
+              다음 예에서는 함수의 반환 유형을 지정합니다.</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+              declare(strict_types=1); // strict requirement
+              function addNumbers(float $a, float $b) : float {<br>
+                return $a + $b;<br>
+              }<br>
+              echo addNumbers(1.2, 5.2);<br>
+                ?&gt;</div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_func_return_strict">
+                Run example »</a> </div>
+            <br>
+            
+            <hr>
+            <h2>참조로 인수 전달</h2>
+            <p> PHP에서 인수는 일반적으로 값으로 전달됩니다. 즉, 값의 복사본이 함수에 사용되며 함수에 전달 된 변수를 변경할 수 없습니다.</p>
+            <p> PHP 7에서 함수 인수가 참조로 전달되면 인수를 변경하면 전달된 변수도 변경됩니다. 함수 인수를 참조로 변환하려면 <b>&</b> 연산자가 사용됩니다.</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> &lt;?php<br>
+              function add_five(&$value) {
+                  $value += 5;<br>
+                }<br>
+                <br>
+                $num = 2;<br>
+                add_five($num);<br>
+                echo $num;<br>
+                ?&gt;</div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_func_pass_ref">
+                Run example »</a> </div>
+            <br>            
+            
             <br>
             <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="10.%20while%20Loops.html">«
                 Previous</a> <a class="w3-right w3-btn" href="12.%20Arrays.html">Next »</a> </div>
