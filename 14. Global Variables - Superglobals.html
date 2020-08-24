@@ -265,15 +265,21 @@
                 &lt;/form&gt;<br>
                 <br>
                 &lt;?php <br>
-                $name = $_POST['fname']; <br>
-                echo $name; <br>
+                if ($_SERVER["REQUEST_METHOD"] == "POST") { <br>
+                  // collect value of input field <br>
+                  $name = $_POST['fname']; <br>
+                  if (empty($name)) { <br>
+                    echo "Name is empty"; <br>
+                  } else { <br>
+                    echo $name; <br>
+                  } <br>
+                } <br>
                 ?&gt;<br>
                 <br>
                 &lt;/body&gt;<br>
                 &lt;/html&gt;</div>
               <br>
-              <a class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_global_post"
-
+              <a class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=demo_global_post"
                 target="_blank">Run example »</a> </div>
             <br>
             <hr>
@@ -309,8 +315,7 @@
                 &lt;/body&gt;<br>
                 &lt;/html&gt;</div>
               <br>
-              <a class="w3-btn w3-margin-bottom" href="http://www.w3schools.com/php/phptryit.asp?filename=tryphp_global_get"
-
+              <a class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=demo_global_get"
                 target="_blank">Run example »</a> </div>
             <p><strong>Tip:</strong> You will learn more about $_POST and $_GET
               in the PHP Forms chapter.</p>
