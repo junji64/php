@@ -38,7 +38,9 @@
 
 [Ch. 17 : Forms - 필수 Fields](./17.%20Forms%20Required%20Fields.html)
 
-[Ch. 18 : Forms - Validate E-mail and URL](./18.%20Forms%20Validate%20E-mail%20and%20URL.html)
+[Ch. 18 : Regular Expression](./18.%20Regular%20Expression.html)
+
+[Ch. 19 : Forms - Validate E-mail and URL](./19.%20Forms%20Validate%20E-mail%20and%20URL.html)
 
 [Ch. 19 : Date and Time](./19.%20Date%20and%20Time.html)
 
