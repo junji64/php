@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>18. Regular Expression</title>
+    <style>a.menu_html_intro{font-weight:bold;}</style>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="HTML,PHP,SQL,tutorial,programming,development,Web building,Webmaster">
+    <link rel="stylesheet" href="w3.css">
+  </head>
+  <body>
+    <div id="belowTopnav" style="width:auto">
+      <div id="page" style="width:auto; padding:30px; margin:10px;">
+        <div>
+          <div id="main" style="width:auto">
+            <h1>18. <span class="color_h1">정규 표현식(Regular Expression)</span></h1>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="17.%20Forms%20Required%20Fields.html">«
+                Previous</a> <a class="w3-right w3-btn" href="19.%20Forms%20Validate%20E-mail%20and%20URL.html">Next  »</a> </div>
+            <hr>
+            <h2> 정규 표현식(Regular Expression)이란?</h2>
+            <p class="intro">
+				정규 표현식은 검색 패턴을 형성하는 일련의 문자입니다. 텍스트에서 데이터를 검색 할 때, 이 검색 패턴을 사용하여 검색중인 내용을 설명 할 수 있습니다. </p>
+			<p> 정규 표현식은 단일 문자이거나 더 복잡한 패턴 일 수 있습니다.</p>
+			<p>	정규 표현식을 사용하여 모든 유형의 텍스트 검색 및 텍스트 바꾸기 작업을 수행 할 수 있습니다. </p>
+            <hr>
+            <h2>문법(Syntax)</h2>
+            <p> PHP에서 정규 표현식은 구분 기호, 패턴 및 선택적 수정자로 구성된 문자열입니다.</p>
+            <div class="w3-code  w3-border notranslate">
+              <div> $exp = "/w3schools/i"; </div>
+            </div>
+            <p> 위의 예에서, /는 구분자, w3schools 는 찾고자하는 패턴, i는 수정자로 대소문자를 구분하지 않음(case-insensitive)을 표시한다. </p>
+            <p> 구분자 기호는 문자, 숫자, 백 슬래시 또는 공백이 아닌 모든 문자가 될 수 있습니다. 가장 일반적인 구분 기호는 슬래시 (/)이지만, 패턴에 슬래시가 포함된 경우 # 또는 ~와 같은 다른 구분자 기호를 선택하는 것이 편리합니다.</p>
+            <hr>
+
+
+            <h2>정규 표현식 함수</h2>
+            <p>PHP는 정규 표현식을 사용할 수 있는 다양한 함수를 제공합니다. preg_match (), preg_match_all () 및 preg_replace () 함수는 가장 일반적으로 사용되는 함수 중 일부입니다.</p>
+            <table class="w3-table-all  notranslate">
+              <tbody>
+                <tr>
+                  <th style="width:20%">함수</th>
+                  <th style="width:80%">설명</th>
+                </tr>
+                <tr>
+                  <td>preg_match()</td>
+                  <td>Returns 1 if the pattern was found in the string and 0 if not</td>
+                </tr>
+                <tr>
+                  <td>preg_match_all()</td>
+                  <td>Returns the number of times the pattern was found in the string, which may also be 0</td>
+                </tr>
+                <tr>
+                  <td>preg_replace()</td>
+                  <td>Returns a new string where matched patterns have been replaced with another string</td>
+                </tr>
+                </tbody>
+              </table>
+            <hr>
+
+            <h2>preg_match () 사용</h2>
+            <p> preg_match()함수는 문자열에 패턴과 일치하는지 부분이 있는지 여부를 알려줍니다.</p>
+
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <p> Use a regular expression to do a case-insensitive search for "w3schools" in a string:</p>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                $str = "Visit W3Schools";<br>
+                $pattern = "/w3schools/i";<br>
+                echo preg_match($pattern, $str); // Outputs 1<br>
+                ?&gt; 
+              </div>
+              <br>
+              <a class="w3-btn w3-margin-bottom" href="https://www.w3schools.com/php/phptryit.asp?filename=tryphp_regex_match" target="_blank">Run example »</a> </div>
+            <hr>
+
+            <h2>preg_match_all() 사용</h2>
+            <p> preg_match_all()함수는 문자열에서 패턴과 일치하는 항목이 몇 개 발견되었는지 알려줍니다. </p>
+
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <p> Use a regular expression to do a case-insensitive count of the number of occurrences of "ain" in a string::</p>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                $str = "The rain in SPAIN falls mainly on the plains.";<br>
+                $pattern = "/ain/i";<br>
+                echo preg_match_all($pattern, $str); // Outputs 4<br>
+                ?&gt; 
+              </div>
+              <br>
+              <a class="w3-btn w3-margin-bottom" href="https://www.w3schools.com/php/phptryit.asp?filename=tryphp_regex_match_all" target="_blank">Run example »</a> </div>
+              <hr>
+
+            <h2>preg_replace() 사용</h2>
+            <p> preg_replace()함수는 문자열에서 일치하는 모든 패턴을 다른 문자열로 바꿉니다. </p>
+
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <p> Use a case-insensitive regular expression to replace Microsoft with W3Schools in a string:</p>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                $str = "Visit Microsoft!";<br>
+                $pattern = "/microsoft/i";<br>
+                echo preg_replace($pattern, "W3Schools", $str); // Outputs "Visit W3Schools!"<br>
+                ?&gt; 
+              </div>
+              <br>
+              <a class="w3-btn w3-margin-bottom" href="https://www.w3schools.com/php/phptryit.asp?filename=tryphp_regex_replace" target="_blank">Run example »</a> </div>
+            <hr>
+
+            <h2>정규 표현식 수정자</h2>
+            <p>수정자는 검색 수행 방법을 변경할 수 있습니다.</p>
+            <table class="w3-table-all  notranslate">
+              <tbody>
+                <tr>
+                  <th style="width:20%">수정자</th>
+                  <th style="width:80%">설명</th>
+                </tr>
+                <tr>
+                  <td>i</td>
+                  <td>  Performs a case-insensitive search</td>
+                </tr>
+                <tr>
+                  <td>m</td>
+                  <td>Performs a multiline search (patterns that search for the beginning or end of a string will match the beginning or end of each line)</td>
+                </tr>
+                <tr>
+                  <td>u</td>
+                  <td>Enables correct matching of UTF-8 encoded patterns</td>
+                </tr>
+                </tbody>
+              </table>
+            <hr>
+
+            <h2>정규 표현식 패턴</h2>
+            <p>대괄호는 문자 범위를 지정하는데 사용됩니다.</p>
+            <table class="w3-table-all  notranslate">
+              <tbody>
+                <tr>
+                  <th style="width:20%">수정자</th>
+                  <th >설명</th>
+                </tr>
+                <tr>
+                  <td>[abc]</td>
+                  <td>Find one character from the options between the brackets</td>
+                </tr>
+                <tr>
+                  <td>[^abc]</td>
+                  <td>Find any character NOT between the brackets</td>
+                </tr>
+                <tr>
+                  <td>[0-9]</td>
+                  <td>Find one character from the range 0 to 9</td>
+                </tr>
+                </tbody>
+              </table>
+            <hr>
+
+
+            <h2>정규 표현식 매타문자(Meta Character)</h2>
+            <p>메타 문자는 특별한 의미를 갖는 문자입니다.</p>
+            <table class="w3-table-all  notranslate">
+              <tbody>
+                <tr>
+                  <th style="width:20%">매타문자</th>
+                  <th >설명</th>
+                </tr>
+                <tr>
+                  <td>|</td>
+                  <td>Find a match for any one of the patterns separated by | as in: cat|dog|fish</td>
+                </tr>
+                <tr>
+                  <td>.</td>
+                  <td>Find just one instance of any character</td>
+                </tr>
+                <tr>
+                  <td>^</td>
+                  <td>Finds a match as the beginning of a string as in: ^Hello</td>
+                </tr>
+                <tr>
+                  <td>$</td>
+                  <td>Finds a match at the end of the string as in: World$</td>
+                </tr>                
+                <tr>
+                  <td>\d</td>
+                  <td>Find a digit</td>
+                </tr>                
+                <tr>
+                  <td>\s</td>
+                  <td>Find a whitespace character</td>
+                </tr>                
+                <tr>
+                  <td>\b</td>
+                  <td>Find a match at the beginning of a word like this: \bWORD, or at the end of a word like this: WORD\b</td>
+                </tr>
+                <tr>
+                  <td>\uxxxx</td>
+                  <td>Find the Unicode character specified by the hexadecimal number xxxx</td>
+                </tr>
+                </tbody>
+              </table>
+            <hr>
+
+            <h2>수량자(Quantifiers)</h2>
+            <p>수량자는 수량을 정의합니다.</p>
+            <table class="w3-table-all  notranslate">
+              <tbody>
+                <tr>
+                  <th style="width:20%">수량자</th>
+                  <th >설명</th>
+                </tr>
+                <tr>
+                  <td>n+</td>
+                  <td>Matches any string that contains at least one n</td>
+                </tr>
+                <tr>
+                  <td>n*</td>
+                  <td>Matches any string that contains zero or more occurrences of n</td>
+                </tr>
+                <tr>
+                  <td>n?</td>
+                  <td>Matches any string that contains zero or one occurrences of n</td>
+                </tr>
+                <tr>
+                  <td>n{x}</td>
+                  <td>  Matches any string that contains a sequence of X n's</td>
+                </tr>                
+                <tr>
+                  <td>n{x,y}</td>
+                  <td>Matches any string that contains a sequence of X to Y n's</td>
+                </tr>                
+                <tr>
+                  <td>n{x,}</td>
+                  <td>  Matches any string that contains a sequence of at least X n's</td>
+                </tr>                
+                </tbody>
+              </table>
+            <div class="w3-note w3-panel">
+              <p>참고 : 표현식에서 특수 문자 중 하나를 검색해야하는 경우 백 슬래시(\)를 사용하여 이스케이프 할 수 있습니다. 예를 들어, 하나 이상의 물음표를 검색하려면 다음 표현식을 사용할 수 있습니다. $pattern = '/ \?+/';
+              </p>
+            </div>
+              <hr>
+
+            <h2>그룹화</h2>
+            <p> 괄호 ( )를 사용하여 전체 패턴에 수량자를 적용 할 수 있습니다. 일치로 사용할 패턴의 일부를 선택하는데도 사용할 수 있습니다. </p>
+
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <p> 그룹화를 사용하여 ba 다음에 두 개의 na 인스턴스를 찾아 "banana"라는 단어를 검색합니다 .:</p>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                $str = "Apples and bananas.";<br>
+                $pattern = "/ba(na){2}/i";<br>
+                echo preg_match($pattern, $str); // Outputs 1<br>
+                ?&gt; 
+              </div>
+              <br>
+              <a class="w3-btn w3-margin-bottom" href="https://www.w3schools.com/php/phptryit.asp?filename=tryphp_regex_grouping" target="_blank">Run example »</a> </div>
+            <hr>
+
+            <h2>RegExp 전체 참조</h2>
+            <p> 전체 참조를 보려면 <a href="https://www.w3schools.com/php/php_ref_regex.asp"> Complete PHP Regular Expression Reference</a>로 이동하십시오 . <br>
+            참조에는 모든 정규식 함수에 대한 설명과 예제가 포함되어 있습니다. </p>
+
+ <hr>
+            <br>
+            <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="17.%20Forms%20Required%20Fields.html">«
+                Previous</a> <a class="w3-right w3-btn" href="19.%20Forms%20Validate%20E-mail%20and%20URL.html">Next  »</a> </div>
+            <hr> </div>
+        </div>
+      </div>
+      <br>
+    </div>
+    
+  </body>
+</html>
