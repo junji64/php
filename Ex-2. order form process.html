@@ -9,46 +9,7 @@
 </style> <meta name="viewport" content="width=device-width">
     <meta name="Keywords" content="HTML,CSS,XML,JavaScript,DOM,jQuery,ASP.NET,PHP,SQL,colors,tutorial,programming,development,training,learning,quiz,primer,lessons,reference,examples,source code,demos,tips,color table,w3c,cascading style sheets,active server pages,Web building,Webmaster">
     <meta name="Description" content="Free HTML CSS JavaScript DOM jQuery XML AJAX RSS ASP .NET PHP SQL tutorials, references, examples for web building.">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-3855518-1']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script> <script type="text/javascript">
-var googletag = googletag || {};
-googletag.cmd = googletag.cmd || [];
-(function() {
-var gads = document.createElement('script');
-gads.async = true;
-gads.type = 'text/javascript';
-var useSSL = 'https:' == document.location.protocol;
-gads.src = (useSSL ? 'https:' : 'http:') + 
-'//www.googletagservices.com/tag/js/gpt.js';
-var node = document.getElementsByTagName('script')[0];
-node.parentNode.insertBefore(gads, node);
-})();
-</script> <script type="text/javascript">
-googletag.cmd.push(function() {
-googletag.defineSlot('/16833175/BottomMediumRectangle', [300, 250], 'div-gpt-ad-1403595829794-0').addService(googletag.pubads());
-googletag.defineSlot('/16833175/LargePS', [[723, 280], [723, 400], [728, 280], [728, 400], [728, 450]], 'div-gpt-ad-1403595829794-1').addService(googletag.pubads());
-googletag.defineSlot('/16833175/MainLeaderboard', [728, 90], 'div-gpt-ad-1403595829794-2').addService(googletag.pubads());
-googletag.defineSlot('/16833175/SmallPS', [[723, 170], [728, 170]], 'div-gpt-ad-1403595829794-4').addService(googletag.pubads());
-var adScreenWidth = screen.width;
-if (adScreenWidth <= 768) {   
-  googletag.defineSlot('/16833175/MobileBottomBanner', [728, 90], 'div-gpt-ad-1403595829794-3').addService(googletag.pubads());
-} else { 
-  googletag.defineSlot('/16833175/WideSkyScraper', [160, 600], 'div-gpt-ad-1403595829794-5').addService(googletag.pubads());
-}
-googletag.pubads().setTargeting("content","php");
-googletag.pubads().enableSingleRequest();
-googletag.enableServices();
-});
-</script> <link rel="stylesheet" type="text/css" href="http://www.w3schools.com/stdtheme.css">
+    <link rel="stylesheet" href="w3.css">
   </head>
   <body>
     <div id="smallnavContainer">
@@ -71,7 +32,7 @@ googletag.enableServices();
             <p>아래의 코드(order.php)는 사용자로부터 cookie와 candy bar 주문 개 수를 입력받아, 총액을 하단에
               알려준다. </p>
             <p> </p>
-            <div class="code notranslate">
+            <div class="w3-code  w3-border notranslate">
               <div> &lt;form action="&lt;?=$_SERVER['PHP_SELF']?&gt;"
                 method="post"&gt;<br>
                 &nbsp;&nbsp; &nbsp;&lt;input type="text" name="cookie" size="2"
@@ -88,8 +49,12 @@ googletag.enableServices();
                 $cost = 0.00;<br>
                 $cookie = $_POST["cookie"]; <br>
                 $candy = $_POST["candy"];<br>
-                $cost += $cookie * 1.50;<br>
-                $cost += $candy * 2.00;<br>
+                if ( $_POST["cookie"] != "" ) {<br>
+                &nbsp;&nbsp; &nbsp;$cost += $cookie * 1.50;<br>
+                }<br>
+                if ( $_POST["candy"] != "" ) {<br>
+                &nbsp;&nbsp; &nbsp;$cost += $candy * 2.00;<br>
+                }<br>
                 if ( isset($_POST["donation"]) ) {<br>
                 &nbsp;&nbsp; &nbsp;$cost += 5.00;<br>
                 }<br>
