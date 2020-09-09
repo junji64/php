@@ -42,21 +42,21 @@
 
 [Ch. 19 : Forms - Validate E-mail and URL](./19.%20Forms%20Validate%20E-mail%20and%20URL.html)
 
-[Ch. 19 : Date and Time](./19.%20Date%20and%20Time.html)
+[Ch. 20 : Date and Time](./20.%20Date%20and%20Time.html)
 
-[Ch. 20 : Include / Require Files](./20.%20include%20and%20require.html)
+[Ch. 21 : Include / Require Files](./21.%20include%20and%20require.html)
 
-[Ch. 21 : File Handling - Open/Read/Close](./21.%20File.html)
+[Ch. 22 : File Handling - Open/Read/Close](./22.%20File.html)
 
-[Ch. 22 : File Create/Write](./22.%20File%20Create%20Write.html)
+[Ch. 23 : File Create/Write](./23.%20File%20Create%20Write.html)
 
-[Ch. 23 : File Upload](./23.%20File%20Upload.html)
+[Ch. 24 : File Upload](./24.%20File%20Upload.html)
 
-[Ch. 24 : Cookies](./24.%20Cookies.html)
+[Ch. 25 : Cookies](./25.%20Cookies.html)
 
-[Ch. 25 : Sessions](./25.%20Sessions.html)
+[Ch. 26 : Sessions](./26.%20Sessions.html)
 
-[Ch. 26 : Filters](./26.%20Filter.html)
+[Ch. 27 : Filters](./27.%20Filter.html)
 
 ## php Exercises
 
