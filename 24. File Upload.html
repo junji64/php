@@ -20,9 +20,8 @@
             <p class="intro">PHP를 사용하면 서버에 파일을 쉽게 업로드 할 수 있습니다. 
               그러나 쉬움과 함께 위험이 따르므로 파일 업로드를 허용 할 때는 항상 주의하십시오!</p>
             <hr>
-            <h2>Create an Upload-File Form</h2>
-            <p>사용자들이 폼으로 파일을 업로드 할수 있도록 하는 것은 매우 유용할 수 있습니다.&nbsp; </p>
-            <p>파일을 업로드하기 위한 다음의 HTML 폼을 보시오:</p>
+            <h2>Create the HTML Form</h2>
+            <p> 다음으로 사용자가 업로드 할 이미지 파일을 선택할 수 있는 HTML 양식을 만듭니다.:</p>
             <div class="w3-code w3-border   notranslate">
               <div> &lt;html&gt;<br>
                 &lt;body&gt;<br>
@@ -39,6 +38,7 @@
             </div>
             <p>위의 HTML form에 대해 다음의 사항들을 주목하시오:</p>
             <ul>
+              <li>Form 에 method="post"를 사용하는지 확인하십시오.</li>
               <li>&lt;form&gt; 태그의 enctype 속성은 폼을 제출할 때 사용할 콘텐츠-형식(content-type)
                 을 지정합니다.&nbsp; "multipart/form-data" 는 업로드할 파일의 내용처럼, 폼이 이진데이터를
                 요구할 때 사용됩니다. </li>
@@ -50,9 +50,25 @@
             </p>
             <hr>
             <h2>Create The Upload Script</h2>
-            <p>"upload_file.php" 파일은 파일 업로드를 위한 코드를 포합한다. :</p>
+            <p>"upload.php" 파일은 파일 업로드를 위한 코드를 포합한다. :</p>
             <div class="w3-code w3-border   notranslate">
               <div> &lt;?php<br>
+                $target_dir = "uploads/";<br>
+                $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);<br>
+                $uploadOk = 1;<br>
+                $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));<br>
+                // Check if image file is a actual image or fake image<br>
+                if(isset($_POST["submit"])) {<br>
+                  $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);<br>
+                  if($check !== false) {<br>
+                    echo "File is an image - " . $check["mime"] . ".";<br>
+                    $uploadOk = 1;<br>
+                  } else {<br>
+                    echo "File is not an image.";<br>
+                    $uploadOk = 0;<br>
+                  }<br>
+                }<br>
+                <br>
                 if (isset($_FILES)) {<br>
                 &nbsp;&nbsp;&nbsp; $file = $_FILES["file"];<br>
                 &nbsp;&nbsp;&nbsp; // print_r($file);<br>
