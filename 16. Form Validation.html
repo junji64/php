@@ -116,13 +116,12 @@
             <hr>
             <h2>Big Note on PHP Form Security</h2>
             <p>$_SERVER["PHP_SELF"] 변수는 해커들에 의해서 이용될 수 있다!</p>
-            <p>PHP_SELF 가 당신의 페이지에서 사용되는 경우, 사용자는 slash (/) 를, 그리고 실행한 일종의 Cross
-              Site Scripting (XSS) 명령을 입력할 수 있다. </p>
+            <p>PHP_SELF 가 당신의 페이지에서 사용되는 경우, 사용자는 slash (/) 를, 그리고 실행한 일종의 Cross-Site Scripting (XSS) 명령을 입력할 수 있다. </p>
             <div class="w3-panel w3-note">
               <p> </p>
               <p><strong>&nbsp;Cross-site scripting (XSS) 은 웹 응용프로그램에서 일반적으로 만나는
-                  컴퓨터 보안 취약성의 한 유형이다.&nbsp; XSS 는 </strong><strong><strong>다 른
-                    사용자들에 보여지도록 </strong>공 격자들이 웹페이지에 클라이언트-측 스크립트를 주입하는 것을
+                  컴퓨터 보안 취약성의 한 유형이다.&nbsp; XSS 는 </strong><strong><strong>다른
+                    사용자들에 보여지도록 </strong>공격자들이 웹페이지에 클라이언트-측 스크립트를 주입하는 것을
                   가능하게 해준다.&nbsp; <br>
                 </strong> </p>
             </div>
@@ -182,7 +181,7 @@ action="test_form.php/&amp;quot;&amp;gt;&amp;lt;script&amp;gt;alert('hacked')&am
             <p>사용자가 폼을 제출항 때 두 가지 더 할 일이 있다. :</p>
             <ol>
               <li>사용자가 입력한 데이타에서 불필요한 문자(extra space, tab, newline) 들을 제거한다(PHP
-                <strong>trim()</strong> 함수).&nbsp; </li>
+                <strong><a href="https://www.w3schools.com/PHP/func_string_trim.asp">trim()</a></strong> 함수).&nbsp; </li>
               <li>사용자가 입력한 데이타에서 backslashes (\) 를 제거한다(PHP <a href="http://www.w3schools.com/php/func_string_stripslashes.asp">
                   <strong>stripslashes()</strong></a> 함수).</li>
             </ol>
