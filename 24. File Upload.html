@@ -65,31 +65,6 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;$uploadOk = 0;<br>
                 &nbsp;&nbsp;}<br>
                 }<br>
-                <br>
-                if (isset($_FILES)) {<br>
-                &nbsp;&nbsp;&nbsp; $file = $_FILES["file"];<br>
-                &nbsp;&nbsp;&nbsp; // print_r($file);<br>
-                &nbsp;&nbsp;&nbsp; $error = $file["error"];<br>
-                &nbsp;&nbsp;&nbsp; $name = $file["name"];<br>
-                &nbsp;&nbsp;&nbsp; $type = $file["type"];<br>
-                &nbsp;&nbsp;&nbsp; $size = $file["size"];<br>
-                &nbsp;&nbsp;&nbsp; $tmp_name = $file["tmp_name"];<br>
-                &nbsp;&nbsp;&nbsp; if ( $error &gt; 0 ) {<br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; echo "Error: " . $error .
-                "&lt;br&gt;";<br>
-                &nbsp;&nbsp;&nbsp; }<br>
-                &nbsp;&nbsp;&nbsp; else&nbsp;{<br>
-                &nbsp; &nbsp;&nbsp;&nbsp; echo "Upload: " . $name .
-                "&lt;br&gt;";<br>
-                &nbsp; &nbsp;&nbsp;&nbsp; echo "Type: " . $type . "&lt;br&gt;";<br>
-                &nbsp; &nbsp;&nbsp;&nbsp; echo "Size: " . ($size/1024/1024) . "
-                Mb&lt;br&gt;";<br>
-                &nbsp; &nbsp;&nbsp;&nbsp; echo "Stored in: " . $tmp_name;<br>
-                &nbsp;&nbsp;&nbsp; }<br>
-                }<br>
-                else {<br>
-                &nbsp;&nbsp;&nbsp; echo "File is not selected";<br>
-                }<br>
                 ?&gt; </div>
             </div>
             <p> PHP 스크립트 설명 : </p>
@@ -122,59 +97,110 @@
             <p>이것은 파일을 업로드하는 간단한 방법입니다. 보안상의 이유로 어떤 사용자가 업로드할 수 있는지를 제한하는 것을 추가
               해야 합니다. </p>
             <hr>
-            <h2>Restrictions on Upload</h2>
-            <p>이 스크립트에서는 파일 업로드에 몇 가지 제한을 추가 합니다. 사용자는 .gif, .jpeg, 과 .png 파일을
-              업로드 할 수 있습니다. ; 그리고 파일의 크기는 2 Mb 미만이여야 합니다.:</p>
+            <h2>파일이 이미 있는지 확인</h2>
+            <p>이제 몇 가지 제한 사항을 추가 할 수 있습니다.:</p>
+            <p>먼저 파일이 "uploads"폴더에 이미 있는지 확인합니다. 이 경우 오류 메시지가 표시되고 $ uploadOk가 0으로 설정됩니다. </p>
             <div class="w3-code w3-border   notranslate">
               <div> &lt;?php<br>
-                $allowedExts = array("gif", "jpeg", "jpg", "png");<br>
-                <br>
-                if (isset($_FILES)) {<br>
-                &nbsp;&nbsp;&nbsp; $file = $_FILES["file"];<br>
-                &nbsp;&nbsp;&nbsp; $error = $file["error"];<br>
-                &nbsp;&nbsp;&nbsp; $name = $file["name"];<br>
-                &nbsp;&nbsp;&nbsp; $type = $file["type"];<br>
-                &nbsp;&nbsp;&nbsp; $size = $file["size"];<br>
-                &nbsp;&nbsp;&nbsp; $tmp_name = $file["tmp_name"];<br>
-                &nbsp;&nbsp;&nbsp; <br>
-                &nbsp;&nbsp;&nbsp; if ( $error &gt; 0 ) {<br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; echo "Error: " . $error .
-                "&lt;br&gt;";<br>
-                &nbsp; &nbsp; } <br>
-                &nbsp;&nbsp;&nbsp; else&nbsp;{<br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $temp = explode(".",
-                $name);<br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // print_r($temp);<br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $extension = end($temp);<br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; //echo $extension;<br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if ( ($size/1024/1024)
-                &lt; 2.) &amp;&amp; in_array($extension, $allowedExts) )&nbsp;{<br>
-                &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; echo
-                "Upload: " . $name . "&lt;br&gt;";<br>
-                &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; echo "Type:
-                " . $type . "&lt;br&gt;";<br>
-                &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; echo "Size:
-                " . ($size/1024/1024) . " Mb&lt;br&gt;";<br>
-                &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; echo "Stored
-                in: " . $tmp_name;<br>
-                &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; }<br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; else&nbsp;{<br>
-                &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; echo
-                ($size/1024/1024) . " Mbyte is bigger than 2 Mb ";<br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; echo
-                $extension . "format file is not allowed to upload ! ";<br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
-                &nbsp;&nbsp;&nbsp; } <br>
-                }<br>
-                else {<br>
-                &nbsp;&nbsp;&nbsp; echo "File is not selected";<br>
-                }<br>
+                // Check if file already exists <br>
+                if (file_exists($target_file)) { <br>
+                  echo "Sorry, file already exists."; <br>
+                  $uploadOk = 0; <br>
+                } <br>
                 ?&gt; </div>
             </div>
             <br>
             <hr>
-            <h2>Saving the Uploaded File</h2>
+          
+            <h2>파일 크기 제한</h2>
+            <p>위 HTML 양식의 파일 입력 필드 이름은 "fileToUpload"입니다.</p>
+            <p>이제 파일의 크기를 확인하고 싶습니다. 파일이 500KB보다 크면 오류 메시지가 표시되고 $ uploadOk가 0으로 설정됩니다. </p>
+            <div class="w3-code w3-border   notranslate">
+              <div> &lt;?php<br>
+              // Check file size<br>
+              if ($_FILES["fileToUpload"]["size"] > 500000) {<br>
+                echo "Sorry, your file is too large.";<br>
+                $uploadOk = 0;<br>
+              }<br>
+                ?&gt; </div>
+            </div>
+            <br>
+            <hr>
+                    
+            <h2>파일 유형 제한</h2>
+            <p>아래 코드는 사용자가 JPG, JPEG, PNG 및 GIF 파일 만 업로드하도록 허용합니다. 
+              다른 모든 파일 형식은 $ uploadOk를 0으로 설정하기 전에 오류 메시지를 표시합니다. </p>
+            <div class="w3-code w3-border   notranslate">
+              <div> &lt;?php<br>
+              // Allow certain file formats<br>
+              if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"<br>
+              && $imageFileType != "gif" ) {<br>
+                echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";<br>
+                $uploadOk = 0;<br>
+              }<br>
+                ?&gt; </div>
+            </div>
+            <br>
+            <hr>
+          
+          
+           <h2>완전한 업로드 파일 PHP 스크립트</h2>
+            <p>이제 완전한 "upload.php"파일은 다음과 같습니다. </p>
+            <div class="w3-code w3-border   notranslate">
+              <div> &lt;?php<br>
+              $target_dir = "uploads/";<br>
+              $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);<br>
+              $uploadOk = 1;<br>
+              $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));<br>
+<br>
+              // Check if image file is a actual image or fake image<br>
+              if(isset($_POST["submit"])) {<br>
+                $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);<br>
+                if($check !== false) {<br>
+                  echo "File is an image - " . $check["mime"] . ".";<br>
+                  $uploadOk = 1;<br>
+                } else {<br>
+                  echo "File is not an image.";<br>
+                  $uploadOk = 0;<br>
+                }<br>
+              }<br>
+
+              // Check if file already exists<br>
+              if (file_exists($target_file)) {<br>
+                echo "Sorry, file already exists.";<br>
+                $uploadOk = 0;<br>
+              }<br>
+<br>
+              // Check file size<br>
+              if ($_FILES["fileToUpload"]["size"] > 500000) {<br>
+                echo "Sorry, your file is too large.";<br>
+                $uploadOk = 0;<br>
+              }<br>
+<br>
+              // Allow certain file formats<br>
+              if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"<br>
+              && $imageFileType != "gif" ) {<br>
+                echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";<br>
+                $uploadOk = 0;<br>
+              }<br>
+<br>
+              // Check if $uploadOk is set to 0 by an error<br>
+              if ($uploadOk == 0) {<br>
+                echo "Sorry, your file was not uploaded.";<br>
+              // if everything is ok, try to upload file<br>
+              } else {<br>
+                if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {<br>
+                  echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";<br>
+                } else {<br>
+                  echo "Sorry, there was an error uploading your file.";<br>
+                }<br>
+              }<br>
+                ?&gt; </div>
+            </div>
+            <br>
+            <hr>
+          
+            <h2>(Option) Saving the Uploaded File</h2>
             <p>위의 예제는 서버의 PHP temp 폴더에 업로드된 파일들의 임시 복사본을 생성합니다. </p>
             <p>임시 복사본 파일들은 스크립트가 종료될 때 사라집니다. 업로드된 파일들을 저장하기 위해서는 다른 장소로 복사할 필요가
               있습니다. :</p>
