@@ -17,16 +17,37 @@
             <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="26.%20Sessions.html">«
                 Previous</a> <a class="w3-right w3-btn" href="index.html">Next  »</a> </div>
             <hr>
-            <p class="intro">PHP 필터는 사용자 입력과 같은 안전하지 않은 소스로부터의 데이타를 유효성 검사하여
-              필터링하는데 사용된다. </p>
+            <p class="intro">데이터 유효성 검사 = 데이터가 올바른 형식인지 확인합니다. </p>
+            <p class="intro">데이터 삭제 = 데이터에서 잘못된 문자를 제거합니다.</p>
+            
             <hr>
-            <h2>What is a PHP Filter? </h2>
-            <p>PHP filter 는 안전하지 않은 소스로부터의 데이타를 유효성 검사하여 필터링하는데 사용된다.</p>
-            <p>입력 또는 사용자 정의 데이타를 시험하고, 유효성 검사하고, 필터링하는 것은 웹프로그래밍의 중요한
-              부분이다.&nbsp;</p>
-            <p>PHP filter 확장은 데이타 필터링을 더 쉽고 빠르게 할 수 있도록 설계되었습니다.</p>
+            <h2>PHP 필터 확장</h2>
+            <p>PHP 필터는 외부 입력을 확인하고 삭제하는 데 사용됩니다. </p>
+            <p>PHP 필터 확장에는 사용자 입력을 확인하는 데 필요한 많은 기능이 있으며 
+              데이터 유효성 검사를 더 쉽고 빠르게 할 수 있도록 설계되었습니다.</p>
+            <p>filter_list()함수는 PHP 필터 확장이 제공하는 것을 나열하는 데 사용할 수 있습니다. </p>
+
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> 
+                &lt;table&gt;<br>
+                  &lt;tr&gt;<br>
+                    &lt;td&gt;Filter Name&lt;/td&gt;<br>
+                    &lt;td&gt;Filter ID&lt;/td&gt;<br>
+                  &lt;/tr&gt;<br>
+                  &lt;?php<br>
+                  foreach (filter_list() as $id =>$filter) {<br>
+                    echo '&lt;tr&gt;&lt;td&gt;' . $filter . '&lt;/td&gt;&lt;td&gt;' . filter_id($filter) . '&lt;/td&gt;&lt;/tr&gt;';<br>
+                  }<br>
+                   ?&gt; <br>
+                &lt;/table&gt;<br>
+               </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=tryphp_filter1">Run
+                example »</a> </div>
+            
             <hr>
-            <h2>Why use a Filter?</h2>
+            <h2>필터를 사용하는 이유?</h2>
             <p>거의 모든 웹 응용 프로그램은 외부 입력에 의존한다. 일반적으로 이는 사용자나 또 다른 응용 프로그램(웹서비스와
               같은)으로 부터 온다. 필터를 사용하여 당신의 응용 프로그램이 정확한 입력 형식을 얻게 됨을 확신할 수
               있다.&nbsp;</p>
@@ -40,7 +61,171 @@
               <li>서버 변수</li>
               <li>데이타베이스 쿼리 결과 </li>
             </ul>
+            
+                        
             <hr>
+            <h2>PHP filter_var() 함수</h2>
+            <p>filter_var()기능은 데이터의 유효성을 검사하고 삭제합니다. </p>
+            <p>filter_var()함수는 지정된 필터로 단일 변수를 필터링합니다. 두 가지 데이터가 필요합니다.</p>
+            <ul>
+              <li>확인하려는 변수</li>
+              <li>사용할 체크 유형</li>
+            </ul>
+            
+            <hr>
+            <h2>문자열 삭제</h2>
+            <p>다음 예제는 filter_var()함수를 사용하여 문자열에서 모든 HTML 태그를 제거합니다.</p>
+
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                $str = "<h1>Hello World!&lt;/h1&gt;";<br>
+                $newstr = filter_var($str, FILTER_SANITIZE_STRING);<br>
+                echo $newstr;<br>
+                ?&gt; <br>
+               </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=tryphp_filter2">Run
+                example »</a> </div>
+            
+             <hr>
+            <h2>정수 유효성 검사</h2>
+            <p>다음 예제에서는 filter_var()함수를 사용하여 $ int 변수가 정수인지 확인합니다. 
+              $int가 정수이면 아래 코드의 출력은 "Integer is valid"입니다. 
+              $int가 정수가 아니면 출력은 다음과 같습니다. "Integer is not valid":</p>
+
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                $int = 100;<br>
+                <br>
+                if (!filter_var($int, FILTER_VALIDATE_INT) === false) {<br>
+                  echo("Integer is valid");<br>
+                } else {<br>
+                  echo("Integer is not valid");<br>
+                }<br>
+                ?&gt; <br>
+               </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=tryphp_filter3">Run
+                example »</a> </div>
+            
+            <h2>Tip : filter_var() 및 0 문제</h2>
+            <p>위의 예에서 $ int가 0으로 설정된 경우 위의 함수는 "Integer is not valid"를 반환합니다. 
+              이 문제를 해결하려면 아래 코드를 사용하십시오.</p>
+             
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                $int = 0;<br>
+                <br>
+                if (filter_var($int, FILTER_VALIDATE_INT) === 0 || !filter_var($int, FILTER_VALIDATE_INT) === false) {<br>
+                  echo("Integer is valid");<br>
+                } else {<br>
+                  echo("Integer is not valid");<br>
+                }<br>
+                ?&gt; <br>
+               </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=tryphp_filter4">Run
+                example »</a> </div>
+              
+              
+            <hr>
+            <h2>IP 주소 확인</h2>
+            <p>다음 예제에서는 filter_var()함수를 사용하여 $ ip 변수가 유효한 IP 주소인지 확인합니다.</p>
+
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                $ip = "127.0.0.1";<br>
+                <br>
+                if (!filter_var($ip, FILTER_VALIDATE_IP) === false) {<br>
+                  echo("$ip is a valid IP address");<br>
+                } else {<br>
+                  echo("$ip is not a valid IP address");<br>
+                }<br>
+                ?&gt; <br>
+               </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=tryphp_filter5">Run
+                example »</a> </div>   
+              
+            <hr>
+            <h2>이메일 주소 삭제 및 유효성 검사</h2>
+            <p>다음 예제는 filter_var()함수를 사용하여 먼저 $email 변수에서 모든 잘못된 문자를 제거한 다음 유효한 이메일 주소인지 확인합니다.</p>
+
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                $email = "john.doe@example.com";<br>
+                <br>
+                // Remove all illegal characters from email<br>
+                $email = filter_var($email, FILTER_SANITIZE_EMAIL);<br>
+                <br>
+                // Validate e-mail<br>
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {<br>
+                  echo("$email is a valid email address");<br>
+                } else {<br>
+                  echo("$email is not a valid email address");<br>
+                }<br>
+                ?&gt; <br>
+               </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=tryphp_filter6">Run
+                example »</a> </div> 
+              
+            <hr>
+            <h2>URL 삭제 및 유효성 검사</h2>
+            <p>다음 예제는 filter_var()함수를 사용하여 먼저 URL에서 모든 잘못된 문자를 제거한 다음 $url이 유효한 URL인지 확인합니다.</p>
+
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                $url = "https://www.w3schools.com";<br>
+                <br>
+                // Remove all illegal characters from a url<br>
+                $url = filter_var($url, FILTER_SANITIZE_URL);<br>
+                <br>
+                // Validate url<br>
+                if (!filter_var($url, FILTER_VALIDATE_URL) === false) {<br>
+                  echo("$url is a valid URL");<br>
+                } else {<br>
+                  echo("$url is not a valid URL");<br>
+                }<br>
+                ?&gt; <br>
+               </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=tryphp_filter7">Run
+                example »</a> </div> 
+              
+              
+            <h2>완전한 PHP 필터 참조</h2>
+            <p>모든 필터 함수에 대한 전체 참조를 보려면 <a href="https://www.w3schools.com/php/php_ref_filter.asp">전체 PHP 필터 참조</a>로 이동하십시오. 
+              사용 가능한 옵션과 플래그를 보려면 각 필터를 확인하십시오.</p>
+            <p>참조에는 각 기능에 대한 간략한 설명과 사용 예가 포함되어 있습니다!</p>
+              
+            <hr>
+            <h2>What is a PHP Filter? </h2>
+            <p>PHP filter 는 안전하지 않은 소스로부터의 데이타를 유효성 검사하여 필터링하는데 사용된다.</p>
+            <p>입력 또는 사용자 정의 데이타를 시험하고, 유효성 검사하고, 필터링하는 것은 웹프로그래밍의 중요한
+              부분이다.&nbsp;</p>
+            <p>PHP filter 확장은 데이타 필터링을 더 쉽고 빠르게 할 수 있도록 설계되었습니다.</p>
+            
+            
+            
+            
+            
+            
+
+            <hr>
+            
             <h2>Functions and Filters</h2>
             <p>변수를 필터링하기 위해서, 다음 필터링 함수들 중의 하나를 사용한다.:</p>
             <ul>
