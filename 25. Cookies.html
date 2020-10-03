@@ -34,6 +34,42 @@
             <div class="w3-code w3-border   notranslate">
               <div> setcookie(name, value, expire, path, domain); </div>
             </div>
+            <hr>
+            <h2>PHP 쿠키 생성 / 검색</h2>
+            <p>다음 예에서는 값이 "John Doe"인 "user"라는 쿠키를 만듭니다. 
+              쿠키는 30일(86400 * 30) 후에 만료됩니다. "/"는 쿠키가 전체 웹 사이트에서 사용 가능함을 의미합니다 
+              (그렇지 않으면 선호하는 디렉토리 선택). </p>
+            <p>그런 다음 전역 변수 $_COOKIE 를 사용하여 쿠키 "user"의 값을 검색합니다. 
+              또한 isset()함수를 사용하여 쿠키가 설정되었는지 확인합니다.</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                $cookie_name = "user"; <br>
+                $cookie_value = "John Doe"; <br>
+                setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+                ?&gt;  <br>
+                &lt;html&gt;  <br>
+                &lt;body&gt;  <br>
+                <br>
+                &lt;?php <br>
+                if(!isset($_COOKIE[$cookie_name])) { <br>
+                  echo "Cookie named '" . $cookie_name . "' is not set!"; <br>
+                } else { <br>
+                  echo "Cookie '" . $cookie_name . "' is set!&lt;br&gt;"; <br>
+                  echo "Value is: " . $_COOKIE[$cookie_name]; <br>
+                } <br>
+                ?&gt; 
+                 <br>
+                &lt;/body&gt;
+                &lt;/html&gt;
+                </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=demo_cookie1">Run
+                example »</a> </div>
+            
+            
+            
             <h3>Example 1</h3>
             <p>아래의 예에서, 우리는 "user" 라는 이름의 쿠키를 생성하고, 그것에 "Alex Porter" 라는 값을
               지정합니다. 그리고 또한 그 쿠키는 1시간 후에 만료 되도록 지정합니다. </p>
