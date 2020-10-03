@@ -54,10 +54,10 @@
                 <br>
                 &lt;?php <br>
                 if(!isset($_COOKIE[$cookie_name])) { <br>
-                  echo "Cookie named '" . $cookie_name . "' is not set!"; <br>
+                &nbsp;&nbsp;echo "Cookie named '" . $cookie_name . "' is not set!"; <br>
                 } else { <br>
-                  echo "Cookie '" . $cookie_name . "' is set!&lt;br&gt;"; <br>
-                  echo "Value is: " . $_COOKIE[$cookie_name]; <br>
+                &nbsp;&nbsp;echo "Cookie '" . $cookie_name . "' is set!&lt;br&gt;"; <br>
+                &nbsp;&nbsp;echo "Value is: " . $_COOKIE[$cookie_name]; <br>
                 } <br>
                 ?&gt; 
                  <br>
@@ -68,7 +68,90 @@
               <a target="_blank" class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=demo_cookie1">Run
                 example »</a> </div>
             
+            <hr>
+            <h2>쿠키 값 수정</h2>
+            <p>쿠키를 수정하려면 setcookie()함수를 사용하여 쿠키를 다시 설정하십시오. </p>
             
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                $cookie_name = "user";
+                $cookie_value = "Alex Porter";
+                setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+                ?&gt;  <br>
+                &lt;html&gt;  <br>
+                &lt;body&gt;  <br>
+                <br>
+                &lt;?php <br>
+                if(!isset($_COOKIE[$cookie_name])) { <br>
+                &nbsp;&nbsp;echo "Cookie named '" . $cookie_name . "' is not set!"; <br>
+                } else { <br>
+                &nbsp;&nbsp;echo "Cookie '" . $cookie_name . "' is set!&lt;br&gt;"; <br>
+                &nbsp;&nbsp;echo "Value is: " . $_COOKIE[$cookie_name]; <br>
+                } <br>
+                ?&gt; 
+                 <br>
+                &lt;/body&gt;
+                &lt;/html&gt;
+                </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=demo_cookie3">Run
+                example »</a> </div>
+            
+            <hr>
+            <h2>쿠키 삭제</h2>
+            <p>쿠키를 삭제하려면 setcookie()를 만료 날짜가 과거인 함수를 사용하십시오 . </p>
+            
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                // set the expiration date to one hour ago <br>
+                setcookie("user", "", time() - 3600);<br>
+                ?&gt;  <br>
+                &lt;html&gt;  <br>
+                &lt;body&gt;  <br>
+                <br>
+                &lt;?php <br>
+                echo "Cookie 'user' is deleted.";<br>
+                ?&gt; 
+                 <br>
+                &lt;/body&gt;
+                &lt;/html&gt;
+                </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=demo_cookie4">Run
+                example »</a> </div>
+            
+                        
+            <hr>
+            <h2>쿠키가 활성화되어 있는지 확인</h2>
+            <p>다음 예제는 쿠키가 활성화되어 있는지 확인하는 작은 스크립트를 만듭니다. 먼저 setcookie()함수 를 사용하여 테스트 쿠키를 만든 다음 $ _COOKIE 배열 변수를 계산합니다. </p>
+            
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                setcookie("test_cookie", "test", time() + 3600, '/');<br>
+                ?&gt;  <br>
+                &lt;html&gt;  <br>
+                &lt;body&gt;  <br>
+                <br>
+                &lt;?php <br>
+                if(count($_COOKIE) > 0) {<br>
+                &nbsp;&nbsp;echo "Cookies are enabled.";<br>
+                } else {<br>
+                &nbsp;&nbsp;echo "Cookies are disabled.";<br>
+                }<br>
+                ?&gt; 
+                 <br>
+                &lt;/body&gt;
+                &lt;/html&gt;
+                </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=demo_cookie5">Run
+                example »</a> </div>
             
             <h3>Example 1</h3>
             <p>아래의 예에서, 우리는 "user" 라는 이름의 쿠키를 생성하고, 그것에 "Alex Porter" 라는 값을
