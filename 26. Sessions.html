@@ -18,25 +18,164 @@
               <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="25.%20Cookies.html">«
                   Previous</a> <a class="w3-right w3-btn" href="27.%20Filter.html">Next  »</a> </div>
               <hr>
-              <p class="intro">PHP session 변수는 사용자 세션(session)에 대한 정보나 설정을 변경할 때
-                사용된다. Session 변수는 한 사용자에 대한 정보를 저장하고, 한 응용프로그램의 모든 페이지에서 사용할 수
-                있습니다. </p>
+              <p class="intro">세션은 여러 페이지에서 사용할 정보 (변수)를 저장하는 방법입니다. 
+                쿠키와 달리 정보는 이용자의 컴퓨터에 저장되지 않습니다. </p>
               <hr>
               <h2>PHP Session <strong>변수</strong></h2>
-              <p>한 응용프로그램과 작업을 할 때, 당신은 열고, 몇몇 변경을 한 다음에 닫을 것입니다. 이는 세션에서도
+              <p>응용프로그램으로 작업을 할 때, 당신은 프로그램을 열고, 몇몇 변경을 한 다음에 닫을 것입니다. 이는 세션에서도
                 마찬가지입니다. 컴퓨터는 당신이 누구인지 알고 있습니다. 그리고 당신이 언제 프로그램을 시작하고, 언제 끝냈는 지를
                 압니다. 하지만 인터넷에서는 한가지 문제가 있습니다.: HTTP 주소는 상태를 유지하지 않으므로, 웹 서버는 당신이
                 누구인지 모르고, 당신이 무엇을 하는 지 모릅니다.&nbsp;</p>
               <p>PHP 세션은 나중에 사용하기 위해서 서버에 사용자 정보(i.e. username, shopping items,
-                etc)를 사용자가 저장하여 이 문제를 해결 합니다. 그러나 세션정보는 일시적이며, 사용자가 웹사이트를 떠나면
+                etc)를 저장하여 이 문제를 해결합니다. 그러나 세션정보는 일시적이며, 사용자가 웹사이트를 떠나면
                 삭제된다. 영구적 저장을 할 필요가 있다면, 데이타베이스에 데이터로 저장할 수 있습니다.&nbsp;</p>
-              <p>세션은 각 방문자에게 고유한 ID (UID)를 생성하고, 이&nbsp;UID 를 기준으로 변수를 저장하여
+              <p>세션은 각 방문자에게 고유한 ID (UID)를 생성하고, 이 UID를 기준으로 변수를 저장하여
                 작동합니다. UID 는 cookie 에 저장하거나, URL에 전달됩니다. </p>
               <p><img class="decoded" alt="http://courses.cs.washington.edu/courses/cse154/14sp/lectures/slides/images/session.gif"
 
                   src="http://courses.cs.washington.edu/courses/cse154/14sp/lectures/slides/images/session.gif"><br>
                 <br>
               </p>
+              
+            <hr>
+            <h2>PHP 세션 시작</h2>
+            <p><strong>session_start()</strong>함수로 세션이 시작됩니다 . </p>
+            <p>세션 변수는 PHP 전역 변수 $ _SESSION으로 설정됩니다.</p>
+            <p>이제 "demo_session1.php"라는 새 페이지를 만들어 보겠습니다. 
+              이 페이지에서는 새 PHP 세션을 시작하고 몇 가지 세션 변수를 설정합니다.</p>
+            <p><b>Note:</b> <strong>session_start() 함수</strong>는<strong>
+                  &lt;html&gt; 태그 앞에</strong> 와야 합니다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                // Start the session<br>
+                session_start();<br>
+                ?&gt; <br>
+                 &lt;!DOCTYPE html&gt; <br>
+                &lt;html&gt; <br>
+                   &lt;body&gt; <br>
+                &lt;?php<br>
+                // Start the session<br>
+                session_start();<br>
+                ?&gt;<br>
+                 &lt;/body&gt; <br>
+              &lt;/html&gt; <br>
+              </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=demo_session1">Run
+                example »</a> </div>
+              
+            <hr>
+            <h2>PHP 세션 변수 값 얻기</h2>
+            <p>다음으로 "demo_session2.php"라는 다른 페이지를 만듭니다. 
+              이 페이지에서 첫 페이지("demo_session1.php")에서 설정 한 세션 정보에 액세스합니다.</p>
+            <p>세션 변수는 각각의 새 페이지에 개별적으로 전달되는 것이 아니라 
+              각 페이지의 시작 부분에서 열리는 세션에서 검색됩니다 (session_start()).</p>
+            <p>또한 모든 세션 변수 값은 전역 $_SESSION 변수에 저장됩니다.</p>
+
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                session_start();<br>
+                ?&gt; <br>
+                 &lt;!DOCTYPE html&gt; <br>
+                &lt;html&gt; <br>
+                   &lt;body&gt; <br>
+                &lt;?php<br>
+                // Echo session variables that were set on previous page<br>
+                echo "Favorite color is " . $_SESSION["favcolor"] . ".&lt;br&gt;";<br>
+                echo "Favorite animal is " . $_SESSION["favanimal"] . ".";<br>
+                ?&gt;<br>
+                 &lt;/body&gt; <br>
+              &lt;/html&gt; <br>
+              </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=demo_session2">Run
+                example »</a> </div>
+              
+              <p>사용자 세션의 모든 세션 변수 값을 표시하는 또 다른 방법은 다음 코드를 실행하는 것입니다.</p>
+
+                          <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                session_start();<br>
+                ?&gt; <br>
+                 &lt;!DOCTYPE html&gt; <br>
+                &lt;html&gt; <br>
+                   &lt;body&gt; <br>
+                &lt;?php<br>
+                print_r($_SESSION);<br>
+                ?&gt;<br>
+                 &lt;/body&gt; <br>
+              &lt;/html&gt; <br>
+              </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=demo_session3">Run
+                example »</a> </div>
+              
+              <p>어떻게 작동합니까? 그것이 나인지 어떻게 알 수 있습니까?</p>
+              <p>대부분의 세션은 765487cf34ert8dede5a562e4f3a7e12와 같은 사용자 컴퓨터에 사용자 키를 설정합니다. 
+                그런 다음 다른 페이지에서 세션이 열리면 컴퓨터에서 사용자 키를 검색합니다. 
+                일치하는 항목이 있으면 해당 세션에 액세스하고 그렇지 않은 경우 새 세션을 시작합니다.</p>
+              
+                            
+            <hr>
+            <h2>PHP 세션 변수 수정</h2>
+            <p>세션 변수를 변경하려면 덮어 쓰기 만하면됩니다.</p>
+
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                session_start();<br>
+                ?&gt; <br>
+                 &lt;!DOCTYPE html&gt; <br>
+                &lt;html&gt; <br>
+                   &lt;body&gt; <br>
+                &lt;?php<br>
+                // to change a session variable, just overwrite it<br>
+                $_SESSION["favcolor"] = "yellow";<br>
+                print_r($_SESSION);<br>
+                ?&gt;<br>
+                 &lt;/body&gt; <br>
+              &lt;/html&gt; <br>
+              </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=demo_session4">Run
+                example »</a> </div>
+              
+                                          
+            <hr>
+            <h2>PHP 세션 삭제</h2>
+            <p>모든 전역 세션 변수를 제거하고 세션을 삭제하려면 session_unset() 및 session_destroy()다음을 사용하십시오.</p>
+
+            <div class="w3-example">
+              <h2 class="example">Example</h2>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                session_start();<br>
+                ?&gt; <br>
+                 &lt;!DOCTYPE html&gt; <br>
+                &lt;html&gt; <br>
+                   &lt;body&gt; <br>
+                &lt;?php<br>
+                // remove all session variables<br>
+                session_unset();<br>
+                <br>
+                // destroy the session<br>
+                session_destroy();<br>
+                ?&gt;<br>
+                 &lt;/body&gt; <br>
+              &lt;/html&gt; <br>
+              </div>
+              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=demo_session5">Run
+                example »</a> </div>
+              
+              
               <hr>
               <h2>Starting a PHP Session</h2>
               <p>PHP 세션에 사용자 정보를 저장하기 전에, 먼저 세션을 시작해야 합니다.</p>
