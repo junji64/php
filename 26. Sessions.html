@@ -176,84 +176,9 @@
               <br>
               <a target="_blank" class="w3-btn w3-margin-bottom" href="https://tryphp.w3schools.com/showphp.php?filename=demo_session5">Run
                 example »</a> </div>
-              
-              
-              <hr>
-              <h2>Starting a PHP Session</h2>
-              <p>PHP 세션에 사용자 정보를 저장하기 전에, 먼저 세션을 시작해야 합니다.</p>
-              <p><b>Note:</b> <strong>session_start() 함수</strong>는<strong>
-                  &lt;html&gt; 태그 앞에</strong> 와야 합니다.:</p>
-              <div class="w3-code w3-border  notranslate">
-                <div> &lt;?php session_start(); ?&gt;<br>
-                  <br>
-                  &lt;html&gt;<br>
-                  &lt;body&gt;<br>
-                  <br>
-                  &lt;/body&gt;<br>
-                  &lt;/html&gt; </div>
-              </div>
-              <p>위의 코드는 서버에 사용자 세션을 등록하여, 사용자 정보의 저장을 시작하게 해주고, 사용자 세션에 UID 를
-                할당합니다.&nbsp;</p>
-              <hr>
-              <h2>Storing a Session Variable</h2>
-              <p>세션 변수를 저장하고 검색하는 올바른 방법은 PHP $_SESSION 변수를 사용하는 것이다.:</p>
-              <div class="w3-code w3-border  notranslate">
-                <div> &lt;?php<br>
-                  session_start();<br>
-                  // store session data<br>
-                  $_SESSION['views']=1;<br>
-                  ?&gt;<br>
-                  <br>
-                  &lt;html&gt;<br>
-                  &lt;body&gt;<br>
-                  <br>
-                  &lt;?php<br>
-                  //retrieve session data<br>
-                  echo "Pageviews=". $_SESSION['views'];<br>
-                  ?&gt;<br>
-                  <br>
-                  &lt;/body&gt;<br>
-                  &lt;/html&gt; </div>
-              </div>
-              <p>Output:</p>
-              <div class="w3-code w3-border  notranslate">
-                <div> Pageviews=1 </div>
-              </div>
-              <p>아래의 예에서, 우리는 간단한 페이지-뷰(page-views) 카운터를 만듭니다. isset() 함수는
-                "views" 변수가 이미 설정되어 있는지 검사합니다. "views" 가 설정되어 있는 경우에는, 우리 카운터를
-                증가시킬 수 있습니다. "views" 가 존재하지 않는다면, "views" 변수를 생성하고, 1 로 설정합니다.:</p>
-              <div class="w3-code w3-border  notranslate">
-                <div> &lt;?php<br>
-                  session_start();<br>
-                  <br>
-                  if(isset($_SESSION['views']))<br>
-                  $_SESSION['views']=$_SESSION['views']+1;<br>
-                  else<br>
-                  $_SESSION['views']=1;<br>
-                  echo "Views=". $_SESSION['views'];<br>
-                  ?&gt; </div>
-              </div>
               <br>
-              <hr>
-              <h2>Destroying a Session</h2>
-              <p>일부 세션 데이터를 삭제하고 싶다면, unset() 또는 session_destroy() 함수를 사용할 수
-                있습니다.</p>
-              <p>unset() 함수는 지정된 세션변수를 해제하는데 사용된다.:</p>
-              <div class="w3-code w3-border  notranslate">
-                <div> &lt;?php<br>
-                  session_start();<br>
-                  if(isset($_SESSION['views']))<br>
-                  &nbsp; unset($_SESSION['views']);<br>
-                  ?&gt; </div>
-              </div>
-              <p>또한 session_destroy() 함수를 호출하여 세션을 완전히 제거할 수 도 있습니다.:</p>
-              <div class="w3-code w3-border  notranslate">
-                <div> &lt;?php<br>
-                  session_destroy();<br>
-                  ?&gt; </div>
-              </div>
-              <p><b>Note:</b> session_destroy() 는 당신의 세션을 다시 설정하며, 모든 저장한 세션
-                데이타를 잃게 된다.&nbsp; </p>
+              
+             
               <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="25.%20Cookies.html">«
                   Previous</a> <a class="w3-right w3-btn" href="27.%20Filter.html">Next  »</a> </div>
               <hr> </div>
