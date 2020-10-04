@@ -56,8 +56,10 @@
                 &lt;html&gt; <br>
                    &lt;body&gt; <br>
                 &lt;?php<br>
-                // Start the session<br>
-                session_start();<br>
+                // Set session variables<br>
+                $_SESSION["favcolor"] = "green";<br>
+                $_SESSION["favanimal"] = "cat";<br>
+                echo "Session variables are set.";<br>
                 ?&gt;<br>
                  &lt;/body&gt; <br>
               &lt;/html&gt; <br>
