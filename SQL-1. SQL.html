@@ -61,23 +61,19 @@
     <br>
     dos-prompt&gt; <strong>mysql -u root</strong><br>
     <br>
-    Welcome to the MySQL monitor.&nbsp; Commands end with ; or \g.<br>
-    Your MySQL connection id is 2<br>
-    Server version: 5.5.39 MySQL Community Server (GPL)<br>
+    Welcome to the MariaDB monitor.  Commands end with ; or \g.<br>
+    Your MariaDB connection id is 12<br>
+    Server version: 10.4.14-MariaDB Source distribution<br>
+<br>
+    Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.<br>
+<br>
+    Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.<br>
+    
     <br>
-    Copyright (c) 2000, 2014, Oracle and/or its affiliates. All rights reserved.<br>
-    <br>
-    Oracle is a registered trademark of Oracle Corporation and/or its<br>
-    affiliates. Other names may be trademarks of their respective<br>
-    owners.<br>
-    <br>
-    Type 'help;' or '\h' for help. Type '\c' to clear the current input
-    statement.<br>
-    <br>
-    mysql&gt;<strong>exit</strong><br>
+    MariaDB&gt;<strong>exit</strong><br>
     dos-prompt&gt; <strong>mysql -u root</strong><br>
     ...<br>
-    mysql&gt;<strong>SHOW DATABASES;</strong><span style="font-weight: bold;"><br>
+    MariaDB&gt;<strong>SHOW DATABASES;</strong><span style="font-weight: bold;"><br>
     </span>+---------------------+<br>
     | Database&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
     &nbsp; &nbsp; |<br>
@@ -91,7 +87,7 @@
     +---------------------+<br>
     4 rows in set (0.02 sec)<br>
     <br>
-    mysql&gt;<strong>SHOW TABLES FROM information_schema;</strong><br>
+    MariaDB&gt;<strong>SHOW TABLES FROM information_schema;</strong><br>
     +--------------------------------------------+<br>
     | Tables_in_information_schema&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; |<br>
@@ -130,10 +126,10 @@
     +-------------------------------------------+<br>
     40 rows in set (0.00 sec)<br>
     <br>
-    mysql&gt;<strong>USE information_schema;</strong><br>
-    mysql&gt;<strong>SHOW TABLES;</strong><br>
+    MariaDB&gt;<strong>USE information_schema;</strong><br>
+    MariaDB&gt;<strong>SHOW TABLES;</strong><br>
     ...<br>
-    mysql&gt;<strong>SHOW COLUMNS FROM schemata;</strong><br>
+    MariaDB&gt;<strong>SHOW COLUMNS FROM schemata;</strong><br>
 +---------------------------------+--------------+------+-----+---------+-------+<br>
     |
     Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -170,10 +166,10 @@
 +---------------------------------+--------------+------+-----+---------+-------+<br>
     5 rows in set (0.00 sec)<br>
     <br>
-    mysql&gt;<strong>USE msql;</strong><br>
-    mysql&gt;<strong>SHOW COLUMNS FROM schemata;</strong><br>
+    MariaDB&gt;<strong>USE msql;</strong><br>
+    MariaDB&gt;<strong>SHOW COLUMNS FROM schemata;</strong><br>
     ERROR 1146 (42S02): Table 'mysql.schemata' doesn't exist<br>
-    mysql&gt;<strong>SHOW COLUMNS FROM information_schema.schemata;</strong><br>
+    MariaDB&gt;<strong>SHOW COLUMNS FROM information_schema.schemata;</strong><br>
 +---------------------------------+--------------+------+-----+---------+-------+<br>
     |
     Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -208,9 +204,9 @@
     &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
 +---------------------------------+--------------+------+-----+---------+-------+<br>
     5 rows in set (0.01 sec)<br>
-    mysql&gt;<strong>help show</strong><br>
+    MariaDB&gt;<strong>help show</strong><br>
     ...<br>
-    mysql&gt;<strong>SHOW COLUMNS FROM mysql.help_topic;</strong><br>
+    MariaDB&gt;<strong>SHOW COLUMNS FROM mysql.help_topic;</strong><br>
     +------------------+----------------------+------+-----+---------+-------+<br>
     | Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
     &nbsp; &nbsp; &nbsp;&nbsp; | <strong> Type&nbsp;</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -279,18 +275,18 @@
     </ul>
     <a id="create_db" name="create_db"></a>==============================================================================================<br>
     <br>
-    mysql&gt; <strong>CREATE DATABASE my_database;</strong><br>
+    MariaDB&gt; <strong>CREATE DATABASE my_database;</strong><br>
     Query OK, 1 row affected (0.00 sec)<br>
-    mysql&gt; <strong>CREATE DATABASE my_database;</strong><br>
+    MariaDB&gt; <strong>CREATE DATABASE my_database;</strong><br>
     ERROR 1007 (HY000): Can't create database 'my_database'; database exists<br>
-    mysql&gt; <strong>DROP DATABASE my_database;</strong><br>
+    MariaDB&gt; <strong>DROP DATABASE my_database;</strong><br>
     Query OK, 0 rows affected (0.01 sec)<br>
-    mysql&gt; <strong>SHOW CREATE TABLE mysql.help_category;</strong><br>
+    MariaDB&gt; <strong>SHOW CREATE TABLE mysql.help_category;</strong><br>
     ...<br>
     <br>
-    mysql&gt; <strong>CREATE DATABASE addresses;</strong><br>
-    mysql&gt; <strong>USE addresses;</strong><br>
-    mysql&gt; <strong>CREATE TABLE people (<br>
+    MariaDB&gt; <strong>CREATE DATABASE addresses;</strong><br>
+    MariaDB&gt; <strong>USE addresses;</strong><br>
+    MariaDB&gt; <strong>CREATE TABLE people (<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; first_name varchar(50) NOT NULL
       default '',<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; last_name varchar(50) NOT NULL
@@ -300,7 +296,7 @@
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; birthday date DEFAULT NULL,<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; PRIMARY KEY (first_name,
       last_name));</strong><br>
-    mysql&gt;<strong>SHOW TABLES;</strong><br>
+    MariaDB&gt;<strong>SHOW TABLES;</strong><br>
     +---------------------+<br>
     | Tables_in_addresses&nbsp; |<br>
     +---------------------+<br>
@@ -308,11 +304,11 @@
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; |<br>
     +---------------------+<br>
     1 row in set (0.00 sec)<br>
-    mysql&gt;<strong> DROP TABLE people;</strong><br>
+    MariaDB&gt;<strong> DROP TABLE people;</strong><br>
     Query OK, 0 rows affected (0.00 sec)<br>
-    mysql&gt; <strong>SHOW TABLES;</strong><br>
+    MariaDB&gt; <strong>SHOW TABLES;</strong><br>
     Empty set (0.00 sec)<br>
-    mysql&gt; <strong>CREATE TABLE people (<br>
+    MariaDB&gt; <strong>CREATE TABLE people (<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; first_name varchar(50) NOT NULL
       default '',<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; last_name varchar(50) NOT NULL
@@ -377,18 +373,18 @@
     123-4567&nbsp;&nbsp; | 1964-12-01 |<br>
     +------------+-----------+----------+------------+<br>
     2 rows in set (0.00 sec)<strong><br>
-    </strong>mysql&gt;<strong>INSERT INTO people (first_name, last_name, mobile)<br>
+    </strong>MariaDB&gt;<strong>INSERT INTO people (first_name, last_name, mobile)<br>
       &nbsp;&nbsp;&nbsp;&nbsp;</strong> -&gt; <strong>VALUES ('John', 'Smith',
       '321-9876');<br>
     </strong>Query OK, 1 row affected (0.00 sec)<strong><br>
-    </strong>mysql&gt;<strong> INSERT INTO people (first_name, last_name,
+    </strong>MariaDB&gt;<strong> INSERT INTO people (first_name, last_name,
       mobile)<br>
       &nbsp;&nbsp;&nbsp;&nbsp; </strong>-&gt;<strong> VALUES<br>
       &nbsp;&nbsp;&nbsp;&nbsp; </strong>-&gt;<strong> ('Bill', 'Gates',
       '987-6543'), ('Steve', 'Thompson', '101-0987');<br>
     </strong>Query OK, 2 rows affected (0.00 sec)<br>
     Records: 2&nbsp; Duplicates: 0&nbsp; Warnings: 0<strong><br>
-    </strong>mysql&gt;<strong>SELECT First_NAme fROM people;</strong><br>
+    </strong>MariaDB&gt;<strong>SELECT First_NAme fROM people;</strong><br>
     +------------+<br>
     | first_Name &nbsp; |<br>
     +------------+<br>
@@ -399,8 +395,8 @@
     | Steve&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; |<br>
     +------------+<br>
     5 rows in set (0.00 sec)<br>
-    mysql&gt;<strong>Select * from people;</strong><br>
-    mysql&gt;<strong>SELECT first_name FROM people WHERE last_name='Thompson'</strong>;<br>
+    MariaDB&gt;<strong>Select * from people;</strong><br>
+    MariaDB&gt;<strong>SELECT first_name FROM people WHERE last_name='Thompson'</strong>;<br>
     +------------+<br>
     | first_name &nbsp; |<br>
     +------------+<br>
@@ -408,36 +404,36 @@
     | Steve&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; |<br>
     +------------+<br>
     2 rows in set (0.00 sec)<br>
-    mysql&gt;<strong>UPDATE people SET birthday='1975-01-25' WHERE
+    MariaDB&gt;<strong>UPDATE people SET birthday='1975-01-25' WHERE
       first_name='Andrew';</strong><br>
     <br>
-    mysql&gt;<strong>UPDATE people SET mobile='123-9999';</strong><br>
+    MariaDB&gt;<strong>UPDATE people SET mobile='123-9999';</strong><br>
     <br>
-    mysql&gt;<strong>SELECT mobile FROM people;</strong><br>
+    MariaDB&gt;<strong>SELECT mobile FROM people;</strong><br>
     <br>
-    mysql&gt;<strong>DELETE FROM people WHERE&nbsp; last_name='Ji';<br>
+    MariaDB&gt;<strong>DELETE FROM people WHERE&nbsp; last_name='Ji';<br>
     </strong><br>
-    mysql&gt;<strong>SELECT * FROM people;</strong><br>
+    MariaDB&gt;<strong>SELECT * FROM people;</strong><br>
     <br>
-    mysql&gt;<strong>DELETE FROM people WHERE true;</strong><br>
+    MariaDB&gt;<strong>DELETE FROM people WHERE true;</strong><br>
     <br>
-    mysql&gt;<strong>TRUNCATE TABLE people;</strong><br>
+    MariaDB&gt;<strong>TRUNCATE TABLE people;</strong><br>
     <br>
-    mysql&gt;<strong>SHOW CREATE TABLE people\G</strong><br>
+    MariaDB&gt;<strong>SHOW CREATE TABLE people\G</strong><br>
     <br>
-    mysql&gt;<strong>DESC people;</strong><br>
+    MariaDB&gt;<strong>DESC people;</strong><br>
     <br>
-    mysql&gt;<strong>DROP TABLE people;</strong><br>
+    MariaDB&gt;<strong>DROP TABLE people;</strong><br>
     <br>
-    mysql&gt;<strong>DROP DATABASE addresses;</strong><br>
+    MariaDB&gt;<strong>DROP DATABASE addresses;</strong><br>
     <br>
     <a id="account_manage" name="account_manage"></a>==========================================================================================<br>
     <br>
-    mysql&gt;<strong>CREATE DATABASE accounts;</strong><br>
+    MariaDB&gt;<strong>CREATE DATABASE accounts;</strong><br>
     <br>
-    mysql&gt;<strong>USE accounts;</strong><br>
+    MariaDB&gt;<strong>USE accounts;</strong><br>
     <br>
-    mysql&gt;<strong>CREATE TABLE member (<br>
+    MariaDB&gt;<strong>CREATE TABLE member (<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt;user_num int auto_increment
       primary key,<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt;user_fname varchar(20) NOT NULL
@@ -446,67 +442,67 @@
         NULL default ''</strong>,<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt;user_age int default 0 );</strong><br>
     <br>
-    mysql&gt;<strong>SHOW TABLES;</strong><br>
-    mysql&gt;<strong>DESC member;</strong><br>
-    mysql&gt;<strong>INSERT INTO member( user_fname, user_lname, user_age)
+    MariaDB&gt;<strong>SHOW TABLES;</strong><br>
+    MariaDB&gt;<strong>DESC member;</strong><br>
+    MariaDB&gt;<strong>INSERT INTO member( user_fname, user_lname, user_age)
       VALUES('Jun','Ji', 50);</strong><br>
-    mysql&gt;<strong>INSERT INTO member( user_fname, </strong><strong><strong>user_lname,
+    MariaDB&gt;<strong>INSERT INTO member( user_fname, </strong><strong><strong>user_lname,
         </strong>user_age)</strong><br>
     &nbsp; &nbsp; &nbsp; <strong>-&gt;VALUES<br>
       &nbsp;&nbsp;&nbsp;&nbsp; -&gt;('Kil Dong','Hong', 32),
       ('Bill','Gates',63), ('Melinda','Gates',60), ('Steve','Jobs',59);<br>
     </strong><br>
-    mysql&gt;<strong>SELECT * FROM member;</strong><br>
+    MariaDB&gt;<strong>SELECT * FROM member;</strong><br>
     <br>
-    mysql&gt;<strong>SELECT * FROM member WHERE user_lname='Gates';</strong><br>
+    MariaDB&gt;<strong>SELECT * FROM member WHERE user_lname='Gates';</strong><br>
     <br>
-    mysql&gt;<strong>SELECT COUNT(*) FROM member;<br>
+    MariaDB&gt;<strong>SELECT COUNT(*) FROM member;<br>
     </strong><br>
-    mysql&gt;<strong>SELECT MAX(user_age) FROM member;</strong><br>
+    MariaDB&gt;<strong>SELECT MAX(user_age) FROM member;</strong><br>
     <br>
-    mysql&gt;<strong>SELECT MIN(user_age) FROM member;<br>
+    MariaDB&gt;<strong>SELECT MIN(user_age) FROM member;<br>
     </strong><br>
-    mysql&gt;<strong>SELECT SUM(user_age) FROM member;</strong><br>
+    MariaDB&gt;<strong>SELECT SUM(user_age) FROM member;</strong><br>
     <br>
-    mysql&gt;<strong>SELECT * FROM member WHERE user_lname='Hong' or
+    MariaDB&gt;<strong>SELECT * FROM member WHERE user_lname='Hong' or
       user_age=50;</strong><br>
     <br>
-    mysql&gt;<strong>SELECT * FROM member ORDER BY user_age ASC;</strong><br>
+    MariaDB&gt;<strong>SELECT * FROM member ORDER BY user_age ASC;</strong><br>
     <br>
-    mysql&gt;<strong>DELETE FROM member WHERE user_num=1;</strong><br>
+    MariaDB&gt;<strong>DELETE FROM member WHERE user_num=1;</strong><br>
     <br>
-    mysql&gt;<strong>SELECT * FROM member;</strong><br>
+    MariaDB&gt;<strong>SELECT * FROM member;</strong><br>
     <br>
-    mysql&gt;<strong>UPDATE member SET user_age=51 WHERE user_num=2;</strong><br>
+    MariaDB&gt;<strong>UPDATE member SET user_age=51 WHERE user_num=2;</strong><br>
     <strong><br>
     </strong><br>
     ===============================================&nbsp; 일반 계정 생성 =====<br>
     <br>
-    mysql&gt;<strong>CREATE database myuserDB;</strong><br>
-    mysql&gt;<strong>USE mysql;</strong><br>
-    mysql&gt;<strong>SELECT host, user, authentication_string FROM user;</strong><br>
+    MariaDB&gt;<strong>CREATE database myuserDB;</strong><br>
+    MariaDB&gt;<strong>USE mysql;</strong><br>
+    MariaDB&gt;<strong>SELECT host, user, authentication_string FROM user;</strong><br>
     <br>
-    mysql&gt;<del><strong>INSERT user(host, user, password)
+    MariaDB&gt;<del><strong>INSERT user(host, user, password)
       VALUES('localhost','myuser',password('123456'));</strong></del><br>
       [<b>Note</b> that from MySQL 5.7.6, the user table uses the authentication_string column only to store the password. In addition, it removed the password column.]
 
       <br>
-    mysql&gt;<strong>CREATE USER 'myuser'@'localhost' IDENFIED BY '123456';</strong><br>
-    mysql&gt;<strong>FLUSH privileges;</strong><br>
-    mysql&gt;<strong>GRANT all on myuserDB.* to myuser@localhost identified by
+    MariaDB&gt;<strong>CREATE USER 'myuser'@'localhost' IDENFIED BY '123456';</strong><br>
+    MariaDB&gt;<strong>FLUSH privileges;</strong><br>
+    MariaDB&gt;<strong>GRANT all on myuserDB.* to myuser@localhost identified by
       '123456';    </strong><br>
-    mysql&gt;<strong>SHOW GRANTS FOR myuser@localhost;</strong><br>
-    mysql&gt;<strong>exit</strong><br>
+    MariaDB&gt;<strong>SHOW GRANTS FOR myuser@localhost;</strong><br>
+    MariaDB&gt;<strong>exit</strong><br>
     <br>
     ===============================================&nbsp; MySQL 계정 관리 =====<br>
     <br>
     MS-DOS PROMPT&gt;<strong>mysql -u myuser -p<br>
     </strong>Enter password: ****<strong><br>
       <br>
-    </strong> mysql&gt;<strong>SELECT user();</strong><br>
-    mysql&gt;<strong>USE myuserDB;</strong><br>
+    </strong> MariaDB&gt;<strong>SELECT user();</strong><br>
+    MariaDB&gt;<strong>USE myuserDB;</strong><br>
     ...<br>
-    mysql&gt;<strong>exit</strong><br>
+    MariaDB&gt;<strong>exit</strong><br>
     <br>
     <br>
     MS-DOS PROMPT&gt;<strong>mysql -u root -p</strong><br>
@@ -516,20 +512,20 @@
     </strong>mysql&gt;<strong>SHOW tables;<br>
     </strong>mysql&gt;<strong>SELECT * FROM user;<br>
     </strong>mysql&gt;<strong>SELECT host, user, password FROM user;</strong> <br>
-    mysql&gt;<strong><del>UPDATE user SET password=password('654321') WHERE
+    MariaDB&gt;<strong><del>UPDATE user SET password=password('654321') WHERE
       user='myuser';</del></strong><br>
       [<b>Note</b> that from MySQL 5.7.6, the user table uses the authentication_string column only to store the password. In addition, it removed the password column. Instead, use this =>
-      mysql&gt;<ins>UPDATE user SET authentication_string = password('654321') WHERE
+      MariaDB&gt;<ins>UPDATE user SET authentication_string = password('654321') WHERE
       user='myuser' AND host = 'localhost';</ins>] <br>
     <br>    
     or better to use the followings : <br>
-  </strong>mysql&gt;<strong>SET PASSWORD FOR 'myuser'@'localhost' = '654321'; <br>
+  </strong>MariaDB&gt;<strong>SET PASSWORD FOR 'myuser'@'localhost' = '654321'; <br>
     or<br>
-    </strong>mysql&gt;<strong>ALTER USER 'myuser'@'localhost' IDENTIFIED BY '654321'; <br>
+    </strong>MariaDB&gt;<strong>ALTER USER 'myuser'@'localhost' IDENTIFIED BY '654321'; <br>
 
     <br>
     </strong><br>
-    mysql&gt;<strong>FLUSH privileges;<br>
+    MariaDB&gt;<strong>FLUSH privileges;<br>
     </strong>mysql&gt;<strong>exit<br>
     </strong><br>
     MS-DOS PROMPT&gt;<strong><strong>mysql -u myuser -p654321<br>
@@ -537,7 +533,7 @@
       </strong></strong>mysql&gt;<strong><strong>create table test (uid
         varchar(20));<br>
       </strong></strong>...<br>
-    mysql&gt;<strong><strong>exit<br>
+    MariaDB&gt;<strong><strong>exit<br>
         <br>
       </strong></strong>&nbsp;<br>
     <br>
