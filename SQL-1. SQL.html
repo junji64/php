@@ -70,10 +70,10 @@
     Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.<br>
     
     <br>
-    MariaDB&gt;<strong>exit</strong><br>
+    MariaDB [(none)]&gt;<strong>exit</strong><br>
     dos-prompt&gt; <strong>mysql -u root</strong><br>
     ...<br>
-    MariaDB&gt;<strong>SHOW DATABASES;</strong><span style="font-weight: bold;"><br>
+    MariaDB [(none)]&gt;<strong>SHOW DATABASES;</strong><span style="font-weight: bold;"><br>
     </span>+---------------------+<br>
     | Database&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
     &nbsp; &nbsp; |<br>
@@ -87,7 +87,7 @@
     +---------------------+<br>
     4 rows in set (0.02 sec)<br>
     <br>
-    MariaDB&gt;<strong>SHOW TABLES FROM information_schema;</strong><br>
+    MariaDB [(none)]&gt;<strong>SHOW TABLES FROM information_schema;</strong><br>
     +--------------------------------------------+<br>
     | Tables_in_information_schema&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; |<br>
@@ -126,10 +126,10 @@
     +-------------------------------------------+<br>
     40 rows in set (0.00 sec)<br>
     <br>
-    MariaDB&gt;<strong>USE information_schema;</strong><br>
-    MariaDB&gt;<strong>SHOW TABLES;</strong><br>
+    MariaDB [(none)]&gt;<strong>USE information_schema;</strong><br>
+    MariaDB [information_schema]&gt;<strong>SHOW TABLES;</strong><br>
     ...<br>
-    MariaDB&gt;<strong>SHOW COLUMNS FROM schemata;</strong><br>
+    MariaDB [information_schema]&gt;<strong>SHOW COLUMNS FROM schemata;</strong><br>
 +---------------------------------+--------------+------+-----+---------+-------+<br>
     |
     Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -166,8 +166,8 @@
 +---------------------------------+--------------+------+-----+---------+-------+<br>
     5 rows in set (0.00 sec)<br>
     <br>
-    MariaDB&gt;<strong>USE msql;</strong><br>
-    MariaDB&gt;<strong>SHOW COLUMNS FROM schemata;</strong><br>
+    MariaDB [(none)]&gt;<strong>USE msql;</strong><br>
+    MariaDB [msql]&gt;<strong>SHOW COLUMNS FROM schemata;</strong><br>
     ERROR 1146 (42S02): Table 'mysql.schemata' doesn't exist<br>
     MariaDB&gt;<strong>SHOW COLUMNS FROM information_schema.schemata;</strong><br>
 +---------------------------------+--------------+------+-----+---------+-------+<br>
@@ -204,9 +204,9 @@
     &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
 +---------------------------------+--------------+------+-----+---------+-------+<br>
     5 rows in set (0.01 sec)<br>
-    MariaDB&gt;<strong>help show</strong><br>
+    MariaDB [msql]&gt;<strong>help show</strong><br>
     ...<br>
-    MariaDB&gt;<strong>SHOW COLUMNS FROM mysql.help_topic;</strong><br>
+    MariaDB [msql]&gt;<strong>SHOW COLUMNS FROM mysql.help_topic;</strong><br>
     +------------------+----------------------+------+-----+---------+-------+<br>
     | Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
     &nbsp; &nbsp; &nbsp;&nbsp; | <strong> Type&nbsp;</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
