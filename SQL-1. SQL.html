@@ -265,7 +265,7 @@
     <p><strong>Basic SQL</strong></p>
     <ul>
       <li>SQL은 순차적(sequential)이지 않습니다.</li>
-      <li>SQL은 <strong>선언적(declarative)</ strong> 언어 입니다. 방법이 아닌 우리가 원하는 것을 표시합니다./li>
+      <li>SQL은 <strong>선언적(declarative)</strong> 언어 입니다. 방법이 아닌 우리가 원하는 것을 표시합니다./li>
       <li><strong>SELECT ... FROM ... WHERE</strong></li>
       <ul>
         <li>SELECT table_name</li>
@@ -318,7 +318,8 @@
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; birthday date DEFAULT NULL,<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; PRIMARY KEY (first_name,
       last_name));<br>
-    </strong>MariaDB [addresses]&gt;<strong>SHOW CREATE TABLE people\G<br>
+    </strong>
+    MariaDB [addresses]&gt;<strong>SHOW CREATE TABLE people\G<br>
     </strong>*************************** 1. row ***************************<br>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Table: people<br>
     Create Table: CREATE TABLE `people` (<br>
@@ -329,8 +330,8 @@
     &nbsp; PRIMARY KEY (`first_name`,`last_name`)<br>
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8<br>
     1 row in set (0.00 sec)<strong><br>
-    </strong>MariaDB [addresses]&gt;<strong>DESC
-      people;<br>
+    </strong>
+    MariaDB [addresses]&gt;<strong>DESC people;<br>
     </strong>+------------+-------------+------+-----+---------+-------+<br>
     | Field&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; | Type &nbsp;
     &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Null&nbsp; | Key&nbsp; |
@@ -354,14 +355,18 @@
     |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
     +------------+-------------+------+-----+---------+-------+<br>
     4 rows in set (0.01 sec)<strong><br>
-    </strong>MariaDB [addresses]&gt;<strong>INSERT INTO people (birthday, first_name,
+    </strong>
+    MariaDB [addresses]&gt;<strong>INSERT INTO people (birthday, first_name,
       last_name, mobile) VALUES('1996-05-12', 'Andrew', 'Thompson', '345-6789');<br>
-    </strong>MariaDB [addresses]&gt;<strong>SELECT * FROM people;<br>
+    </strong>
+    MariaDB [addresses]&gt;<strong>SELECT * FROM people;<br>
       <br>
-    </strong>MariaDB [addresses]&gt;<strong>INSERT INTO people SET last_name='Ji',
+    </strong>
+    MariaDB [addresses]&gt;<strong>INSERT INTO people SET last_name='Ji',
       first_name='Jun', mobile='123-4567', birthday='1964-12-01';<br>
     </strong>Query OK, 1 row affected (0.01 sec)<strong><br>
-    </strong>MariaDB [addresses]&gt;<strong>SELECT * FROM people;<br>
+    </strong>
+    MariaDB [addresses]&gt;<strong>SELECT * FROM people;<br>
     </strong>+------------+-----------+----------+------------+<br>
     | first_name&nbsp;&nbsp; | last_name&nbsp; |&nbsp; mobile &nbsp; &nbsp; |
     birthday&nbsp; &nbsp; &nbsp; |<br>
