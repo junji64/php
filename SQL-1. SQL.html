@@ -89,7 +89,7 @@
     <br>
     MariaDB [(none)]&gt; <strong>SHOW TABLES FROM information_schema;</strong><br>
  <pre>
- +---------------------------------------+
+  +---------------------------------------+
   | Tables_in_information_schema          |
   +---------------------------------------+
   | ALL_PLUGINS                           |
@@ -108,19 +108,19 @@
     MariaDB [(none)]&gt; <strong>USE information_schema;</strong><br>
     MariaDB [information_schema]&gt; <strong>SHOW TABLES;</strong><br>
  <pre>
- +---------------------------------------+
-| Tables_in_information_schema          |
-+---------------------------------------+
-| ALL_PLUGINS                           |
-| APPLICABLE_ROLES                      |
-| CHARACTER_SETS                        |
-| CHECK_CONSTRAINTS                     |
-...
-| INNODB_SYS_INDEXES                    |
-| INNODB_SYS_VIRTUAL                    |
-| INNODB_TABLESPACES_SCRUBBING          |
-| INNODB_SYS_SEMAPHORE_WAITS            |
-+---------------------------------------+
+  +---------------------------------------+
+  | Tables_in_information_schema          |
+  +---------------------------------------+
+  | ALL_PLUGINS                           |
+  | APPLICABLE_ROLES                      |
+  | CHARACTER_SETS                        |
+  | CHECK_CONSTRAINTS                     |
+  ...
+  | INNODB_SYS_INDEXES                    |
+  | INNODB_SYS_VIRTUAL                    |
+  | INNODB_TABLESPACES_SCRUBBING          |
+  | INNODB_SYS_SEMAPHORE_WAITS            |
+  +---------------------------------------+
  </pre>
   <br>
     MariaDB [information_schema]&gt; <strong>SHOW COLUMNS FROM schemata;</strong><br>
@@ -210,7 +210,23 @@
     MariaDB [mysql]&gt; <strong>DROP DATABASE my_database;</strong><br>
     Query OK, 0 rows affected (0.01 sec)<br>
     MariaDB [mysql]&gt; <strong>SHOW CREATE TABLE mysql.help_category;</strong><br>
-    ...<br>
+    <pre>
+    +---------------+-----------------------------------------------------------------+
+    | Table         | Create Table                                                                                                                                                                                                                                                                                                                    |
+    +---------------+-----------------------------------------------------------------+
+    | help_category | CREATE TABLE `help_category` (
+      `help_category_id` smallint(5) unsigned NOT NULL,
+      `name` char(64) NOT NULL,
+      `parent_category_id` smallint(5) unsigned DEFAULT NULL,
+      `url` text NOT NULL,
+      PRIMARY KEY (`help_category_id`),
+      UNIQUE KEY `name` (`name`)
+    ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='help categories' |
+    +---------------+-----------------------------------------------------------------+
+    1 row in set (0.000 sec)
+
+    </pre>
+    <br>
     <br>
     MariaDB [mysql]&gt; <strong>CREATE DATABASE addresses;</strong><br>
     MariaDB [mysql]&gt; <strong>USE addresses;</strong><br>
