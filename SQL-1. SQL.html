@@ -70,24 +70,24 @@
     Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.<br>
     
     <br>
-    MariaDB [(none)]&gt;<strong>exit</strong><br>
+    MariaDB [(none)]&gt; <strong>exit</strong><br>
     dos-prompt&gt; <strong>mysql -u root</strong><br>
     ...<br>
-    MariaDB [(none)]&gt;<strong>SHOW DATABASES;</strong><span style="font-weight: bold;"><br>
+    MariaDB [(none)]&gt; <strong>SHOW DATABASES;</strong><span style="font-weight: bold;"><br>
     </span>+---------------------+<br>
     | Database&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
-    &nbsp; &nbsp; |<br>
+    &nbsp; &nbsp;&nbsp; |<br>
     +---------------------+<br>
     | information_schema&nbsp;&nbsp; |<br>
     | mysql&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
-    &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; |<br>
+    &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;|<br>
     | performance_schema |<br>
     | test&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |<br>
+    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;|<br>
     +---------------------+<br>
     4 rows in set (0.02 sec)<br>
     <br>
-    MariaDB [(none)]&gt;<strong>SHOW TABLES FROM information_schema;</strong><br>
+    MariaDB [(none)]&gt; <strong>SHOW TABLES FROM information_schema;</strong><br>
     +--------------------------------------------+<br>
     | Tables_in_information_schema&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; |<br>
@@ -95,46 +95,46 @@
     |
     CHARACTER_SETS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    &nbsp; &nbsp; |<br>
+    &nbsp; &nbsp; &nbsp;|<br>
     |
     COLLATIONS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-    &nbsp;&nbsp; |<br>
+    &nbsp;&nbsp; &nbsp;|<br>
     | COLLATION_CHARACTER_SET_APPLICABILITY&nbsp; |<br>
     |
     COLUMNS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    &nbsp;&nbsp; |<br>
+    &nbsp;&nbsp; &nbsp;|<br>
     ... <br>
     |
     INNODB_CMP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp; |<br>
+    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;|<br>
     |
     INNODB_LOCKS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    &nbsp;&nbsp; |<br>
+    &nbsp;&nbsp; &nbsp;|<br>
     |
     INNODB_CMPMEM_RESET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; |<br>
     |
     INNODB_CMP_RESET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |<br>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; |<br>
     |
     INNODB_BUFFER_PAGE_LRU&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; |<br>
     +-------------------------------------------+<br>
     40 rows in set (0.00 sec)<br>
     <br>
-    MariaDB [(none)]&gt;<strong>USE information_schema;</strong><br>
-    MariaDB [information_schema]&gt;<strong>SHOW TABLES;</strong><br>
+    MariaDB [(none)]&gt; <strong>USE information_schema;</strong><br>
+    MariaDB [information_schema]&gt; <strong>SHOW TABLES;</strong><br>
     ...<br>
-    MariaDB [information_schema]&gt;<strong>SHOW COLUMNS FROM schemata;</strong><br>
+    MariaDB [information_schema]&gt; <strong>SHOW COLUMNS FROM schemata;</strong><br>
 +---------------------------------+--------------+------+-----+---------+-------+<br>
     |
     Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
     Type&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |
     Null&nbsp;&nbsp; | Key | Default &nbsp;&nbsp; | Extra&nbsp; |<br>
 +---------------------------------+--------------+------+-----+---------+-------+<br>
@@ -159,17 +159,17 @@
     |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
     |&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; |<br>
     |
-    SQL_PATH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    SQL_PATH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     | varchar(512)&nbsp; &nbsp; | YES&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; &nbsp;
     &nbsp; | NULL &nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
     &nbsp; |<br>
 +---------------------------------+--------------+------+-----+---------+-------+<br>
     5 rows in set (0.00 sec)<br>
     <br>
-    MariaDB [information_schema]&gt;<strong>USE msql;</strong><br>
-    MariaDB [msql]&gt;<strong>SHOW COLUMNS FROM schemata;</strong><br>
+    MariaDB [information_schema]&gt; <strong>USE msql;</strong><br>
+    MariaDB [msql]&gt; <strong>SHOW COLUMNS FROM schemata;</strong><br>
     ERROR 1146 (42S02): Table 'mysql.schemata' doesn't exist<br>
-    MariaDB [msql]&gt;<strong>SHOW COLUMNS FROM information_schema.schemata;</strong><br>
+    MariaDB [msql]&gt; <strong>SHOW COLUMNS FROM information_schema.schemata;</strong><br>
 +---------------------------------+--------------+------+-----+---------+-------+<br>
     |
     Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -209,7 +209,7 @@
     MariaDB [msql]&gt;<strong>SHOW COLUMNS FROM mysql.help_topic;</strong><br>
     +------------------+----------------------+------+-----+---------+-------+<br>
     | Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-    &nbsp; &nbsp; &nbsp;&nbsp; | <strong> Type&nbsp;</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;| <strong> Type&nbsp;</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
     Null&nbsp;&nbsp; | Key | Default&nbsp;&nbsp;&nbsp; | Extra |<br>
     +------------------+----------------------+------+-----+---------+-------+<br>
@@ -219,7 +219,7 @@
     |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; |<br>
     |
     name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    | <strong>char(64)</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;| <strong>char(64)</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; | NO &nbsp; &nbsp; | UNI | NULL&nbsp;
     &nbsp; &nbsp; |&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |<br>
     | help_category_id&nbsp;&nbsp; |<strong> smallint(5) unsigned </strong>|
@@ -244,9 +244,8 @@
     +------------------+----------------------+------+-----+---------+-------+<br>
     6 rows in set (0.01 sec)<br>
     <br>
-==============================================================================================<br>
-    <br>
-    <strong>Data Types</strong><br>
+<hr>
+<br>    <h2>Data Types</h2><br>
     <ul>
       <li>Strings - <strong>CHAR, VARCHAR, TEXT</strong></li>
       <li>Date/time - <strong>DATE, TIME, YEAR, TIMESTAMP, DATETIME</strong></li>
@@ -265,7 +264,7 @@
     <p><strong>Basic SQL</strong></p>
     <ul>
       <li>SQL은 순차적(sequential)이지 않습니다.</li>
-      <li>SQL은 <strong>선언적(declarative)</strong> 언어 입니다. 방법이 아닌 우리가 원하는 것을 표시합니다./li>
+      <li>SQL은 <strong>선언적(declarative)</strong> 언어 입니다. 방법이 아닌 우리가 원하는 것을 표시합니다.</li>
       <li><strong>SELECT ... FROM ... WHERE</strong></li>
       <ul>
         <li>SELECT table_name</li>
@@ -273,8 +272,10 @@
         <li>WHERE table_schema='mysql'</li>
       </ul>
     </ul>
-    <a id="create_db" name="create_db"></a>==============================================================================================<br>
-    <br>
+  <hr>
+    <a id="create_db" name="create_db"></a>
+  <h2> Create database, table and Edit table </h2>
+      <br>
     MariaDB [mysql]&gt; <strong>CREATE DATABASE my_database;</strong><br>
     Query OK, 1 row affected (0.00 sec)<br>
     MariaDB [mysql]&gt; <strong>CREATE DATABASE my_database;</strong><br>
@@ -434,7 +435,8 @@
     <br>
     <a id="account_manage" name="account_manage"></a>
   <hr>
-  <h3> Practice : Create Table in text-type SQL commands </h3>
+  <hr>
+  <h2> Practice : Create Table in text-type SQL commands </h2>
     <br>
     MariaDB [(none)]&gt;<strong>CREATE DATABASE accounts;</strong><br>
     <br>
@@ -483,6 +485,7 @@
     MariaDB [accounts]&gt;<strong>UPDATE member SET user_age=51 WHERE user_num=2;</strong><br>
     <strong><br>
     </strong><br>
+  <hr>
   <hr>
     =====================================  (OPTION) 일반 계정 생성 =====<br>
     <br>
@@ -547,7 +550,8 @@
       </strong></strong>&nbsp;<br>
     <br>
 <hr>
-<h3> Practice : Create Table in phpmyadmin </h3>
+<hr>
+<h2> Practice : Create Table in phpmyadmin </h2>
 <img src="./images/table-structure.png" width="500">
 <img src="./images/table-contents.png" width="600">
     <br>
