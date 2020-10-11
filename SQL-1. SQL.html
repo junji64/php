@@ -86,175 +86,90 @@
   +--------------------+
   7 rows in set (0.001 sec)
   </pre>
-    </span>+---------------------+<br>
-    | Database&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
-    &nbsp; &nbsp;&nbsp; |<br>
-    +---------------------+<br>
-    | information_schema&nbsp;&nbsp; |<br>
-    | mysql&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
-    &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;|<br>
-    | performance_schema |<br>
-    | test&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;|<br>
-    +---------------------+<br>
-    4 rows in set (0.02 sec)<br>
     <br>
     MariaDB [(none)]&gt; <strong>SHOW TABLES FROM information_schema;</strong><br>
-    +--------------------------------------------+<br>
-    | Tables_in_information_schema&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; |<br>
-    +--------------------------------------------+<br>
-    |
-    CHARACTER_SETS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    &nbsp; &nbsp; &nbsp;|<br>
-    |
-    COLLATIONS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-    &nbsp;&nbsp; &nbsp;|<br>
-    | COLLATION_CHARACTER_SET_APPLICABILITY&nbsp; |<br>
-    |
-    COLUMNS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    &nbsp;&nbsp; &nbsp;|<br>
-    ... <br>
-    |
-    INNODB_CMP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;|<br>
-    |
-    INNODB_LOCKS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    &nbsp;&nbsp; &nbsp;|<br>
-    |
-    INNODB_CMPMEM_RESET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; |<br>
-    |
-    INNODB_CMP_RESET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; |<br>
-    |
-    INNODB_BUFFER_PAGE_LRU&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; |<br>
-    +-------------------------------------------+<br>
-    40 rows in set (0.00 sec)<br>
+ <pre>
+ +---------------------------------------+
+  | Tables_in_information_schema          |
+  +---------------------------------------+
+  | ALL_PLUGINS                           |
+  | APPLICABLE_ROLES                      |
+  | CHARACTER_SETS                        |
+  | CHECK_CONSTRAINTS                     |
+  ....
+  | INNODB_SYS_INDEXES                    |
+  | INNODB_SYS_VIRTUAL                    |
+  | INNODB_TABLESPACES_SCRUBBING          |
+  | INNODB_SYS_SEMAPHORE_WAITS            |
+  +---------------------------------------+
+  77 rows in set (0.001 sec)
+ </pre>
     <br>
     MariaDB [(none)]&gt; <strong>USE information_schema;</strong><br>
     MariaDB [information_schema]&gt; <strong>SHOW TABLES;</strong><br>
-    ...<br>
+ <pre>
+ +---------------------------------------+
+| Tables_in_information_schema          |
++---------------------------------------+
+| ALL_PLUGINS                           |
+| APPLICABLE_ROLES                      |
+| CHARACTER_SETS                        |
+| CHECK_CONSTRAINTS                     |
+...
+| INNODB_SYS_INDEXES                    |
+| INNODB_SYS_VIRTUAL                    |
+| INNODB_TABLESPACES_SCRUBBING          |
+| INNODB_SYS_SEMAPHORE_WAITS            |
++---------------------------------------+
+ </pre>
+  <br>
     MariaDB [information_schema]&gt; <strong>SHOW COLUMNS FROM schemata;</strong><br>
-+---------------------------------+--------------+------+-----+---------+-------+<br>
-    |
-    Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
-    Type&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |
-    Null&nbsp;&nbsp; | Key | Default &nbsp;&nbsp; | Extra&nbsp; |<br>
-+---------------------------------+--------------+------+-----+---------+-------+<br>
-    |
-    CATALOG_NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    | varchar(512) &nbsp;&nbsp; | NO&nbsp;&nbsp;&nbsp; |&nbsp; &nbsp; &nbsp;
-    &nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
-    |&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; |<br>
-    |
-    SCHEMA_NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; | varchar(64)&nbsp;
-    &nbsp;&nbsp; | NO&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
-    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-    |&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; |<br>
-    | DEFAULT_CHARACTER_SET_NAME | varchar(32)&nbsp;&nbsp;&nbsp;&nbsp; |
-    NO&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-    |&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; |<br>
-    | DEFAULT_COLLATION_NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
-    varchar(32)&nbsp;&nbsp;&nbsp;&nbsp; | NO&nbsp; &nbsp;&nbsp;
-    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-    |&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; |<br>
-    |
-    SQL_PATH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    | varchar(512)&nbsp; &nbsp; | YES&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; &nbsp;
-    &nbsp; | NULL &nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
-    &nbsp; |<br>
-+---------------------------------+--------------+------+-----+---------+-------+<br>
-    5 rows in set (0.00 sec)<br>
+  <pre>
+  +----------------------------+--------------+------+-----+---------+-------+
+  | Field                      | Type         | Null | Key | Default | Extra |
+  +----------------------------+--------------+------+-----+---------+-------+
+  | CATALOG_NAME               | varchar(512) | NO   |     |         |       |
+  | SCHEMA_NAME                | varchar(64)  | NO   |     |         |       |
+  | DEFAULT_CHARACTER_SET_NAME | varchar(32)  | NO   |     |         |       |
+  | DEFAULT_COLLATION_NAME     | varchar(32)  | NO   |     |         |       |
+  | SQL_PATH                   | varchar(512) | YES  |     | NULL    |       |
+  +----------------------------+--------------+------+-----+---------+-------+
+  5 rows in set (0.001 sec)
+  </pre>
     <br>
     MariaDB [information_schema]&gt; <strong>USE msql;</strong><br>
     MariaDB [msql]&gt; <strong>SHOW COLUMNS FROM schemata;</strong><br>
     ERROR 1146 (42S02): Table 'mysql.schemata' doesn't exist<br>
     MariaDB [msql]&gt; <strong>SHOW COLUMNS FROM information_schema.schemata;</strong><br>
-+---------------------------------+--------------+------+-----+---------+-------+<br>
-    |
-    Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    &nbsp; | <strong>Type&nbsp;&nbsp;</strong>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
-    &nbsp; &nbsp;&nbsp; | Null&nbsp;&nbsp; | Key&nbsp; | Default &nbsp; |
-    Extra&nbsp; |<br>
-+---------------------------------+--------------+------+-----+---------+-------+<br>
-    | CATALOG_NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
-    &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; | <strong>varchar(512)
-      </strong>| NO&nbsp;&nbsp;&nbsp; |&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; | &nbsp;
-    &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
-    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; |<br>
-    |
-    SCHEMA_NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | <strong>varchar(64)</strong>&nbsp;&nbsp;
-    | NO&nbsp; &nbsp; |&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
-    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
-    | DEFAULT_CHARACTER_SET_NAME | <strong>varchar(32)&nbsp;</strong>&nbsp; |
-    NO&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
-    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; |<br>
-    | DEFAULT_COLLATION_NAME&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; | <strong>varchar(32)&nbsp;</strong>&nbsp;
-    | NO&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
-    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; |<br>
-    |
-    SQL_PATH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; | <strong>varchar(512)</strong>&nbsp; |
-    YES&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; NULL
-    &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
-+---------------------------------+--------------+------+-----+---------+-------+<br>
-    5 rows in set (0.01 sec)<br>
+<pre>
+  +----------------------------+--------------+------+-----+---------+-------+
+  | Field                      | Type         | Null | Key | Default | Extra |
+  +----------------------------+--------------+------+-----+---------+-------+
+  | CATALOG_NAME               | varchar(512) | NO   |     |         |       |
+  | SCHEMA_NAME                | varchar(64)  | NO   |     |         |       |
+  | DEFAULT_CHARACTER_SET_NAME | varchar(32)  | NO   |     |         |       |
+  | DEFAULT_COLLATION_NAME     | varchar(32)  | NO   |     |         |       |
+  | SQL_PATH                   | varchar(512) | YES  |     | NULL    |       |
+  +----------------------------+--------------+------+-----+---------+-------+
+  5 rows in set (0.001 sec)
+</pre>
+  <br>
     MariaDB [msql]&gt;<strong>help show</strong><br>
     ...<br>
     MariaDB [msql]&gt;<strong>SHOW COLUMNS FROM mysql.help_topic;</strong><br>
-    +------------------+----------------------+------+-----+---------+-------+<br>
-    | Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-    &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;| <strong> Type&nbsp;</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
-    Null&nbsp;&nbsp; | Key | Default&nbsp;&nbsp;&nbsp; | Extra |<br>
-    +------------------+----------------------+------+-----+---------+-------+<br>
-    | help_topic_id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<strong>
-      int(10) unsigned&nbsp;</strong>&nbsp; &nbsp; &nbsp; |
-    NO&nbsp;&nbsp;&nbsp;&nbsp; | PRI&nbsp; | NULL &nbsp; &nbsp;
-    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; |<br>
-    |
-    name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;| <strong>char(64)</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; | NO &nbsp; &nbsp; | UNI | NULL&nbsp;
-    &nbsp; &nbsp; |&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |<br>
-    | help_category_id&nbsp;&nbsp; |<strong> smallint(5) unsigned </strong>|
-    NO&nbsp; &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; |
-    NULL&nbsp;&nbsp;&nbsp; &nbsp; |&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |<br>
-    | description&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; | <strong>text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; | NO&nbsp; &nbsp;&nbsp;
-    |&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; | NULL&nbsp;&nbsp;&nbsp; &nbsp;
-    |&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |<br>
-    |
-    example&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    |<strong> text&nbsp;&nbsp;&nbsp;&nbsp;</strong>&nbsp; &nbsp; &nbsp; &nbsp;
-    &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
-    NO&nbsp;&nbsp; &nbsp; |&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; | NULL&nbsp;&nbsp;
-    &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; |<br>
-    |
-    url&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    | <strong>text&nbsp;</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
-    NO&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; | NULL&nbsp;&nbsp;
-    &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; |<br>
-    +------------------+----------------------+------+-----+---------+-------+<br>
-    6 rows in set (0.01 sec)<br>
+  <pre>
+  +------------------+----------------------+------+-----+---------+-------+
+  | Field            | Type                 | Null | Key | Default | Extra |
+  +------------------+----------------------+------+-----+---------+-------+
+  | help_topic_id    | int(10) unsigned     | NO   | PRI | NULL    |       |
+  | name             | char(64)             | NO   | UNI | NULL    |       |
+  | help_category_id | smallint(5) unsigned | NO   |     | NULL    |       |
+  | description      | text                 | NO   |     | NULL    |       |
+  | example          | text                 | NO   |     | NULL    |       |
+  | url              | text                 | NO   |     | NULL    |       |
+  +------------------+----------------------+------+-----+---------+-------+
+  6 rows in set (0.001 sec)
+    </pre>
     <br>
 <hr>
 <br>    <h2>Data Types</h2><br>
