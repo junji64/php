@@ -86,7 +86,6 @@
   +--------------------+
   7 rows in set (0.001 sec)
   </pre>
-    <br>
     MariaDB [(none)]&gt; <strong>SHOW TABLES FROM information_schema;</strong><br>
  <pre>
   +---------------------------------------+
@@ -104,7 +103,6 @@
   +---------------------------------------+
   77 rows in set (0.001 sec)
  </pre>
-    <br>
     MariaDB [(none)]&gt; <strong>USE information_schema;</strong><br>
     MariaDB [information_schema]&gt; <strong>SHOW TABLES;</strong><br>
  <pre>
@@ -122,7 +120,6 @@
   | INNODB_SYS_SEMAPHORE_WAITS            |
   +---------------------------------------+
  </pre>
-  <br>
     MariaDB [information_schema]&gt; <strong>SHOW COLUMNS FROM schemata;</strong><br>
   <pre>
   +----------------------------+--------------+------+-----+---------+-------+
@@ -136,7 +133,6 @@
   +----------------------------+--------------+------+-----+---------+-------+
   5 rows in set (0.001 sec)
   </pre>
-    <br>
     MariaDB [information_schema]&gt; <strong>USE msql;</strong><br>
     MariaDB [msql]&gt; <strong>SHOW COLUMNS FROM schemata;</strong><br>
     ERROR 1146 (42S02): Table 'mysql.schemata' doesn't exist<br>
@@ -153,7 +149,6 @@
   +----------------------------+--------------+------+-----+---------+-------+
   5 rows in set (0.001 sec)
 </pre>
-  <br>
     MariaDB [msql]&gt;<strong>help show</strong><br>
     ...<br>
     MariaDB [msql]&gt;<strong>SHOW COLUMNS FROM mysql.help_topic;</strong><br>
@@ -170,7 +165,6 @@
   +------------------+----------------------+------+-----+---------+-------+
   6 rows in set (0.001 sec)
     </pre>
-    <br>
 <hr>
 <br>    <h2>Data Types</h2><br>
     <ul>
@@ -224,10 +218,7 @@
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='help categories' |
     +---------------+-----------------------------------------------------------------+
     1 row in set (0.000 sec)
-
     </pre>
-    <br>
-    <br>
     MariaDB [mysql]&gt; <strong>CREATE DATABASE addresses;</strong><br>
     MariaDB [mysql]&gt; <strong>USE addresses;</strong><br>
     MariaDB [addresses]&gt; <strong>CREATE TABLE people (<br>
@@ -249,7 +240,6 @@
   +---------------------+
   1 row in set (0.001 sec)
   </pre>
-<br>
     MariaDB&gt;<strong> DROP TABLE people;</strong><br>
     Query OK, 0 rows affected (0.00 sec)<br>
     MariaDB&gt; <strong>SHOW TABLES;</strong><br>
@@ -279,7 +269,6 @@ Create Table: CREATE TABLE `people` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
 1 row in set (0.007 sec)
 </pre>
- <br>
     MariaDB [addresses]&gt;<strong>DESC people;<br>
     </strong>
   <pre>
@@ -293,7 +282,6 @@ Create Table: CREATE TABLE `people` (
   +------------+-------------+------+-----+---------+-------+
   4 rows in set (0.053 sec)
   </pre>
-<br>
     </strong>
     MariaDB [addresses]&gt;<strong>INSERT INTO people (birthday, first_name,
       last_name, mobile) VALUES('1996-05-12', 'Andrew', 'Thompson', '345-6789');<br>
@@ -327,8 +315,6 @@ Create Table: CREATE TABLE `people` (
   +------------+-----------+----------+------------+
   2 rows in set (0.000 sec)
   </pre>
-
- <br>
     </strong>MariaDB [addresses]&gt;<strong>INSERT INTO people (first_name, last_name, mobile)<br>
       &nbsp;&nbsp;&nbsp;&nbsp;</strong> -&gt; <strong>VALUES ('John', 'Smith',
       '321-9876');<br>
@@ -343,7 +329,6 @@ Create Table: CREATE TABLE `people` (
 Query OK, 2 rows affected (0.003 sec)
 Records: 2  Duplicates: 0  Warnings: 0
 </pre>
-<br>
     </strong>MariaDB [addresses]&gt;<strong>SELECT First_NAme fROM people;</strong><br>
 <pre>
 +------------+
@@ -356,7 +341,6 @@ Records: 2  Duplicates: 0  Warnings: 0
 +------------+
 4 rows in set (0.000 sec)
 </pre>
-<br>
     MariaDB [addresses]&gt;<strong>Select * from people;</strong><br>
 <pre>
 +------------+-----------+----------+------------+
@@ -379,7 +363,6 @@ Records: 2  Duplicates: 0  Warnings: 0
 +------------+
 2 rows in set (0.004 sec)
 </pre>
-   <br>
     MariaDB [addresses]&gt;<strong>UPDATE people SET birthday='1975-01-25' WHERE
       first_name='Andrew';</strong><br>
     <br>
