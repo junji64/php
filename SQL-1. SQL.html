@@ -363,25 +363,78 @@ Records: 2  Duplicates: 0  Warnings: 0
 2 rows in set (0.004 sec)
 </pre>
     MariaDB [addresses]&gt;<strong>UPDATE people SET birthday='1975-01-25' WHERE
-      first_name='Andrew';</strong><br>
-    <br>
+      first_name='Andrew';</strong>
+<pre>
+Query OK, 1 row affected (0.007 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+</pre>
     MariaDB [addresses]&gt;<strong>UPDATE people SET mobile='123-9999';</strong><br>
-    <br>
+<pre>
+Query OK, 4 rows affected (0.006 sec)
+Rows matched: 4  Changed: 4  Warnings: 0
+</pre>
     MariaDB [addresses]&gt;<strong>SELECT mobile FROM people;</strong><br>
-    <br>
+<pre>
++----------+
+| mobile   |
++----------+
+| 123-9999 |
+| 123-9999 |
+| 123-9999 |
+| 123-9999 |
++----------+
+4 rows in set (0.000 sec)
+</pre>
     MariaDB [addresses]&gt;<strong>DELETE FROM people WHERE&nbsp; last_name='Ji';<br>
-    </strong><br>
+    </strong>
+<pre>
+Query OK, 1 row affected (0.004 sec)
+</pre>
     MariaDB [addresses]&gt;<strong>SELECT * FROM people;</strong><br>
-    <br>
+<pre>
++------------+-----------+----------+------------+
+| first_name | last_name | mobile   | birthday   |
++------------+-----------+----------+------------+
+| Andrew     | Thompson  | 123-9999 | 1975-01-25 |
+| Bill       | Gates     | 123-9999 | NULL       |
+| Steve      | Thompson  | 123-9999 | NULL       |
++------------+-----------+----------+------------+
+3 rows in set (0.000 sec)
+</pre>
     MariaDB [addresses]&gt;<strong>DELETE FROM people WHERE true;</strong><br>
-    <br>
-    MariaDB [addresses]&gt;<strong>TRUNCATE TABLE people;</strong><br>
-    <br>
-    MariaDB [addresses]&gt;<strong>SHOW CREATE TABLE people\G</strong><br>
-    <br>
-    MariaDB [addresses]&gt;<strong>DESC people;</strong><br>
-    <br>
-    MariaDB [addresses]&gt;<strong>DROP TABLE people;</strong><br>
+<pre>
+Query OK, 3 rows affected (0.004 sec)
+</pre>
+MariaDB [addresses]&gt;<strong>TRUNCATE TABLE people;</strong><br>
+<pre>
+Query OK, 0 rows affected (0.093 sec)
+</pre>
+MariaDB [addresses]&gt;<strong>SHOW CREATE TABLE people\G</strong><br>
+<pre>
+*************************** 1. row ***************************
+       Table: people
+Create Table: CREATE TABLE `people` (
+  `first_name` varchar(50) NOT NULL DEFAULT '',
+  `last_name` varchar(50) NOT NULL DEFAULT '',
+  `mobile` varchar(30) NOT NULL DEFAULT '',
+  `birthday` date DEFAULT NULL,
+  PRIMARY KEY (`first_name`,`last_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+1 row in set (0.000 sec)
+</pre>
+MariaDB [addresses]&gt;<strong>DESC people;</strong><br>
+<pre>
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| first_name | varchar(50) | NO   | PRI |         |       |
+| last_name  | varchar(50) | NO   | PRI |         |       |
+| mobile     | varchar(30) | NO   |     |         |       |
+| birthday   | date        | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set (0.032 sec)
+</pre>
+MariaDB [addresses]&gt;<strong>DROP TABLE people;</strong><br>
     <br>
     MariaDB [addresses]&gt;<strong>DROP DATABASE addresses;</strong><br>
     <br>
