@@ -179,7 +179,7 @@
       <li>Numbers - <strong>DECIMAL </strong>(e.g. DECIMAL(5,2): -999.99 ~
         999.99 ), <strong>INT&nbsp;</strong></li>
       <li>Lists - <strong>ENUM, SET</strong></li>
-      <li><a href="https://mariadb.com/kb/en/data-types-numeric-data-types/">https://mariadb.com/kb/en/data-types-numeric-data-types/</a></li>
+      <li><a href="https://mariadb.com/kb/en/data-types-numeric-data-types/" target="_blank">https://mariadb.com/kb/en/data-types-numeric-data-types/</a></li>
     </ul>
     <p><strong>NULL</strong> 은 데이터베이스에 데이터 값이 없음을 나타 내기 위해 SQL에서 사용되는 특수 마커입니다. </p>
     <ul>
@@ -241,13 +241,15 @@
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; PRIMARY KEY (first_name,
       last_name));</strong><br>
     MariaDB [addresses]&gt;<strong>SHOW TABLES;</strong><br>
-    +---------------------+<br>
-    | Tables_in_addresses&nbsp; |<br>
-    +---------------------+<br>
-    | people&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; |<br>
-    +---------------------+<br>
-    1 row in set (0.00 sec)<br>
+  <pre>
+  +---------------------+
+  | Tables_in_addresses |
+  +---------------------+
+  | people              |
+  +---------------------+
+  1 row in set (0.001 sec)
+  </pre>
+<br>
     MariaDB&gt;<strong> DROP TABLE people;</strong><br>
     Query OK, 0 rows affected (0.00 sec)<br>
     MariaDB&gt; <strong>SHOW TABLES;</strong><br>
@@ -264,64 +266,69 @@
       last_name));<br>
     </strong>
     MariaDB [addresses]&gt;<strong>SHOW CREATE TABLE people\G<br>
-    </strong>*************************** 1. row ***************************<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Table: people<br>
-    Create Table: CREATE TABLE `people` (<br>
-    &nbsp; `first_name` varchar(50) NOT NULL DEFAULT '',<br>
-    &nbsp; `last_name` varchar(50) NOT NULL DEFAULT '',<br>
-    &nbsp; `mobile` varchar(20) NOT NULL DEFAULT '',<br>
-    &nbsp; `birthday` date DEFAULT NULL,<br>
-    &nbsp; PRIMARY KEY (`first_name`,`last_name`)<br>
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8<br>
-    1 row in set (0.00 sec)<strong><br>
     </strong>
+  <pre>
+  *************************** 1. row ***************************
+       Table: people
+Create Table: CREATE TABLE `people` (
+  `first_name` varchar(50) NOT NULL DEFAULT '',
+  `last_name` varchar(50) NOT NULL DEFAULT '',
+  `mobile` varchar(30) NOT NULL DEFAULT '',
+  `birthday` date DEFAULT NULL,
+  PRIMARY KEY (`first_name`,`last_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+1 row in set (0.007 sec)
+</pre>
+ <br>
     MariaDB [addresses]&gt;<strong>DESC people;<br>
-    </strong>+------------+-------------+------+-----+---------+-------+<br>
-    | Field&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; | Type &nbsp;
-    &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Null&nbsp; | Key&nbsp; |
-    Default&nbsp;&nbsp;&nbsp; | Extra&nbsp; |<br>
-    +------------+-------------+------+-----+---------+-------+<br>
-    | first_name &nbsp; | varchar(50) &nbsp; | NO&nbsp;&nbsp;&nbsp;&nbsp; |
-    PRI&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; |
-    &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; |<br>
-    | last_name&nbsp;&nbsp; | varchar(50)&nbsp;&nbsp; | NO&nbsp; &nbsp;&nbsp; |
-    PRI&nbsp;
-    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    |&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; |<br>
-    | mobile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
-    varchar(20)&nbsp;&nbsp; | NO&nbsp; &nbsp; |&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
-    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; |<br>
-    | birthday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
-    date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    | YES&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
-    NULL&nbsp;&nbsp; &nbsp;
-    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
-    +------------+-------------+------+-----+---------+-------+<br>
-    4 rows in set (0.01 sec)<strong><br>
+    </strong>
+  <pre>
+  +------------+-------------+------+-----+---------+-------+
+  | Field      | Type        | Null | Key | Default | Extra |
+  +------------+-------------+------+-----+---------+-------+
+  | first_name | varchar(50) | NO   | PRI |         |       |
+  | last_name  | varchar(50) | NO   | PRI |         |       |
+  | mobile     | varchar(30) | NO   |     |         |       |
+  | birthday   | date        | YES  |     | NULL    |       |
+  +------------+-------------+------+-----+---------+-------+
+  4 rows in set (0.053 sec)
+  </pre>
+<br>
     </strong>
     MariaDB [addresses]&gt;<strong>INSERT INTO people (birthday, first_name,
       last_name, mobile) VALUES('1996-05-12', 'Andrew', 'Thompson', '345-6789');<br>
     </strong>
     MariaDB [addresses]&gt;<strong>SELECT * FROM people;<br>
-      <br>
     </strong>
+    <pre>
+  +------------+-----------+----------+------------+
+  | first_name | last_name | mobile   | birthday   |
+  +------------+-----------+----------+------------+
+  | Andrew     | Thompson  | 345-6789 | 1996-05-12 |
+  +------------+-----------+----------+------------+
+  1 row in set (0.001 sec)
+</pre>
     MariaDB [addresses]&gt;<strong>INSERT INTO people SET last_name='Ji',
       first_name='Jun', mobile='123-4567', birthday='1964-12-01';<br>
     </strong>Query OK, 1 row affected (0.01 sec)<strong><br>
     </strong>
+  <pre>
+  Query OK, 1 row affected (0.008 sec)
+  </pre>
     MariaDB [addresses]&gt;<strong>SELECT * FROM people;<br>
-    </strong>+------------+-----------+----------+------------+<br>
-    | first_name&nbsp;&nbsp; | last_name&nbsp; |&nbsp; mobile &nbsp; &nbsp; |
-    birthday&nbsp; &nbsp; &nbsp; |<br>
-    +------------+-----------+----------+------------+<br>
-    | Andrew&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Thompson |
-    345-6789&nbsp; | 1996-05-12 |<br>
-    | Jun&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; |
-    Ji&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |
-    123-4567&nbsp;&nbsp; | 1964-12-01 |<br>
-    +------------+-----------+----------+------------+<br>
-    2 rows in set (0.00 sec)<strong><br>
+    </strong>
+  
+  <pre>
+  +------------+-----------+----------+------------+
+  | first_name | last_name | mobile   | birthday   |
+  +------------+-----------+----------+------------+
+  | Andrew     | Thompson  | 345-6789 | 1996-05-12 |
+  | Jun        | Ji        | 123-4567 | 1964-12-01 |
+  +------------+-----------+----------+------------+
+  2 rows in set (0.000 sec)
+  </pre>
+
+ <br>
     </strong>MariaDB [addresses]&gt;<strong>INSERT INTO people (first_name, last_name, mobile)<br>
       &nbsp;&nbsp;&nbsp;&nbsp;</strong> -&gt; <strong>VALUES ('John', 'Smith',
       '321-9876');<br>
@@ -331,28 +338,48 @@
       &nbsp;&nbsp;&nbsp;&nbsp; </strong>-&gt;<strong> VALUES<br>
       &nbsp;&nbsp;&nbsp;&nbsp; </strong>-&gt;<strong> ('Bill', 'Gates',
       '987-6543'), ('Steve', 'Thompson', '101-0987');<br>
-    </strong>Query OK, 2 rows affected (0.00 sec)<br>
-    Records: 2&nbsp; Duplicates: 0&nbsp; Warnings: 0<strong><br>
+    </strong>
+<pre>
+Query OK, 2 rows affected (0.003 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+</pre>
+<br>
     </strong>MariaDB [addresses]&gt;<strong>SELECT First_NAme fROM people;</strong><br>
-    +------------+<br>
-    | first_Name &nbsp; |<br>
-    +------------+<br>
-    | Andrew&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; |<br>
-    | Bill&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; |<br>
-    | John&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |<br>
-    | Jun&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; |<br>
-    | Steve&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; |<br>
-    +------------+<br>
-    5 rows in set (0.00 sec)<br>
+<pre>
++------------+
+| First_NAme |
++------------+
+| Andrew     |
+| Bill       |
+| Jun        |
+| Steve      |
++------------+
+4 rows in set (0.000 sec)
+</pre>
+<br>
     MariaDB [addresses]&gt;<strong>Select * from people;</strong><br>
+<pre>
++------------+-----------+----------+------------+
+| first_name | last_name | mobile   | birthday   |
++------------+-----------+----------+------------+
+| Andrew     | Thompson  | 345-6789 | 1996-05-12 |
+| Bill       | Gates     | 987-6543 | NULL       |
+| Jun        | Ji        | 123-4567 | 1964-12-01 |
+| Steve      | Thompson  | 101-0987 | NULL       |
++------------+-----------+----------+------------+
+4 rows in set (0.000 sec)
+</pre>
     MariaDB [addresses]&gt;<strong>SELECT first_name FROM people WHERE last_name='Thompson'</strong>;<br>
-    +------------+<br>
-    | first_name &nbsp; |<br>
-    +------------+<br>
-    | Andrew&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; |<br>
-    | Steve&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; |<br>
-    +------------+<br>
-    2 rows in set (0.00 sec)<br>
+<pre>
++------------+
+| first_name |
++------------+
+| Andrew     |
+| Steve      |
++------------+
+2 rows in set (0.004 sec)
+</pre>
+   <br>
     MariaDB [addresses]&gt;<strong>UPDATE people SET birthday='1975-01-25' WHERE
       first_name='Andrew';</strong><br>
     <br>
