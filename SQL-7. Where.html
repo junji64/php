@@ -17,16 +17,16 @@
             <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="SQL-6.%20Select.html">«
                 Previous</a> <a class="w3-right w3-btn" href="SQL-8.%20Order%20By%20Keyword.html">Next  »</a> </div>
             <hr>
-            <p class="intro">WHERE 절은 레코드를 필터링하는데 사용된다.</p>
-            <hr>
-            <h2>WHERE clause</h2>
-            <p>WHERE 절은 지정된 기준을 충족하는 레코드 만을 추출하는데 사용된다. </p>
-            <h3>Syntax</h3>
+            <h2>MySQL 데이터베이스에서 데이터 선택 및 필터링</h2>
+            <p>WHERE 절은 레코드를 필터링하는 데, 또는 지정된 기준을 충족하는 레코드 만을 추출하는데 사용된다. </p>
+
             <div class="w3-code w3-border   notranslate">
               <div> SELECT column_name(s)<br>
                 FROM table_name<br>
                 WHERE column_name operator value </div>
             </div>
+            
+            
             <p>위의 문을 PHP 가 실행하게 하기 위해서는 mysqli_query() 함수를 사용해야만 한다. 이
               함수는&nbsp;MySQL 연결에 쿼리나 명령을 보낼 때 사용된다.</p>
             <hr>
@@ -79,31 +79,49 @@
             </table>
             <br>
             <hr>
-            <h3>Example</h3>
-            <p>다음의 예는 "Persons" 테이블에서 "FirstName='Peter'" 인 모든 행을 선택한다.:</p>
-            <div class="w3-code w3-border   notranslate">
-              <div> &lt;?php<br>
-                $con=mysqli_connect("example.com","peter","abc123","my_db");<br>
+            
+            
+            <h3>MySQLi로 데이터 선택 및 필터링</h3>
+            <p>다음 예제는 성이 "Doe"인 MyGuests 테이블에서 id, firstname 및 lastname 열을 선택하여 페이지에 표시합니다.:</p>
+            <div class="w3-example">
+              <h2 class="example">Example (MySQLi Procedural)</h2>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                $servername = "localhost";<br>
+                $username = "username";<br>
+                $password = "password";<br>
+                $dbname = "myDB";<br>
+<br>
+                // Create connection<br>
+                $conn = mysqli_connect($servername, $username, $password, $dbname);<br>
                 // Check connection<br>
-                if (mysqli_connect_errno())<br>
-                &nbsp;&nbsp;{<br>
-                &nbsp; echo "Failed to connect to MySQL: " .
-                mysqli_connect_error();<br>
-                &nbsp;&nbsp;}<br>
-                <br>
-                $result = mysqli_query($con,"SELECT * FROM Persons<br>
-                WHERE FirstName='Peter'");<br>
-                <br>
-                while($row = mysqli_fetch_array($result))<br>
-                &nbsp;&nbsp;{<br>
-                &nbsp;&nbsp;echo $row['FirstName'] . " " . $row['LastName'];<br>
-                &nbsp;&nbsp;echo "&lt;br&gt;";<br>
-                &nbsp;&nbsp;}<br>
-                ?&gt; </div>
-            </div>
+                if (!$conn) {<br>
+                  die("Connection failed: " . mysqli_connect_error());<br>
+                }<br>
+<br>
+                $sql = "SELECT id, firstname, lastname FROM MyGuests WHERE lastname='Doe'";<br>
+                $result = mysqli_query($conn, $sql);<br>
+<br>
+                if (mysqli_num_rows($result) &gt; 0) {<br>
+                  // output data of each row<br>
+                  while($row = mysqli_fetch_assoc($result)) {<br>
+                    echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "&lt;br&gt;";<br>
+                  }<br>
+                } else {<br>
+                  echo "0 results";<br>
+                }<br>
+<br>
+                mysqli_close($conn);<br>
+                ?&gt; <br>
+               </div>              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" 
+                 href="https://tryphp.w3schools.com/showphpfile.php?filename=demo_db_select_where_proc">Run
+                example »</a>
+              </div>
+            
             <p>위의 코드의 출력을 다음과 같을 것이다:</p>
             <div class="code notranslate">
-              <div> Peter Griffin </div>
+              <div> id: 1 - Name: John Doe </div>
             </div>
             <br>
             <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="SQL-6.%20Select.html">«
