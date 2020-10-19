@@ -68,6 +68,7 @@
                  href="https://tryphp.w3schools.com/showphpfile.php?filename=demo_db_select_where_proc">Run
                 example »</a>
               </div>
+            
             <p>위의 예에서의 코드 설명 :</p>
             <p>먼저 MyGuests 테이블에서 id, firstname 및 lastname 열을 선택하는 SQL 쿼리를 설정합니다. 
               다음 코드 줄은 쿼리를 실행하고 결과 데이터를 $result라는 변수에 넣습니다.</p>
@@ -75,59 +76,30 @@
             <p>반환 된 행이 0 개 이상인 경우에는 함수 <code class="w3-codespan">fetch_assoc()</code>은 모든 결과를 
               반복 할 수 있는 연관 배열에 넣습니다. 
               <code class="w3-codespan">while()</code>루프는 결과 세트에 대하여 반복하여 ID, 이름 및 성 열로부터 데이터를 출력한다.</p>
-            
-            
-            PHP 가 위의 문을 실행하게 하려면 mysqli_query() 함수를 사용하여야 한다. 이 함수는&nbsp;MySQL
-            연결에 쿼리나 명령을 보낼 때 사용된다.&nbsp;
-            <h3>Example</h3>
-            <p>다음의 예는 "Persons" table에 저장된 모든 데이타를 선택한다. (The * character
-              selects all the data in the table):</p>
-            <div class="w3-code w3-border  notranslate">
-              <div> &lt;?php<br>
-                $con=mysqli_connect("example.com","peter","abc123","my_db");<br>
-                // Check connection<br>
-                if (mysqli_connect_errno())<br>
-                &nbsp;&nbsp;{<br>
-                &nbsp; echo "Failed to connect to MySQL: " .
-                mysqli_connect_error();<br>
-                &nbsp;&nbsp;}<br>
-                <br>
-                $result = mysqli_query($con,"SELECT * FROM Persons");<br>
-                <br>
-                while($row = mysqli_fetch_array($result))<br>
-                &nbsp;&nbsp;{<br>
-                &nbsp;&nbsp;echo $row['FirstName'] . " " . $row['LastName'];<br>
-                &nbsp;&nbsp;echo "&lt;br&gt;";<br>
-                &nbsp;&nbsp;}<br>
-                <br>
-                mysqli_close($con);<br>
-                ?&gt; </div>
-            </div>
-            <p>위의 예는 mysqli_query() 함수에 의해서 $result 변수로 반환된 데이타를 저장한다.</p>
-            <p>다음에는, recordset 으로부터 첫번째 행을 배열로 반환하는데 mysqli_fetch_array() 함수를
-              사용한다. mysqli_fetch_array() 를 호출 할 때마다 recordset 에서 다음 행을 반환한다.
-              while 루프는 recordset 에서의 모든 레코드를 반복한다. 각 행의 값을 프린트하기 위해서, 우리는 PHP
-              $row 배열 변수 ($row['FirstName'] and $row['LastName'])를 사용한다.&nbsp;</p>
-            <p>위의 코드의 출력을 다음과 같을 것이다.:</p>
-            <div class="w3-code w3-border  notranslate">
-              <div> Peter Griffin<br>
-                Glenn Quagmire </div>
-            </div>
+
             <br>
             <hr>
             <h2>Display the Result in an HTML Table</h2>
             <p>다음 예는 위의 예에서와 같은 데이타를 선택하지만, 데이타를 HTML table 형식으로 표시한다.:</p>
-            <div class="w3-code w3-border  notranslate">
-              <div> &lt;?php<br>
-                $con=mysqli_connect("example.com","peter","abc123","my_db");<br>
+            
+                          <div class="w3-example">
+              <h2 class="example">Example (MySQLi Procedural)</h2>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                $servername = "localhost";<br>
+                $username = "username";<br>
+                $password = "password";<br>
+                $dbname = "myDB";<br>
+<br>
+                // Create connection<br>
+                $conn = mysqli_connect($servername, $username, $password, $dbname);<br>
                 // Check connection<br>
-                if (mysqli_connect_errno())<br>
-                &nbsp;&nbsp;{<br>
-                &nbsp; echo "Failed to connect to MySQL: " .
-                mysqli_connect_error();<br>
-                &nbsp;&nbsp;}<br>
-                <br>
-                $result = mysqli_query($con,"SELECT * FROM Persons");<br>
+                if (!$conn) {<br>
+                  die("Connection failed: " . mysqli_connect_error());<br>
+                }<br>
+<br>
+                $sql = "SELECT * FROM MyGuests";<br>
+                $result = mysqli_query($conn, $sql);<br>
                 <br>
                 echo <b>"</b>&lt;table border='1'&gt;<b><br>
                   &lt;</b>tr&gt;<br>
@@ -146,9 +118,11 @@
                 &nbsp;&nbsp;}<br>
                 echo "&lt;/table&gt;";<br>
                 <br>
-                mysqli_close($con);<br>
-                ?&gt; </div>
-            </div>
+                mysqli_close($conn);<br>
+                ?&gt; <br>
+               </div>  
+              </div>
+   
             <p>위의 코드의 출력을 다음과 같을 것이다:</p>
             <table border="1">
               <tbody>
@@ -157,8 +131,8 @@
                   <th>Lastname</th>
                 </tr>
                 <tr>
-                  <td>Glenn</td>
-                  <td>Quagmire</td>
+                  <td>John</td>
+                  <td>Doe</td>
                 </tr>
                 <tr>
                   <td>Peter</td>
