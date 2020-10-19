@@ -139,66 +139,116 @@
             <hr>
             
             
-            <h2>Create a Database</h2>
+            <h2>데이타베이스 생성</h2>
             <p>데이타베이스는 하나 이상의 테이블을 보유한다. </p>
             <p>CREATE DATABASE 문은 MySQL 에서 데이타베이스를 생성할 때 사용된다. </p>
+            <hr>
             <p>명령을 실행하기 위해서는 mysqli_query() 함수에 CREATE DATABASE 문을 추가해야
               합니다.&nbsp; </p>
-            <p>다음의 예는 "my_db" 라는 이름의 데이타베이스를 생성한다. :</p>
-            <div class="w3-code w3-border  notranslate">
-              <div> &lt;?php<br>
-                $con=mysqli_connect("example.com","peter","abc123");<br>
-                // Check connection<br>
-                if (mysqli_connect_errno())<br>
-                &nbsp;&nbsp;{<br>
-                &nbsp; echo "Failed to connect to MySQL: " .
-                mysqli_connect_error();<br>
-                &nbsp;&nbsp;}<br>
+            <p>다음의 예는 "myDB" 라는 이름의 데이타베이스를 생성합니다. :</p>
+              <div class="w3-example">
+              <h2 class="example">Example (MySQLi Procedural)</h2>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                $servername = "localhost";<br>
+                $username = "username";<br>
+                $password = "password";<br>
                 <br>
+                // Create connection<br>
+                $conn = mysqli_connect($servername, $username, $password);<br>
+                <br>
+                // Check connection<br>
+                if (!$conn) {<br>
+                &nbsp;&nbsp;die("Connection failed: " . mysqli_connect_error());<br>
+                }<br>
                 // Create database<br>
-                $sql="CREATE DATABASE my_db";<br>
-                if (mysqli_query($con,$sql))<br>
-                &nbsp; {<br>
-                &nbsp; echo "Database my_db created successfully";<br>
-                &nbsp; }<br>
-                else<br>
-                &nbsp; {<br>
-                &nbsp; echo "Error creating database: " . mysqli_error($con);<br>
-                &nbsp; }<br>
-                ?&gt; </div>
-            </div>
-            <br>
+                $sql = "CREATE DATABASE myDB";<br>
+                if (mysqli_query($conn, $sql)) {<br>
+                  echo "Database created successfully";<br>
+                } else {<br>
+                  echo "Error creating database: " . mysqli_error($conn);<br>
+                }<br>
+                <br>
+                mysqli_close($conn);<br>
+                ?&gt; <br>
+               </div>
+              </div>
+            
             <hr>
-            <h2><a id="table" name="table"></a>Create a Table</h2>
+            <h2><a id="table" name="table"></a> 테이블 생성</h2>
             <p>CREATE TABLE 문은 MySQL에서 테이블을 생성하는데 사용된다. </p>
-            <p>명령을 실행하기 위해서는 mysqli_query() 함수에 CREATE TABLE 문을 추가해야 합니다.&nbsp;</p>
-            <p>다음의 예는 세개의 열("FirstName", "LastName" 과 "Age")로 구성된 "Persons" 이라는
-              테이블을 생성합니다.: </p>
-            <div class="w3-code w3-border  notranslate">
-              <div> &lt;?php<br>
-                $con=mysqli_connect("example.com","peter","abc123","my_db");<br>
-                // Check connection<br>
-                if (mysqli_connect_errno())<br>
-                &nbsp;&nbsp;{<br>
-                &nbsp; echo "Failed to connect to MySQL: " .
-                mysqli_connect_error();<br>
-                &nbsp;&nbsp;}<br>
-                <br>
-                // Create table<br>
-                $sql="CREATE TABLE Persons(FirstName CHAR(30),LastName
-                CHAR(30),Age INT)";<br>
-                <br>
-                // Execute query<br>
-                if (mysqli_query($con,$sql))<br>
-                &nbsp; {<br>
-                &nbsp; echo "Table persons created successfully";<br>
-                &nbsp; }<br>
-                else<br>
-                &nbsp; {<br>
-                &nbsp; echo "Error creating table: " . mysqli_error($con);<br>
-                &nbsp; }<br>
-                ?&gt; </div>
+            <hr>
+            <p>다음의 SQL 명령은 "id", "firstname", "lastname", "email"및 "reg_date"의 5 개 열이있는 
+              "MyGuests"라는 이름의 테이블을 만듭니다.: </p>
+            
+            <div class="w3-example">
+            <div class="w3-code notranslate"> 
+            CREATE TABLE MyGuests (<br>
+            id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,<br>
+            firstname VARCHAR(30) NOT NULL,<br>
+            lastname VARCHAR(30) NOT NULL,<br>
+            email VARCHAR(50),<br>
+            reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP<br>
+            ) <br>
             </div>
+            </div>
+            
+            <P>위의 테이블에 대한 참고 사항 :</P>
+            <p> 데이터 유형은 열이 보유 할 수 있는 데이터 유형을 지정합니다. 
+              사용 가능한 모든 데이터 유형에 대한 전체 참조는 데이터 유형 참조를 참조하십시오 . </p>
+             <p>데이터 유형 뒤에 각 열에 대해 다른 선택적 속성을 지정할 수 있습니다. </p>
+            <ul>
+              <li>NOT NULL-각 행은 해당 열의 값을 포함해야하며 null 값은 허용되지 않습니다.</li>
+              <li>DEFAULT 값-다른 값이 전달되지 않을 때 추가되는 기본값을 설정합니다.</li>
+              <li>UNSIGNED-숫자 유형에 사용되며 저장된 데이터를 양수와 0으로 제한합니다.</li>
+              <li>자동 증가-MySQL은 새 레코드가 추가 될 때마다 자동으로 필드 값을 1 씩 증가시킵니다.</li>
+              <li>PRIMARY KEY-테이블의 행을 고유하게 식별하는 데 사용됩니다. 
+                PRIMARY KEY 설정이있는 열은 종종 ID 번호이며 종종 AUTO_INCREMENT와 함께 사용됩니다.</li>
+            </ul>
+
+            <p>각 테이블에는 primary key열(이 경우 "id"열)이 있어야합니다. 해당 값은 테이블의 각 레코드에 대해 고유해야 합니다.</p>
+
+            <p>다음 예는 PHP에서 테이블을 만드는 방법을 보여줍니다.</p>
+            
+            <p>명령을 실행하기 위해서는 mysqli_query() 함수에 CREATE TABLE 문을 추가해야 합니다.&nbsp;</p>
+            
+                          <div class="w3-example">
+              <h2 class="example">Example (MySQLi Procedural)</h2>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                $servername = "localhost";<br>
+                $username = "username";<br>
+                $password = "password";<br>
+                <br>
+                // Create connection<br>
+                $conn = mysqli_connect($servername, $username, $password);<br>
+                <br>
+                // Check connection<br>
+                if (!$conn) {<br>
+                &nbsp;&nbsp;die("Connection failed: " . mysqli_connect_error());<br>
+                }<br>
+<br>
+                // sql to create table<br>
+                $sql = "CREATE TABLE MyGuests (<br>
+                id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,<br>
+                firstname VARCHAR(30) NOT NULL,<br>
+                lastname VARCHAR(30) NOT NULL,<br>
+                email VARCHAR(50),<br>
+                reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP<br>
+                )";<br>
+<br>
+                if (mysqli_query($conn, $sql)) {<br>
+                  echo "Table MyGuests created successfully";<br>
+                } else {<br>
+                  echo "Error creating table: " . mysqli_error($conn);<br>
+                }<br>
+                <br>
+                mysqli_close($conn);<br>
+                ?&gt; <br>
+               </div>
+              </div>
+            
+
             <p><b>Note:</b> CHAR 타입의 필드를 생성할 때, 필드의 최대 길이를 명시해야한다(e.g.
               CHAR(50)).</p>
             <p>데이타 타입은 열이 보유할 수 있는 데이타의 타입을 명시한다.&nbsp; MySQL 에서 사용할 수 있는 모든 데이터
