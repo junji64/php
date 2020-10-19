@@ -20,17 +20,63 @@
             <p class="intro">SELECT 문은 데이타베이스로부터 데이타를 선택하는데 사용됩니다.</p>
             <hr>
             <h2>Select Data From a Database Table</h2>
-            <p>SELECT 문은 데이타베이스로부터 데이타를 선택하는데 사용됩니다.</p>
+            <p>SELECT 문은하나 이상의 테이블에서 데이터를 선택하는 데 사용됩니다.</p>
             <h3>Syntax</h3>
             <div class="w3-code w3-border  notranslate">
-              <div> SELECT column_name(s)<br>
-                FROM table_name </div>
+              <div> SELECT column_name(s) FROM table_name </div>
             </div>
-            <p>또는</p>
+            <p>또는 * 문자를 사용하여 테이블에서 모든 열을 선택할 수 있습니다.</p>
             <div class="w3-code w3-border  notranslate">
               <div> SELECT * FROM table_name </div>
             </div>
             <br>
+            <h2>MySQLi로 데이터 선택</h2>
+            <p>다음 예제는 MyGuests 테이블에서 id, firstname 및 lastname 열을 선택하여 페이지에 표시합니다.</p>
+            
+              <div class="w3-example">
+              <h2 class="example">Example (MySQLi Procedural)</h2>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                $servername = "localhost";<br>
+                $username = "username";<br>
+                $password = "password";<br>
+                $dbname = "myDB";<br>
+<br>
+                // Create connection<br>
+                $conn = mysqli_connect($servername, $username, $password, $dbname);<br>
+                // Check connection<br>
+                if (!$conn) {<br>
+                  die("Connection failed: " . mysqli_connect_error());<br>
+                }<br>
+<br>
+                $sql = "SELECT id, firstname, lastname FROM MyGuests";<br>
+                $result = mysqli_query($conn, $sql);<br>
+<br>
+                if (mysqli_num_rows($result) &gt; 0) {<br>
+                  // output data of each row<br>
+                  while($row = mysqli_fetch_assoc($result)) {<br>
+                    echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "&lt;br&gt;";<br>
+                  }<br>
+                } else {<br>
+                  echo "0 results";<br>
+                }<br>
+<br>
+                mysqli_close($conn);<br>
+                ?&gt; <br>
+               </div>              <br>
+              <a target="_blank" class="w3-btn w3-margin-bottom" 
+                 href="https://tryphp.w3schools.com/showphpfile.php?filename=demo_db_select_where_proc">Run
+                example »</a>
+              </div>
+            <p>위의 예에서의 코드 설명 :</p>
+            <p>먼저 MyGuests 테이블에서 id, firstname 및 lastname 열을 선택하는 SQL 쿼리를 설정합니다. 
+              다음 코드 줄은 쿼리를 실행하고 결과 데이터를 $result라는 변수에 넣습니다.</p>
+            <p>그런 다음 <code class="w3-codespan">function num_rows()</code>의 반환 된 행이 0 개 이상인지 확인합니다.</p>
+            <p>반환 된 행이 0 개 이상인 경우에는 함수 <code class="w3-codespan">fetch_assoc()</code>은 모든 결과를 
+              반복 할 수 있는 연관 배열에 넣습니다. 
+              <code class="w3-codespan">while()</code>루프는 결과 세트에 대하여 반복하여 ID, 이름 및 성 열로부터 데이터를 출력한다.</p>
+            
+            
             PHP 가 위의 문을 실행하게 하려면 mysqli_query() 함수를 사용하여야 한다. 이 함수는&nbsp;MySQL
             연결에 쿼리나 명령을 보낼 때 사용된다.&nbsp;
             <h3>Example</h3>
