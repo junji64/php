@@ -58,6 +58,28 @@
             </table>
             <p><b>Note:</b> 사용 가능한 매개변수가 더 많이 있으나, 위에 열거된 것들이 가장 중요한 것들이다.&nbsp;</p>
             <p>다음의 예에서 우리는 스크립트에서 나중에 사용하기 위해서 연결을 변수 ($con) 에 저장한다. :</p>
+            <div class="w3-example">
+              <h2 class="example">Example (MySQLi Procedural)</h2>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                $servername = "localhost";<br>
+                $username = "username";<br>
+                $password = "password";<br>
+                <br>
+                // Create connection<br>
+                $conn = mysqli_connect($servername, $username, $password);<br>
+                <br>
+                // Check connection<br>
+                if (!$conn) {<br>
+                  die("Connection failed: " . mysqli_connect_error());<br>
+                }<br>
+                echo "Connected successfully";<br>
+                ?&gt; <br>
+               </div>
+              </div>
+            
+            
+            
             <div class="w3-code w3-border  notranslate">
               <div> &lt;?php<br>
                 // Create connection<br>
