@@ -53,9 +53,10 @@
                 $servername = "localhost";<br>
                 $username = "username";<br>
                 $password = "password";<br>
+                $dbname = "myDB";<br>
                 <br>
                 // Create connection<br>
-                $conn = mysqli_connect($servername, $username, $password);<br>
+                $conn = mysqli_connect($servername, $username, $password, $dbname);<br>
                 <br>
                 // Check connection<br>
                 if (!$conn) {<br>
