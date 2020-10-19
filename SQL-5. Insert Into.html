@@ -75,8 +75,49 @@
                 ?&gt; <br>
                </div>
               </div>
-            
             <hr>
+            
+            
+            <h2>MySQLi를 사용하여 MySQL에 여러 레코드 삽입</h2>
+            <p>mysqli_multi_query()함수를 사용하여 여러 SQL 문을 실행해야 합니다. </p>
+            <p>다음 예제는 "MyGuests"테이블에 세 개의 새 레코드를 추가합니다. </p>
+            
+            <div class="w3-example">
+              <h2 class="example">Example (MySQLi Procedural)</h2>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                $servername = "localhost";<br>
+                $username = "username";<br>
+                $password = "password";<br>
+                <br>
+                // Create connection<br>
+                $conn = mysqli_connect($servername, $username, $password);<br>
+                <br>
+                // Check connection<br>
+                if (!$conn) {<br>
+                &nbsp;&nbsp;die("Connection failed: " . mysqli_connect_error());<br>
+                }<br>
+                <br>
+                $sql = "INSERT INTO MyGuests (firstname, lastname, email)<br>
+                VALUES ('John', 'Doe', 'john@example.com');";<br>
+                $sql .= "INSERT INTO MyGuests (firstname, lastname, email)<br>
+                VALUES ('Mary', 'Moe', 'mary@example.com');";<br>
+                $sql .= "INSERT INTO MyGuests (firstname, lastname, email)<br>
+                VALUES ('Julie', 'Dooley', 'julie@example.com')";<br>
+                <br>
+                if (mysqli_multi_query($conn, $sql)) {<br>
+                  echo "New records created successfully";<br>
+                } else {<br>
+                  echo "Error: " . $sql . "<br>" . mysqli_error($conn);<br>
+                }<br>
+                <br>
+                mysqli_close($conn);<br>
+                ?&gt; <br>
+               </div>
+              </div>
+            <hr>
+            
+            
             <h2>Insert Data From a Form Into a Database</h2>
             <p>이제 우리는 "MyGuests"&nbsp; 테이블에 새로운 레코드를 추가하는데 사용할 수 있는&nbsp; HTML
               form 을 작성한다.&nbsp;&nbsp;</p>
