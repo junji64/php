@@ -20,44 +20,23 @@
                   Previous</a> <a class="w3-right w3-btn" href="SQL-5.%20Insert%20Into.html">Next »</a> </div>
             </div>
             <hr>
-            <p class="intro">MySQL 서버에 새로운 연결을 열려면 PHP 의 mysqli_connect() 함수를
-              사용합니다.</p>
+            <p class="intro">PHP 는 다음을 사용하여 MySQL DB서버에 연결합니다.</p>
+            <ul>
+              <li> MySQLi 확장 ("i"는 improved 를 의미함)</li>
+              <li>PDO (PHP Data Object)</li>
+            </ul>
             <hr>
-            <h2>Open a Connection to the MySQL Server</h2>
-            <p>데이타베이스의 데이타에 접근하기 전에, MySQL 서버에 대한 연결을 열어야 합니다.&nbsp;</p>
-            <p>PHP 에서 이는&nbsp; mysqli_connect() 함수를 사용합니다.</p>
-            <h3>Syntax</h3>
-            <div class="w3-code w3-border  notranslate">
-              <div> mysqli_connect(host,username,password,dbname); </div>
-            </div>
-            <br>
-            <table class="w3-table-all notranslate">
-              <tbody>
-                <tr>
-                  <th style="width:20%">Parameter</th>
-                  <th style="width:80%">Description</th>
-                </tr>
-                <tr>
-                  <td>host</td>
-                  <td>Optional. Either a host name or an IP address</td>
-                </tr>
-                <tr>
-                  <td>username</td>
-                  <td>Optional. The MySQL user name</td>
-                </tr>
-                <tr>
-                  <td>password</td>
-                  <td>Optional. The password to log in with</td>
-                </tr>
-                <tr>
-                  <td>dbname</td>
-                  <td>Optional. The default database to be used when performing
-                    queries</td>
-                </tr>
-              </tbody>
-            </table>
-            <p><b>Note:</b> 사용 가능한 매개변수가 더 많이 있으나, 위에 열거된 것들이 가장 중요한 것들이다.&nbsp;</p>
-            <p>다음의 예에서 우리는 스크립트에서 나중에 사용하기 위해서 연결을 변수 ($con) 에 저장한다. :</p>
+            <h2>MySQLi or PDO, 어느 것을 사용해야하나? </h2>
+            <p>짧은 대답이 필요하면 "원하는대로"입니다.</p>
+            <p>MySQLi와 PDO는 모두 다음과 같은 장점이 있습니다.</p>
+            <p>PDO는 12 개의 다른 데이터베이스 시스템에서 작동하지만 MySQLi는 MySQL 데이터베이스에서만 작동합니다.</p>
+            <p>따라서 다른 데이터베이스를 사용하도록 프로젝트를 전환해야하는 경우 PDO를 사용하면 프로세스가 쉬워집니다. 
+              연결 문자열과 몇 가지 쿼리 만 변경하면됩니다. MySQLi를 사용하면 쿼리가 포함 된 전체 코드를 다시 작성해야합니다.</p>
+            <p>둘 다 객체 지향적이지만 MySQLi는 순차적(procedual) API도 제공합니다.</p>
+            <hr>         
+            <h2> MySQL Server에 연결을 열기</h2>
+            <p>데이타베이스의 데이타에 접근하기 전에, MySQL 서버에 대한 연결을 열어야 합니다.</p>
+            
             <div class="w3-example">
               <h2 class="example">Example (MySQLi Procedural)</h2>
               <div class="w3-code notranslate"> 
@@ -71,49 +50,95 @@
                 <br>
                 // Check connection<br>
                 if (!$conn) {<br>
-                  die("Connection failed: " . mysqli_connect_error());<br>
+                &nbsp;&nbsp;die("Connection failed: " . mysqli_connect_error());<br>
                 }<br>
                 echo "Connected successfully";<br>
                 ?&gt; <br>
                </div>
               </div>
             
-            
-            
-            <div class="w3-code w3-border  notranslate">
-              <div> &lt;?php<br>
+              <div class="w3-example">
+              <h2 class="example">Example (MySQLi Object Oriented)</h2>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                $servername = "localhost";<br>
+                $username = "username";<br>
+                $password = "password";<br>
+                <br>
                 // Create connection<br>
-                $con=mysqli_connect("example.com","peter","abc123","my_db");<br>
+                $conn = new mysqli($servername, $username, $password);<br>
                 <br>
                 // Check connection<br>
-                if (mysqli_connect_errno())<br>
-                &nbsp;&nbsp;{<br>
-                &nbsp; echo "Failed to connect to MySQL: " .
-                mysqli_connect_error();<br>
-                &nbsp;&nbsp;}<br>
-                ?&gt; </div>
-            </div>
+                if ($conn-&gt;connect_error) {<br>
+                &nbsp;&nbsp;die("Connection failed: " . $conn-&gt;connect_error);<br>
+                }<br>
+                echo "Connected successfully";<br>
+                ?&gt; <br>
+               </div>
+              </div>
+            
+              <div class="w3-example">
+              <h2 class="example">Example (PDO)</h2>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                $servername = "localhost";<br>
+                $username = "username";<br>
+                $password = "password";<br>
+                <br>
+                try {<br>
+                  $conn = new PDO("mysql:host=$servername;dbname=myDB", $username, $password);<br>
+                  // set the PDO error mode to exception<br>
+                  $conn-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);<br>
+                  echo "Connected successfully";<br>
+                } catch(PDOException $e) {<br>
+                  echo "Connection failed: " . $e-&gt;getMessage();<br>
+                }<br>
+                ?&gt; <br>
+               </div>
+              </div>
+            
+            <p> 참고: 위의 PDO 예제에서는 데이터베이스 (myDB) 도 지정했습니다. 
+              PDO에 연결하려면 유효한 데이터베이스가 필요합니다. 데이터베이스를 지정하지 않으면 예외가 발생합니다. </p>
+            
+            <p>팁: PDO의 큰 이점은 데이터베이스 쿼리에서 발생할 수있는 문제를 처리하는 예외 클래스가 있다는 것입니다. 
+              try{} 블록 내에서 예외가 발생하면 스크립트가 실행을 중지하고 첫 번째 catch() {} 블록으로 직접 이동합니다.</p>
+            
             <br>
             <hr>
-            <h2>Close a Connection</h2>
-            <p>스크립트가 종료될 때 연결이 자동으로 종료된다. 그 전에 연결을 닫으려면 mysqli_close() 함수를
-              사용한다.:</p>
-            <div class="w3-code w3-border  notranslate">
-              <div> &lt;?php<br>
-                $con=mysqli_connect("example.com","peter","abc123","my_db");<br>
-                <br>
-                // Check connection<br>
-                if (mysqli_connect_errno())<br>
-                &nbsp;&nbsp;{<br>
-                &nbsp; echo "Failed to connect to MySQL: " .
-                mysqli_connect_error();<br>
-                &nbsp;&nbsp;}<br>
-                <br>
-                mysqli_close($con);<br>
-                ?&gt; </div>
+            <h2>연결종료</h2>
+            <p>스크립트가 종료될 때 연결이 자동으로 종료된다. 그 전에 연결을 닫으려면 다음과 같은 함수를 사용한다.:</p>
+            
+            <div class="w3-example">
+            <h2 class="example">Example (MySQLi Procedural)</h2>
+            <div class="w3-code notranslate"> 
+              &lt;?php<br>
+              mysqli_close($conn);<br>
+              ?&gt; <br>
+             </div>
             </div>
+            
+            <div class="w3-example">
+            <h2 class="example">Example (MySQLi Object Oriented)</h2>
+            <div class="w3-code notranslate"> 
+              &lt;?php<br>
+              $conn->close();<br>
+              ?&gt; <br>
+             </div>
+            </div>
+            
+            <div class="w3-example">
+            <h2 class="example">Example (PDO)</h2>
+            <div class="w3-code notranslate"> 
+              &lt;?php<br>
+              $conn = null;;<br>
+              ?&gt; <br>
+             </div>
+            </div>
+
             <br>
             <hr>
+            
+            
             <h2>Create a Database</h2>
             <p>데이타베이스는 하나 이상의 테이블을 보유한다. </p>
             <p>CREATE DATABASE 문은 MySQL 에서 데이타베이스를 생성할 때 사용된다. </p>
