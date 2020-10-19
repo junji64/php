@@ -78,53 +78,68 @@
             
             <hr>
             <h2>Insert Data From a Form Into a Database</h2>
-            <p>이제 우리는 "Persons"&nbsp; 테이블에 새로운 레코드를 추가하는데 사용할 수 있는&nbsp; HTML
+            <p>이제 우리는 "MyGuests"&nbsp; 테이블에 새로운 레코드를 추가하는데 사용할 수 있는&nbsp; HTML
               form 을 작성한다.&nbsp;&nbsp;</p>
             <p>HTML form 은 다음과 같다:</p>
-            <div class="w3-code w3-border  notranslate">
-              <div> &lt;html&gt;<br>
+            
+            <div class="w3-example">
+              <h2 class="example">Example (MySQLi Procedural)</h2>
+              <div class="w3-code notranslate"> 
+                 &lt;html&gt;<br>
                 &lt;body&gt;<br>
                 <br>
                 &lt;form action="insert.php" method="post"&gt;<br>
                 Firstname: &lt;input type="text" name="firstname"&gt;<br>
                 Lastname: &lt;input type="text" name="lastname"&gt;<br>
-                Age: &lt;input type="number" name="age"&gt;<br>
+                E-mail: &lt;input type="text" name="email"&gt;<br>
                 &lt;input type="submit"&gt;<br>
                 &lt;/form&gt;<br>
                 <br>
-                &lt;/body&gt;<br>
-                &lt;/html&gt; </div>
-            </div>
+                &lt;/body&gt; <br>
+                &lt;/html&gt; <br>
+               </div>
+              </div>
+               
+            
             <p> 위의 예에서 사용자가 HTML form 의 submit 버튼을 클릭하면 폼 데이타는 "insert.php" 로
               보내진 다.</p>
             <p>"insert.php" 파일은 데이타베이스에 연결하고, PHP $_POST 변수로 폼으로부터 값을
               추출하다.&nbsp;</p>
-            <p>그리고, mysqli_query() 함수는INSERT INTO 문을 실행하고, "Persons" 테이블에 새로운
+            <p>그리고, mysqli_query() 함수는INSERT INTO 문을 실행하고, "MyGuests" 테이블에 새로운
               레코드가 추가된다. </p>
             <p>여기에 "insert.php" 페이지가 있다.:</p>
-            <div class="w3-code w3-border  notranslate">
-              <div> &lt;?php<br>
-                $con=mysqli_connect("example.com","peter","abc123","my_db");<br>
+            
+            
+              <div class="w3-example">
+              <h2 class="example">Example (MySQLi Procedural)</h2>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                $servername = "localhost";<br>
+                $username = "root";<br>
+                $password = "";<br>
+                <br>
+                // Create connection<br>
+                $conn = mysqli_connect($servername, $username, $password);<br>
+                <br>
                 // Check connection<br>
-                if (mysqli_connect_errno())<br>
-                &nbsp;&nbsp;{<br>
-                &nbsp; echo "Failed to connect to MySQL: " .
-                mysqli_connect_error();<br>
-                &nbsp;&nbsp;}<br>
+                if (!$conn) {<br>
+                &nbsp;&nbsp;die("Connection failed: " . mysqli_connect_error());<br>
+                }<br>
                 <br>
-                $sql="INSERT INTO Persons (FirstName, LastName, Age)<br>
-                VALUES<br>
-                ('$_POST[firstname]','$_POST[lastname]',$_POST[age])";<br>
+                $sql = "INSERT INTO MyGuests (firstname, lastname, email)<br>
+                VALUES ('$_POST[firstname]','$_POST[lastname]','$_POST[email]')";<br>
                 <br>
-                if (!mysqli_query($con,$sql))<br>
-                &nbsp;&nbsp;{<br>
-                &nbsp;&nbsp;die('Error: ' . mysqli_error($con));<br>
-                &nbsp;&nbsp;}<br>
-                echo "1 record added";<br>
+                if (mysqli_query($conn, $sql)) {<br>
+                  echo "New record created successfully";<br>
+                } else {<br>
+                  echo "Error: " . $sql . "&lt;br&gt;" . mysqli_error($conn);<br>
+                }<br><br>
                 <br>
-                mysqli_close($con);<br>
-                ?&gt; </div>
-            </div>
+                mysqli_close($conn);<br>
+                ?&gt; <br>
+               </div>
+              </div>
+          
             <br>
             <br>
             <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="SQL-4.%20Connect%20to%20the%20MySQL%20Server.html">«
