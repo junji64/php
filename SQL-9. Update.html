@@ -13,13 +13,11 @@
       <div id="page" style="width:auto; padding:30px; margin:10px;">
         <div>
           <div id="main" style="width:auto">
-            <h1>SQL-9. <span class="color_h1">Update</span></h1>
+            <h1>SQL-9. <span class="color_h1">Update Data</span></h1>
             <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="SQL-8.%20Order%20By%20Keyword.html">«
                 Previous</a> <a class="w3-right w3-btn" href="SQL-10.%20Delete%20From.html">Next  »</a> </div>
             <hr>
-            <p class="intro">UPDATE 문은 테이블의 데이타를 수정할 때 사용된다.</p>
-            <hr>
-            <h2>Update Data In a Database</h2>
+            <h2>MySQLi를 사용하여 MySQL 테이블의 데이터 업데이트</h2>
             <p>UPDATE 문은 테이블의 기존의 레코드를 업데이트하는 데 사용된다.</p>
             <h3>Syntax</h3>
             <div class="w3-code w3-border notranslate">
@@ -28,71 +26,99 @@
                 WHERE some_column=some_value </div>
             </div>
             <br>
-            <b>Note:</b> UPDATE 구문에서 WHERE 절을 주목하시오. WHERE 절은 어느 레코드가 업데이트 되어야 할
-            지를 명시합니다. WHERE 절을 생략하면, 모든 레코드들이 업데이트됩니다.&nbsp;
+            <p><b>Note:</b> UPDATE 구문에서 WHERE 절을 주목하시오. WHERE 절은 어느 레코드가 업데이트 되어야 할
+            지를 명시합니다. WHERE 절을 생략하면, 모든 레코드들이 업데이트됩니다. </p>
+            
             <p>SQL 에 대한 자세한 내용은 ==&gt;&nbsp; <a href="http://www.w3schools.com/sql/default.asp">SQL
                 tutorial</a>.</p>
-            <p>위의 문을 PHP 가 실행하게 하기 위해서는 mysqli_query() 함수를 사용해야만 한다. 이
-              함수는&nbsp;MySQL 연결에 쿼리나 명령을 보낼 때 사용된다.</p>
-            <h3>Example</h3>
-            <p>이 튜토리얼의 앞에서 우리는 "Persons"이라는 이름의 테이블을 만들었습니다. 여기에 그것이 보여집니다.:</p>
-            <table class="reference notranslate">
-              <tbody>
-                <tr>
-                  <th>FirstName</th>
-                  <th>LastName</th>
-                  <th>Age</th>
-                </tr>
-                <tr>
-                  <td>Peter</td>
-                  <td>Griffin</td>
-                  <td>35</td>
-                </tr>
-                <tr>
-                  <td>Glenn</td>
-                  <td>Quagmire</td>
-                  <td>33</td>
-                </tr>
-              </tbody>
+                        <p>"MyGuests"테이블을 살펴 보겠습니다.    
+            </p>
+            
+            <div class="w3-responsive">
+            <table class="w3-table-all notranslate">
+              <tr>
+                <th>id</th>
+                <th>firstname</th>
+                <th>lastname</th>
+                <th>email</th>
+                <th>reg_date</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>John</td>
+                <td>Doe</td>
+                <td>john@example.com</td>
+                <td>2014-10-22 14:26:15</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Mary</td>
+                <td>Moe</td>
+                <td>mary@example.com</td>
+                <td>2014-10-23 10:22:30</td>
+              </tr>
             </table>
-            <p>다음의 예는 "Persons" 테이블의 어떤 데이타를 업데이트 합니다.:</p>
-            <div class="w3-code w3-border notranslate">
-              <div> &lt;?php<br>
-                $con=mysqli_connect("example.com","peter","abc123","my_db");<br>
-                // Check connection<br>
-                if (mysqli_connect_errno())<br>
-                &nbsp;&nbsp;{<br>
-                &nbsp; echo "Failed to connect to MySQL: " .
-                mysqli_connect_error();<br>
-                &nbsp;&nbsp;}<br>
-                <br>
-                mysqli_query($con,"UPDATE Persons SET Age=36<br>
-                WHERE FirstName='Peter' AND LastName='Griffin'");<br>
-                <br>
-                mysqli_close($con);<br>
-                ?&gt; </div>
             </div>
-            <p>업데이트 된 후, "Persons" 테이블은 다음과 같이 표시됩니다.:</p>
-            <table class="reference notranslate">
-              <tbody>
-                <tr>
-                  <th>FirstName</th>
-                  <th>LastName</th>
-                  <th>Age</th>
-                </tr>
-                <tr>
-                  <td>Peter</td>
-                  <td>Griffin</td>
-                  <td>36</td>
-                </tr>
-                <tr>
-                  <td>Glenn</td>
-                  <td>Quagmire</td>
-                  <td>33</td>
-                </tr>
-              </tbody>
+            
+            <p> 다음 예는 "MyGuests"테이블에서 id = 2 인 레코드를 업데이트합니다.            </p>
+            
+            <div class="w3-example">
+              <h2 class="example">Example (MySQLi Procedural)</h2>
+              <div class="w3-code notranslate"> 
+                &lt;?php<br>
+                $servername = "localhost";<br>
+                $username = "username";<br>
+                $password = "password";<br>
+                $dbname = "myDB";<br>
+<br>
+                // Create connection<br>
+                $conn = mysqli_connect($servername, $username, $password, $dbname);<br>
+                // Check connection<br>
+                if (!$conn) {<br>
+                  die("Connection failed: " . mysqli_connect_error());<br>
+                }<br>
+<br>
+                $sql = "UPDATE MyGuests SET lastname='Doe' WHERE id=2";<br>
+                $result = mysqli_query($conn, $sql);<br>
+                <br>
+                if (mysqli_query($conn, $sql)) {<br>
+                  echo "Record updated successfully";<br>
+                } else {<br>
+                  echo "Error updating record: " . mysqli_error($conn);<br>
+                }<br>
+                <br>
+                mysqli_close($conn);<br>
+                ?&gt; <br>
+               </div> 
+              </div>
+            
+            <p> 레코드가 업데이트 된 후 테이블은 다음과 같습니다. </p>
+            <div class="w3-responsive">
+            <table class="w3-table-all notranslate">
+              <tr>
+                <th>id</th>
+                <th>firstname</th>
+                <th>lastname</th>
+                <th>email</th>
+                <th>reg_date</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>John</td>
+                <td>Doe</td>
+                <td>john@example.com</td>
+                <td>2014-10-22 14:26:15</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Mary</td>
+                <td>Doe</td>
+                <td>mary@example.com</td>
+                <td>2014-10-23 10:22:30</td>
+              </tr>
             </table>
-            <br>
+            </div>
+            
             <div class="w3-clear nextprev"> <a class="w3-left w3-btn" href="SQL-8.%20Order%20By%20Keyword.html">«
                 Previous</a> <a class="w3-right w3-btn" href="SQL-10.%20Delete%20From.html">Next  »</a> </div>
             <hr> </div>
