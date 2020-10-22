@@ -104,8 +104,9 @@
               &nbsp;&nbsp;&nbsp;}<br>
 <br>
               &nbsp;&nbsp;&nbsp;$query = "SELECT name, pass FROM users WHERE name='$username' AND pass='$password' ";<br>
-<br>
-              &nbsp;&nbsp;&nbsp;if ( mysqli_query($conn,$query) ) {<br>
+              &nbsp;&nbsp;&nbsp;$result = mysqli_query($conn,$query);
+                <br>
+              &nbsp;&nbsp;&nbsp;if ( mysqli_num_rows($result) > 0 ) {<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $_SESSION['login']=$username;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; header("Location: content.php");<br>
               &nbsp;&nbsp;&nbsp;} else {<br>
