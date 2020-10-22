@@ -4,51 +4,8 @@
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
     <title>PHP Sessions</title>
     <style>a.menu_php_sessions{font-weight:bold;}</style>
-    <style>
-#smallnavContainer {display:none;}
-</style> <meta name="viewport" content="width=device-width">
-    <meta name="Keywords" content="HTML,CSS,XML,JavaScript,DOM,jQuery,ASP.NET,PHP,SQL,colors,tutorial,programming,development,training,learning,quiz,primer,lessons,reference,examples,source code,demos,tips,color table,w3c,cascading style sheets,active server pages,Web building,Webmaster">
-    <meta name="Description" content="Free HTML CSS JavaScript DOM jQuery XML AJAX RSS ASP .NET PHP SQL tutorials, references, examples for web building.">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-3855518-1']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script> <script type="text/javascript">
-var googletag = googletag || {};
-googletag.cmd = googletag.cmd || [];
-(function() {
-var gads = document.createElement('script');
-gads.async = true;
-gads.type = 'text/javascript';
-var useSSL = 'https:' == document.location.protocol;
-gads.src = (useSSL ? 'https:' : 'http:') + 
-'//www.googletagservices.com/tag/js/gpt.js';
-var node = document.getElementsByTagName('script')[0];
-node.parentNode.insertBefore(gads, node);
-})();
-</script> <script type="text/javascript">
-googletag.cmd.push(function() {
-googletag.defineSlot('/16833175/BottomMediumRectangle', [300, 250], 'div-gpt-ad-1403595829794-0').addService(googletag.pubads());
-googletag.defineSlot('/16833175/LargePS', [[723, 280], [723, 400], [728, 280], [728, 400], [728, 450]], 'div-gpt-ad-1403595829794-1').addService(googletag.pubads());
-googletag.defineSlot('/16833175/MainLeaderboard', [728, 90], 'div-gpt-ad-1403595829794-2').addService(googletag.pubads());
-googletag.defineSlot('/16833175/SmallPS', [[723, 170], [728, 170]], 'div-gpt-ad-1403595829794-4').addService(googletag.pubads());
-var adScreenWidth = screen.width;
-if (adScreenWidth <= 768) {   
-  googletag.defineSlot('/16833175/MobileBottomBanner', [728, 90], 'div-gpt-ad-1403595829794-3').addService(googletag.pubads());
-} else { 
-  googletag.defineSlot('/16833175/WideSkyScraper', [160, 600], 'div-gpt-ad-1403595829794-5').addService(googletag.pubads());
-}
-googletag.pubads().setTargeting("content","php");
-googletag.pubads().enableSingleRequest();
-googletag.enableServices();
-});
-</script> <link rel="stylesheet" type="text/css" href="http://www.w3schools.com/stdtheme.css">
+<link rel="stylesheet" type="text/css" href="http://www.w3schools.com/stdtheme.css">
+    <link rel="stylesheet" href="w3.css">
   </head>
   <body>
     <div id="smallnavContainer">
@@ -93,8 +50,10 @@ googletag.enableServices();
             <p>아래의 코드(image.php)는 사용자로부터 image 파일을 입력받아 my_db.images 에
               저정하고&nbsp; get.php 로 해당 image를 추출해서 보여준다. </p>
             <p> </p>
-            <div class="code notranslate">
-              <div> &lt;!DOCTYPE html&gt;<br>
+            <div class="w3-example">
+              <h2 class="example">image.php</h2>
+              <div class="w3-code notranslate"> 
+                &lt;!DOCTYPE html&gt;<br>
                 &lt;html&gt;<br>
                 &lt;head&gt;<br>
                 &lt;title&gt; Image Uploading Example &lt;/title&gt;<br>
@@ -183,8 +142,9 @@ googletag.enableServices();
             아래의 코드(get.php)는 image.php 로부터 image 파일 name 을 전달 받아 DB로부터 해당 이름을 갖는
             image 를 추출해서 반환한다.<br>
             <br>
-            <div class="code notranslate">
-              <div> &lt;?php<br>
+            <div class="w3-example">
+              <h2 class="example">get.php</h2>
+              <div class="w3-code notranslate">  &lt;?php<br>
                 $con = mysqli_connect("localhost","root","123123","my_db") or
                 die(mysqli_connect_error());<br>
                 $name = $_REQUEST['name'];<br>
