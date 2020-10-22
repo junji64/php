@@ -30,7 +30,7 @@
             </div>
             <hr>다음의 예는 image 파일을 DB 에 업로딤하고 DB에 있는 것을 표시하는 방벙을 보여준다.<br>
             <ul>
-              <li><a href="examples/image.php">image.php</a> : local 컴퓨터에 있는
+              <li><a href="http://jun.hansung.ac.kr/SWP/PHP/examples/image.php">image.php</a> : local 컴퓨터에 있는
                 image 파일을 서버에 업로드 하기 위한 form 요소와 완료되었을 때 get.php 를 이용하여 해당 image
                 를 가져와 보여줌. (More complete source code) : <a href="./examples/image.txt"> image.php <a> / <a href="./examples/delete_img.txt"> delete_img.php <a></li>
               <li>get.php&nbsp; : 전달 받은 image&nbsp; 파일 이름에 해당하는 이미지를 DB에서 추출해
@@ -48,7 +48,7 @@
             <hr>
             <h2>image.php : image uploading code</h2>
             <p>아래의 코드(image.php)는 사용자로부터 image 파일을 입력받아 my_db.images 에
-              저정하고&nbsp; get.php 로 해당 image를 추출해서 보여준다. </p>
+              저하고&nbsp; get.php 로 해당 image를 추출해서 보여준다. </p>
             <p> </p>
             <div class="w3-example">
               <h2 class="example">image.php</h2>
@@ -71,7 +71,7 @@
                 &nbsp;&nbsp;&nbsp; &lt;?php<br>
                 &nbsp;&nbsp;&nbsp; <br>
                 &nbsp;&nbsp;&nbsp; $con =
-                mysqli_connect("localhost","root","123123","my_db") or
+                mysqli_connect("localhost","root","","my_db") orㅣ
                 die(mysqli_connect_error());<br>
                 &nbsp;&nbsp;&nbsp; <br>
                 &nbsp;&nbsp;&nbsp; $file = $_FILES['image']['tmp_name'];<br>
