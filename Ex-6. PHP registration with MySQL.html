@@ -182,16 +182,16 @@
               &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;header("Location: registration.php?MSG=Username:$username or E-mail:$email is already exist, please use another one!");
               &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; } else { <br>
               &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $query = "INSERT INTO users (name, pass, email) VALUES ('$username','$password','$email')"; <br>
-              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (mysqli_query($con,$query)) { <br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (mysqli_query($conn,$query)) { <br>
               &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $_SESSION['login']=$username; <br>
               &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; header("Location: content.php"); <br>
               &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; } <br>   
               &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; } <br>
               &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; } <br>
               &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; } <br>
-<br>
+              <br>
               mysqli_close($conn);<br>
-              }<br>
+              <br>
               ?&gt;<br>
               &lt;html&gt;<br>
               &lt;head&gt;<br>
@@ -200,7 +200,7 @@
               &lt;body style="text-align:center; "&gt;<br>
               &lt;?php<br>
               if(isset($_GET['MSG'])) {<br>
-              &nbsp;&nbsp;&nbsp;&lt;  echo $_GET['MSG'];<br>
+              &nbsp;&nbsp;&nbsp; echo $_GET['MSG'];<br>
               }<br>
               ?&gt;<br>
               &nbsp;&nbsp;&nbsp;&lt;form method="post" action="registration.php"&gt;<br>
