@@ -73,7 +73,7 @@
             <h2>login.php</h2>
             <p>아래의 코드(login.php)는 사용자로부터 username 과 password 를 입력받아 인증 후
               content.php 로 이동한다. </p>
-            <p> </p>
+
             <div class="w3-example">
               <h2 class="example">Login.php</h2>
               <div class="w3-code notranslate"> 
@@ -137,7 +137,7 @@
               &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
               &nbsp;&nbsp;&nbsp;&lt;/table&gt;<br>
               &nbsp;&nbsp;&nbsp;&lt;form&gt;<br>
-              &nbsp;&nbsp;&nbsp; &lt;b&gt; Not registered yet? &lt;a href="register.php"&gt; Registeration &lt;/a&gt;&lt;/b&gt;<br>
+              &nbsp;&nbsp;&nbsp; &lt;b&gt; Not registered yet? &lt;a href="registration.php"&gt; Registeration &lt;/a&gt;&lt;/b&gt;<br>
               &lt;/body&gt;<br>
               &lt;/html&gt;<br>
                </div>
@@ -150,6 +150,88 @@
             아래의 코드(registration.php)는 사용자로부터 username, password 와 email 들를 입력받아
             users_db.users 에 저장하고, content.php 로 이동한다. <br>
             <br>
+            
+            <div class="w3-example">
+              <h2 class="example">Login.php</h2>
+              <div class="w3-code notranslate"> 
+              &lt;!DOCTYPE html&gt; <br>
+              &lt;?php<br>
+              session_start();<br>
+<br>
+              $servername = 'localhost';<br>
+              $dbUsername = 'root';<br>
+              $dbPassword = '';<br>
+              $dbName = 'users_db';<br>
+<br>
+              $conn = mysqli_connect($servername, $dbUsername, $dbPassword, $dbName);<br>
+<br>
+              if (!$conn) {<br>
+              &nbsp;&nbsp;&nbsp;die("Connection failed: " . mysqli_connect_error());<br>
+              }<br>
+<br>
+              if (isset($_POST['submit'])) {<br>
+              &nbsp;&nbsp;&nbsp;$username = $_POST['username'];<br>
+              &nbsp;&nbsp;&nbsp;$password = $_POST['password'];<br>
+              &nbsp;&nbsp;&nbsp;$email = $_POST['email'];<br>
+<br>
+              &nbsp;&nbsp;&nbsp;if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email'])) {<br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;echo "&lt;script&gt; alert('Please enter all required field!')&lt;/script&gt;";<br>
+              &nbsp;&nbsp;&nbsp;} else {<br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;$query = "SELECT * FROM users WHERE name='$username' OR email='$email' ";
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;if (mysqli_query($conn,$query)) {<br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;header("Location: registration.php?MSG=Username:$username or E-mail:$email is already exist, please use another one!");
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; } else { <br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $query = "INSERT INTO users (name, pass, email) VALUES ('$username','$password','$email')"; <br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (mysqli_query($con,$query)) { <br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $_SESSION['login']=$username; <br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; header("Location: content.php"); <br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; } <br>   
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; } <br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; } <br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; } <br>
+<br>
+              mysqli_close($conn);<br>
+              }<br>
+              ?&gt;<br>
+              &lt;html&gt;<br>
+              &lt;head&gt;<br>
+              &nbsp;&nbsp;&nbsp;&lt;title&gt; Registration Page &lt;/title&gt;<br>
+              &lt;/head&gt;<br>
+              &lt;body style="text-align:center; "&gt;<br>
+              &lt;?php<br>
+              if(isset($_GET['MSG'])) {<br>
+              &nbsp;&nbsp;&nbsp;&lt;  echo $_GET['MSG'];<br>
+              }<br>
+              ?&gt;<br>
+              &nbsp;&nbsp;&nbsp;&lt;form method="post" action="registration.php"&gt;<br>
+              &nbsp;&nbsp;&nbsp;&lt;table border="2" align="center"&gt;<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;tr&gt;<br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&lt;th colspan="2" align="center"&gt; Login &lt;/th&gt;<br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/tr&gt;<br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;td width="100"&gt; Username &lt;/td&gt;<br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;td&gt; &lt;input type="text" name="username" &gt; &lt;/td&gt;<br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;td width="100"> Password &lt;/td&gt;<br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;td&gt; &lt;input type="password" name="password" &gt; &lt;/td&gt;<br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;td width="100"> E-mail &lt;/td&gt;<br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;td&gt; &lt;input type="text" name="email" &gt; &lt;/td&gt;<br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;td colspan="2" align="center"&gt; &lt;input type="submit" name="submit" value="Login" &gt; &lt;/td&gt;<br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+              &nbsp;&nbsp;&nbsp;&lt;/table&gt;<br>
+              &nbsp;&nbsp;&nbsp;&lt;form&gt;<br>
+              &nbsp;&nbsp;&nbsp; &lt;b&gt; Not registered yet? &lt;a href="login.php"&gt; Login &lt;/a&gt;&lt;/b&gt;<br>
+              &lt;/body&gt;<br>
+              &lt;/html&gt;<br>
+               </div>
+              </div>
+            
+            
+            
             <div class="code notranslate">
               <div> &lt;!DOCTYPE html&gt;<br>
                 &lt;?php<br>
