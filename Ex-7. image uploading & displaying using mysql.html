@@ -149,6 +149,24 @@
               </div>
             </div>
             <br>
+            <h2>delete.php</h2>
+
+            아래의 코드(delete.php)는 DB에서 해당 이름의 image 를 삭제한다.<br>
+            <br>
+            <div class="w3-example">
+              <h2 class="example">delete.php</h2>
+              <div class="w3-code notranslate">  
+                &lt;?php<br>    
+                $id = $_GET['id'];<br>
+                $con = mysqli_connect("localhost","root","123123","my_db") or die(mysqli_connect_error());<br>
+                mysqli_query($con, "DELETE FROM images WHERE id=$id");<br>
+                mysqli_close($con);<br>
+                header("location: image.php");<br>
+                ?&gt;<br>
+                <br>
+              </div>
+            </div>
+
             <hr> </div>
         </div>
       </div>
