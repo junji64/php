@@ -176,9 +176,10 @@
               &nbsp;&nbsp;&nbsp;if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email'])) {<br>
               &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;echo "&lt;script&gt; alert('Please enter all required field!')&lt;/script&gt;";<br>
               &nbsp;&nbsp;&nbsp;} else {<br>
-              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;$query = "SELECT * FROM users WHERE name='$username' OR email='$email' ";
-              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;if (mysqli_query($conn,$query)) {<br>
-              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;header("Location: registration.php?MSG=Username:$username or E-mail:$email is already exist, please use another one!");
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;$query = "SELECT * FROM users WHERE name='$username' OR email='$email' "; <br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;$result = mysqli_query($conn,$query)<br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;if (mysqli_num_rows($result) > 0) {<br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;header("Location: registration.php?MSG=Username:$username or E-mail:$email is already exist, please use another one!"); <br>
               &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; } else { <br>
               &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $query = "INSERT INTO users (name, pass, email) VALUES ('$username','$password','$email')"; <br>
               &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (mysqli_query($conn,$query)) { <br>
@@ -205,7 +206,7 @@
               &nbsp;&nbsp;&nbsp;&lt;form method="post" action="registration.php"&gt;<br>
               &nbsp;&nbsp;&nbsp;&lt;table border="2" align="center"&gt;<br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;tr&gt;<br>
-              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&lt;th colspan="2" align="center"&gt; Login &lt;/th&gt;<br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&lt;th colspan="2" align="center"&gt; Registration &lt;/th&gt;<br>
               &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/tr&gt;<br>
               &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;td width="100"&gt; Username &lt;/td&gt;<br>
               &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;td&gt; &lt;input type="text" name="username" &gt; &lt;/td&gt;<br>
@@ -219,11 +220,10 @@
               &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;td&gt; &lt;input type="text" name="email" &gt; &lt;/td&gt;<br>
               &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
               &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
-              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;td colspan="2" align="center"&gt; &lt;input type="submit" name="submit" value="Login" &gt; &lt;/td&gt;<br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;td colspan="2" align="center"&gt; &lt;input type="submit" name="submit" value="Regist" &gt; &lt;/td&gt;<br>
               &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
               &nbsp;&nbsp;&nbsp;&lt;/table&gt;<br>
               &nbsp;&nbsp;&nbsp;&lt;form&gt;<br>
-              &nbsp;&nbsp;&nbsp; &lt;b&gt; Not registered yet? &lt;a href="login.php"&gt; Login &lt;/a&gt;&lt;/b&gt;<br>
               &lt;/body&gt;<br>
               &lt;/html&gt;<br>
                </div>
