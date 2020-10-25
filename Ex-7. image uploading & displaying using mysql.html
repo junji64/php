@@ -22,8 +22,10 @@
             <ul>
               <li><a href="http://jun.hansung.ac.kr/SWP/PHP/examples/image.php">image.php</a> : local 컴퓨터에 있는
                 image 파일을 서버에 업로드 하기 위한 form 요소와 완료되었을 때 get.php 를 이용하여 해당 image
-                를 가져와 보여줌. (More complete source code) : <a href="./examples/image.txt"> image.php <a> / <a href="./examples/delete_img.txt"> delete_img.php <a></li>
+                를 가져와 보여줌. (More complete source code) : <a href="./examples/image.txt"> image.php <a> </li>
               <li>get.php&nbsp; : 전달 받은 image&nbsp; 파일 이름에 해당하는 이미지를 DB에서 추출해
+                전달하는 역활을 함</li>
+              <li>delete.php&nbsp; : DB에서 해당하는 이미지를 삭제합니다.
                 전달하는 역활을 함</li>
               <li>MySQL : database "my_db" 와 table "images"<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -61,53 +63,47 @@
                 &nbsp;&nbsp;&nbsp; &lt;?php<br>
                 &nbsp;&nbsp;&nbsp; <br>
                 &nbsp;&nbsp;&nbsp; $con =
-                mysqli_connect("localhost","root","","my_db") or
-                die(mysqli_connect_error());<br>
+                mysqli_connect("localhost","root","","my_db") or die(mysqli_connect_error());<br>
                 &nbsp;&nbsp;&nbsp; <br>
                 &nbsp;&nbsp;&nbsp; $file = $_FILES['image']['tmp_name'];<br>
                 &nbsp;&nbsp;&nbsp; <br>
-                &nbsp;&nbsp;&nbsp; if(!isset($file)) {<br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; echo "Please select an
-                image.";<br>
-                &nbsp;&nbsp;&nbsp; }<br>
-                &nbsp;&nbsp;&nbsp; else {<br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $image_data =
+                &nbsp;&nbsp;&nbsp; if(isset($_POST['submit'])) { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(empty($_FILES['image']['name'])) { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo "Please select an image.";<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $image_data =
                 addslashes(file_get_contents($_FILES['image']['tmp_name']));<br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $image_name =
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $image_name =
                 addslashes($_FILES['image']['name']);<br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $image_size =
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $image_size =
                 getimagesize($_FILES['image']['tmp_name']);<br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if($image_size == FALSE) {<br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; echo
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if($image_size == FALSE) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo
                 "That's not an image.";<br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; else {<br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $sql =
-                "INSERT INTO images VALUES(NULL,'$image_name','$image_data')" ;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $sql =
+                "INSERT INTO images VALUES (NULL,'$image_name','$image_data')" ;<br>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp; <br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (
                 !mysqli_query($con,$sql) ) {<br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp; echo "Problem in uploading image !." .
                 mysqli_error($con);<br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; else {<br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp; echo "&lt;p&gt; Your Image : $image_name
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo "&lt;p&gt; Your Image : $image_name
                 &lt;/p&gt;";<br>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp; // using separate php file <br>
+                &nbsp;&nbsp;&nbsp; // [option-1] using separate php file <br>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp; echo "&lt;img width='200' height='200'
                 src='get.php?name=$image_name'&gt;";<br>
                 <br>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp; // using direct display <br>
+                &nbsp;&nbsp;&nbsp; // [option-2] using direct display <br>
                 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp; // $image = mysqli_query($con, "SELECT * FROM
-                images WHERE name='$image_name'");<br>
+                &nbsp;&nbsp; // $image = mysqli_query($con, "SELECT * FROM images WHERE name='$image_name'");<br>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp; // $image = mysqli_fetch_array($image);<br>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
@@ -117,10 +113,18 @@
                 <br>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp; <br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp; <br>
-                &nbsp;&nbsp;&nbsp; }<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;}<br>
                 &nbsp;&nbsp;&nbsp; <br>
+                &nbsp;&nbsp;&nbsp;echo "&lt;h2> Previously Uploaded Pictures &lt;/h2&gt;";<br>
+                &nbsp;&nbsp;&nbsp;while ( $one = mysqli_fetch_array($olds) ) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "&lt;img src='data:image/jpeg;base64," . base64_encode($one['data']) . "' width=250 height=200 /&gt;" ;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "&lt;a href='delete_img.php?id=" . $one['id'] . "'&gt; Delete &lt;/a&gt; &lt;br&gt;"; <br>
+
+    }
+                
                 &nbsp;&nbsp;&nbsp; ?&gt;<br>
                 &lt;/body&gt;<br>
                 &lt;/html&gt;<br>
@@ -142,7 +146,6 @@
                 name='$name'");<br>
                 $image = mysqli_fetch_assoc($image);<br>
                 $image = $image['data'];<br>
-                // header("Content-type: image/jpeg"); <br>
                 echo $image; <br>
                 ?&gt;<br>
                 <br>
