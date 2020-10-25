@@ -134,7 +134,7 @@ src='get.php?name=$image_name'&gt;";<br>
             <div class="w3-example">
               <h2 class="example">get.php</h2>
               <div class="w3-code notranslate">  &lt;?php<br>
-                $con = mysqli_connect("localhost","root","123123","my_db") or
+                $con = mysqli_connect("localhost","root","","my_db") or
                 die(mysqli_connect_error());<br>
                 $name = $_REQUEST['name'];<br>
                 $image = mysqli_query($con, "SELECT * FROM images WHERE
@@ -156,7 +156,7 @@ src='get.php?name=$image_name'&gt;";<br>
               <div class="w3-code notranslate">  
                 &lt;?php<br>    
                 $id = $_GET['id'];<br>
-                $con = mysqli_connect("localhost","root","123123","my_db") or die(mysqli_connect_error());<br>
+                $con = mysqli_connect("localhost","root","","my_db") or die(mysqli_connect_error());<br>
                 mysqli_query($con, "DELETE FROM images WHERE id=$id");<br>
                 mysqli_close($con);<br>
                 header("location: image.php");<br>
