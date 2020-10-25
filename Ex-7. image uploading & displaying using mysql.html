@@ -54,10 +54,8 @@
                 &nbsp;&nbsp;&nbsp; &lt;form action="image.php" method="POST"
                 enctype="multipart/form-data"&gt;<br>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; File : <br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;input type="file"
-                name="image"&gt; <br>
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;input type="submit"
-                value="Upload"&gt;<br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;input type="file" name="image"&gt; <br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;input type="submit" value="Upload"&gt;<br>
                 &nbsp;&nbsp;&nbsp; &lt;/form&gt;<br>
                 &nbsp;&nbsp;&nbsp; <br>
                 &nbsp;&nbsp;&nbsp; &lt;?php<br>
@@ -65,7 +63,7 @@
                 &nbsp;&nbsp;&nbsp; $con =
                 mysqli_connect("localhost","root","","my_db") or die(mysqli_connect_error());<br>
                 &nbsp;&nbsp;&nbsp; <br>
-                &nbsp;&nbsp;&nbsp; $file = $_FILES['image']['tmp_name'];<br>
+                &nbsp;&nbsp;&nbsp; $olds = mysqli_query($conn, "SELECT * FROM images");<br>
                 &nbsp;&nbsp;&nbsp; <br>
                 &nbsp;&nbsp;&nbsp; if(isset($_POST['submit'])) { <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(empty($_FILES['image']['name'])) { <br>
