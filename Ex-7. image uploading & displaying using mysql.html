@@ -65,7 +65,7 @@
 &nbsp;&nbsp;&nbsp; <br>
 &nbsp;&nbsp;&nbsp; if(isset($_POST['submit'])) { <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(empty($_FILES['image']['name'])) { <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo "Please select an image.";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo "&lt;h2&gt;Please select an image.&lt;/h2&gt;";<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else { <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $image_data =
 addslashes(file_get_contents($_FILES['image']['tmp_name']));<br>
