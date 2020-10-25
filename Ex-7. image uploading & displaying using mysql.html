@@ -123,8 +123,9 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "&lt;img src='data:image/jpeg;base64," . base64_encode($one['data']) . "' width=250 height=200 /&gt;" ;<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "&lt;a href='delete_img.php?id=" . $one['id'] . "'&gt; Delete &lt;/a&gt; &lt;br&gt;"; <br>
 
-    }
-                
+                &nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;mysqli_close($conn);<br>
+
                 &nbsp;&nbsp;&nbsp; ?&gt;<br>
                 &lt;/body&gt;<br>
                 &lt;/html&gt;<br>
