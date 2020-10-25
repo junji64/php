@@ -49,9 +49,10 @@
                 name varchar(40), pass varchar(40), email varchar(50) );</li>
               <li>Extra (관리도구) </li>
               <ul>
-                <li>admin.php : 관리자 로그인 페이지</li>
+                <li>admin_login.php : 관리자 로그인 페이지</li>
                 <li>admin_users.php : 사용자 리스트 표시 및 제거 버튼 제공</li>
-                <li>delete.php : 사용자 제거</li>
+                <li>admin_delete.php : 사용자 제거</li>
+                <li>admin_logout.php : 관리자 로그 페이지</li>
                 <li>MySQL : users_db.admin table<br>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   e.g.) CREATE TABLE admin(<br>
@@ -295,7 +296,7 @@
                         <h2>admin_users.php</h2>
 
             Extra : 아래의 코드(admin_users.php)는 admin 권한으로 로그인한 경우에&nbsp;
-            users_db.users 테이블 자료를 테이블 형식으로 보여주며, 버튼으로 사용자 제거 가능하게
+            users_db.users 테이블 자료를 테이블 형식으로 보여주며, 링크로 사용자 제거가 가능하게
             한다.&nbsp;&nbsp; <br>
             <br>
             <img alt="" src="admin_users.png"><br>
@@ -307,10 +308,23 @@
               </div>
             </div>
             <br>
-                        <h2>delete.php</h2>
+                        <h2>admin_delete.php</h2>
 
-            Extra : 아래의 코드(delete.php)는&nbsp; users_db.users 테이블 에서 전달 받은 id 에
+            Extra : 아래의 코드(admin_delete.php)는&nbsp; users_db.users 테이블에서 전달 받은 id 에
             해당하는 레코드를 지우고, admin_users.php를 다시 표시한다.&nbsp; <br>
+            <br>
+            <div class="code notranslate">
+              <div> &lt;?php<br>
+                <br>
+                ?&gt;<br>
+              </div>
+            </div>
+            <br>
+            
+            <h2>admin_logout.php</h2>
+
+            Extra : 아래의 코드(admin_logout.php)는&nbsp; admin_login.php 실행시에 생성한 session 을 제거하고, 
+            admin_login.php를 다시 표시한다.&nbsp; <br>
             <br>
             <div class="code notranslate">
               <div> &lt;?php<br>
