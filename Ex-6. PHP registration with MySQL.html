@@ -178,7 +178,7 @@
               &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;echo "&lt;script&gt; alert('Please enter all required field!')&lt;/script&gt;";<br>
               &nbsp;&nbsp;&nbsp;} else {<br>
               &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;$query = "SELECT * FROM users WHERE name='$username' OR email='$email' "; <br>
-              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;$result = mysqli_query($conn,$query)<br>
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;$result = mysqli_query($conn,$query); <br>
               &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;if (mysqli_num_rows($result) > 0) {<br>
               &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;header("Location: registration.php?MSG=Username:$username or E-mail:$email is already exist, please use another one!"); <br>
               &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; } else { <br>
