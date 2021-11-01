@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)http://jun.hansung.ac.kr/SWP/SWP_peer_grade_Midterm.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+<h2>Peer Grading (total 130점)</h2>
+<script>
+	function assign(obj,no) {
+		if (obj.checked == true) {obj.value = no}
+		else { obj.value = "0"}
+	}
+</script>
+   <h3>  </h3>
+   <!--
+<input type="button" value="check all" onclick="y=document.getElementById('prob1'); for (i=0; i< y.elements.length-2; i++) { y.elements[i].checked = 'false' ; y.elements[i].value = '1'} ; for (i=0; i< y.elements.length-2; i++) { y.elements[i].checked = 'true' ; y.elements[i].value = '1'}"><br>
+-->
+
+<form action="http://jun.hansung.ac.kr/action_page.php" id="prob1">   
+(10) <b>주제 </b> : 웹 사이트의 특정한 주제의 명확성 및 이에 합당한 구축  ( 불명확함  <input type="radio" name="a1" value="0" onchange="assign(this,5)" checked=""> / 명확함 <input type="radio" name="a1" value="0" onchange="assign(this,10)"> )<br>
+
+(10) <b> 사용자</b>:  등록 기능 구현 (DB 활용) <input type="checkbox" name="a2" value="0" onchange="assign(this,10)"> <br>
+ 
+(10) <b> 사용자</b>:  로그인 및 세션기능 구현 <input type="checkbox" name="a3" value="0" onchange="assign(this,10)"> <br>
+
+(10) <b> 사용자</b>:  프로필 수정기능 구현  <input type="checkbox" name="a31" value="0" onchange="assign(this,10)"> 
+ <br>
+
+(0/5/10) <b> 관리자</b>:  계정 구현 및 사용 환경 구현  (NO <input type="radio" name="a32" value="0" checked="" onchange="assign(this,0)"> / 별도의 사용환경 없음 <input type="radio" name="a32" value="0" onchange="assign(this,5)"> / 별도의 사용환경 있음   <input type="radio" name="a32" value="0" onchange="assign(this,10)"> <br>
+
+
+(10) <b> 관리자 </b>:  사용자 삭제 및 비밀번호 등의 수정 기능 구현  <input type="checkbox" name="a33" value="0" onchange="assign(this,10)"> <br>
+
+
+(10) <b> 자료 업로드 </b>:  텍스트 자료 입력 기능  구현 <input type="checkbox" name="a4" value="0" onchange="assign(this,10)">  <br>
+
+
+(10) <b> 자료 업로드 </b> : 이미지 자료 업로드 기능 구현 <input type="checkbox" name="a5" value="0" onchange="assign(this,10)">  <br>
+
+ 
+(10) <b> 자료 표시기능 </b> :  업로드된 자료 보여주기 모든 사용자에게 정리해서 보여주기 <input type="checkbox" name="a6" value="0" onchange="assign(this,10)"><br>
+
+
+(10) <b> 자료 표시기능  </b> : 업로드된 자료 선별하여 보여주기 (검색기능) <input type="checkbox" name="a8" value="0" onchange="assign(this,10)">  <br>
+
+
+(10) <b> 자료 표시기능  </b> : 업로드된 자료에 추가 정보 달기 (댓글 기능)  <input type="checkbox" name="a7" value="0" onchange="assign(this,10)">  <br>
+
+
+(10) <b>  자료 수정  </b> :  본인 자료 수정 또는 삭제 기능 구현 <input type="checkbox" name="a10" value="0" onchange="assign(this,10)"> <br>
+
+(0/5/10) <b> 자료 업로드</b>: 샘플 자료 양 : NO <input type="radio" name="a9" value="0" onchange="assign(this,0)" checked=""> / 적음  <input type="radio" name="a9" value="0" onchange="assign(this,5)"> / 충분  <input type="radio" name="a9" value="0" onchange="assign(this,10)"> /<br>
+
+
+ <input type="button" value="sum" onclick="sum.value=parseInt(a1.value)+parseInt(a2.value)+parseInt(a3.value)+parseInt(a31.value)+parseInt(a32.value)+parseInt(a33.value)+parseInt(a4.value)+parseInt(a5.value)+parseInt(a6.value)+parseInt(a7.value)+parseInt(a8.value)+parseInt(a9.value)+parseInt(a10.value)">  =   <output name="sum" id="sum" for="a1 a2 a3 a31 a32 a33 a4 a5 a6 a7 a8 a9 a10 a11">0</output>
+   
+</form>
+
+<hr>
+
+
+
+</body></html>
